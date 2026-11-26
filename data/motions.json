@@ -1,6 +1,6 @@
 {
-  "count": 536,
-  "appsCount": 19,
+  "count": 542,
+  "appsCount": 25,
   "apps": [
     {
       "name": "Duolingo",
@@ -310,6 +310,102 @@
       "bundleId": "com.calm.calmapp",
       "motionIds": [
         "app-calm-breath-wash"
+      ]
+    },
+    {
+      "name": "Todoist",
+      "slug": "todoist",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#DE4C4A",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/c7/97/41c7970f-2136-67be-ddd4-5a9dd7a14268/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/todoist-to-do-list-calendar/id572688855?uo=4",
+      "bundleId": "com.todoist.ios",
+      "motionIds": [
+        "app-todoist-voice-task-stack"
+      ]
+    },
+    {
+      "name": "Wise",
+      "slug": "wise",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#9FE870",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9b/18/24/9b1824d1-9653-0aa5-f4b4-8c56a03f0a3d/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/wise-global-money-transfer/id612261027?uo=4",
+      "bundleId": "com.transferwise.Transferwise",
+      "motionIds": [
+        "app-wise-card-fan-swap"
+      ]
+    },
+    {
+      "name": "Reddit",
+      "slug": "reddit",
+      "category": "News",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF4500",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/07/5d/4f/075d4fc3-9818-1565-cbf4-75c49455eb45/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/reddit/id1064216828?uo=4",
+      "bundleId": "com.reddit.Reddit",
+      "motionIds": [
+        "app-reddit-upvote-surge"
+      ]
+    },
+    {
+      "name": "Instagram",
+      "slug": "instagram",
+      "category": "Photo & Video",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#E1306C",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/81/47/e1/8147e182-6737-ae45-e896-ea87bc7f3954/Prod-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/instagram/id389801252?uo=4",
+      "bundleId": "com.burbn.instagram",
+      "motionIds": [
+        "app-instagram-close-friends-ring"
+      ]
+    },
+    {
+      "name": "TikTok",
+      "slug": "tiktok",
+      "category": "Entertainment",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FE2C55",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7b/a9/be/7ba9be57-1bd4-5534-bb8d-50f707ca521e/TikTok_AppIcon26-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320?uo=4",
+      "bundleId": "com.zhiliaoapp.musically",
+      "motionIds": [
+        "app-tiktok-vinyl-heart-rail"
+      ]
+    },
+    {
+      "name": "Threads",
+      "slug": "threads",
+      "category": "Social Networking",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#101010",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/a0/95/7da09558-b065-df5f-6d00-2d75f7e1b1cd/Prod-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/threads/id6446901002?uo=4",
+      "bundleId": "com.burbn.barcelona",
+      "motionIds": [
+        "app-threads-repost-pull"
       ]
     }
   ],
@@ -1495,6 +1591,274 @@
         "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/84/b6/cc84b646-19ce-b601-292a-19c98b32f2cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg",
         "storeUrl": "https://apps.apple.com/us/app/calm/id571800810?uo=4",
         "bundleId": "com.calm.calmapp"
+      }
+    },
+    {
+      "id": "app-todoist-voice-task-stack",
+      "title": "Todoist: Voice Waveform → Streaming Task Cards",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 460,
+      "easing": {
+        "t": "spring",
+        "k": 310,
+        "c": 24
+      },
+      "easingLabel": "spring(310, 24)",
+      "properties": [
+        "transform: translateY + rotate + scale (card tilt-to-level enter)",
+        "transform: scaleY (live red voice equalizer bars)",
+        "stroke-dashoffset (priority circle check)"
+      ],
+      "source": "Todoist (App Preview)",
+      "sourceUrl": "https://apps.apple.com/us/app/todoist-to-do-list-calendar/id572688855?uo=4",
+      "collection": "Apps",
+      "summary": "Extracted from Todoist's App Preview: while a live red voice waveform dances at the bottom, spoken tasks pop in one by one as crisp white cards that tilt slightly (-2.5deg) and settle level onto the stack.",
+      "choreography": [
+        "Continuous: 13 vertical crimson bars (#DE4C4A) oscillate symmetrically around center height like a live voice meter.",
+        "0-420ms per task: new task card rises from translateY(18px) rotate(-2.5deg) scale(0.92) opacity 0 to flat rest on spring(310, 24).",
+        "Color-coded priority circle (red/amber/blue) fills cleanly with a white checkmark when tapped."
+      ],
+      "agentPrompt": "Recreate Todoist's voice-to-task streaming capture UI on warm off-white (#faf5f2):\n1. Bottom bar: render 13 narrow vertical waveform bars (width 2.5px, #de4c4a, rounded caps) pulsing scaleY between 0.2 and 1.0 with staggered center-weighted amplitudes alongside a circular #de4c4a confirm button.\n2. Task stack: append rounded white cards (border-radius 13px, subtle warm shadow) containing a priority ring + title + colored due tag; animate each entering card from opacity 0, translateY(18px) rotate(-2.5deg) scale(0.92) to identity over 420ms cubic-bezier(0.22, 1.15, 0.36, 1).\n3. Clicking any card's ring pops it into a filled checkmark and fades the card down.",
+      "code": "<!-- Todoist Voice-to-Task Streaming Stack -->\n<div class=\"td-voice\">...</div>",
+      "app": {
+        "name": "Todoist",
+        "slug": "todoist",
+        "category": "Productivity",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#DE4C4A",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/c7/97/41c7970f-2136-67be-ddd4-5a9dd7a14268/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/todoist-to-do-list-calendar/id572688855?uo=4",
+        "bundleId": "com.todoist.ios"
+      }
+    },
+    {
+      "id": "app-wise-card-fan-swap",
+      "title": "Wise: Personal ↔ Business Dual-Card Fan Swap",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Tactile",
+      "surface": "light",
+      "durationMs": 520,
+      "easing": {
+        "t": "spring",
+        "k": 270,
+        "c": 22
+      },
+      "easingLabel": "spring(270, 22)",
+      "properties": [
+        "transform: translateY + rotate + scale (dual card fan)",
+        "z-index (deck order handoff)",
+        "opacity + transform: translateY (PERSONAL / BUSINESS title swap)"
+      ],
+      "source": "Wise (App Preview)",
+      "sourceUrl": "https://apps.apple.com/us/app/wise-global-money-transfer/id612261027?uo=4",
+      "collection": "Apps",
+      "summary": "Extracted from Wise's App Preview: toggling between Personal and Business fans the bright lime and forest-green debit cards out at opposing angles before snapping the newly selected card to the front.",
+      "choreography": [
+        "0-210ms (Fan split): front card arcs downward-right (+28px, +10deg) while back card arcs upward-left (-22px, -9deg) to clear the stack.",
+        "210ms (Z-handoff): z-index swaps cleanly at peak separation.",
+        "210-520ms (Lock): newly promoted card springs smoothly to center (0, 0, 0deg, scale 1) as the recessed card tucks 8px behind it and the bold condensed header swaps."
+      ],
+      "agentPrompt": "Build Wise's two-phase Personal <-> Business card fan swap:\n1. Stack two debit cards (aspect 1.6:1, border-radius 13px): bright lime (#9fe870, ink #163300) and forest green (#163300, ink #9fe870).\n2. On toggle, run a 2-phase choreography: Phase 1 (0-200ms) fans the cards apart along opposing arcs (outgoing translate(10px, 24px) rotate(9deg); incoming translate(-8px, -24px) rotate(-8deg)); at 200ms swap z-index; Phase 2 (200-520ms) springs the incoming card to translate(0, 0) rotate(0) scale(1) and tucks the outgoing card to translateY(-7px) scale(0.94).\n3. Pair with a bold uppercase display header ('PERSONAL' / 'BUSINESS') that ticks vertically on swap.",
+      "code": "<!-- Wise Dual-Card Fan Swap -->\n<div class=\"wise-deck\">...</div>",
+      "app": {
+        "name": "Wise",
+        "slug": "wise",
+        "category": "Finance",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#9FE870",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9b/18/24/9b1824d1-9653-0aa5-f4b4-8c56a03f0a3d/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/wise-global-money-transfer/id612261027?uo=4",
+        "bundleId": "com.transferwise.Transferwise"
+      }
+    },
+    {
+      "id": "app-reddit-upvote-surge",
+      "title": "Reddit: Orange Upvote Bounce & Counter Surge",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Playful",
+      "surface": "dark",
+      "durationMs": 420,
+      "easing": {
+        "t": "spring",
+        "k": 380,
+        "c": 18
+      },
+      "easingLabel": "spring(380, 18)",
+      "properties": [
+        "transform: translateY + scale (rocket upvote arrow)",
+        "background-color (pill orange highlight)",
+        "transform: scale (counter pop)"
+      ],
+      "source": "Reddit (App Preview)",
+      "sourceUrl": "https://apps.apple.com/us/app/reddit/id1064216828?uo=4",
+      "collection": "Apps",
+      "summary": "Extracted from Reddit's App Preview: tapping the upvote pill launches the arrow upward with playful spring overshoot, tints the pill in orangered (#FF4500), and rolls the vote count higher.",
+      "choreography": [
+        "0-180ms: arrow icon squashes down 2px then rockets up -5px at scale(1.28) while filling #FF4500.",
+        "60-360ms: pill background washes into translucent orange tint (rgba(255,69,0,0.12)) and the tabular vote counter pops scale(1.16 -> 1).",
+        "180-420ms: arrow settles crisply back to baseline on spring(380, 18)."
+      ],
+      "agentPrompt": "Build Reddit's tactile upvote pill interaction on a bold #ff4500 stage holding a crisp white post card:\n1. Render a pill control (height 32px, border-radius 999px, border 1px #e5e7eb) containing an upvote arrow SVG, tabular integer counter, and downvote arrow.\n2. On upvote click, animate the arrow through translateY(2px) -> translateY(-5px) scale(1.28) -> translateY(0) scale(1) over 400ms cubic-bezier(0.22, 1.32, 0.36, 1), swap color to #ff4500, tint the pill background to rgba(255,69,0,0.12), and pop the numeric count upward.",
+      "code": "<!-- Reddit Upvote Bounce & Counter Surge -->\n<button class=\"rd-vote\">⬆ 291</button>",
+      "app": {
+        "name": "Reddit",
+        "slug": "reddit",
+        "category": "News",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#FF4500",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/07/5d/4f/075d4fc3-9818-1565-cbf4-75c49455eb45/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/reddit/id1064216828?uo=4",
+        "bundleId": "com.reddit.Reddit"
+      }
+    },
+    {
+      "id": "app-instagram-close-friends-ring",
+      "title": "Instagram: Stories Ring Spin & Close Friends Pill",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Playful",
+      "surface": "dark",
+      "durationMs": 520,
+      "easing": {
+        "t": "spring",
+        "k": 320,
+        "c": 20
+      },
+      "easingLabel": "spring(320, 20)",
+      "properties": [
+        "transform: rotate (conic gradient story ring)",
+        "transform: scale (Close Friends green pill bloom)",
+        "box-shadow (emerald aura)"
+      ],
+      "source": "Instagram (App Preview)",
+      "sourceUrl": "https://apps.apple.com/us/app/instagram/id389801252?uo=4",
+      "collection": "Apps",
+      "summary": "Extracted from Instagram's App Preview: tapping a Story spins its vibrant conic gradient ring while toggling Close Friends blooms the emerald star pill (#1CD14F) with a crisp spring pop.",
+      "choreography": [
+        "Story tap: avatar presses down to scale(0.92) while its conic-gradient border rotates continuously for 900ms to signal loading.",
+        "Close Friends toggle: pill blooms scale(1 -> 1.14 -> 1) over 360ms cubic-bezier(0.22, 1.28, 0.36, 1) and switches the active avatar ring from Instagram sunset gradient to Close Friends green (#1CD14F)."
+      ],
+      "agentPrompt": "Build Instagram's Stories ring & Close Friends pill micro-interaction on #0b0b0d:\n1. Render a horizontal Stories row where each circular avatar sits inside a 2.5px gradient ring wrapper (conic-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75)) separated by a 2.5px #0b0b0d gap.\n2. On tap, compress the avatar to scale(0.92) and rotate the ring wrapper 360deg over 900ms cubic-bezier(0.4, 0, 0.2, 1).\n3. Pair with a frosted dark '★ Close friends' pill (emerald #1cd14f star circle) that blooms scale(1.14 -> 1) on toggle and shifts the ring to #1cd14f.",
+      "code": "<!-- Instagram Stories Ring & Close Friends Pill -->\n<div class=\"ig-stories\">...</div>",
+      "app": {
+        "name": "Instagram",
+        "slug": "instagram",
+        "category": "Photo & Video",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#E1306C",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/81/47/e1/8147e182-6737-ae45-e896-ea87bc7f3954/Prod-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/instagram/id389801252?uo=4",
+        "bundleId": "com.burbn.instagram"
+      }
+    },
+    {
+      "id": "app-tiktok-vinyl-heart-rail",
+      "title": "TikTok: Spinning Vinyl Disc & Heart Burst Rail",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Playful",
+      "surface": "dark",
+      "durationMs": 480,
+      "easing": {
+        "t": "spring",
+        "k": 360,
+        "c": 16
+      },
+      "easingLabel": "linear disc + spring(360, 16)",
+      "properties": [
+        "transform: rotate (3.2s continuous vinyl record)",
+        "transform: scale (TikTok red heart bounce)",
+        "transform: translate + opacity (floating music notes)"
+      ],
+      "source": "TikTok (App Preview)",
+      "sourceUrl": "https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320?uo=4",
+      "collection": "Apps",
+      "summary": "Extracted from TikTok's App Preview: the signature right-hand action rail pairs a continuously spinning vinyl audio record emitting drifting music notes with a double-tap / click #FE2C55 heart pop.",
+      "choreography": [
+        "Continuous: circular vinyl disc rotates 360deg every 3.2s linearly while tiny musical notes drift up-left along a curved fade path.",
+        "Tap / double-tap: heart squashes to 0.72 then springs to 1.32 -> 0.94 -> 1 in TikTok rose (#FE2C55) while a floating heart blooms at the tap center."
+      ],
+      "agentPrompt": "Build TikTok's vertical feed action rail & spinning vinyl disc on a dark video stage:\n1. Top tabs: 'Following | For You' with a crisp 24px white bottom underline that glides horizontally when switched.\n2. Right rail: vertical stack with Heart button (toggles white <-> #fe2c55 with scale 0.72 -> 1.34 -> 1 over 440ms), comment count, and a 38px circular vinyl disc rotating linearly at 3.2s/rev with two subtle music notes drifting upward and fading out.\n3. Clicking the stage pops a tilted #fe2c55 heart burst at the center.",
+      "code": "<!-- TikTok Spinning Vinyl & Heart Burst -->\n<div class=\"tt-stage\">...</div>",
+      "app": {
+        "name": "TikTok",
+        "slug": "tiktok",
+        "category": "Entertainment",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#FE2C55",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7b/a9/be/7ba9be57-1bd4-5534-bb8d-50f707ca521e/TikTok_AppIcon26-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320?uo=4",
+        "bundleId": "com.zhiliaoapp.musically"
+      }
+    },
+    {
+      "id": "app-threads-repost-pull",
+      "title": "Threads: Repost Counter Flip & Pull-Loop Spinner",
+      "use": "Micro-interactions",
+      "stack": "SVG",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "dark",
+      "durationMs": 380,
+      "easing": {
+        "t": "spring",
+        "k": 340,
+        "c": 22
+      },
+      "easingLabel": "spring(340, 22)",
+      "properties": [
+        "transform: rotate (180deg repost arrows)",
+        "transform: translateY (rolling numeric counter)",
+        "stroke-dashoffset (drawn @ pull-to-refresh glyph)"
+      ],
+      "source": "Threads",
+      "sourceUrl": "https://apps.apple.com/us/app/threads/id6446901002?uo=4",
+      "collection": "Apps",
+      "summary": "Tapping Repost on Threads spins the twin loop arrows 180° on a crisp spring while the tabular counter rolls smoothly upward and the signature @ mark draws on refresh.",
+      "choreography": [
+        "Repost tap: twin arrow SVG spins 180deg cumulatively over 380ms cubic-bezier(0.22, 1.2, 0.36, 1) while tinting crisp white/emerald.",
+        "Counter reel translates vertically (-18px) inside a clipped 1-line viewport with slight overshoot.",
+        "Top @ monogram redraws smoothly via stroke-dashoffset on refresh."
+      ],
+      "agentPrompt": "Recreate Threads' monochrome post engagement micro-interactions on #101010:\n1. Repost button: rotate the twin-arrow icon by +180deg cumulatively on each click over 380ms cubic-bezier(0.22, 1.2, 0.36, 1) while rolling the adjacent count inside an overflow-hidden 1-line odometer span.\n2. Heart button: toggle stroke -> filled #ff3040 with scale 0.78 -> 1.25 -> 1 pop.\n3. Add a top-centered SVG @ mark that draws its stroke via stroke-dashoffset when triggered.",
+      "code": "<!-- Threads Repost Counter Flip -->\n<button class=\"th-repost\">↻ 18</button>",
+      "app": {
+        "name": "Threads",
+        "slug": "threads",
+        "category": "Social Networking",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#101010",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/a0/95/7da09558-b065-df5f-6d00-2d75f7e1b1cd/Prod-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/threads/id6446901002?uo=4",
+        "bundleId": "com.burbn.barcelona"
       }
     },
     {

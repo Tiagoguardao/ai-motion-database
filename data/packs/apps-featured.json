@@ -1281,5 +1281,297 @@
     "html": "<div class=\"m-app-clm\" role=\"button\" tabindex=\"0\"><div class=\"m-app-clm__badge\">Calm</div><span class=\"m-app-clm__cue\">take a deep breath</span></div>",
     "css": ".m-app-clm{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,#59b7ea 0%,#5872e3 50%,#213f82 100%);background-size:100% 220%;background-position:0 100%;transition:background-position 1.4s cubic-bezier(.22,1,.36,1);cursor:pointer;user-select:none;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-clm.is-wash{background-position:0 0%;animation:m-clm-sky 7s ease-in-out 1.4s infinite alternate}@keyframes m-clm-sky{from{background-position:0 0%}to{background-position:0 36%}}.m-app-clm__badge{position:absolute;width:66px;height:66px;border-radius:50%;background:linear-gradient(145deg,#45b3e8,#6667e8);color:#fff;font:italic 600 18px/66px Georgia,serif;text-align:center;box-shadow:0 12px 28px rgba(0,0,0,.22);transition:opacity .7s ease,transform .8s cubic-bezier(.22,1,.36,1)}.m-app-clm.is-wash .m-app-clm__badge{opacity:0;transform:scale(1.25)}.m-app-clm__cue{color:#fff;font:500 14px/1 inherit;letter-spacing:.01em;opacity:0;transition:opacity .8s ease .35s}.m-app-clm.is-wash .m-app-clm__cue{opacity:1;animation:m-clm-br 4.6s ease-in-out 1.1s infinite}@keyframes m-clm-br{0%,100%{opacity:.52;letter-spacing:.01em;transform:scale(.98)}50%{opacity:1;letter-spacing:.06em;transform:scale(1.03)}}",
     "js": "var el=root.querySelector('.m-app-clm');if(!el)return;var dead=false,t1=0;function play(){el.classList.remove('is-wash');void el.offsetWidth;t1=setTimeout(function(){if(!dead)el.classList.add('is-wash');},720);}el.addEventListener('click',play);play();return function(){dead=true;clearTimeout(t1);};"
+  },
+  {
+    "id": "app-todoist-voice-task-stack",
+    "title": "Todoist: Voice Waveform → Streaming Task Cards",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 24
+    },
+    "easeLabel": "spring(310, 24)",
+    "props": [
+      "transform: translateY + rotate + scale (card tilt-to-level enter)",
+      "transform: scaleY (live red voice equalizer bars)",
+      "stroke-dashoffset (priority circle check)"
+    ],
+    "src": "Todoist (App Preview)",
+    "srcUrl": "https://apps.apple.com/us/app/todoist-to-do-list-calendar/id572688855?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Todoist",
+      "slug": "todoist",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#DE4C4A",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/c7/97/41c7970f-2136-67be-ddd4-5a9dd7a14268/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/todoist-to-do-list-calendar/id572688855?uo=4",
+      "bundleId": "com.todoist.ios"
+    },
+    "summary": "Extracted from Todoist's App Preview: while a live red voice waveform dances at the bottom, spoken tasks pop in one by one as crisp white cards that tilt slightly (-2.5deg) and settle level onto the stack.",
+    "hint": "Tap checkmark or mic to stream new tasks",
+    "choreography": [
+      "Continuous: 13 vertical crimson bars (#DE4C4A) oscillate symmetrically around center height like a live voice meter.",
+      "0-420ms per task: new task card rises from translateY(18px) rotate(-2.5deg) scale(0.92) opacity 0 to flat rest on spring(310, 24).",
+      "Color-coded priority circle (red/amber/blue) fills cleanly with a white checkmark when tapped."
+    ],
+    "agentPrompt": "Recreate Todoist's voice-to-task streaming capture UI on warm off-white (#faf5f2):\n1. Bottom bar: render 13 narrow vertical waveform bars (width 2.5px, #de4c4a, rounded caps) pulsing scaleY between 0.2 and 1.0 with staggered center-weighted amplitudes alongside a circular #de4c4a confirm button.\n2. Task stack: append rounded white cards (border-radius 13px, subtle warm shadow) containing a priority ring + title + colored due tag; animate each entering card from opacity 0, translateY(18px) rotate(-2.5deg) scale(0.92) to identity over 420ms cubic-bezier(0.22, 1.15, 0.36, 1).\n3. Clicking any card's ring pops it into a filled checkmark and fades the card down.",
+    "extractableCode": "<!-- Todoist Voice-to-Task Streaming Stack -->\n<div class=\"td-voice\">...</div>",
+    "html": "<div class=\"m-app-td\"><div class=\"m-app-td__stack\"></div><div class=\"m-app-td__bar\"><div class=\"m-app-td__wave\"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><button type=\"button\" class=\"m-app-td__add\" aria-label=\"Add spoken task\">✓</button></div></div>",
+    "css": ".m-app-td{position:absolute;inset:0;padding:14px 16px;background:linear-gradient(180deg,#fdf8f5,#f7ece6);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-td__stack{display:flex;flex-direction:column;gap:7px}.m-app-td__card{display:flex;align-items:flex-start;gap:9px;padding:9px 11px;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(130,60,40,.08);animation:m-td-in .42s cubic-bezier(.22,1.16,.36,1) both;cursor:pointer}.m-app-td__card.is-done{opacity:.45;text-decoration:line-through;transition:opacity .2s}@keyframes m-td-in{from{opacity:0;transform:translateY(16px) rotate(-2.4deg) scale(.92)}to{opacity:1;transform:none}}.m-app-td__ring{width:15px;height:15px;margin-top:2px;border-radius:50%;border:2px solid var(--c,#de4c4a);flex:none;transition:background .15s}.m-app-td__card.is-done .m-app-td__ring{background:var(--c,#de4c4a)}.m-app-td__card b{display:block;font:600 11.5px/1.2 inherit;color:#202020}.m-app-td__card span{display:block;margin-top:3px;font:500 9.5px/1 inherit;color:var(--c,#de4c4a)}.m-app-td__bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:6px}.m-app-td__wave{flex:1;height:24px;display:flex;align-items:center;justify-content:center;gap:3px}.m-app-td__wave i{width:2.5px;height:18px;border-radius:99px;background:#de4c4a;animation:m-td-w .68s ease-in-out infinite alternate}.m-app-td__wave i:nth-child(odd){animation-duration:.52s}.m-app-td__wave i:nth-child(3n){animation-delay:.16s}.m-app-td__wave i:nth-child(2n){animation-delay:.3s}@keyframes m-td-w{0%{transform:scaleY(.22)}100%{transform:scaleY(1)}}.m-app-td__add{width:30px;height:30px;border:0;border-radius:50%;background:#de4c4a;color:#fff;font:700 13px/1 inherit;cursor:pointer;box-shadow:0 6px 14px rgba(222,76,74,.32);transition:transform .12s}.m-app-td__add:active{transform:scale(.9)}",
+    "js": "var el=root.querySelector('.m-app-td');if(!el)return;var stack=el.querySelector('.m-app-td__stack'),add=el.querySelector('.m-app-td__add');var pool=[{t:'Review all design mockups',m:'Today · Urgent',c:'#de4c4a'},{t:'Record intro video',m:'Friday 10:00 · Project',c:'#eb8909'},{t:'Share motion research',m:'In 3 days · Team',c:'#246fe0'}];var idx=0,touched=false,dead=false;function push(){if(stack.children.length>=3)stack.innerHTML='';var d=pool[idx%pool.length];idx++;var c=document.createElement('div');c.className='m-app-td__card';c.style.setProperty('--c',d.c);c.innerHTML='<span class=\"m-app-td__ring\"></span><div><b>'+d.t+'</b><span>'+d.m+'</span></div>';c.addEventListener('click',function(){touched=true;c.classList.toggle('is-done');});stack.appendChild(c);}add.addEventListener('click',function(){touched=true;push();});push();var t1=setTimeout(function(){if(!dead)push();},750);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)push();},1900);return function(){dead=true;clearTimeout(t1);clearInterval(iv);};"
+  },
+  {
+    "id": "app-wise-card-fan-swap",
+    "title": "Wise: Personal ↔ Business Dual-Card Fan Swap",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 270,
+      "c": 22
+    },
+    "easeLabel": "spring(270, 22)",
+    "props": [
+      "transform: translateY + rotate + scale (dual card fan)",
+      "z-index (deck order handoff)",
+      "opacity + transform: translateY (PERSONAL / BUSINESS title swap)"
+    ],
+    "src": "Wise (App Preview)",
+    "srcUrl": "https://apps.apple.com/us/app/wise-global-money-transfer/id612261027?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Wise",
+      "slug": "wise",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#9FE870",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9b/18/24/9b1824d1-9653-0aa5-f4b4-8c56a03f0a3d/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/wise-global-money-transfer/id612261027?uo=4",
+      "bundleId": "com.transferwise.Transferwise"
+    },
+    "summary": "Extracted from Wise's App Preview: toggling between Personal and Business fans the bright lime and forest-green debit cards out at opposing angles before snapping the newly selected card to the front.",
+    "hint": "Tap cards to swap Personal / Business",
+    "choreography": [
+      "0-210ms (Fan split): front card arcs downward-right (+28px, +10deg) while back card arcs upward-left (-22px, -9deg) to clear the stack.",
+      "210ms (Z-handoff): z-index swaps cleanly at peak separation.",
+      "210-520ms (Lock): newly promoted card springs smoothly to center (0, 0, 0deg, scale 1) as the recessed card tucks 8px behind it and the bold condensed header swaps."
+    ],
+    "agentPrompt": "Build Wise's two-phase Personal <-> Business card fan swap:\n1. Stack two debit cards (aspect 1.6:1, border-radius 13px): bright lime (#9fe870, ink #163300) and forest green (#163300, ink #9fe870).\n2. On toggle, run a 2-phase choreography: Phase 1 (0-200ms) fans the cards apart along opposing arcs (outgoing translate(10px, 24px) rotate(9deg); incoming translate(-8px, -24px) rotate(-8deg)); at 200ms swap z-index; Phase 2 (200-520ms) springs the incoming card to translate(0, 0) rotate(0) scale(1) and tucks the outgoing card to translateY(-7px) scale(0.94).\n3. Pair with a bold uppercase display header ('PERSONAL' / 'BUSINESS') that ticks vertically on swap.",
+    "extractableCode": "<!-- Wise Dual-Card Fan Swap -->\n<div class=\"wise-deck\">...</div>",
+    "html": "<div class=\"m-app-ws\" role=\"button\" tabindex=\"0\"><b class=\"m-app-ws__hd\">PERSONAL</b><div class=\"m-app-ws__deck\"><div class=\"m-app-ws__card m-app-ws__lime is-top\"><span>WISE</span><em>PERSONAL · £1,500</em></div><div class=\"m-app-ws__card m-app-ws__dark\"><span>WISE</span><em>BUSINESS · €14,200</em></div></div><div class=\"m-app-ws__acts\"><i>+</i><i>▤</i><i>❄</i></div></div>",
+    "css": ".m-app-ws{position:absolute;inset:0;padding:16px;background:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ws__hd{font:900 17px/1 inherit;letter-spacing:-.02em;color:#163300;transition:opacity .16s,transform .24s}.m-app-ws__deck{position:relative;width:196px;height:118px}.m-app-ws__card{position:absolute;inset:0;border-radius:13px;padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 12px 26px rgba(22,51,0,.16);transition:transform .28s cubic-bezier(.22,1,.36,1);will-change:transform;z-index:1;transform:translateY(-8px) scale(.94)}.m-app-ws__card.is-top{z-index:3;transform:translateY(0) scale(1)}.m-app-ws__card.is-fan-out{transform:translate(10px,26px) rotate(10deg) scale(.96)}.m-app-ws__card.is-fan-in{transform:translate(-10px,-24px) rotate(-9deg) scale(.98)}.m-app-ws__lime{background:linear-gradient(135deg,#b2f283,#8be055);color:#163300}.m-app-ws__dark{background:linear-gradient(135deg,#1d4200,#112600);color:#9fe870}.m-app-ws__card span{font:800 12px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-ws__card em{font:600 11px/1 'Geist Mono',monospace;font-style:normal;opacity:.88}.m-app-ws__acts{display:flex;gap:14px}.m-app-ws__acts i{width:28px;height:28px;border-radius:50%;background:#9fe870;color:#163300;font-style:normal;font-weight:700;font-size:12px;display:grid;place-items:center}",
+    "js": "var el=root.querySelector('.m-app-ws');if(!el)return;var hd=el.querySelector('.m-app-ws__hd'),cA=el.querySelector('.m-app-ws__lime'),cB=el.querySelector('.m-app-ws__dark');var mode=0,busy=false,touched=false,dead=false,timers=[];function swap(){if(busy||dead)return;busy=true;var top=mode===0?cA:cB,back=mode===0?cB:cA;top.classList.add('is-fan-out');back.classList.add('is-fan-in');timers.push(setTimeout(function(){if(dead)return;mode=1-mode;top.classList.remove('is-top','is-fan-out');back.classList.add('is-top');back.classList.remove('is-fan-in');hd.textContent=mode===0?'PERSONAL':'BUSINESS';timers.push(setTimeout(function(){busy=false;},300));},210));}el.addEventListener('click',function(){touched=true;swap();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)swap();},2300);return function(){dead=true;clearInterval(iv);timers.forEach(clearTimeout);};"
+  },
+  {
+    "id": "app-reddit-upvote-surge",
+    "title": "Reddit: Orange Upvote Bounce & Counter Surge",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 380,
+      "c": 18
+    },
+    "easeLabel": "spring(380, 18)",
+    "props": [
+      "transform: translateY + scale (rocket upvote arrow)",
+      "background-color (pill orange highlight)",
+      "transform: scale (counter pop)"
+    ],
+    "src": "Reddit (App Preview)",
+    "srcUrl": "https://apps.apple.com/us/app/reddit/id1064216828?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Reddit",
+      "slug": "reddit",
+      "category": "News",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF4500",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/07/5d/4f/075d4fc3-9818-1565-cbf4-75c49455eb45/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/reddit/id1064216828?uo=4",
+      "bundleId": "com.reddit.Reddit"
+    },
+    "summary": "Extracted from Reddit's App Preview: tapping the upvote pill launches the arrow upward with playful spring overshoot, tints the pill in orangered (#FF4500), and rolls the vote count higher.",
+    "hint": "Tap the upvote pill on the post card",
+    "choreography": [
+      "0-180ms: arrow icon squashes down 2px then rockets up -5px at scale(1.28) while filling #FF4500.",
+      "60-360ms: pill background washes into translucent orange tint (rgba(255,69,0,0.12)) and the tabular vote counter pops scale(1.16 -> 1).",
+      "180-420ms: arrow settles crisply back to baseline on spring(380, 18)."
+    ],
+    "agentPrompt": "Build Reddit's tactile upvote pill interaction on a bold #ff4500 stage holding a crisp white post card:\n1. Render a pill control (height 32px, border-radius 999px, border 1px #e5e7eb) containing an upvote arrow SVG, tabular integer counter, and downvote arrow.\n2. On upvote click, animate the arrow through translateY(2px) -> translateY(-5px) scale(1.28) -> translateY(0) scale(1) over 400ms cubic-bezier(0.22, 1.32, 0.36, 1), swap color to #ff4500, tint the pill background to rgba(255,69,0,0.12), and pop the numeric count upward.",
+    "extractableCode": "<!-- Reddit Upvote Bounce & Counter Surge -->\n<button class=\"rd-vote\">⬆ 291</button>",
+    "html": "<div class=\"m-app-rd\"><div class=\"m-app-rd__card\"><span class=\"m-app-rd__sub\">r/motiondesign · 2h</span><b>Finale spoiler rabbit hole. Need to discuss!</b><div class=\"m-app-rd__foot\"><button type=\"button\" class=\"m-app-rd__pill\" aria-pressed=\"false\"><span class=\"m-app-rd__arr\">⬆</span><em class=\"m-app-rd__num\">291</em></button><span class=\"m-app-rd__chip\">💬 42</span><span class=\"m-app-rd__chip\">↗ Share</span></div></div></div>",
+    "css": ".m-app-rd{position:absolute;inset:0;display:grid;place-items:center;background:#ff4500;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-rd__card{width:min(86%,254px);padding:13px 14px;border-radius:16px;background:#fff;color:#111;box-shadow:0 16px 36px rgba(120,24,0,.26);display:flex;flex-direction:column;gap:8px}.m-app-rd__sub{font:600 10.5px/1 inherit;color:#6b7280}.m-app-rd__card b{font:700 13.5px/1.28 inherit;letter-spacing:-.015em}.m-app-rd__foot{display:flex;align-items:center;gap:7px;margin-top:4px}.m-app-rd__pill{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 11px;border-radius:999px;border:1px solid #e5e7eb;background:#f8f9fa;color:#111;font:700 12px/1 'Geist Mono',monospace;cursor:pointer;transition:background .18s,border-color .18s,color .18s}.m-app-rd__pill.is-up{background:rgba(255,69,0,.13);border-color:rgba(255,69,0,.35);color:#ff4500}.m-app-rd__arr{display:inline-block;font-size:13px}.m-app-rd__pill.is-pop .m-app-rd__arr{animation:m-rd-up .42s cubic-bezier(.22,1.35,.36,1)}@keyframes m-rd-up{0%{transform:translateY(0) scale(1)}22%{transform:translateY(2px) scale(.86)}52%{transform:translateY(-6px) scale(1.32)}80%{transform:translateY(1px) scale(.96)}100%{transform:none}}.m-app-rd__num{font-style:normal}.m-app-rd__chip{height:30px;padding:0 9px;border-radius:999px;border:1px solid #e5e7eb;font:600 11px/28px inherit;color:#52525b}",
+    "js": "var el=root.querySelector('.m-app-rd');if(!el)return;var pill=el.querySelector('.m-app-rd__pill'),num=el.querySelector('.m-app-rd__num');var up=false,val=291,touched=false,dead=false;function toggle(){up=!up;val=up?292:291;num.textContent=String(val);pill.classList.toggle('is-up',up);pill.setAttribute('aria-pressed',String(up));pill.classList.remove('is-pop');void pill.offsetWidth;if(up)pill.classList.add('is-pop');}pill.addEventListener('click',function(){touched=true;toggle();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)toggle();},1900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-instagram-close-friends-ring",
+    "title": "Instagram: Stories Ring Spin & Close Friends Pill",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 20
+    },
+    "easeLabel": "spring(320, 20)",
+    "props": [
+      "transform: rotate (conic gradient story ring)",
+      "transform: scale (Close Friends green pill bloom)",
+      "box-shadow (emerald aura)"
+    ],
+    "src": "Instagram (App Preview)",
+    "srcUrl": "https://apps.apple.com/us/app/instagram/id389801252?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Instagram",
+      "slug": "instagram",
+      "category": "Photo & Video",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#E1306C",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/81/47/e1/8147e182-6737-ae45-e896-ea87bc7f3954/Prod-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/instagram/id389801252?uo=4",
+      "bundleId": "com.burbn.instagram"
+    },
+    "summary": "Extracted from Instagram's App Preview: tapping a Story spins its vibrant conic gradient ring while toggling Close Friends blooms the emerald star pill (#1CD14F) with a crisp spring pop.",
+    "hint": "Tap an avatar ring or Close Friends pill",
+    "choreography": [
+      "Story tap: avatar presses down to scale(0.92) while its conic-gradient border rotates continuously for 900ms to signal loading.",
+      "Close Friends toggle: pill blooms scale(1 -> 1.14 -> 1) over 360ms cubic-bezier(0.22, 1.28, 0.36, 1) and switches the active avatar ring from Instagram sunset gradient to Close Friends green (#1CD14F)."
+    ],
+    "agentPrompt": "Build Instagram's Stories ring & Close Friends pill micro-interaction on #0b0b0d:\n1. Render a horizontal Stories row where each circular avatar sits inside a 2.5px gradient ring wrapper (conic-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75)) separated by a 2.5px #0b0b0d gap.\n2. On tap, compress the avatar to scale(0.92) and rotate the ring wrapper 360deg over 900ms cubic-bezier(0.4, 0, 0.2, 1).\n3. Pair with a frosted dark '★ Close friends' pill (emerald #1cd14f star circle) that blooms scale(1.14 -> 1) on toggle and shifts the ring to #1cd14f.",
+    "extractableCode": "<!-- Instagram Stories Ring & Close Friends Pill -->\n<div class=\"ig-stories\">...</div>",
+    "html": "<div class=\"m-app-ig\"><div class=\"m-app-ig__tray\"><button type=\"button\" class=\"m-app-ig__av\"><span class=\"m-app-ig__ring\"></span><i>🎨</i><small>you</small></button><button type=\"button\" class=\"m-app-ig__av is-cf\"><span class=\"m-app-ig__ring\"></span><i>✨</i><small>alex</small></button><button type=\"button\" class=\"m-app-ig__av\"><span class=\"m-app-ig__ring\"></span><i>📸</i><small>maya</small></button></div><button type=\"button\" class=\"m-app-ig__cf\"><b>★</b><span>Close friends</span></button></div>",
+    "css": ".m-app-ig{position:absolute;inset:0;background:#0b0b0d;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ig__tray{display:flex;gap:16px}.m-app-ig__av{position:relative;border:0;background:none;color:#fff;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}.m-app-ig__ring{width:58px;height:58px;border-radius:50%;padding:2.5px;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#feda75);display:block;transition:background .25s}.m-app-ig__av.is-cf .m-app-ig__ring{background:conic-gradient(#26e35c,#12b843,#26e35c)}.m-app-ig__av.is-spin .m-app-ig__ring{animation:m-ig-spin .9s cubic-bezier(.4,0,.2,1)}@keyframes m-ig-spin{to{transform:rotate(360deg)}}.m-app-ig__av i{position:absolute;top:3px;width:52px;height:52px;border-radius:50%;border:2.5px solid #0b0b0d;background:#1e1f26;display:grid;place-items:center;font-style:normal;font-size:21px;transition:transform .14s}.m-app-ig__av:active i{transform:scale(.9)}.m-app-ig__av small{font-size:10.5px;color:#a1a1aa}.m-app-ig__cf{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 8px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:#1d1e24;color:#fff;font:600 12.5px/1 inherit;cursor:pointer;transition:transform .34s cubic-bezier(.22,1.3,.36,1),box-shadow .24s,border-color .24s}.m-app-ig__cf b{width:22px;height:22px;border-radius:50%;background:#1cd14f;color:#fff;font-size:12px;display:grid;place-items:center}.m-app-ig__cf.is-bloom{transform:scale(1.12);border-color:rgba(28,209,79,.65);box-shadow:0 0 24px rgba(28,209,79,.32)}",
+    "js": "var el=root.querySelector('.m-app-ig');if(!el)return;var avs=[].slice.call(el.querySelectorAll('.m-app-ig__av')),cf=el.querySelector('.m-app-ig__cf');var touched=false,dead=false,k=0;function spin(a){a.classList.remove('is-spin');void a.offsetWidth;a.classList.add('is-spin');}function bloom(){cf.classList.toggle('is-bloom');avs[0].classList.toggle('is-cf');spin(avs[1]);}avs.forEach(function(a){a.addEventListener('click',function(){touched=true;spin(a);});});cf.addEventListener('click',function(){touched=true;bloom();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){if(k%2===0)spin(avs[0]);else bloom();k++;}},2000);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-tiktok-vinyl-heart-rail",
+    "title": "TikTok: Spinning Vinyl Disc & Heart Burst Rail",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 480,
+    "ease": {
+      "t": "spring",
+      "k": 360,
+      "c": 16
+    },
+    "easeLabel": "linear disc + spring(360, 16)",
+    "props": [
+      "transform: rotate (3.2s continuous vinyl record)",
+      "transform: scale (TikTok red heart bounce)",
+      "transform: translate + opacity (floating music notes)"
+    ],
+    "src": "TikTok (App Preview)",
+    "srcUrl": "https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "TikTok",
+      "slug": "tiktok",
+      "category": "Entertainment",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FE2C55",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7b/a9/be/7ba9be57-1bd4-5534-bb8d-50f707ca521e/TikTok_AppIcon26-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/tiktok-videos-shop-live/id835599320?uo=4",
+      "bundleId": "com.zhiliaoapp.musically"
+    },
+    "summary": "Extracted from TikTok's App Preview: the signature right-hand action rail pairs a continuously spinning vinyl audio record emitting drifting music notes with a double-tap / click #FE2C55 heart pop.",
+    "hint": "Double-tap stage or click heart on the rail",
+    "choreography": [
+      "Continuous: circular vinyl disc rotates 360deg every 3.2s linearly while tiny musical notes drift up-left along a curved fade path.",
+      "Tap / double-tap: heart squashes to 0.72 then springs to 1.32 -> 0.94 -> 1 in TikTok rose (#FE2C55) while a floating heart blooms at the tap center."
+    ],
+    "agentPrompt": "Build TikTok's vertical feed action rail & spinning vinyl disc on a dark video stage:\n1. Top tabs: 'Following | For You' with a crisp 24px white bottom underline that glides horizontally when switched.\n2. Right rail: vertical stack with Heart button (toggles white <-> #fe2c55 with scale 0.72 -> 1.34 -> 1 over 440ms), comment count, and a 38px circular vinyl disc rotating linearly at 3.2s/rev with two subtle music notes drifting upward and fading out.\n3. Clicking the stage pops a tilted #fe2c55 heart burst at the center.",
+    "extractableCode": "<!-- TikTok Spinning Vinyl & Heart Burst -->\n<div class=\"tt-stage\">...</div>",
+    "html": "<div class=\"m-app-tt\"><div class=\"m-app-tt__tabs\"><button type=\"button\">Following</button><button type=\"button\" class=\"is-on\">For You</button></div><span class=\"m-app-tt__big\">♥</span><div class=\"m-app-tt__rail\"><button type=\"button\" class=\"m-app-tt__h\"><b>♥</b><small>1.4M</small></button><span class=\"m-app-tt__ic\"><b>💬</b><small>12K</small></span><div class=\"m-app-tt__disc\"><i>♪</i></div></div><div class=\"m-app-tt__meta\"><b>@motionlab</b><span>Original sound · 60fps loop</span></div></div>",
+    "css": ".m-app-tt{position:absolute;inset:0;background:radial-gradient(circle at 35% 30%,#27233a,#101116 68%,#08080a);color:#fff;overflow:hidden;user-select:none;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-tt__tabs{position:absolute;top:14px;left:0;right:0;display:flex;justify-content:center;gap:16px}.m-app-tt__tabs button{border:0;background:none;color:rgba(255,255,255,.55);font:600 12px/1 inherit;padding-bottom:5px;cursor:pointer;border-bottom:2px solid transparent;transition:color .18s,border-color .18s}.m-app-tt__tabs button.is-on{color:#fff;border-bottom-color:#fff}.m-app-tt__big{position:absolute;left:50%;top:48%;margin:-28px 0 0 -28px;width:56px;height:56px;font-size:48px;line-height:56px;text-align:center;color:#fe2c55;opacity:0;pointer-events:none;filter:drop-shadow(0 8px 20px rgba(254,44,85,.5))}.m-app-tt__big.pop{animation:m-tt-big .62s cubic-bezier(.22,1.25,.36,1)}@keyframes m-tt-big{0%{opacity:0;transform:scale(.4) rotate(-14deg)}28%{opacity:1;transform:scale(1.22) rotate(-8deg)}100%{opacity:0;transform:scale(1.5) translateY(-18px) rotate(-4deg)}}.m-app-tt__rail{position:absolute;right:14px;bottom:16px;display:flex;flex-direction:column;align-items:center;gap:12px}.m-app-tt__h,.m-app-tt__ic{border:0;background:none;color:#fff;display:flex;flex-direction:column;align-items:center;gap:3px;padding:0;cursor:pointer}.m-app-tt__h b{font-size:22px;line-height:1;color:#fff;transition:color .16s}.m-app-tt__h.is-liked b{color:#fe2c55;animation:m-tt-hp .42s cubic-bezier(.22,1.35,.36,1)}@keyframes m-tt-hp{0%{transform:scale(1)}25%{transform:scale(.7)}55%{transform:scale(1.34)}100%{transform:scale(1)}}.m-app-tt__h small,.m-app-tt__ic small{font:600 10px/1 'Geist Mono',monospace;opacity:.85}.m-app-tt__ic b{font-size:18px;line-height:1}.m-app-tt__disc{position:relative;width:34px;height:34px;border-radius:50%;background:repeating-radial-gradient(#2c2c34 0 3px,#141418 3px 6px);border:2px solid #3f3f46;display:grid;place-items:center;animation:m-tt-rot 3.2s linear infinite}@keyframes m-tt-rot{to{transform:rotate(360deg)}}.m-app-tt__disc i{font-style:normal;font-size:12px;color:#25f4ee}.m-app-tt__meta{position:absolute;left:14px;bottom:16px;display:flex;flex-direction:column;gap:3px}.m-app-tt__meta b{font:700 12.5px/1 inherit}.m-app-tt__meta span{font-size:10.5px;color:rgba(255,255,255,.7)}",
+    "js": "var el=root.querySelector('.m-app-tt');if(!el)return;var h=el.querySelector('.m-app-tt__h'),big=el.querySelector('.m-app-tt__big'),tabs=[].slice.call(el.querySelectorAll('.m-app-tt__tabs button'));var liked=false,touched=false,dead=false;function like(){liked=!liked;h.classList.toggle('is-liked',liked);if(liked){big.classList.remove('pop');void big.offsetWidth;big.classList.add('pop');}}h.addEventListener('click',function(e){e.stopPropagation();touched=true;like();});el.addEventListener('click',function(){touched=true;if(!liked)like();else{big.classList.remove('pop');void big.offsetWidth;big.classList.add('pop');}});tabs.forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();touched=true;tabs.forEach(function(x){x.classList.toggle('is-on',x===b);});});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)like();},2100);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-threads-repost-pull",
+    "title": "Threads: Repost Counter Flip & Pull-Loop Spinner",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 22
+    },
+    "easeLabel": "spring(340, 22)",
+    "props": [
+      "transform: rotate (180deg repost arrows)",
+      "transform: translateY (rolling numeric counter)",
+      "stroke-dashoffset (drawn @ pull-to-refresh glyph)"
+    ],
+    "src": "Threads",
+    "srcUrl": "https://apps.apple.com/us/app/threads/id6446901002?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Threads",
+      "slug": "threads",
+      "category": "Social Networking",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#101010",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/a0/95/7da09558-b065-df5f-6d00-2d75f7e1b1cd/Prod-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/threads/id6446901002?uo=4",
+      "bundleId": "com.burbn.barcelona"
+    },
+    "summary": "Tapping Repost on Threads spins the twin loop arrows 180° on a crisp spring while the tabular counter rolls smoothly upward and the signature @ mark draws on refresh.",
+    "hint": "Tap Repost or Heart on the thread card",
+    "choreography": [
+      "Repost tap: twin arrow SVG spins 180deg cumulatively over 380ms cubic-bezier(0.22, 1.2, 0.36, 1) while tinting crisp white/emerald.",
+      "Counter reel translates vertically (-18px) inside a clipped 1-line viewport with slight overshoot.",
+      "Top @ monogram redraws smoothly via stroke-dashoffset on refresh."
+    ],
+    "agentPrompt": "Recreate Threads' monochrome post engagement micro-interactions on #101010:\n1. Repost button: rotate the twin-arrow icon by +180deg cumulatively on each click over 380ms cubic-bezier(0.22, 1.2, 0.36, 1) while rolling the adjacent count inside an overflow-hidden 1-line odometer span.\n2. Heart button: toggle stroke -> filled #ff3040 with scale 0.78 -> 1.25 -> 1 pop.\n3. Add a top-centered SVG @ mark that draws its stroke via stroke-dashoffset when triggered.",
+    "extractableCode": "<!-- Threads Repost Counter Flip -->\n<button class=\"th-repost\">↻ 18</button>",
+    "html": "<div class=\"m-app-th\"><div class=\"m-app-th__card\"><div class=\"m-app-th__top\"><b>@tiago</b><span>2m</span></div><p>Shipping reverse-engineered mobile motions straight into the index.</p><div class=\"m-app-th__bar\"><button type=\"button\" class=\"m-app-th__btn m-app-th__like\"><i>♡</i><span>41</span></button><button type=\"button\" class=\"m-app-th__btn m-app-th__rep\"><i>↻</i><span class=\"m-app-th__reel\"><b>18</b><b>19</b></span></button></div></div></div>",
+    "css": ".m-app-th{position:absolute;inset:0;display:grid;place-items:center;background:#101010;color:#f3f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-th__card{width:min(86%,254px);padding:14px 15px;border-radius:16px;background:#181818;border:1px solid rgba(255,255,255,.09);display:flex;flex-direction:column;gap:8px}.m-app-th__top{display:flex;justify-content:space-between;font-size:12px}.m-app-th__top span{color:#777}.m-app-th__card p{margin:0;font-size:12.5px;line-height:1.4;color:#d4d4d8}.m-app-th__bar{display:flex;gap:10px;margin-top:4px}.m-app-th__btn{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#d4d4d8;font:600 12px/1 'Geist Mono',monospace;cursor:pointer;transition:background .16s,border-color .16s,color .16s}.m-app-th__btn i{font-style:normal;font-size:14px;display:inline-block;transition:transform .4s cubic-bezier(.22,1.25,.36,1)}.m-app-th__like.is-on{color:#ff3040;border-color:rgba(255,48,64,.35);background:rgba(255,48,64,.12)}.m-app-th__like.is-on i{transform:scale(1.22)}.m-app-th__rep.is-on{color:#22c55e;border-color:rgba(34,197,94,.38);background:rgba(34,197,94,.12)}.m-app-th__reel{display:inline-flex;flex-direction:column;height:14px;line-height:14px;overflow:hidden}.m-app-th__reel b{font-weight:600;transition:transform .34s cubic-bezier(.22,1.25,.36,1)}.m-app-th__rep.is-on .m-app-th__reel b{transform:translateY(-14px)}",
+    "js": "var el=root.querySelector('.m-app-th');if(!el)return;var like=el.querySelector('.m-app-th__like'),rep=el.querySelector('.m-app-th__rep'),repI=rep.querySelector('i'),likeI=like.querySelector('i'),likeN=like.querySelector('span');var deg=0,onL=false,onR=false,touched=false,dead=false;function togL(){onL=!onL;like.classList.toggle('is-on',onL);likeI.textContent=onL?'♥':'♡';likeN.textContent=onL?'42':'41';}function togR(){onR=!onR;deg+=180;rep.classList.toggle('is-on',onR);repI.style.transform='rotate('+deg+'deg)';}like.addEventListener('click',function(){touched=true;togL();});rep.addEventListener('click',function(){touched=true;togR();});var k=0;var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){if(k%2===0)togR();else togL();k++;}},1800);return function(){dead=true;clearInterval(iv);};"
   }
 ]
