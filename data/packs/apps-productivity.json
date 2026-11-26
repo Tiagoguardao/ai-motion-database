@@ -1,0 +1,1244 @@
+[
+  {
+    "id": "app-obsidian-knowledge-graph-focus",
+    "title": "Obsidian: Knowledge Graph Node Glow & Edge Focus",
+    "use": "Generative",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Organic",
+    "surface": "dark",
+    "dur": 820,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "fill + filter: drop-shadow (active nodes)",
+      "transform: translate (focus labels)"
+    ],
+    "src": "Obsidian",
+    "srcUrl": "https://apps.apple.com/us/app/obsidian-connected-notes/id1557175442?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Obsidian",
+      "slug": "obsidian",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#7C3AED",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9f/6e/41/9f6e419e-d85c-d3b6-550b-40c51bf9ff26/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/obsidian-connected-notes/id1557175442?uo=4",
+      "bundleId": "md.obsidian"
+    },
+    "summary": "Navigating Obsidian's local graph view illuminates connected vault notes in luminous violet while focus tags glide smoothly across linked clusters.",
+    "hint": "Tap graph canvas to cycle linked notes",
+    "choreography": [
+      "0-160ms: target note node and its linked neighbor illuminate with #7C3AED drop-shadow glow.",
+      "80-760ms: floating note badges glide smoothly along spring paths across the dotted canvas.",
+      "760-820ms: active cluster settles with subtle graph edge contrast."
+    ],
+    "agentPrompt": "Build an Obsidian interactive SVG knowledge graph on #111116 with #7C3AED violet nodes: render 5 connected circular nodes over a subtle dot grid; on click, illuminate active nodes with drop-shadow glow and smoothly translate floating note badges over 820ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Obsidian: Knowledge Graph Node Glow & Edge Focus -->\n<div class=\"m-app-obsidian\"><div class=\"m-app-obsidian__board\"><svg class=\"m-app-obsidian__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-obsidian__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/></svg><span class=\"m-app-obsidian__cur m-app-obsidian__c1\">▲ MOC.md</span><span class=\"m-app-obsidian__cur m-app-obsidian__c2\">▲ Physics.md</span></div></div>\n<style>.m-app-obsidian{position:absolute;inset:0;display:grid;place-items:center;background:#111116;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-obsidian__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#191922;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-obsidian__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-obsidian__nd{transition:r .25s,fill .25s}.m-app-obsidian__nd.is-hi{fill:#7C3AED;filter:drop-shadow(0 0 8px #7C3AED)}.m-app-obsidian__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-obsidian__c1{background:#7C3AED;left:24px;top:24px}.m-app-obsidian__c2{background:#a855f7;left:140px;top:92px}</style>",
+    "html": "<div class=\"m-app-obsidian\"><div class=\"m-app-obsidian__board\"><svg class=\"m-app-obsidian__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-obsidian__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/><circle class=\"m-app-obsidian__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#191922\" stroke=\"#7C3AED\" stroke-width=\"2.2\"/></svg><span class=\"m-app-obsidian__cur m-app-obsidian__c1\">▲ MOC.md</span><span class=\"m-app-obsidian__cur m-app-obsidian__c2\">▲ Physics.md</span></div></div>",
+    "css": ".m-app-obsidian{position:absolute;inset:0;display:grid;place-items:center;background:#111116;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-obsidian__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#191922;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-obsidian__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-obsidian__nd{transition:r .25s,fill .25s}.m-app-obsidian__nd.is-hi{fill:#7C3AED;filter:drop-shadow(0 0 8px #7C3AED)}.m-app-obsidian__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-obsidian__c1{background:#7C3AED;left:24px;top:24px}.m-app-obsidian__c2{background:#a855f7;left:140px;top:92px}",
+    "js": "var el=root.querySelector('.m-app-obsidian');if(!el)return;var c1=el.querySelector('.m-app-obsidian__c1'),c2=el.querySelector('.m-app-obsidian__c2'),nds=[].slice.call(el.querySelectorAll('.m-app-obsidian__nd'));var pts=[[20,16,136,86],[106,12,68,84],[162,38,144,94],[64,84,110,16]],idx=0,touched=false,dead=false;function move(i){idx=i;var p=pts[i];c1.style.transform='translate('+p[0]+'px,'+p[1]+'px)';c2.style.transform='translate('+(p[2]-140)+'px,'+(p[3]-92)+'px)';nds.forEach(function(n,j){n.classList.toggle('is-hi',j===i||j===(i+2)%nds.length);});}el.addEventListener('click',function(){touched=true;move((idx+1)%pts.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)move((idx+1)%pts.length);},1650);move(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-craft-doc-card-stack-peel",
+    "title": "Craft: Document Card Stack Peel & Spring Promote",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 300,
+      "c": 23
+    },
+    "easeLabel": "spring(300, 23)",
+    "props": [
+      "transform: translate + rotate",
+      "transform: scale",
+      "opacity"
+    ],
+    "src": "Craft",
+    "srcUrl": "https://apps.apple.com/us/app/craft-notes-docs-tasks/id1487937127?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Craft",
+      "slug": "craft",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#2563EB",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c3/90/4c/c3904c4f-8fe7-481c-018d-24658ba66fe4/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/craft-notes-docs-tasks/id1487937127?uo=4",
+      "bundleId": "com.lukilabs.lukiapp"
+    },
+    "summary": "Flipping through Craft's visual document cards peels the foreground page cleanly aside with a gentle rotation while promoting the next doc card from the stack.",
+    "hint": "Tap card or arrows to cycle documents",
+    "choreography": [
+      "0-70ms: action stamp highlights the chosen page gesture.",
+      "40-360ms: top doc card glides aside with 14° editorial tilt.",
+      "360-420ms: next doc card rises from scale(0.92) -> 1.0."
+    ],
+    "agentPrompt": "Create Craft's stacked document card peel on #f5f7fb with #2563EB -> #38bdf8 cards: translate the top card off-stack with ±14deg rotation over 420ms cubic-bezier(0.22, 1.2, 0.36, 1) while scaling the next card up from 0.92.",
+    "extractableCode": "<!-- Craft: Document Card Stack Peel & Spring Promote -->\n<div class=\"m-app-craft\"><div class=\"m-app-craft__stack\"><div class=\"m-app-craft__back\"></div><div class=\"m-app-craft__front\"><span class=\"m-app-craft__st m-app-craft__stR\">PINNED</span><span class=\"m-app-craft__st m-app-craft__stL\">NEXT</span><div class=\"m-app-craft__meta\"><b>Q4 Product Brief</b><span>12 blocks · Updated 4m ago</span></div></div></div><div class=\"m-app-craft__acts\"><button type=\"button\" class=\"m-app-craft__no\">✕</button><button type=\"button\" class=\"m-app-craft__yes\">♥</button></div></div>\n<style>.m-app-craft{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f4f7fb;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-craft__stack{position:relative;width:min(74%,204px);height:126px}.m-app-craft__back,.m-app-craft__front{position:absolute;inset:0;border-radius:16px;border:1px solid rgba(128,128,128,.18)}.m-app-craft__back{background:#ffffff;transform:scale(.93) translateY(8px);opacity:.65}.m-app-craft__front{background:linear-gradient(145deg,#2563EBdd,#0ea5e999 55%,#ffffff);color:#fff;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 12px 26px rgba(0,0,0,.28);cursor:pointer;transition:transform .42s cubic-bezier(.22,1.2,.36,1),opacity .32s}.m-app-craft__front.is-r{transform:translate(86px,-12px) rotate(14deg);opacity:0}.m-app-craft__front.is-l{transform:translate(-86px,-12px) rotate(-14deg);opacity:0}.m-app-craft__st{position:absolute;top:12px;padding:3px 8px;border-radius:6px;border:2px solid currentColor;font:800 10px/1 'Geist Mono',monospace;opacity:0;transition:opacity .16s}.m-app-craft__stR{left:12px;color:#4ade80;transform:rotate(-10deg)}.m-app-craft__stL{right:12px;color:#fb7185;transform:rotate(10deg)}.m-app-craft__front.is-r .m-app-craft__stR,.m-app-craft__front.is-l .m-app-craft__stL{opacity:1}.m-app-craft__meta b{display:block;font:700 15px/1.15 inherit}.m-app-craft__meta span{font-size:11px;opacity:.82}.m-app-craft__acts{display:flex;gap:14px}.m-app-craft__acts button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(128,128,128,.2);background:#ffffff;color:#0f172a;font-size:14px;cursor:pointer;transition:transform .16s}.m-app-craft__acts button:active{transform:scale(.88)}.m-app-craft__yes{color:#2563EB!important}</style>",
+    "html": "<div class=\"m-app-craft\"><div class=\"m-app-craft__stack\"><div class=\"m-app-craft__back\"></div><div class=\"m-app-craft__front\"><span class=\"m-app-craft__st m-app-craft__stR\">PINNED</span><span class=\"m-app-craft__st m-app-craft__stL\">NEXT</span><div class=\"m-app-craft__meta\"><b>Q4 Product Brief</b><span>12 blocks · Updated 4m ago</span></div></div></div><div class=\"m-app-craft__acts\"><button type=\"button\" class=\"m-app-craft__no\">✕</button><button type=\"button\" class=\"m-app-craft__yes\">♥</button></div></div>",
+    "css": ".m-app-craft{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f4f7fb;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-craft__stack{position:relative;width:min(74%,204px);height:126px}.m-app-craft__back,.m-app-craft__front{position:absolute;inset:0;border-radius:16px;border:1px solid rgba(128,128,128,.18)}.m-app-craft__back{background:#ffffff;transform:scale(.93) translateY(8px);opacity:.65}.m-app-craft__front{background:linear-gradient(145deg,#2563EBdd,#0ea5e999 55%,#ffffff);color:#fff;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 12px 26px rgba(0,0,0,.28);cursor:pointer;transition:transform .42s cubic-bezier(.22,1.2,.36,1),opacity .32s}.m-app-craft__front.is-r{transform:translate(86px,-12px) rotate(14deg);opacity:0}.m-app-craft__front.is-l{transform:translate(-86px,-12px) rotate(-14deg);opacity:0}.m-app-craft__st{position:absolute;top:12px;padding:3px 8px;border-radius:6px;border:2px solid currentColor;font:800 10px/1 'Geist Mono',monospace;opacity:0;transition:opacity .16s}.m-app-craft__stR{left:12px;color:#4ade80;transform:rotate(-10deg)}.m-app-craft__stL{right:12px;color:#fb7185;transform:rotate(10deg)}.m-app-craft__front.is-r .m-app-craft__stR,.m-app-craft__front.is-l .m-app-craft__stL{opacity:1}.m-app-craft__meta b{display:block;font:700 15px/1.15 inherit}.m-app-craft__meta span{font-size:11px;opacity:.82}.m-app-craft__acts{display:flex;gap:14px}.m-app-craft__acts button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(128,128,128,.2);background:#ffffff;color:#0f172a;font-size:14px;cursor:pointer;transition:transform .16s}.m-app-craft__acts button:active{transform:scale(.88)}.m-app-craft__yes{color:#2563EB!important}",
+    "js": "var el=root.querySelector('.m-app-craft');if(!el)return;var fr=el.querySelector('.m-app-craft__front'),b=fr.querySelector('.m-app-craft__meta b'),sp=fr.querySelector('.m-app-craft__meta span');var cards=[[\"Q4 Product Brief\", \"12 blocks \\u00b7 Updated 4m ago\"], [\"Design Critique\", \"8 visual cards \\u00b7 Team\"], [\"Release Notes\", \"Ready to publish\"]],idx=0,touched=false,dead=false,busy=false;function swipe(dir){if(busy)return;busy=true;fr.classList.add(dir>0?'is-r':'is-l');setTimeout(function(){if(dead)return;idx=(idx+1)%cards.length;b.textContent=cards[idx][0];sp.textContent=cards[idx][1];fr.style.transition='none';fr.classList.remove('is-r','is-l');fr.style.transform='scale(.92) translateY(8px)';fr.style.opacity='.6';void fr.offsetWidth;fr.style.transition='';fr.style.transform='';fr.style.opacity='';busy=false;},380);}el.querySelector('.m-app-craft__yes').addEventListener('click',function(){touched=true;swipe(1);});el.querySelector('.m-app-craft__no').addEventListener('click',function(){touched=true;swipe(-1);});fr.addEventListener('click',function(){touched=true;swipe(1);});var turn=0,iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){swipe(turn++%2===0?1:-1);}},2000);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-things-3-task-complete-swipe-undo",
+    "title": "Things 3: Tactile Checkbox Swipe & Undo Toast Rise",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 23
+    },
+    "easeLabel": "spring(320, 23)",
+    "props": [
+      "transform: translateX (row slide)",
+      "background-color (checkbox fill)",
+      "transform: translateY (toast)"
+    ],
+    "src": "Things 3",
+    "srcUrl": "https://apps.apple.com/us/app/things-3/id904237743?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Things 3",
+      "slug": "things-3",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#2F7CF6",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/78/3c/8d/783c8d18-e284-9a0c-3cc5-9907be288273/AppIcon-0-0-1x_U007ephone-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/things-3/id904237743?uo=4",
+      "bundleId": "com.culturedcode.ThingsiPhone"
+    },
+    "summary": "Completing or scheduling a Things 3 to-do slides the crisp white task row smoothly over a cobalt action reveal while floating a subtle Undo toast underneath.",
+    "hint": "Tap task row to complete & reveal Undo",
+    "choreography": [
+      "0-100ms: circular #2F7CF6 checkbox fills cleanly on tap.",
+      "40-360ms: task card glides +92px rightward exposing the blue action backing.",
+      "160-420ms: floating Undo pill rises 10px into view with zero jitter."
+    ],
+    "agentPrompt": "Build Things 3's tactile task row completion on #f4f6f9 with #2F7CF6 accent: slide the white task row +92px rightward over 420ms cubic-bezier(0.22, 1.14, 0.36, 1) to reveal the action layer while raising a crisp Undo snackbar.",
+    "extractableCode": "<!-- Things 3: Tactile Checkbox Swipe & Undo Toast Rise -->\n<div class=\"m-app-things-3\"><div class=\"m-app-things-3__wrap\"><div class=\"m-app-things-3__bg\"><span>Complete ✓</span></div><button type=\"button\" class=\"m-app-things-3__row\"><i class=\"m-app-things-3__chk\"></i><div><b>Finalize spring tokens</b><span>Today · Design System</span></div></button></div><div class=\"m-app-things-3__toast\"><span>Completed</span><b>Undo</b></div></div>\n<style>.m-app-things-3{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f3f5f8;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-things-3__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-things-3__bg{position:absolute;inset:0;background:#2F7CF6;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-things-3__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#111827;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-things-3.is-sw .m-app-things-3__row{transform:translateX(92px)}.m-app-things-3__chk{width:18px;height:18px;border-radius:50%;border:2px solid #2F7CF6;flex:none;transition:background .2s}.m-app-things-3.is-sw .m-app-things-3__chk{background:#2F7CF6}.m-app-things-3__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-things-3__row span{font-size:11px;color:#6b7280}.m-app-things-3__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-things-3__toast b{color:#2F7CF6}.m-app-things-3.is-sw .m-app-things-3__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-things-3\"><div class=\"m-app-things-3__wrap\"><div class=\"m-app-things-3__bg\"><span>Complete ✓</span></div><button type=\"button\" class=\"m-app-things-3__row\"><i class=\"m-app-things-3__chk\"></i><div><b>Finalize spring tokens</b><span>Today · Design System</span></div></button></div><div class=\"m-app-things-3__toast\"><span>Completed</span><b>Undo</b></div></div>",
+    "css": ".m-app-things-3{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f3f5f8;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-things-3__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-things-3__bg{position:absolute;inset:0;background:#2F7CF6;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-things-3__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#111827;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-things-3.is-sw .m-app-things-3__row{transform:translateX(92px)}.m-app-things-3__chk{width:18px;height:18px;border-radius:50%;border:2px solid #2F7CF6;flex:none;transition:background .2s}.m-app-things-3.is-sw .m-app-things-3__chk{background:#2F7CF6}.m-app-things-3__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-things-3__row span{font-size:11px;color:#6b7280}.m-app-things-3__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-things-3__toast b{color:#2F7CF6}.m-app-things-3.is-sw .m-app-things-3__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-things-3');if(!el)return;var row=el.querySelector('.m-app-things-3__row'),toast=el.querySelector('.m-app-things-3__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-ticktick-pomodoro-focus-ring",
+    "title": "TickTick: Pomodoro Focus Ring Countdown Sweep",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "dark",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (focus ring)",
+      "filter: drop-shadow",
+      "textContent"
+    ],
+    "src": "TickTick",
+    "srcUrl": "https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id626144601?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "TickTick",
+      "slug": "ticktick",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#4772FA",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7e/b3/8b/7eb38b09-24c2-c4df-99cc-5f9f0b3c28e0/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/ticktick-to-do-list-calendar/id626144601?uo=4",
+      "bundleId": "com.TickTick.task"
+    },
+    "summary": "TickTick's Pomodoro timer sweeps dual cobalt and sky progress rings smoothly around the remaining focus interval with a calm ambient glow.",
+    "hint": "Tap ring to step Pomodoro intervals",
+    "choreography": [
+      "0-180ms: outer 25-minute ring and inner session ring prime from 12-o'clock.",
+      "180-680ms: stroke-dashoffset glides cleanly to the active focus completion percentage.",
+      "680-720ms: center minute readout and 'Deep Focus' pill lock cleanly."
+    ],
+    "agentPrompt": "Build a TickTick Pomodoro focus ring on #101422 with #4772FA and #38bdf8 concentric SVG arcs: animate stroke-dashoffset over 720ms cubic-bezier(0.22, 1, 0.36, 1) around a centered monospace focus percentage.",
+    "extractableCode": "<!-- TickTick: Pomodoro Focus Ring Countdown Sweep -->\n<div class=\"m-app-ticktick\"><button type=\"button\" class=\"m-app-ticktick__btn\"><svg class=\"m-app-ticktick__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-ticktick__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#4772FA\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-ticktick__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-ticktick__mid\"><b>25m</b><span>Pomodoro</span></div><em class=\"m-app-ticktick__tag\">Deep Focus</em></button></div>\n<style>.m-app-ticktick{position:absolute;inset:0;display:grid;place-items:center;background:#101422;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ticktick__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-ticktick__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #4772FA33)}.m-app-ticktick__arc1,.m-app-ticktick__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-ticktick__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-ticktick__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-ticktick__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-ticktick__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#181f34;border:1px solid rgba(128,128,128,.18);color:#4772FA}</style>",
+    "html": "<div class=\"m-app-ticktick\"><button type=\"button\" class=\"m-app-ticktick__btn\"><svg class=\"m-app-ticktick__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-ticktick__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#4772FA\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-ticktick__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-ticktick__mid\"><b>25m</b><span>Pomodoro</span></div><em class=\"m-app-ticktick__tag\">Deep Focus</em></button></div>",
+    "css": ".m-app-ticktick{position:absolute;inset:0;display:grid;place-items:center;background:#101422;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ticktick__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-ticktick__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #4772FA33)}.m-app-ticktick__arc1,.m-app-ticktick__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-ticktick__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-ticktick__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-ticktick__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-ticktick__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#181f34;border:1px solid rgba(128,128,128,.18);color:#4772FA}",
+    "js": "var el=root.querySelector('.m-app-ticktick');if(!el)return;var btn=el.querySelector('.m-app-ticktick__btn'),a1=el.querySelector('.m-app-ticktick__arc1'),a2=el.querySelector('.m-app-ticktick__arc2'),num=el.querySelector('.m-app-ticktick__mid b');var scores=[25, 18, 12, 5],unit=\"m\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-bear-markdown-tag-graph-link",
+    "title": "Bear: Nested Tag Link Focus & Editorial Cursor",
+    "use": "Navigation and layout",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 800,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "fill (active tag nodes)",
+      "transform: translate (tag pills)"
+    ],
+    "src": "Bear",
+    "srcUrl": "https://apps.apple.com/us/app/bear-markdown-notes-journal/id1016366447?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Bear",
+      "slug": "bear",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#D94343",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/36/12/02/3612022e-1679-d4bf-303c-10db0795bd87/AppIcon-26-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/bear-markdown-notes-journal/id1016366447?uo=4",
+      "bundleId": "net.shinyfrog.bear-iOS"
+    },
+    "summary": "Linking nested `#tags` across Bear notes illuminates connected crimson nodes over crisp warm paper as floating tag labels glide between notes.",
+    "hint": "Tap canvas to jump across #tags",
+    "choreography": [
+      "0-160ms: active note nodes light up in Bear crimson (#D94343).",
+      "80-740ms: floating #tag pills glide cleanly across connected edges.",
+      "740-800ms: settled cluster preserves generous editorial whitespace."
+    ],
+    "agentPrompt": "Create a Bear Markdown nested-tag link visualizer on #faf8f6 with #D94343 crimson accents: illuminate active SVG note nodes and glide floating #tag badges across edges over 800ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Bear: Nested Tag Link Focus & Editorial Cursor -->\n<div class=\"m-app-bear\"><div class=\"m-app-bear__board\"><svg class=\"m-app-bear__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-bear__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/></svg><span class=\"m-app-bear__cur m-app-bear__c1\">▲ #writing</span><span class=\"m-app-bear__cur m-app-bear__c2\">▲ #ideas/ui</span></div></div>\n<style>.m-app-bear{position:absolute;inset:0;display:grid;place-items:center;background:#faf8f6;color:#1c1917;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-bear__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-bear__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-bear__nd{transition:r .25s,fill .25s}.m-app-bear__nd.is-hi{fill:#D94343;filter:drop-shadow(0 0 8px #D94343)}.m-app-bear__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-bear__c1{background:#D94343;left:24px;top:24px}.m-app-bear__c2{background:#52525b;left:140px;top:92px}</style>",
+    "html": "<div class=\"m-app-bear\"><div class=\"m-app-bear__board\"><svg class=\"m-app-bear__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-bear__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/><circle class=\"m-app-bear__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#ffffff\" stroke=\"#D94343\" stroke-width=\"2.2\"/></svg><span class=\"m-app-bear__cur m-app-bear__c1\">▲ #writing</span><span class=\"m-app-bear__cur m-app-bear__c2\">▲ #ideas/ui</span></div></div>",
+    "css": ".m-app-bear{position:absolute;inset:0;display:grid;place-items:center;background:#faf8f6;color:#1c1917;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-bear__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-bear__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-bear__nd{transition:r .25s,fill .25s}.m-app-bear__nd.is-hi{fill:#D94343;filter:drop-shadow(0 0 8px #D94343)}.m-app-bear__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-bear__c1{background:#D94343;left:24px;top:24px}.m-app-bear__c2{background:#52525b;left:140px;top:92px}",
+    "js": "var el=root.querySelector('.m-app-bear');if(!el)return;var c1=el.querySelector('.m-app-bear__c1'),c2=el.querySelector('.m-app-bear__c2'),nds=[].slice.call(el.querySelectorAll('.m-app-bear__nd'));var pts=[[20,16,136,86],[106,12,68,84],[162,38,144,94],[64,84,110,16]],idx=0,touched=false,dead=false;function move(i){idx=i;var p=pts[i];c1.style.transform='translate('+p[0]+'px,'+p[1]+'px)';c2.style.transform='translate('+(p[2]-140)+'px,'+(p[3]-92)+'px)';nds.forEach(function(n,j){n.classList.toggle('is-hi',j===i||j===(i+2)%nds.length);});}el.addEventListener('click',function(){touched=true;move((idx+1)%pts.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)move((idx+1)%pts.length);},1650);move(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-fantastical-natural-language-parse-chips",
+    "title": "Fantastical: Natural Language Event Parser Pill Cascade",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 330,
+      "c": 22
+    },
+    "easeLabel": "spring(330, 22)",
+    "props": [
+      "opacity",
+      "transform: translateY + scale (parsed chips)"
+    ],
+    "src": "Fantastical",
+    "srcUrl": "https://apps.apple.com/us/app/fantastical-calendar/id718043190?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Fantastical",
+      "slug": "fantastical",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#EF4444",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/25/48/9d/25489d17-651c-298b-bc6e-891084b59f6d/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/fantastical-calendar/id718043190?uo=4",
+      "bundleId": "com.flexibits.fantastical2.iphone"
+    },
+    "summary": "Typing 'Coffee with Alex Fri 10am' in Fantastical pops parsed crimson date, time, and invitee chips into place in a crisp staggered sequence.",
+    "hint": "Tap card to replay event parsing",
+    "choreography": [
+      "0-260ms: parsed Date, Time, and Location pills spring upward with 90ms stagger.",
+      "160-400ms: structured calendar preview lines settle cleanly below.",
+      "400-460ms: live parser caret blinks cleanly in #EF4444."
+    ],
+    "agentPrompt": "Build Fantastical's natural-language event parser on #faf7f7 with #EF4444 crimson pills: stagger parsed Date/Time/Guest pills upward (translateY 6px -> 0, scale 0.92 -> 1) by 90ms over 380ms cubic-bezier(0.22, 1.2, 0.36, 1).",
+    "extractableCode": "<!-- Fantastical: Natural Language Event Parser Pill Cascade -->\n<div class=\"m-app-fantastical\"><div class=\"m-app-fantastical__card\"><div class=\"m-app-fantastical__srcs\"><span class=\"m-app-fantastical__src\" style=\"transition-delay:0ms\">Fri · Nov 27</span><span class=\"m-app-fantastical__src\" style=\"transition-delay:90ms\">10:00 AM</span><span class=\"m-app-fantastical__src\" style=\"transition-delay:180ms\">📍 Sightglass</span></div><div class=\"m-app-fantastical__ln m-app-fantastical__l1\">Coffee with Alex Fri 10am at Sightglass</div><div class=\"m-app-fantastical__ln m-app-fantastical__l2\">Added to Work Calendar<i class=\"m-app-fantastical__cur\"></i></div></div></div>\n<style>.m-app-fantastical{position:absolute;inset:0;display:grid;place-items:center;background:#faf6f6;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-fantastical__card{width:min(86%,256px);padding:14px 15px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:9px;cursor:pointer}.m-app-fantastical__srcs{display:flex;gap:6px;flex-wrap:wrap}.m-app-fantastical__src{padding:4px 8px;border-radius:999px;background:#EF44441f;border:1px solid #EF444444;color:#EF4444;font:600 10px/1 'Geist Mono',monospace;opacity:0;transform:translateY(6px) scale(.92);transition:all .38s cubic-bezier(.22,1.2,.36,1)}.m-app-fantastical.is-on .m-app-fantastical__src{opacity:1;transform:none}.m-app-fantastical__ln{font:500 12px/1.35 inherit;color:#6b7280;opacity:0;transform:translateY(5px);transition:all .42s cubic-bezier(.22,1,.36,1)}.m-app-fantastical__l2{color:#111827;transition-delay:.22s}.m-app-fantastical.is-on .m-app-fantastical__ln{opacity:1;transform:none}.m-app-fantastical__cur{display:inline-block;width:6px;height:12px;margin-left:4px;vertical-align:-2px;background:#EF4444;border-radius:1px;animation:m-fantastical-bl .85s steps(2) infinite}@keyframes m-fantastical-bl{50%{opacity:0}}</style>",
+    "html": "<div class=\"m-app-fantastical\"><div class=\"m-app-fantastical__card\"><div class=\"m-app-fantastical__srcs\"><span class=\"m-app-fantastical__src\" style=\"transition-delay:0ms\">Fri · Nov 27</span><span class=\"m-app-fantastical__src\" style=\"transition-delay:90ms\">10:00 AM</span><span class=\"m-app-fantastical__src\" style=\"transition-delay:180ms\">📍 Sightglass</span></div><div class=\"m-app-fantastical__ln m-app-fantastical__l1\">Coffee with Alex Fri 10am at Sightglass</div><div class=\"m-app-fantastical__ln m-app-fantastical__l2\">Added to Work Calendar<i class=\"m-app-fantastical__cur\"></i></div></div></div>",
+    "css": ".m-app-fantastical{position:absolute;inset:0;display:grid;place-items:center;background:#faf6f6;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-fantastical__card{width:min(86%,256px);padding:14px 15px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:9px;cursor:pointer}.m-app-fantastical__srcs{display:flex;gap:6px;flex-wrap:wrap}.m-app-fantastical__src{padding:4px 8px;border-radius:999px;background:#EF44441f;border:1px solid #EF444444;color:#EF4444;font:600 10px/1 'Geist Mono',monospace;opacity:0;transform:translateY(6px) scale(.92);transition:all .38s cubic-bezier(.22,1.2,.36,1)}.m-app-fantastical.is-on .m-app-fantastical__src{opacity:1;transform:none}.m-app-fantastical__ln{font:500 12px/1.35 inherit;color:#6b7280;opacity:0;transform:translateY(5px);transition:all .42s cubic-bezier(.22,1,.36,1)}.m-app-fantastical__l2{color:#111827;transition-delay:.22s}.m-app-fantastical.is-on .m-app-fantastical__ln{opacity:1;transform:none}.m-app-fantastical__cur{display:inline-block;width:6px;height:12px;margin-left:4px;vertical-align:-2px;background:#EF4444;border-radius:1px;animation:m-fantastical-bl .85s steps(2) infinite}@keyframes m-fantastical-bl{50%{opacity:0}}",
+    "js": "var el=root.querySelector('.m-app-fantastical');if(!el)return;var on=false,touched=false,dead=false;function replay(){el.classList.remove('is-on');void el.offsetWidth;el.classList.add('is-on');on=true;}el.addEventListener('click',function(){touched=true;replay();});var t0=setTimeout(function(){if(!dead)replay();},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)replay();},2400);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-notion-calendar-timezone-pill-snap",
+    "title": "Notion Calendar: Multi-Timezone Day Switcher Pill Snap",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 360,
+    "ease": {
+      "t": "spring",
+      "k": 360,
+      "c": 26
+    },
+    "easeLabel": "spring(360, 26)",
+    "props": [
+      "transform: translateX (monochrome pill)",
+      "color",
+      "textContent"
+    ],
+    "src": "Notion Calendar",
+    "srcUrl": "https://apps.apple.com/us/app/notion-calendar/id1607562761?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Notion Calendar",
+      "slug": "notion-calendar",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#101114",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c6/03/e5/c603e5f8-6efa-5fe2-a031-07032694d2a7/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/notion-calendar/id1607562761?uo=4",
+      "bundleId": "com.cron.calendar"
+    },
+    "summary": "Toggling timezones in Notion Calendar snaps a razor-sharp graphite pill across SF, Lisbon, and Tokyo slots with zero wasted motion.",
+    "hint": "Switch timezone tabs",
+    "choreography": [
+      "0-50ms: selected city snaps to crisp white text.",
+      "50-300ms: sliding indicator translates across columns on tight spring(360, 26).",
+      "300-360ms: local time readout updates instantaneously in monospace."
+    ],
+    "agentPrompt": "Build Notion Calendar's ultra-crisp timezone switcher on #0f0f10 with #3f3f46 pill indicator: glide the active pill horizontally over 360ms cubic-bezier(0.22, 1.18, 0.36, 1) synchronized with a live monospace time readout.",
+    "extractableCode": "<!-- Notion Calendar: Multi-Timezone Day Switcher Pill Snap -->\n<div class=\"m-app-notion-calendar\"><div class=\"m-app-notion-calendar__box\"><div class=\"m-app-notion-calendar__seg\"><span class=\"m-app-notion-calendar__thumb\"></span><button type=\"button\" data-i=\"0\">PST</button><button type=\"button\" data-i=\"1\">WET</button><button type=\"button\" data-i=\"2\">JST</button></div><div class=\"m-app-notion-calendar__out\"><b>09:30 AM</b><span>PST</span></div></div></div>\n<style>.m-app-notion-calendar{position:absolute;inset:0;display:grid;place-items:center;background:#0f0f10;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-notion-calendar__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-notion-calendar__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#18181b;border:1px solid rgba(128,128,128,.16)}.m-app-notion-calendar__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#3f3f46;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-notion-calendar__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-notion-calendar__seg button.is-on{color:#fff}.m-app-notion-calendar__out{padding:14px;border-radius:14px;background:#18181b;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-notion-calendar__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-notion-calendar__out span{font-size:11px;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-notion-calendar\"><div class=\"m-app-notion-calendar__box\"><div class=\"m-app-notion-calendar__seg\"><span class=\"m-app-notion-calendar__thumb\"></span><button type=\"button\" data-i=\"0\">PST</button><button type=\"button\" data-i=\"1\">WET</button><button type=\"button\" data-i=\"2\">JST</button></div><div class=\"m-app-notion-calendar__out\"><b>09:30 AM</b><span>PST</span></div></div></div>",
+    "css": ".m-app-notion-calendar{position:absolute;inset:0;display:grid;place-items:center;background:#0f0f10;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-notion-calendar__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-notion-calendar__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#18181b;border:1px solid rgba(128,128,128,.16)}.m-app-notion-calendar__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#3f3f46;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-notion-calendar__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-notion-calendar__seg button.is-on{color:#fff}.m-app-notion-calendar__out{padding:14px;border-radius:14px;background:#18181b;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-notion-calendar__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-notion-calendar__out span{font-size:11px;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-notion-calendar');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-notion-calendar__seg button')),th=el.querySelector('.m-app-notion-calendar__thumb'),b=el.querySelector('.m-app-notion-calendar__out b'),sp=el.querySelector('.m-app-notion-calendar__out span');var tabs=[\"PST\", \"WET\", \"JST\"],vals=[\"09:30 AM\", \"05:30 PM\", \"02:30 AM\"],idx=0,touched=false,dead=false;function set(i){idx=i;th.style.transform='translateX('+(i*100)+'%)';btns.forEach(function(x,j){x.classList.toggle('is-on',j===i);});b.textContent=vals[i];sp.textContent=tabs[i];}btns.forEach(function(x,i){x.addEventListener('click',function(){touched=true;set(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%tabs.length);},1800);set(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-superhuman-hotkey-archive-swoosh",
+    "title": "Superhuman: Keyboard 'E' Archive Swoosh & Undo Toast",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 380,
+      "c": 26
+    },
+    "easeLabel": "spring(380, 26)",
+    "props": [
+      "transform: translateX (thread swoosh)",
+      "transform: translateY (undo snackbar)",
+      "opacity"
+    ],
+    "src": "Superhuman",
+    "srcUrl": "https://apps.apple.com/us/app/superhuman-mail/id1120837655?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Superhuman",
+      "slug": "superhuman",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#4F46E5",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/10/e4/5d/10e45d30-a2fe-6a45-fbfa-7f2a58fb1759/AppIcon-Default-0-0-1x_U007epad-0-1-0-sRGB-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/superhuman-mail/id1120837655?uo=4",
+      "bundleId": "com.superhuman.Superhuman"
+    },
+    "summary": "Hitting 'E' to archive in Superhuman launches the email row cleanly across a royal-indigo track while surfacing a razor-fast Undo toast below.",
+    "hint": "Tap email row to archive at 100ms speed",
+    "choreography": [
+      "0-80ms: check indicator lights indigo as row accelerates rightward.",
+      "40-320ms: email row translates +92px on taut spring(380, 26).",
+      "140-380ms: compact Undo snackbar slides up 10px cleanly."
+    ],
+    "agentPrompt": "Recreate Superhuman's fast archive swoosh on #0d0e14 with #4F46E5 indigo reveal: translate the dark email row +92px over 380ms cubic-bezier(0.22, 1.14, 0.36, 1) and float an Undo toast underneath.",
+    "extractableCode": "<!-- Superhuman: Keyboard 'E' Archive Swoosh & Undo Toast -->\n<div class=\"m-app-superhuman\"><div class=\"m-app-superhuman__wrap\"><div class=\"m-app-superhuman__bg\"><span>Archive ✓</span></div><button type=\"button\" class=\"m-app-superhuman__row\"><i class=\"m-app-superhuman__chk\"></i><div><b>Investor Update — Q4</b><span>Inbox · Press E to archive</span></div></button></div><div class=\"m-app-superhuman__toast\"><span>Archived</span><b>Undo</b></div></div>\n<style>.m-app-superhuman{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0d0e14;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-superhuman__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-superhuman__bg{position:absolute;inset:0;background:#4F46E5;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-superhuman__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#171923;color:#f4f5f7;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-superhuman.is-sw .m-app-superhuman__row{transform:translateX(92px)}.m-app-superhuman__chk{width:18px;height:18px;border-radius:50%;border:2px solid #4F46E5;flex:none;transition:background .2s}.m-app-superhuman.is-sw .m-app-superhuman__chk{background:#4F46E5}.m-app-superhuman__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-superhuman__row span{font-size:11px;color:rgba(255,255,255,.56)}.m-app-superhuman__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-superhuman__toast b{color:#4F46E5}.m-app-superhuman.is-sw .m-app-superhuman__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-superhuman\"><div class=\"m-app-superhuman__wrap\"><div class=\"m-app-superhuman__bg\"><span>Archive ✓</span></div><button type=\"button\" class=\"m-app-superhuman__row\"><i class=\"m-app-superhuman__chk\"></i><div><b>Investor Update — Q4</b><span>Inbox · Press E to archive</span></div></button></div><div class=\"m-app-superhuman__toast\"><span>Archived</span><b>Undo</b></div></div>",
+    "css": ".m-app-superhuman{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0d0e14;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-superhuman__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-superhuman__bg{position:absolute;inset:0;background:#4F46E5;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-superhuman__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#171923;color:#f4f5f7;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-superhuman.is-sw .m-app-superhuman__row{transform:translateX(92px)}.m-app-superhuman__chk{width:18px;height:18px;border-radius:50%;border:2px solid #4F46E5;flex:none;transition:background .2s}.m-app-superhuman.is-sw .m-app-superhuman__chk{background:#4F46E5}.m-app-superhuman__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-superhuman__row span{font-size:11px;color:rgba(255,255,255,.56)}.m-app-superhuman__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-superhuman__toast b{color:#4F46E5}.m-app-superhuman.is-sw .m-app-superhuman__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-superhuman');if(!el)return;var row=el.querySelector('.m-app-superhuman__row'),toast=el.querySelector('.m-app-superhuman__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-spark-mail-smart-snooze-swipe",
+    "title": "Spark Mail: Smart Inbox Swipe-to-Snooze & Undo Pill",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 23
+    },
+    "easeLabel": "spring(310, 23)",
+    "props": [
+      "transform: translateX",
+      "transform: translateY (toast)"
+    ],
+    "src": "Spark Mail",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.readdle.spark",
+    "collection": "Apps",
+    "app": {
+      "name": "Spark Mail",
+      "slug": "spark-mail",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#3B82F6",
+      "iconUrl": "https://play-lh.googleusercontent.com/oI2CmA3c59LbW0_MWb3tS8C9ki8W2Ugd_nmZxSELKCXhbLmjF31UVu0o6DSc3ArzZHYKKjqUIRGIbjGbYlAkAg=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.readdle.spark",
+      "bundleId": "com.readdle.spark"
+    },
+    "summary": "Swiping an email in Spark Mail reveals a crisp blue Snooze band beneath the message card and floats a gentle Undo bar below.",
+    "hint": "Tap message row to snooze",
+    "choreography": [
+      "0-100ms: circular selection ring fills Spark blue (#3B82F6).",
+      "40-360ms: email card slides +92px rightward exposing the Snooze action.",
+      "180-420ms: Undo pill springs upward smoothly."
+    ],
+    "agentPrompt": "Build Spark Mail's swipe-to-snooze interaction on #f3f6fb with #3B82F6 reveal backing: slide the white message card +92px over 420ms cubic-bezier(0.22, 1.14, 0.36, 1) and raise an Undo snackbar.",
+    "extractableCode": "<!-- Spark Mail: Smart Inbox Swipe-to-Snooze & Undo Pill -->\n<div class=\"m-app-spark-mail\"><div class=\"m-app-spark-mail__wrap\"><div class=\"m-app-spark-mail__bg\"><span>Snooze ✓</span></div><button type=\"button\" class=\"m-app-spark-mail__row\"><i class=\"m-app-spark-mail__chk\"></i><div><b>Flight confirmation LIS → NYC</b><span>Smart Inbox · Tomorrow 9am</span></div></button></div><div class=\"m-app-spark-mail__toast\"><span>Snoozed</span><b>Undo</b></div></div>\n<style>.m-app-spark-mail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f3f6fb;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-spark-mail__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-spark-mail__bg{position:absolute;inset:0;background:#3B82F6;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-spark-mail__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#0f172a;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-spark-mail.is-sw .m-app-spark-mail__row{transform:translateX(92px)}.m-app-spark-mail__chk{width:18px;height:18px;border-radius:50%;border:2px solid #3B82F6;flex:none;transition:background .2s}.m-app-spark-mail.is-sw .m-app-spark-mail__chk{background:#3B82F6}.m-app-spark-mail__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-spark-mail__row span{font-size:11px;color:#6b7280}.m-app-spark-mail__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-spark-mail__toast b{color:#3B82F6}.m-app-spark-mail.is-sw .m-app-spark-mail__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-spark-mail\"><div class=\"m-app-spark-mail__wrap\"><div class=\"m-app-spark-mail__bg\"><span>Snooze ✓</span></div><button type=\"button\" class=\"m-app-spark-mail__row\"><i class=\"m-app-spark-mail__chk\"></i><div><b>Flight confirmation LIS → NYC</b><span>Smart Inbox · Tomorrow 9am</span></div></button></div><div class=\"m-app-spark-mail__toast\"><span>Snoozed</span><b>Undo</b></div></div>",
+    "css": ".m-app-spark-mail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f3f6fb;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-spark-mail__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-spark-mail__bg{position:absolute;inset:0;background:#3B82F6;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-spark-mail__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#0f172a;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-spark-mail.is-sw .m-app-spark-mail__row{transform:translateX(92px)}.m-app-spark-mail__chk{width:18px;height:18px;border-radius:50%;border:2px solid #3B82F6;flex:none;transition:background .2s}.m-app-spark-mail.is-sw .m-app-spark-mail__chk{background:#3B82F6}.m-app-spark-mail__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-spark-mail__row span{font-size:11px;color:#6b7280}.m-app-spark-mail__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-spark-mail__toast b{color:#3B82F6}.m-app-spark-mail.is-sw .m-app-spark-mail__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-spark-mail');if(!el)return;var row=el.querySelector('.m-app-spark-mail__row'),toast=el.querySelector('.m-app-spark-mail__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-microsoft-teams-meeting-reaction-stream",
+    "title": "Microsoft Teams: Live Meeting Status Chips & Chat Reveal",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 460,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "opacity",
+      "transform: translateY + scale"
+    ],
+    "src": "Microsoft Teams",
+    "srcUrl": "https://apps.apple.com/us/app/microsoft-teams/id1113153706?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Microsoft Teams",
+      "slug": "microsoft-teams",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#5B5FC7",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/e6/1f/cce61f57-3041-4984-41fa-e43c7a96b585/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/microsoft-teams/id1113153706?uo=4",
+      "bundleId": "com.microsoft.skype.teams"
+    },
+    "summary": "Microsoft Teams' live call sidebar cascades purple reaction pills and live captions cleanly into view with 90ms stagger.",
+    "hint": "Tap call card to replay live reactions",
+    "choreography": [
+      "0-260ms: raised-hand and reaction pills spring up in #5B5FC7 violet.",
+      "160-400ms: live speaker caption lines fade smoothly into place.",
+      "400-460ms: live caption caret pulses steadily."
+    ],
+    "agentPrompt": "Build a Microsoft Teams live meeting caption & reaction stream on #14141c with #5B5FC7 indigo badges: stagger 3 reaction pills upward by 90ms over 380ms cubic-bezier(0.22, 1.2, 0.36, 1) above streaming caption text.",
+    "extractableCode": "<!-- Microsoft Teams: Live Meeting Status Chips & Chat Reveal -->\n<div class=\"m-app-microsoft-teams\"><div class=\"m-app-microsoft-teams__card\"><div class=\"m-app-microsoft-teams__srcs\"><span class=\"m-app-microsoft-teams__src\" style=\"transition-delay:0ms\">✋ Hand Raised</span><span class=\"m-app-microsoft-teams__src\" style=\"transition-delay:90ms\">👏 +6</span><span class=\"m-app-microsoft-teams__src\" style=\"transition-delay:180ms\">● Rec</span></div><div class=\"m-app-microsoft-teams__ln m-app-microsoft-teams__l1\">Product Sync · 12 participants</div><div class=\"m-app-microsoft-teams__ln m-app-microsoft-teams__l2\">Action item: ship API docs Friday<i class=\"m-app-microsoft-teams__cur\"></i></div></div></div>\n<style>.m-app-microsoft-teams{position:absolute;inset:0;display:grid;place-items:center;background:#14141c;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-microsoft-teams__card{width:min(86%,256px);padding:14px 15px;border-radius:16px;background:#1e1f2b;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:9px;cursor:pointer}.m-app-microsoft-teams__srcs{display:flex;gap:6px;flex-wrap:wrap}.m-app-microsoft-teams__src{padding:4px 8px;border-radius:999px;background:#5B5FC71f;border:1px solid #5B5FC744;color:#5B5FC7;font:600 10px/1 'Geist Mono',monospace;opacity:0;transform:translateY(6px) scale(.92);transition:all .38s cubic-bezier(.22,1.2,.36,1)}.m-app-microsoft-teams.is-on .m-app-microsoft-teams__src{opacity:1;transform:none}.m-app-microsoft-teams__ln{font:500 12px/1.35 inherit;color:rgba(255,255,255,.56);opacity:0;transform:translateY(5px);transition:all .42s cubic-bezier(.22,1,.36,1)}.m-app-microsoft-teams__l2{color:#f4f5f7;transition-delay:.22s}.m-app-microsoft-teams.is-on .m-app-microsoft-teams__ln{opacity:1;transform:none}.m-app-microsoft-teams__cur{display:inline-block;width:6px;height:12px;margin-left:4px;vertical-align:-2px;background:#5B5FC7;border-radius:1px;animation:m-microsoft-teams-bl .85s steps(2) infinite}@keyframes m-microsoft-teams-bl{50%{opacity:0}}</style>",
+    "html": "<div class=\"m-app-microsoft-teams\"><div class=\"m-app-microsoft-teams__card\"><div class=\"m-app-microsoft-teams__srcs\"><span class=\"m-app-microsoft-teams__src\" style=\"transition-delay:0ms\">✋ Hand Raised</span><span class=\"m-app-microsoft-teams__src\" style=\"transition-delay:90ms\">👏 +6</span><span class=\"m-app-microsoft-teams__src\" style=\"transition-delay:180ms\">● Rec</span></div><div class=\"m-app-microsoft-teams__ln m-app-microsoft-teams__l1\">Product Sync · 12 participants</div><div class=\"m-app-microsoft-teams__ln m-app-microsoft-teams__l2\">Action item: ship API docs Friday<i class=\"m-app-microsoft-teams__cur\"></i></div></div></div>",
+    "css": ".m-app-microsoft-teams{position:absolute;inset:0;display:grid;place-items:center;background:#14141c;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-microsoft-teams__card{width:min(86%,256px);padding:14px 15px;border-radius:16px;background:#1e1f2b;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:9px;cursor:pointer}.m-app-microsoft-teams__srcs{display:flex;gap:6px;flex-wrap:wrap}.m-app-microsoft-teams__src{padding:4px 8px;border-radius:999px;background:#5B5FC71f;border:1px solid #5B5FC744;color:#5B5FC7;font:600 10px/1 'Geist Mono',monospace;opacity:0;transform:translateY(6px) scale(.92);transition:all .38s cubic-bezier(.22,1.2,.36,1)}.m-app-microsoft-teams.is-on .m-app-microsoft-teams__src{opacity:1;transform:none}.m-app-microsoft-teams__ln{font:500 12px/1.35 inherit;color:rgba(255,255,255,.56);opacity:0;transform:translateY(5px);transition:all .42s cubic-bezier(.22,1,.36,1)}.m-app-microsoft-teams__l2{color:#f4f5f7;transition-delay:.22s}.m-app-microsoft-teams.is-on .m-app-microsoft-teams__ln{opacity:1;transform:none}.m-app-microsoft-teams__cur{display:inline-block;width:6px;height:12px;margin-left:4px;vertical-align:-2px;background:#5B5FC7;border-radius:1px;animation:m-microsoft-teams-bl .85s steps(2) infinite}@keyframes m-microsoft-teams-bl{50%{opacity:0}}",
+    "js": "var el=root.querySelector('.m-app-microsoft-teams');if(!el)return;var on=false,touched=false,dead=false;function replay(){el.classList.remove('is-on');void el.offsetWidth;el.classList.add('is-on');on=true;}el.addEventListener('click',function(){touched=true;replay();});var t0=setTimeout(function(){if(!dead)replay();},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)replay();},2400);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-zoom-active-speaker-waveform",
+    "title": "Zoom: Active Speaker Mic Waveform & Mute Toggle",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 260,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1.2,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1.2, 0.36, 1)",
+    "props": [
+      "background-color (live audio bars)",
+      "transform: scaleY"
+    ],
+    "src": "Zoom",
+    "srcUrl": "https://apps.apple.com/us/app/zoom-workplace/id546505307?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Zoom",
+      "slug": "zoom",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0B5CFF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fc/d0/96/fcd09664-56c3-f856-4311-da9dcbae1fd2/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/zoom-workplace/id546505307?uo=4",
+      "bundleId": "us.zoom.videomeetings"
+    },
+    "summary": "Zoom's active-speaker audio bar animates crisp royal-blue voice levels across 18 micro-bars with instant click-to-mute feedback.",
+    "hint": "Tap toggle or scrub audio levels",
+    "choreography": [
+      "Continuous: 18 rounded bars pulse across #0B5CFF blue to visualize active speech.",
+      "Active bar pops vertically to scaleY(1.22) in lighter sky accent.",
+      "Tap toggles live microphone stream instantaneously."
+    ],
+    "agentPrompt": "Build Zoom's active-speaker audio monitor pill on #11151e with #0B5CFF blue accent: pair a 38px circular toggle with 18 variable-height bars highlighting speech progression and scaling the active bar to 1.22.",
+    "extractableCode": "<!-- Zoom: Active Speaker Mic Waveform & Mute Toggle -->\n<div class=\"m-app-zoom\"><div class=\"m-app-zoom__pill\"><button type=\"button\" class=\"m-app-zoom__play\" aria-label=\"Play\">▶</button><div class=\"m-app-zoom__mid\"><div class=\"m-app-zoom__bars\"><i style=\"height:22%\"></i><i style=\"height:48%\"></i><i style=\"height:76%\"></i><i style=\"height:54%\"></i><i style=\"height:90%\"></i><i style=\"height:62%\"></i><i style=\"height:40%\"></i><i style=\"height:84%\"></i><i style=\"height:96%\"></i><i style=\"height:58%\"></i><i style=\"height:36%\"></i><i style=\"height:78%\"></i><i style=\"height:88%\"></i><i style=\"height:50%\"></i><i style=\"height:66%\"></i><i style=\"height:44%\"></i><i style=\"height:72%\"></i><i style=\"height:28%\"></i></div><div class=\"m-app-zoom__meta\"><span>HD Audio · Active Speaker</span><b class=\"m-app-zoom__t\">0:11</b></div></div></div></div>\n<style>.m-app-zoom{position:absolute;inset:0;display:grid;place-items:center;background:#11151e;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-zoom__pill{width:min(88%,266px);padding:12px 14px;border-radius:18px;background:#1a202e;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;gap:12px}.m-app-zoom__play{width:38px;height:38px;flex:none;border:0;border-radius:50%;background:#0B5CFF;color:#fff;font-size:13px;cursor:pointer;display:grid;place-items:center;transition:transform .16s cubic-bezier(.22,1.3,.36,1)}.m-app-zoom__play:active{transform:scale(.88)}.m-app-zoom__mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:7px}.m-app-zoom__bars{display:flex;align-items:center;gap:3px;height:34px;cursor:pointer}.m-app-zoom__bars i{flex:1;border-radius:3px;background:rgba(128,128,128,.28);transition:background .16s,transform .22s cubic-bezier(.22,1.2,.36,1)}.m-app-zoom__bars i.is-on{background:#0B5CFF}.m-app-zoom.is-play .m-app-zoom__bars i.is-cur{transform:scaleY(1.22);background:#60a5fa}.m-app-zoom__meta{display:flex;justify-content:space-between;font:500 10.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-zoom\"><div class=\"m-app-zoom__pill\"><button type=\"button\" class=\"m-app-zoom__play\" aria-label=\"Play\">▶</button><div class=\"m-app-zoom__mid\"><div class=\"m-app-zoom__bars\"><i style=\"height:22%\"></i><i style=\"height:48%\"></i><i style=\"height:76%\"></i><i style=\"height:54%\"></i><i style=\"height:90%\"></i><i style=\"height:62%\"></i><i style=\"height:40%\"></i><i style=\"height:84%\"></i><i style=\"height:96%\"></i><i style=\"height:58%\"></i><i style=\"height:36%\"></i><i style=\"height:78%\"></i><i style=\"height:88%\"></i><i style=\"height:50%\"></i><i style=\"height:66%\"></i><i style=\"height:44%\"></i><i style=\"height:72%\"></i><i style=\"height:28%\"></i></div><div class=\"m-app-zoom__meta\"><span>HD Audio · Active Speaker</span><b class=\"m-app-zoom__t\">0:11</b></div></div></div></div>",
+    "css": ".m-app-zoom{position:absolute;inset:0;display:grid;place-items:center;background:#11151e;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-zoom__pill{width:min(88%,266px);padding:12px 14px;border-radius:18px;background:#1a202e;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;gap:12px}.m-app-zoom__play{width:38px;height:38px;flex:none;border:0;border-radius:50%;background:#0B5CFF;color:#fff;font-size:13px;cursor:pointer;display:grid;place-items:center;transition:transform .16s cubic-bezier(.22,1.3,.36,1)}.m-app-zoom__play:active{transform:scale(.88)}.m-app-zoom__mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:7px}.m-app-zoom__bars{display:flex;align-items:center;gap:3px;height:34px;cursor:pointer}.m-app-zoom__bars i{flex:1;border-radius:3px;background:rgba(128,128,128,.28);transition:background .16s,transform .22s cubic-bezier(.22,1.2,.36,1)}.m-app-zoom__bars i.is-on{background:#0B5CFF}.m-app-zoom.is-play .m-app-zoom__bars i.is-cur{transform:scaleY(1.22);background:#60a5fa}.m-app-zoom__meta{display:flex;justify-content:space-between;font:500 10.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-zoom');if(!el)return;var play=el.querySelector('.m-app-zoom__play'),wrap=el.querySelector('.m-app-zoom__bars'),bars=[].slice.call(wrap.children),tm=el.querySelector('.m-app-zoom__t');var playing=true,pos=6,dead=false;function paint(){bars.forEach(function(b,i){b.classList.toggle('is-on',i<=pos);b.classList.toggle('is-cur',i===pos);});tm.textContent='0:'+String(pos+4).padStart(2,'0');el.classList.toggle('is-play',playing);play.textContent=playing?'❚❚':'▶';}play.addEventListener('click',function(){playing=!playing;paint();});wrap.addEventListener('click',function(e){var r=wrap.getBoundingClientRect();pos=Math.max(0,Math.min(bars.length-1,Math.floor(((e.clientX-r.left)/r.width)*bars.length)));paint();});var iv=setInterval(function(){if(playing&&!dead&&!document.hidden){pos=(pos+1)%bars.length;paint();}},260);paint();return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-loom-camera-bubble-cursor-tour",
+    "title": "Loom: Async Screen Walkthrough Cursors & Focus Nodes",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 820,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translate (presenter cursor)",
+      "fill + filter: drop-shadow (clicked nodes)"
+    ],
+    "src": "Loom",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.loom.android",
+    "collection": "Apps",
+    "app": {
+      "name": "Loom",
+      "slug": "loom",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#625DF5",
+      "iconUrl": "https://play-lh.googleusercontent.com/P1d7IXvPGoGw2Qsoc9VxizU_I3joZwOz9fMvB3ctlNucEF63CxERXzV0PKq-nQXr_JvV0S4YoFPZHafwDtS4iNI=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.loom.android",
+      "bundleId": "com.loom.android"
+    },
+    "summary": "Recording a Loom walkthrough glides the presenter's violet highlight cursor cleanly between UI hotspots with crisp click-ring illumination.",
+    "hint": "Tap canvas to advance walkthrough cue",
+    "choreography": [
+      "0-160ms: target UI node illuminates in #625DF5 electric purple.",
+      "80-760ms: presenter and viewer cursor pills glide across the canvas.",
+      "760-820ms: click target settles cleanly."
+    ],
+    "agentPrompt": "Create a Loom walkthrough hotspot canvas on #121121 with #625DF5 violet accents: glide two cursor tags across 5 connected SVG hotspots over 820ms cubic-bezier(0.22, 1, 0.36, 1) while glowing the active target.",
+    "extractableCode": "<!-- Loom: Async Screen Walkthrough Cursors & Focus Nodes -->\n<div class=\"m-app-loom\"><div class=\"m-app-loom__board\"><svg class=\"m-app-loom__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-loom__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/></svg><span class=\"m-app-loom__cur m-app-loom__c1\">▲ ● Rec 0:18</span><span class=\"m-app-loom__cur m-app-loom__c2\">▲ Viewer</span></div></div>\n<style>.m-app-loom{position:absolute;inset:0;display:grid;place-items:center;background:#121121;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-loom__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#1c1a33;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-loom__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-loom__nd{transition:r .25s,fill .25s}.m-app-loom__nd.is-hi{fill:#625DF5;filter:drop-shadow(0 0 8px #625DF5)}.m-app-loom__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-loom__c1{background:#625DF5;left:24px;top:24px}.m-app-loom__c2{background:#ec4899;left:140px;top:92px}</style>",
+    "html": "<div class=\"m-app-loom\"><div class=\"m-app-loom__board\"><svg class=\"m-app-loom__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-loom__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/><circle class=\"m-app-loom__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#1c1a33\" stroke=\"#625DF5\" stroke-width=\"2.2\"/></svg><span class=\"m-app-loom__cur m-app-loom__c1\">▲ ● Rec 0:18</span><span class=\"m-app-loom__cur m-app-loom__c2\">▲ Viewer</span></div></div>",
+    "css": ".m-app-loom{position:absolute;inset:0;display:grid;place-items:center;background:#121121;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-loom__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#1c1a33;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-loom__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-loom__nd{transition:r .25s,fill .25s}.m-app-loom__nd.is-hi{fill:#625DF5;filter:drop-shadow(0 0 8px #625DF5)}.m-app-loom__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-loom__c1{background:#625DF5;left:24px;top:24px}.m-app-loom__c2{background:#ec4899;left:140px;top:92px}",
+    "js": "var el=root.querySelector('.m-app-loom');if(!el)return;var c1=el.querySelector('.m-app-loom__c1'),c2=el.querySelector('.m-app-loom__c2'),nds=[].slice.call(el.querySelectorAll('.m-app-loom__nd'));var pts=[[20,16,136,86],[106,12,68,84],[162,38,144,94],[64,84,110,16]],idx=0,touched=false,dead=false;function move(i){idx=i;var p=pts[i];c1.style.transform='translate('+p[0]+'px,'+p[1]+'px)';c2.style.transform='translate('+(p[2]-140)+'px,'+(p[3]-92)+'px)';nds.forEach(function(n,j){n.classList.toggle('is-hi',j===i||j===(i+2)%nds.length);});}el.addEventListener('click',function(){touched=true;move((idx+1)%pts.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)move((idx+1)%pts.length);},1650);move(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-miro-multiplayer-whiteboard-cursors",
+    "title": "Miro: Multiplayer Whiteboard Cursor Chase & Node Snap",
+    "use": "Navigation and layout",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 820,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translate (collaborator cursors)",
+      "fill (connected board nodes)"
+    ],
+    "src": "Miro",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.realtimeboard",
+    "collection": "Apps",
+    "app": {
+      "name": "Miro",
+      "slug": "miro",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FFD02F",
+      "iconUrl": "https://play-lh.googleusercontent.com/iiWQLoknGzEwrau3skf-X5P8mEfjLvABFGT9Jz6YuZ9FLWCvTqrgfUpIa53sXWYh2cfOWtvRQj8GzPFL5FUl=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.realtimeboard",
+      "bundleId": "com.realtimeboard"
+    },
+    "summary": "Miro's infinite canvas glides colored teammate cursors smoothly across connected sticky-note clusters over a crisp dotted whiteboard grid.",
+    "hint": "Tap whiteboard to move collaborators",
+    "choreography": [
+      "0-180ms: active flowchart nodes light up in warm Miro amber (#f59e0b).",
+      "60-760ms: two labeled collaborator cursors glide smoothly to new board positions.",
+      "760-820ms: cursors settle without abrupt stops."
+    ],
+    "agentPrompt": "Build a Miro multiplayer whiteboard preview on #faf9f5 with dotted grid and #f59e0b/#3b82f6 collaborator cursors: animate cursor tags and connected SVG flowchart nodes over 820ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Miro: Multiplayer Whiteboard Cursor Chase & Node Snap -->\n<div class=\"m-app-miro\"><div class=\"m-app-miro__board\"><svg class=\"m-app-miro__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-miro__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/></svg><span class=\"m-app-miro__cur m-app-miro__c1\">▲ Sofia</span><span class=\"m-app-miro__cur m-app-miro__c2\">▲ Devon</span></div></div>\n<style>.m-app-miro{position:absolute;inset:0;display:grid;place-items:center;background:#faf9f5;color:#18181b;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-miro__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-miro__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-miro__nd{transition:r .25s,fill .25s}.m-app-miro__nd.is-hi{fill:#f59e0b;filter:drop-shadow(0 0 8px #f59e0b)}.m-app-miro__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-miro__c1{background:#f59e0b;left:24px;top:24px}.m-app-miro__c2{background:#2563eb;left:140px;top:92px}</style>",
+    "html": "<div class=\"m-app-miro\"><div class=\"m-app-miro__board\"><svg class=\"m-app-miro__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-miro__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/><circle class=\"m-app-miro__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#ffffff\" stroke=\"#f59e0b\" stroke-width=\"2.2\"/></svg><span class=\"m-app-miro__cur m-app-miro__c1\">▲ Sofia</span><span class=\"m-app-miro__cur m-app-miro__c2\">▲ Devon</span></div></div>",
+    "css": ".m-app-miro{position:absolute;inset:0;display:grid;place-items:center;background:#faf9f5;color:#18181b;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-miro__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-miro__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-miro__nd{transition:r .25s,fill .25s}.m-app-miro__nd.is-hi{fill:#f59e0b;filter:drop-shadow(0 0 8px #f59e0b)}.m-app-miro__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-miro__c1{background:#f59e0b;left:24px;top:24px}.m-app-miro__c2{background:#2563eb;left:140px;top:92px}",
+    "js": "var el=root.querySelector('.m-app-miro');if(!el)return;var c1=el.querySelector('.m-app-miro__c1'),c2=el.querySelector('.m-app-miro__c2'),nds=[].slice.call(el.querySelectorAll('.m-app-miro__nd'));var pts=[[20,16,136,86],[106,12,68,84],[162,38,144,94],[64,84,110,16]],idx=0,touched=false,dead=false;function move(i){idx=i;var p=pts[i];c1.style.transform='translate('+p[0]+'px,'+p[1]+'px)';c2.style.transform='translate('+(p[2]-140)+'px,'+(p[3]-92)+'px)';nds.forEach(function(n,j){n.classList.toggle('is-hi',j===i||j===(i+2)%nds.length);});}el.addEventListener('click',function(){touched=true;move((idx+1)%pts.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)move((idx+1)%pts.length);},1650);move(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-figma-multiplayer-canvas-cursors",
+    "title": "Figma: Multiplayer Cursor Trail & Vector Node Highlight",
+    "use": "Navigation and layout",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 800,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translate (nametag cursors)",
+      "fill + drop-shadow (vector nodes)"
+    ],
+    "src": "Figma",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.figma.mirror",
+    "collection": "Apps",
+    "app": {
+      "name": "Figma",
+      "slug": "figma",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#A259FF",
+      "iconUrl": "https://play-lh.googleusercontent.com/H_ImRi06A7rPfQflyj2H56OG2AEfy2sTHWFFIYzUmY43IZc0vIneRCjUO29D7hP7JyG7YwKQsl5s2-NO1ys_1A=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.figma.mirror",
+      "bundleId": "com.figma.mirror"
+    },
+    "summary": "Collaborating live in Figma glides crisp nametag cursors smoothly across linked vector anchor nodes on a dark precision grid.",
+    "hint": "Tap canvas to jump cursors to next frame",
+    "choreography": [
+      "0-150ms: selected vector anchor points glow in #A259FF Figma purple.",
+      "60-740ms: purple and cyan designer cursors glide smoothly across the artboard.",
+      "740-800ms: cursors land cleanly on the next anchor pair."
+    ],
+    "agentPrompt": "Recreate Figma's multiplayer cursor canvas on #1e1e1e with #A259FF purple and #0acf83 emerald cursors: animate labeled cursor pills across 5 linked SVG vector points over 800ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Figma: Multiplayer Cursor Trail & Vector Node Highlight -->\n<div class=\"m-app-figma\"><div class=\"m-app-figma__board\"><svg class=\"m-app-figma__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-figma__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/></svg><span class=\"m-app-figma__cur m-app-figma__c1\">▲ Elena</span><span class=\"m-app-figma__cur m-app-figma__c2\">▲ Kai</span></div></div>\n<style>.m-app-figma{position:absolute;inset:0;display:grid;place-items:center;background:#1a1a1d;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-figma__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#242428;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-figma__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-figma__nd{transition:r .25s,fill .25s}.m-app-figma__nd.is-hi{fill:#A259FF;filter:drop-shadow(0 0 8px #A259FF)}.m-app-figma__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-figma__c1{background:#A259FF;left:24px;top:24px}.m-app-figma__c2{background:#0acf83;left:140px;top:92px}</style>",
+    "html": "<div class=\"m-app-figma\"><div class=\"m-app-figma__board\"><svg class=\"m-app-figma__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-figma__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/><circle class=\"m-app-figma__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#242428\" stroke=\"#A259FF\" stroke-width=\"2.2\"/></svg><span class=\"m-app-figma__cur m-app-figma__c1\">▲ Elena</span><span class=\"m-app-figma__cur m-app-figma__c2\">▲ Kai</span></div></div>",
+    "css": ".m-app-figma{position:absolute;inset:0;display:grid;place-items:center;background:#1a1a1d;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-figma__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#242428;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-figma__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-figma__nd{transition:r .25s,fill .25s}.m-app-figma__nd.is-hi{fill:#A259FF;filter:drop-shadow(0 0 8px #A259FF)}.m-app-figma__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-figma__c1{background:#A259FF;left:24px;top:24px}.m-app-figma__c2{background:#0acf83;left:140px;top:92px}",
+    "js": "var el=root.querySelector('.m-app-figma');if(!el)return;var c1=el.querySelector('.m-app-figma__c1'),c2=el.querySelector('.m-app-figma__c2'),nds=[].slice.call(el.querySelectorAll('.m-app-figma__nd'));var pts=[[20,16,136,86],[106,12,68,84],[162,38,144,94],[64,84,110,16]],idx=0,touched=false,dead=false;function move(i){idx=i;var p=pts[i];c1.style.transform='translate('+p[0]+'px,'+p[1]+'px)';c2.style.transform='translate('+(p[2]-140)+'px,'+(p[3]-92)+'px)';nds.forEach(function(n,j){n.classList.toggle('is-hi',j===i||j===(i+2)%nds.length);});}el.addEventListener('click',function(){touched=true;move((idx+1)%pts.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)move((idx+1)%pts.length);},1650);move(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-trello-kanban-card-move-undo",
+    "title": "Trello: Kanban Card Move Swipe & Done Toast",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 22
+    },
+    "easeLabel": "spring(310, 22)",
+    "props": [
+      "transform: translateX",
+      "transform: translateY (undo bar)"
+    ],
+    "src": "Trello",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.trello",
+    "collection": "Apps",
+    "app": {
+      "name": "Trello",
+      "slug": "trello",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0079BF",
+      "iconUrl": "https://play-lh.googleusercontent.com/n61MGuPfTK5t8ETbAAmc2nwy6CQnw5BFCqPSTRdsPbUc2e9MJhKu4GGB6qYgi2-B8-Cx6LVPPGqUKNkgPnO-xg=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.trello",
+      "bundleId": "com.trello"
+    },
+    "summary": "Moving a Trello card to Done glides the board tile cleanly rightward across Trello blue while floating an instant Undo snackbar underneath.",
+    "hint": "Tap Trello card to move to Done",
+    "choreography": [
+      "0-90ms: checkbox fills Trello blue (#0079BF).",
+      "40-360ms: card translates +92px on spring(310, 22) exposing the Done badge.",
+      "160-420ms: Undo toast glides up smoothly."
+    ],
+    "agentPrompt": "Build a Trello card-to-Done swipe interaction on #eef5fa with #0079BF action layer: slide the card +92px over 420ms cubic-bezier(0.22, 1.14, 0.36, 1) and float an Undo bar.",
+    "extractableCode": "<!-- Trello: Kanban Card Move Swipe & Done Toast -->\n<div class=\"m-app-trello\"><div class=\"m-app-trello__wrap\"><div class=\"m-app-trello__bg\"><span>Move Done ✓</span></div><button type=\"button\" class=\"m-app-trello__row\"><i class=\"m-app-trello__chk\"></i><div><b>QA dark-mode shader tiles</b><span>In Review · Board #04</span></div></button></div><div class=\"m-app-trello__toast\"><span>Move Doned</span><b>Undo</b></div></div>\n<style>.m-app-trello{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#eef5fa;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-trello__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-trello__bg{position:absolute;inset:0;background:#0079BF;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-trello__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#0f172a;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-trello.is-sw .m-app-trello__row{transform:translateX(92px)}.m-app-trello__chk{width:18px;height:18px;border-radius:50%;border:2px solid #0079BF;flex:none;transition:background .2s}.m-app-trello.is-sw .m-app-trello__chk{background:#0079BF}.m-app-trello__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-trello__row span{font-size:11px;color:#6b7280}.m-app-trello__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-trello__toast b{color:#0079BF}.m-app-trello.is-sw .m-app-trello__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-trello\"><div class=\"m-app-trello__wrap\"><div class=\"m-app-trello__bg\"><span>Move Done ✓</span></div><button type=\"button\" class=\"m-app-trello__row\"><i class=\"m-app-trello__chk\"></i><div><b>QA dark-mode shader tiles</b><span>In Review · Board #04</span></div></button></div><div class=\"m-app-trello__toast\"><span>Move Doned</span><b>Undo</b></div></div>",
+    "css": ".m-app-trello{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#eef5fa;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-trello__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-trello__bg{position:absolute;inset:0;background:#0079BF;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-trello__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#0f172a;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-trello.is-sw .m-app-trello__row{transform:translateX(92px)}.m-app-trello__chk{width:18px;height:18px;border-radius:50%;border:2px solid #0079BF;flex:none;transition:background .2s}.m-app-trello.is-sw .m-app-trello__chk{background:#0079BF}.m-app-trello__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-trello__row span{font-size:11px;color:#6b7280}.m-app-trello__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-trello__toast b{color:#0079BF}.m-app-trello.is-sw .m-app-trello__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-trello');if(!el)return;var row=el.querySelector('.m-app-trello__row'),toast=el.querySelector('.m-app-trello__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-asana-workflow-stage-tabs",
+    "title": "Asana: Project View Segmented Morph (List / Board / Timeline)",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 24
+    },
+    "easeLabel": "spring(320, 24)",
+    "props": [
+      "transform: translateX (coral indicator)",
+      "color",
+      "textContent"
+    ],
+    "src": "Asana",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.asana.app",
+    "collection": "Apps",
+    "app": {
+      "name": "Asana",
+      "slug": "asana",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F06A6A",
+      "iconUrl": "https://play-lh.googleusercontent.com/4qKQZB7bi5nJjI9rBkw31NxdAfnRHERd-qNfOlXlI4W2nQR7jIu5APPa7GnSqZTx3B5FqhfzwpVcwlIDt4VdFQ=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.asana.app",
+      "bundleId": "com.asana.app"
+    },
+    "summary": "Switching an Asana project between List, Board, and Timeline glides a warm coral pill indicator smoothly across the top segmented switcher.",
+    "hint": "Tap tabs to switch project views",
+    "choreography": [
+      "0-60ms: selected view label snaps to crisp white.",
+      "60-320ms: #F06A6A indicator translates horizontally with gentle overshoot.",
+      "320-380ms: summary metric card updates immediately."
+    ],
+    "agentPrompt": "Create Asana's view switcher on #151419 with #F06A6A coral pill: translate the active thumb across List/Board/Timeline over 380ms cubic-bezier(0.22, 1.18, 0.36, 1).",
+    "extractableCode": "<!-- Asana: Project View Segmented Morph (List / Board / Timeline) -->\n<div class=\"m-app-asana\"><div class=\"m-app-asana__box\"><div class=\"m-app-asana__seg\"><span class=\"m-app-asana__thumb\"></span><button type=\"button\" data-i=\"0\">List</button><button type=\"button\" data-i=\"1\">Board</button><button type=\"button\" data-i=\"2\">Timeline</button></div><div class=\"m-app-asana__out\"><b>18 tasks</b><span>List</span></div></div></div>\n<style>.m-app-asana{position:absolute;inset:0;display:grid;place-items:center;background:#151419;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-asana__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-asana__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#201e26;border:1px solid rgba(128,128,128,.16)}.m-app-asana__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#F06A6A;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-asana__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-asana__seg button.is-on{color:#fff}.m-app-asana__out{padding:14px;border-radius:14px;background:#201e26;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-asana__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-asana__out span{font-size:11px;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-asana\"><div class=\"m-app-asana__box\"><div class=\"m-app-asana__seg\"><span class=\"m-app-asana__thumb\"></span><button type=\"button\" data-i=\"0\">List</button><button type=\"button\" data-i=\"1\">Board</button><button type=\"button\" data-i=\"2\">Timeline</button></div><div class=\"m-app-asana__out\"><b>18 tasks</b><span>List</span></div></div></div>",
+    "css": ".m-app-asana{position:absolute;inset:0;display:grid;place-items:center;background:#151419;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-asana__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-asana__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#201e26;border:1px solid rgba(128,128,128,.16)}.m-app-asana__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#F06A6A;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-asana__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-asana__seg button.is-on{color:#fff}.m-app-asana__out{padding:14px;border-radius:14px;background:#201e26;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-asana__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-asana__out span{font-size:11px;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-asana');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-asana__seg button')),th=el.querySelector('.m-app-asana__thumb'),b=el.querySelector('.m-app-asana__out b'),sp=el.querySelector('.m-app-asana__out span');var tabs=[\"List\", \"Board\", \"Timeline\"],vals=[\"18 tasks\", \"4 columns\", \"Q4 launch\"],idx=0,touched=false,dead=false;function set(i){idx=i;th.style.transform='translateX('+(i*100)+'%)';btns.forEach(function(x,j){x.classList.toggle('is-on',j===i);});b.textContent=vals[i];sp.textContent=tabs[i];}btns.forEach(function(x,i){x.addEventListener('click',function(){touched=true;set(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%tabs.length);},1800);set(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-clickup-status-milestone-stepper",
+    "title": "ClickUp: Task Status Stepper Morph & Glow Ring",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 450,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 21
+    },
+    "easeLabel": "spring(320, 21)",
+    "props": [
+      "width (connector fill)",
+      "transform: scale (active status)",
+      "box-shadow"
+    ],
+    "src": "ClickUp",
+    "srcUrl": "https://play.google.com/store/apps/details?id=co.mangotechnologies.clickup",
+    "collection": "Apps",
+    "app": {
+      "name": "ClickUp",
+      "slug": "clickup",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#7B68EE",
+      "iconUrl": "https://play-lh.googleusercontent.com/Hvgx8p0pOiBYq42F8X9fufe3uSCbcIbjLbwV2WIugrCYTuexj9nSw5RDSmjclkyk5laa0uBIoraGNRggw9tI1g=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=co.mangotechnologies.clickup",
+      "bundleId": "co.mangotechnologies.clickup"
+    },
+    "summary": "Advancing a ClickUp task from To Do through Review to Complete sweeps a vibrant purple bar across status milestones with a glowing active ring.",
+    "hint": "Tap status steps to advance task",
+    "choreography": [
+      "0-80ms: active status node scales to 1.2x with translucent #7B68EE aura.",
+      "40-390ms: progress connector expands smoothly to the target milestone.",
+      "390-450ms: completed steps lock in solid purple."
+    ],
+    "agentPrompt": "Build ClickUp's status milestone stepper on #13111c with #7B68EE purple fill: animate a 4px progress bar and 4 interactive step nodes scaling 1.2x on spring(320, 21).",
+    "extractableCode": "<!-- ClickUp: Task Status Stepper Morph & Glow Ring -->\n<div class=\"m-app-clickup\"><div class=\"m-app-clickup__card\"><div class=\"m-app-clickup__bar\"><span class=\"m-app-clickup__fill\"></span></div><div class=\"m-app-clickup__row\"><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"0\"><i>1</i><span>To Do</span></button><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"1\"><i>2</i><span>Active</span></button><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"2\"><i>3</i><span>Review</span></button><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"3\"><i>4</i><span>Done</span></button></div></div></div>\n<style>.m-app-clickup{position:absolute;inset:0;display:grid;place-items:center;background:#13111c;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-clickup__card{width:min(88%,268px);padding:18px 14px;border-radius:16px;background:#1d1a2b;border:1px solid rgba(128,128,128,.16);position:relative}.m-app-clickup__bar{position:relative;height:4px;border-radius:999px;background:rgba(128,128,128,.2);margin:12px 18px 0}.m-app-clickup__fill{position:absolute;inset:0;width:33%;border-radius:999px;background:#7B68EE;transition:width .45s cubic-bezier(.22,1.15,.36,1)}.m-app-clickup__row{display:flex;justify-content:space-between;margin-top:-15px;position:relative;z-index:2}.m-app-clickup__n{border:0;background:none;color:rgba(255,255,255,.56);display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:0}.m-app-clickup__n i{width:26px;height:26px;border-radius:50%;background:#1d1a2b;border:2px solid rgba(128,128,128,.3);font:700 11px/1 'Geist Mono',monospace;font-style:normal;display:grid;place-items:center;transition:all .32s cubic-bezier(.22,1.35,.36,1)}.m-app-clickup__n.is-done i{background:#7B68EE;border-color:#7B68EE;color:#fff}.m-app-clickup__n.is-cur i{transform:scale(1.2);box-shadow:0 0 0 5px #7B68EE33}.m-app-clickup__n span{font:600 10px/1 inherit}.m-app-clickup__n.is-cur span{color:#f4f5f7}</style>",
+    "html": "<div class=\"m-app-clickup\"><div class=\"m-app-clickup__card\"><div class=\"m-app-clickup__bar\"><span class=\"m-app-clickup__fill\"></span></div><div class=\"m-app-clickup__row\"><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"0\"><i>1</i><span>To Do</span></button><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"1\"><i>2</i><span>Active</span></button><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"2\"><i>3</i><span>Review</span></button><button type=\"button\" class=\"m-app-clickup__n\" data-i=\"3\"><i>4</i><span>Done</span></button></div></div></div>",
+    "css": ".m-app-clickup{position:absolute;inset:0;display:grid;place-items:center;background:#13111c;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-clickup__card{width:min(88%,268px);padding:18px 14px;border-radius:16px;background:#1d1a2b;border:1px solid rgba(128,128,128,.16);position:relative}.m-app-clickup__bar{position:relative;height:4px;border-radius:999px;background:rgba(128,128,128,.2);margin:12px 18px 0}.m-app-clickup__fill{position:absolute;inset:0;width:33%;border-radius:999px;background:#7B68EE;transition:width .45s cubic-bezier(.22,1.15,.36,1)}.m-app-clickup__row{display:flex;justify-content:space-between;margin-top:-15px;position:relative;z-index:2}.m-app-clickup__n{border:0;background:none;color:rgba(255,255,255,.56);display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:0}.m-app-clickup__n i{width:26px;height:26px;border-radius:50%;background:#1d1a2b;border:2px solid rgba(128,128,128,.3);font:700 11px/1 'Geist Mono',monospace;font-style:normal;display:grid;place-items:center;transition:all .32s cubic-bezier(.22,1.35,.36,1)}.m-app-clickup__n.is-done i{background:#7B68EE;border-color:#7B68EE;color:#fff}.m-app-clickup__n.is-cur i{transform:scale(1.2);box-shadow:0 0 0 5px #7B68EE33}.m-app-clickup__n span{font:600 10px/1 inherit}.m-app-clickup__n.is-cur span{color:#f4f5f7}",
+    "js": "var el=root.querySelector('.m-app-clickup');if(!el)return;var ns=[].slice.call(el.querySelectorAll('.m-app-clickup__n')),fill=el.querySelector('.m-app-clickup__fill');var idx=1,touched=false,dead=false;function go(i){idx=i;fill.style.width=(i/(ns.length-1)*100)+'%';ns.forEach(function(n,j){n.classList.toggle('is-done',j<=i);n.classList.toggle('is-cur',j===i);});}ns.forEach(function(n,i){n.addEventListener('click',function(){touched=true;go(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)go((idx+1)%ns.length);},1550);go(1);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-jira-sprint-issue-stepper",
+    "title": "Jira: Sprint Issue Transition Flow & Blue Connector",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 450,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 24
+    },
+    "easeLabel": "spring(320, 24)",
+    "props": [
+      "width (sprint bar)",
+      "transform: scale (stage node)"
+    ],
+    "src": "Jira",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.atlassian.android.jira.core",
+    "collection": "Apps",
+    "app": {
+      "name": "Jira",
+      "slug": "jira",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0052CC",
+      "iconUrl": "https://play-lh.googleusercontent.com/CkWnE3RTo7-0V7wBKYMLEdJ9gau8c5wU2ATuqMzgFdOn9HECFbvC4Pw9kzzKjLrS1Z6h51DiijiiWy0p5yzxVQ=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.atlassian.android.jira.core",
+      "bundleId": "com.atlassian.android.jira.core"
+    },
+    "summary": "Moving a Jira ticket across sprint stages advances an Atlassian-blue progress connector cleanly through Backlog, Dev, QA, and Shipped.",
+    "hint": "Click any sprint stage",
+    "choreography": [
+      "0-70ms: selected sprint stage scales up 1.2x with blue focus ring.",
+      "40-390ms: #0052CC progress fill glides cleanly across the track.",
+      "390-450ms: prior stages lock filled."
+    ],
+    "agentPrompt": "Create a Jira sprint transition stepper on #f4f5f7 with #0052CC Atlassian blue: connect 4 stage buttons over a 4px bar animating width over 450ms cubic-bezier(0.22, 1.15, 0.36, 1).",
+    "extractableCode": "<!-- Jira: Sprint Issue Transition Flow & Blue Connector -->\n<div class=\"m-app-jira\"><div class=\"m-app-jira__card\"><div class=\"m-app-jira__bar\"><span class=\"m-app-jira__fill\"></span></div><div class=\"m-app-jira__row\"><button type=\"button\" class=\"m-app-jira__n\" data-i=\"0\"><i>1</i><span>Backlog</span></button><button type=\"button\" class=\"m-app-jira__n\" data-i=\"1\"><i>2</i><span>In Dev</span></button><button type=\"button\" class=\"m-app-jira__n\" data-i=\"2\"><i>3</i><span>QA</span></button><button type=\"button\" class=\"m-app-jira__n\" data-i=\"3\"><i>4</i><span>Shipped</span></button></div></div></div>\n<style>.m-app-jira{position:absolute;inset:0;display:grid;place-items:center;background:#f4f5f7;color:#172b4d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-jira__card{width:min(88%,268px);padding:18px 14px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);position:relative}.m-app-jira__bar{position:relative;height:4px;border-radius:999px;background:rgba(128,128,128,.2);margin:12px 18px 0}.m-app-jira__fill{position:absolute;inset:0;width:33%;border-radius:999px;background:#0052CC;transition:width .45s cubic-bezier(.22,1.15,.36,1)}.m-app-jira__row{display:flex;justify-content:space-between;margin-top:-15px;position:relative;z-index:2}.m-app-jira__n{border:0;background:none;color:#6b7280;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:0}.m-app-jira__n i{width:26px;height:26px;border-radius:50%;background:#ffffff;border:2px solid rgba(128,128,128,.3);font:700 11px/1 'Geist Mono',monospace;font-style:normal;display:grid;place-items:center;transition:all .32s cubic-bezier(.22,1.35,.36,1)}.m-app-jira__n.is-done i{background:#0052CC;border-color:#0052CC;color:#fff}.m-app-jira__n.is-cur i{transform:scale(1.2);box-shadow:0 0 0 5px #0052CC33}.m-app-jira__n span{font:600 10px/1 inherit}.m-app-jira__n.is-cur span{color:#172b4d}</style>",
+    "html": "<div class=\"m-app-jira\"><div class=\"m-app-jira__card\"><div class=\"m-app-jira__bar\"><span class=\"m-app-jira__fill\"></span></div><div class=\"m-app-jira__row\"><button type=\"button\" class=\"m-app-jira__n\" data-i=\"0\"><i>1</i><span>Backlog</span></button><button type=\"button\" class=\"m-app-jira__n\" data-i=\"1\"><i>2</i><span>In Dev</span></button><button type=\"button\" class=\"m-app-jira__n\" data-i=\"2\"><i>3</i><span>QA</span></button><button type=\"button\" class=\"m-app-jira__n\" data-i=\"3\"><i>4</i><span>Shipped</span></button></div></div></div>",
+    "css": ".m-app-jira{position:absolute;inset:0;display:grid;place-items:center;background:#f4f5f7;color:#172b4d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-jira__card{width:min(88%,268px);padding:18px 14px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);position:relative}.m-app-jira__bar{position:relative;height:4px;border-radius:999px;background:rgba(128,128,128,.2);margin:12px 18px 0}.m-app-jira__fill{position:absolute;inset:0;width:33%;border-radius:999px;background:#0052CC;transition:width .45s cubic-bezier(.22,1.15,.36,1)}.m-app-jira__row{display:flex;justify-content:space-between;margin-top:-15px;position:relative;z-index:2}.m-app-jira__n{border:0;background:none;color:#6b7280;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:0}.m-app-jira__n i{width:26px;height:26px;border-radius:50%;background:#ffffff;border:2px solid rgba(128,128,128,.3);font:700 11px/1 'Geist Mono',monospace;font-style:normal;display:grid;place-items:center;transition:all .32s cubic-bezier(.22,1.35,.36,1)}.m-app-jira__n.is-done i{background:#0052CC;border-color:#0052CC;color:#fff}.m-app-jira__n.is-cur i{transform:scale(1.2);box-shadow:0 0 0 5px #0052CC33}.m-app-jira__n span{font:600 10px/1 inherit}.m-app-jira__n.is-cur span{color:#172b4d}",
+    "js": "var el=root.querySelector('.m-app-jira');if(!el)return;var ns=[].slice.call(el.querySelectorAll('.m-app-jira__n')),fill=el.querySelector('.m-app-jira__fill');var idx=1,touched=false,dead=false;function go(i){idx=i;fill.style.width=(i/(ns.length-1)*100)+'%';ns.forEach(function(n,j){n.classList.toggle('is-done',j<=i);n.classList.toggle('is-cur',j===i);});}ns.forEach(function(n,i){n.addEventListener('click',function(){touched=true;go(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)go((idx+1)%ns.length);},1550);go(1);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-calendly-time-slot-confirm-sheet",
+    "title": "Calendly: Booking Time-Slot Sheet & Blue Confirm Snap",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 23
+    },
+    "easeLabel": "spring(310, 23)",
+    "props": [
+      "transform: translateY (booking sheet)",
+      "background-color (time slot)"
+    ],
+    "src": "Calendly",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.calendly.app",
+    "collection": "Apps",
+    "app": {
+      "name": "Calendly",
+      "slug": "calendly",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#006BFF",
+      "iconUrl": "https://play-lh.googleusercontent.com/5hH-f2XI2jwx394YMlf0KbjNPUZpT5XrfbaCfrIhPk8wYaL3YMio2tvLcP87ra7ic5aZ396Befr5B78O7Pet1KI=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.calendly.app",
+      "bundleId": "com.calendly.app"
+    },
+    "summary": "Choosing an available slot on Calendly springs up a clean booking card where tapping any time chip snaps it into crisp Calendly blue.",
+    "hint": "Tap sheet or pick a meeting slot",
+    "choreography": [
+      "0-360ms: rounded booking sheet rises smoothly from 56px peek to full height.",
+      "160-460ms: tapping a time slot highlights it in #006BFF with instant Confirm CTA."
+    ],
+    "agentPrompt": "Build Calendly's mobile slot-picker sheet on #f3f7ff with #006BFF accent: spring-raise the booking drawer over 460ms cubic-bezier(0.22, 1.18, 0.36, 1) with 3 selectable time chips.",
+    "extractableCode": "<!-- Calendly: Booking Time-Slot Sheet & Blue Confirm Snap -->\n<div class=\"m-app-calendly\"><div class=\"m-app-calendly__phone\"><div class=\"m-app-calendly__sheet\"><span class=\"m-app-calendly__grab\"></span><b>30 Min Intro Call</b><div class=\"m-app-calendly__chips\"><button type=\"button\" class=\"m-app-calendly__ch is-on\" data-i=\"0\">10:00am</button><button type=\"button\" class=\"m-app-calendly__ch\" data-i=\"1\">11:30am</button><button type=\"button\" class=\"m-app-calendly__ch\" data-i=\"2\">2:00pm</button></div><button type=\"button\" class=\"m-app-calendly__cta\">Confirm Booking</button></div></div></div>\n<style>.m-app-calendly{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7ff;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-calendly__phone{position:relative;width:min(84%,244px);height:160px;border-radius:18px;background:rgba(128,128,128,.1);border:1px solid rgba(128,128,128,.16);overflow:hidden}.m-app-calendly__sheet{position:absolute;left:0;right:0;bottom:0;padding:10px 14px 14px;border-radius:18px 18px 0 0;background:#ffffff;box-shadow:0 -10px 26px rgba(0,0,0,.22);display:flex;flex-direction:column;gap:9px;transform:translateY(56px);transition:transform .48s cubic-bezier(.22,1.18,.36,1)}.m-app-calendly.is-up .m-app-calendly__sheet{transform:translateY(0)}.m-app-calendly__grab{width:32px;height:4px;border-radius:99px;background:rgba(128,128,128,.32);margin:0 auto}.m-app-calendly__sheet b{font:700 13px/1 inherit}.m-app-calendly__chips{display:flex;gap:6px}.m-app-calendly__ch{flex:1;height:28px;border-radius:8px;border:1px solid rgba(128,128,128,.2);background:transparent;color:#6b7280;font:600 10.5px/1 'Geist Mono',monospace;cursor:pointer;transition:all .2s}.m-app-calendly__ch.is-on{background:#006BFF;border-color:#006BFF;color:#fff}.m-app-calendly__cta{height:32px;border:0;border-radius:10px;background:#006BFF;color:#fff;font:700 12px/1 inherit;cursor:pointer}</style>",
+    "html": "<div class=\"m-app-calendly\"><div class=\"m-app-calendly__phone\"><div class=\"m-app-calendly__sheet\"><span class=\"m-app-calendly__grab\"></span><b>30 Min Intro Call</b><div class=\"m-app-calendly__chips\"><button type=\"button\" class=\"m-app-calendly__ch is-on\" data-i=\"0\">10:00am</button><button type=\"button\" class=\"m-app-calendly__ch\" data-i=\"1\">11:30am</button><button type=\"button\" class=\"m-app-calendly__ch\" data-i=\"2\">2:00pm</button></div><button type=\"button\" class=\"m-app-calendly__cta\">Confirm Booking</button></div></div></div>",
+    "css": ".m-app-calendly{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7ff;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-calendly__phone{position:relative;width:min(84%,244px);height:160px;border-radius:18px;background:rgba(128,128,128,.1);border:1px solid rgba(128,128,128,.16);overflow:hidden}.m-app-calendly__sheet{position:absolute;left:0;right:0;bottom:0;padding:10px 14px 14px;border-radius:18px 18px 0 0;background:#ffffff;box-shadow:0 -10px 26px rgba(0,0,0,.22);display:flex;flex-direction:column;gap:9px;transform:translateY(56px);transition:transform .48s cubic-bezier(.22,1.18,.36,1)}.m-app-calendly.is-up .m-app-calendly__sheet{transform:translateY(0)}.m-app-calendly__grab{width:32px;height:4px;border-radius:99px;background:rgba(128,128,128,.32);margin:0 auto}.m-app-calendly__sheet b{font:700 13px/1 inherit}.m-app-calendly__chips{display:flex;gap:6px}.m-app-calendly__ch{flex:1;height:28px;border-radius:8px;border:1px solid rgba(128,128,128,.2);background:transparent;color:#6b7280;font:600 10.5px/1 'Geist Mono',monospace;cursor:pointer;transition:all .2s}.m-app-calendly__ch.is-on{background:#006BFF;border-color:#006BFF;color:#fff}.m-app-calendly__cta{height:32px;border:0;border-radius:10px;background:#006BFF;color:#fff;font:700 12px/1 inherit;cursor:pointer}",
+    "js": "var el=root.querySelector('.m-app-calendly');if(!el)return;var chs=[].slice.call(el.querySelectorAll('.m-app-calendly__ch')),up=false,idx=0,touched=false,dead=false;function toggle(){up=!up;el.classList.toggle('is-up',up);}chs.forEach(function(b,i){b.addEventListener('click',function(e){e.stopPropagation();touched=true;idx=i;chs.forEach(function(x,j){x.classList.toggle('is-on',j===i);});el.classList.add('is-up');up=true;});});el.addEventListener('click',function(){touched=true;toggle();});var t0=setTimeout(function(){if(!dead)toggle();},260);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){if(up){idx=(idx+1)%chs.length;chs.forEach(function(x,j){x.classList.toggle('is-on',j===idx);});}else toggle();}},1850);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-dropbox-file-sync-swipe-action",
+    "title": "Dropbox: Cloud File Offline Sync Swipe & Toast",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 23
+    },
+    "easeLabel": "spring(310, 23)",
+    "props": [
+      "transform: translateX",
+      "transform: translateY (sync toast)"
+    ],
+    "src": "Dropbox",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.dropbox.android",
+    "collection": "Apps",
+    "app": {
+      "name": "Dropbox",
+      "slug": "dropbox",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0061FF",
+      "iconUrl": "https://play-lh.googleusercontent.com/A8rNctsbRVnv05n6gwR74kN68SuSaBW-B9NTdCrq62snoMxMnedV2PGZaatv-sPS9ygdVvXUomyRfGWa8Xul1Q=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.dropbox.android",
+      "bundleId": "com.dropbox.android"
+    },
+    "summary": "Making a Dropbox folder available offline glides the file row smoothly over cobalt blue while confirming sync status in a bottom toast.",
+    "hint": "Tap file row to pin offline",
+    "choreography": [
+      "0-90ms: sync dot fills #0061FF cobalt.",
+      "40-360ms: file row translates +92px revealing the offline pin action.",
+      "160-420ms: bottom Undo bar rises cleanly."
+    ],
+    "agentPrompt": "Build a Dropbox file sync swipe interaction on #f5f7fa with #0061FF accent: translate the file row +92px over 420ms cubic-bezier(0.22, 1.14, 0.36, 1) and float an Undo toast.",
+    "extractableCode": "<!-- Dropbox: Cloud File Offline Sync Swipe & Toast -->\n<div class=\"m-app-dropbox\"><div class=\"m-app-dropbox__wrap\"><div class=\"m-app-dropbox__bg\"><span>Pin Offline ✓</span></div><button type=\"button\" class=\"m-app-dropbox__row\"><i class=\"m-app-dropbox__chk\"></i><div><b>Brand_Assets_v4.zip</b><span>184 MB · Cloud only</span></div></button></div><div class=\"m-app-dropbox__toast\"><span>Pin Offlined</span><b>Undo</b></div></div>\n<style>.m-app-dropbox{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f5f7fa;color:#101114;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-dropbox__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-dropbox__bg{position:absolute;inset:0;background:#0061FF;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-dropbox__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#101114;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-dropbox.is-sw .m-app-dropbox__row{transform:translateX(92px)}.m-app-dropbox__chk{width:18px;height:18px;border-radius:50%;border:2px solid #0061FF;flex:none;transition:background .2s}.m-app-dropbox.is-sw .m-app-dropbox__chk{background:#0061FF}.m-app-dropbox__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-dropbox__row span{font-size:11px;color:#6b7280}.m-app-dropbox__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-dropbox__toast b{color:#0061FF}.m-app-dropbox.is-sw .m-app-dropbox__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-dropbox\"><div class=\"m-app-dropbox__wrap\"><div class=\"m-app-dropbox__bg\"><span>Pin Offline ✓</span></div><button type=\"button\" class=\"m-app-dropbox__row\"><i class=\"m-app-dropbox__chk\"></i><div><b>Brand_Assets_v4.zip</b><span>184 MB · Cloud only</span></div></button></div><div class=\"m-app-dropbox__toast\"><span>Pin Offlined</span><b>Undo</b></div></div>",
+    "css": ".m-app-dropbox{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f5f7fa;color:#101114;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-dropbox__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-dropbox__bg{position:absolute;inset:0;background:#0061FF;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-dropbox__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#101114;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-dropbox.is-sw .m-app-dropbox__row{transform:translateX(92px)}.m-app-dropbox__chk{width:18px;height:18px;border-radius:50%;border:2px solid #0061FF;flex:none;transition:background .2s}.m-app-dropbox.is-sw .m-app-dropbox__chk{background:#0061FF}.m-app-dropbox__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-dropbox__row span{font-size:11px;color:#6b7280}.m-app-dropbox__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-dropbox__toast b{color:#0061FF}.m-app-dropbox.is-sw .m-app-dropbox__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-dropbox');if(!el)return;var row=el.querySelector('.m-app-dropbox__row'),toast=el.querySelector('.m-app-dropbox__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-google-drive-quick-upload-sheet-rise",
+    "title": "Google Drive: Create New Sheet Detent & Quick-Action Chips",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 300,
+      "c": 24
+    },
+    "easeLabel": "spring(300, 24)",
+    "props": [
+      "transform: translateY",
+      "background-color"
+    ],
+    "src": "Google Drive",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.google.android.apps.docs",
+    "collection": "Apps",
+    "app": {
+      "name": "Google Drive",
+      "slug": "google-drive",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#4285F4",
+      "iconUrl": "https://play-lh.googleusercontent.com/chc-Fx3Qi3BisTZw1aOteYK_XkMHUiXKRbX2Hc8shyFI8pYt7DcyUPzVwLGJKIeKCKDD6nFVhEtUrIaEyzcnmA=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.google.android.apps.docs",
+      "bundleId": "com.google.android.apps.docs"
+    },
+    "summary": "Tapping '+' in Google Drive springs up a clean Material bottom sheet with quick chips for Scan, Upload, and New Doc.",
+    "hint": "Tap sheet or select upload action",
+    "choreography": [
+      "0-360ms: Material drawer rises smoothly from translateY(56px) -> 0.",
+      "160-460ms: action chips toggle cleanly in #4285F4 Google Blue."
+    ],
+    "agentPrompt": "Build Google Drive's Create New bottom sheet on #f5f8fd with #4285F4 accent: translate the rounded sheet upward over 460ms cubic-bezier(0.22, 1.18, 0.36, 1) with selectable quick-action pills.",
+    "extractableCode": "<!-- Google Drive: Create New Sheet Detent & Quick-Action Chips -->\n<div class=\"m-app-google-drive\"><div class=\"m-app-google-drive__phone\"><div class=\"m-app-google-drive__sheet\"><span class=\"m-app-google-drive__grab\"></span><b>Create in My Drive</b><div class=\"m-app-google-drive__chips\"><button type=\"button\" class=\"m-app-google-drive__ch is-on\" data-i=\"0\">Folder</button><button type=\"button\" class=\"m-app-google-drive__ch\" data-i=\"1\">Scan</button><button type=\"button\" class=\"m-app-google-drive__ch\" data-i=\"2\">Upload</button></div><button type=\"button\" class=\"m-app-google-drive__cta\">Continue</button></div></div></div>\n<style>.m-app-google-drive{position:absolute;inset:0;display:grid;place-items:center;background:#f5f8fd;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-google-drive__phone{position:relative;width:min(84%,244px);height:160px;border-radius:18px;background:rgba(128,128,128,.1);border:1px solid rgba(128,128,128,.16);overflow:hidden}.m-app-google-drive__sheet{position:absolute;left:0;right:0;bottom:0;padding:10px 14px 14px;border-radius:18px 18px 0 0;background:#ffffff;box-shadow:0 -10px 26px rgba(0,0,0,.22);display:flex;flex-direction:column;gap:9px;transform:translateY(56px);transition:transform .48s cubic-bezier(.22,1.18,.36,1)}.m-app-google-drive.is-up .m-app-google-drive__sheet{transform:translateY(0)}.m-app-google-drive__grab{width:32px;height:4px;border-radius:99px;background:rgba(128,128,128,.32);margin:0 auto}.m-app-google-drive__sheet b{font:700 13px/1 inherit}.m-app-google-drive__chips{display:flex;gap:6px}.m-app-google-drive__ch{flex:1;height:28px;border-radius:8px;border:1px solid rgba(128,128,128,.2);background:transparent;color:#6b7280;font:600 10.5px/1 'Geist Mono',monospace;cursor:pointer;transition:all .2s}.m-app-google-drive__ch.is-on{background:#4285F4;border-color:#4285F4;color:#fff}.m-app-google-drive__cta{height:32px;border:0;border-radius:10px;background:#4285F4;color:#fff;font:700 12px/1 inherit;cursor:pointer}</style>",
+    "html": "<div class=\"m-app-google-drive\"><div class=\"m-app-google-drive__phone\"><div class=\"m-app-google-drive__sheet\"><span class=\"m-app-google-drive__grab\"></span><b>Create in My Drive</b><div class=\"m-app-google-drive__chips\"><button type=\"button\" class=\"m-app-google-drive__ch is-on\" data-i=\"0\">Folder</button><button type=\"button\" class=\"m-app-google-drive__ch\" data-i=\"1\">Scan</button><button type=\"button\" class=\"m-app-google-drive__ch\" data-i=\"2\">Upload</button></div><button type=\"button\" class=\"m-app-google-drive__cta\">Continue</button></div></div></div>",
+    "css": ".m-app-google-drive{position:absolute;inset:0;display:grid;place-items:center;background:#f5f8fd;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-google-drive__phone{position:relative;width:min(84%,244px);height:160px;border-radius:18px;background:rgba(128,128,128,.1);border:1px solid rgba(128,128,128,.16);overflow:hidden}.m-app-google-drive__sheet{position:absolute;left:0;right:0;bottom:0;padding:10px 14px 14px;border-radius:18px 18px 0 0;background:#ffffff;box-shadow:0 -10px 26px rgba(0,0,0,.22);display:flex;flex-direction:column;gap:9px;transform:translateY(56px);transition:transform .48s cubic-bezier(.22,1.18,.36,1)}.m-app-google-drive.is-up .m-app-google-drive__sheet{transform:translateY(0)}.m-app-google-drive__grab{width:32px;height:4px;border-radius:99px;background:rgba(128,128,128,.32);margin:0 auto}.m-app-google-drive__sheet b{font:700 13px/1 inherit}.m-app-google-drive__chips{display:flex;gap:6px}.m-app-google-drive__ch{flex:1;height:28px;border-radius:8px;border:1px solid rgba(128,128,128,.2);background:transparent;color:#6b7280;font:600 10.5px/1 'Geist Mono',monospace;cursor:pointer;transition:all .2s}.m-app-google-drive__ch.is-on{background:#4285F4;border-color:#4285F4;color:#fff}.m-app-google-drive__cta{height:32px;border:0;border-radius:10px;background:#4285F4;color:#fff;font:700 12px/1 inherit;cursor:pointer}",
+    "js": "var el=root.querySelector('.m-app-google-drive');if(!el)return;var chs=[].slice.call(el.querySelectorAll('.m-app-google-drive__ch')),up=false,idx=0,touched=false,dead=false;function toggle(){up=!up;el.classList.toggle('is-up',up);}chs.forEach(function(b,i){b.addEventListener('click',function(e){e.stopPropagation();touched=true;idx=i;chs.forEach(function(x,j){x.classList.toggle('is-on',j===i);});el.classList.add('is-up');up=true;});});el.addEventListener('click',function(){touched=true;toggle();});var t0=setTimeout(function(){if(!dead)toggle();},260);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){if(up){idx=(idx+1)%chs.length;chs.forEach(function(x,j){x.classList.toggle('is-on',j===idx);});}else toggle();}},1850);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-gmail-swipe-archive-emerald-undo",
+    "title": "Gmail: Swipe-to-Archive Emerald Reveal & Undo Bar",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 23
+    },
+    "easeLabel": "spring(320, 23)",
+    "props": [
+      "transform: translateX (thread card)",
+      "transform: translateY (Undo snackbar)"
+    ],
+    "src": "Gmail",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.google.android.gm",
+    "collection": "Apps",
+    "app": {
+      "name": "Gmail",
+      "slug": "gmail",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#EA4335",
+      "iconUrl": "https://play-lh.googleusercontent.com/c6KD_8-GvnGRJA4lRQ4y5YnUa3-LOeYAS7ubw1jWyB9bmr6Kj6zzRvh2A5WBB-Vd3e6zhElmhDv07fCJx2Fc=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.google.android.gm",
+      "bundleId": "com.google.android.gm"
+    },
+    "summary": "Swiping a Gmail message glides the thread card across an unmistakable green Archive track while lifting a dark Material Undo snackbar.",
+    "hint": "Tap email to swipe-archive & Undo",
+    "choreography": [
+      "0-80ms: tap initiates horizontal thread slide exposing the emerald Archive backing.",
+      "40-360ms: message card eases +92px rightward on spring(320, 23).",
+      "160-420ms: dark Material Undo snackbar glides up cleanly."
+    ],
+    "agentPrompt": "Recreate Gmail's swipe-to-archive interaction on #f6f8fc with #16a34a archive reveal: slide the message card +92px over 420ms cubic-bezier(0.22, 1.14, 0.36, 1) and float a dark Undo snackbar underneath.",
+    "extractableCode": "<!-- Gmail: Swipe-to-Archive Emerald Reveal & Undo Bar -->\n<div class=\"m-app-gmail\"><div class=\"m-app-gmail__wrap\"><div class=\"m-app-gmail__bg\"><span>Archive ✓</span></div><button type=\"button\" class=\"m-app-gmail__row\"><i class=\"m-app-gmail__chk\"></i><div><b>Netlify Deploy Succeeded</b><span>Primary · Just now</span></div></button></div><div class=\"m-app-gmail__toast\"><span>Archived</span><b>Undo</b></div></div>\n<style>.m-app-gmail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f6f8fc;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-gmail__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-gmail__bg{position:absolute;inset:0;background:#16a34a;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-gmail__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#111827;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-gmail.is-sw .m-app-gmail__row{transform:translateX(92px)}.m-app-gmail__chk{width:18px;height:18px;border-radius:50%;border:2px solid #16a34a;flex:none;transition:background .2s}.m-app-gmail.is-sw .m-app-gmail__chk{background:#16a34a}.m-app-gmail__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-gmail__row span{font-size:11px;color:#6b7280}.m-app-gmail__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-gmail__toast b{color:#16a34a}.m-app-gmail.is-sw .m-app-gmail__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-gmail\"><div class=\"m-app-gmail__wrap\"><div class=\"m-app-gmail__bg\"><span>Archive ✓</span></div><button type=\"button\" class=\"m-app-gmail__row\"><i class=\"m-app-gmail__chk\"></i><div><b>Netlify Deploy Succeeded</b><span>Primary · Just now</span></div></button></div><div class=\"m-app-gmail__toast\"><span>Archived</span><b>Undo</b></div></div>",
+    "css": ".m-app-gmail{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f6f8fc;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-gmail__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-gmail__bg{position:absolute;inset:0;background:#16a34a;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-gmail__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#111827;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-gmail.is-sw .m-app-gmail__row{transform:translateX(92px)}.m-app-gmail__chk{width:18px;height:18px;border-radius:50%;border:2px solid #16a34a;flex:none;transition:background .2s}.m-app-gmail.is-sw .m-app-gmail__chk{background:#16a34a}.m-app-gmail__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-gmail__row span{font-size:11px;color:#6b7280}.m-app-gmail__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-gmail__toast b{color:#16a34a}.m-app-gmail.is-sw .m-app-gmail__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-gmail');if(!el)return;var row=el.querySelector('.m-app-gmail__row'),toast=el.querySelector('.m-app-gmail__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-outlook-focused-other-pill-glide",
+    "title": "Microsoft Outlook: Focused ↔ Other Inbox Segmented Glide",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 25
+    },
+    "easeLabel": "spring(340, 25)",
+    "props": [
+      "transform: translateX (blue pill)",
+      "color",
+      "textContent"
+    ],
+    "src": "Microsoft Outlook",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.microsoft.office.outlook",
+    "collection": "Apps",
+    "app": {
+      "name": "Microsoft Outlook",
+      "slug": "outlook",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0078D4",
+      "iconUrl": "https://play-lh.googleusercontent.com/cQ6W3fn_i56tK1PDQZlKvpuggupXR-kGyzwCtF1vYw-wK9FS3YDVUTnpfEvpbWXXuqH6aJ1JRD_t5bfAyCD4=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.microsoft.office.outlook",
+      "bundleId": "com.microsoft.office.outlook"
+    },
+    "summary": "Flipping between Outlook's Focused, Other, and Flagged tabs glides a crisp Microsoft-blue indicator smoothly across the inbox header.",
+    "hint": "Tap tabs to switch inbox views",
+    "choreography": [
+      "0-60ms: tapped inbox tab takes white active text.",
+      "60-320ms: #0078D4 pill glides smoothly across columns.",
+      "320-380ms: unread counter card refreshes cleanly."
+    ],
+    "agentPrompt": "Build Microsoft Outlook's Focused/Other inbox switcher on #f3f7fc with #0078D4 pill indicator: slide the active pill via translateX(i * 100%) over 380ms cubic-bezier(0.22, 1.18, 0.36, 1).",
+    "extractableCode": "<!-- Microsoft Outlook: Focused ↔ Other Inbox Segmented Glide -->\n<div class=\"m-app-outlook\"><div class=\"m-app-outlook__box\"><div class=\"m-app-outlook__seg\"><span class=\"m-app-outlook__thumb\"></span><button type=\"button\" data-i=\"0\">Focused</button><button type=\"button\" data-i=\"1\">Other</button><button type=\"button\" data-i=\"2\">Flagged</button></div><div class=\"m-app-outlook__out\"><b>4 unread</b><span>Focused</span></div></div></div>\n<style>.m-app-outlook{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7fc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-outlook__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-outlook__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#ffffff;border:1px solid rgba(128,128,128,.16)}.m-app-outlook__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#0078D4;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-outlook__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:#6b7280;cursor:pointer;transition:color .2s}.m-app-outlook__seg button.is-on{color:#fff}.m-app-outlook__out{padding:14px;border-radius:14px;background:#ffffff;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-outlook__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-outlook__out span{font-size:11px;color:#6b7280}</style>",
+    "html": "<div class=\"m-app-outlook\"><div class=\"m-app-outlook__box\"><div class=\"m-app-outlook__seg\"><span class=\"m-app-outlook__thumb\"></span><button type=\"button\" data-i=\"0\">Focused</button><button type=\"button\" data-i=\"1\">Other</button><button type=\"button\" data-i=\"2\">Flagged</button></div><div class=\"m-app-outlook__out\"><b>4 unread</b><span>Focused</span></div></div></div>",
+    "css": ".m-app-outlook{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7fc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-outlook__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-outlook__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#ffffff;border:1px solid rgba(128,128,128,.16)}.m-app-outlook__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#0078D4;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-outlook__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:#6b7280;cursor:pointer;transition:color .2s}.m-app-outlook__seg button.is-on{color:#fff}.m-app-outlook__out{padding:14px;border-radius:14px;background:#ffffff;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-outlook__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-outlook__out span{font-size:11px;color:#6b7280}",
+    "js": "var el=root.querySelector('.m-app-outlook');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-outlook__seg button')),th=el.querySelector('.m-app-outlook__thumb'),b=el.querySelector('.m-app-outlook__out b'),sp=el.querySelector('.m-app-outlook__out span');var tabs=[\"Focused\", \"Other\", \"Flagged\"],vals=[\"4 unread\", \"19 newsletters\", \"2 follow-ups\"],idx=0,touched=false,dead=false;function set(i){idx=i;th.style.transform='translateX('+(i*100)+'%)';btns.forEach(function(x,j){x.classList.toggle('is-on',j===i);});b.textContent=vals[i];sp.textContent=tabs[i];}btns.forEach(function(x,i){x.addEventListener('click',function(){touched=true;set(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%tabs.length);},1800);set(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-evernote-quick-note-sync-swipe",
+    "title": "Evernote: Quick Note Pin Swipe & Emerald Confirm",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 23
+    },
+    "easeLabel": "spring(310, 23)",
+    "props": [
+      "transform: translateX",
+      "transform: translateY"
+    ],
+    "src": "Evernote",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.evernote",
+    "collection": "Apps",
+    "app": {
+      "name": "Evernote",
+      "slug": "evernote",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#00A82D",
+      "iconUrl": "https://play-lh.googleusercontent.com/dVQlfnQ_Fp-wNfKv2eI9XxbLymV6oGW_0ywIw3pxhYyKhjC0Lk8y6Ru_-sUc1fq2akADzAN7QWn8nPvcw6Ck=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.evernote",
+      "bundleId": "com.evernote"
+    },
+    "summary": "Swiping a note in Evernote glides the crisp white card over Evernote emerald to pin it to Shortcuts with a neat Undo toast below.",
+    "hint": "Tap note row to pin to Shortcuts",
+    "choreography": [
+      "0-80ms: green check ring fills instantaneously.",
+      "40-360ms: note row slides +92px revealing Evernote emerald (#00A82D).",
+      "160-420ms: Undo toast glides up smoothly."
+    ],
+    "agentPrompt": "Build Evernote's note-pin swipe row on #f3faf5 with #00A82D backing: translate the card +92px over 420ms cubic-bezier(0.22, 1.14, 0.36, 1) and float an Undo bar.",
+    "extractableCode": "<!-- Evernote: Quick Note Pin Swipe & Emerald Confirm -->\n<div class=\"m-app-evernote\"><div class=\"m-app-evernote__wrap\"><div class=\"m-app-evernote__bg\"><span>Pin Note ✓</span></div><button type=\"button\" class=\"m-app-evernote__row\"><i class=\"m-app-evernote__chk\"></i><div><b>Architecture Meeting Notes</b><span>Notebooks · Synced</span></div></button></div><div class=\"m-app-evernote__toast\"><span>Pin Noted</span><b>Undo</b></div></div>\n<style>.m-app-evernote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f3faf5;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-evernote__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-evernote__bg{position:absolute;inset:0;background:#00A82D;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-evernote__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#111827;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-evernote.is-sw .m-app-evernote__row{transform:translateX(92px)}.m-app-evernote__chk{width:18px;height:18px;border-radius:50%;border:2px solid #00A82D;flex:none;transition:background .2s}.m-app-evernote.is-sw .m-app-evernote__chk{background:#00A82D}.m-app-evernote__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-evernote__row span{font-size:11px;color:#6b7280}.m-app-evernote__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-evernote__toast b{color:#00A82D}.m-app-evernote.is-sw .m-app-evernote__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-evernote\"><div class=\"m-app-evernote__wrap\"><div class=\"m-app-evernote__bg\"><span>Pin Note ✓</span></div><button type=\"button\" class=\"m-app-evernote__row\"><i class=\"m-app-evernote__chk\"></i><div><b>Architecture Meeting Notes</b><span>Notebooks · Synced</span></div></button></div><div class=\"m-app-evernote__toast\"><span>Pin Noted</span><b>Undo</b></div></div>",
+    "css": ".m-app-evernote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#f3faf5;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-evernote__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-evernote__bg{position:absolute;inset:0;background:#00A82D;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-evernote__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#ffffff;color:#111827;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-evernote.is-sw .m-app-evernote__row{transform:translateX(92px)}.m-app-evernote__chk{width:18px;height:18px;border-radius:50%;border:2px solid #00A82D;flex:none;transition:background .2s}.m-app-evernote.is-sw .m-app-evernote__chk{background:#00A82D}.m-app-evernote__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-evernote__row span{font-size:11px;color:#6b7280}.m-app-evernote__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-evernote__toast b{color:#00A82D}.m-app-evernote.is-sw .m-app-evernote__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-evernote');if(!el)return;var row=el.querySelector('.m-app-evernote__row'),toast=el.querySelector('.m-app-evernote__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-goodnotes-canvas-lasso-node-snap",
+    "title": "Goodnotes: Handwriting Canvas Pen & Lasso Node Glide",
+    "use": "Generative",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Organic",
+    "surface": "light",
+    "dur": 800,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translate (stylus & lasso tags)",
+      "fill (highlighted strokes)"
+    ],
+    "src": "Goodnotes",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.goodnotes.android.app",
+    "collection": "Apps",
+    "app": {
+      "name": "Goodnotes",
+      "slug": "goodnotes",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#2B9CF6",
+      "iconUrl": "https://play-lh.googleusercontent.com/2nc3YRZAC7LZx4WIuhm8_bQKRiBk6Zzi8sv8dsNUlpqnC6gQgt74F0WxEbKKTcXkx05MyhbKohV7fQjLyWWF2So=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.goodnotes.android.app",
+      "bundleId": "com.goodnotes.android.app"
+    },
+    "summary": "Annotating a dotted Goodnotes notebook glides stylus and lasso tags across sketched diagram nodes with crisp blue highlight feedback.",
+    "hint": "Tap notebook page to move stylus focus",
+    "choreography": [
+      "0-160ms: targeted diagram nodes highlight in #2B9CF6 ink blue.",
+      "80-740ms: Fountain Pen and Lasso tags glide across the dotted paper grid.",
+      "740-800ms: active annotation cluster settles smoothly."
+    ],
+    "agentPrompt": "Build a Goodnotes dotted-paper annotation preview on #f8fafc with #2B9CF6 fountain-pen and #f59e0b highlighter cursor badges gliding across linked SVG nodes over 800ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Goodnotes: Handwriting Canvas Pen & Lasso Node Glide -->\n<div class=\"m-app-goodnotes\"><div class=\"m-app-goodnotes__board\"><svg class=\"m-app-goodnotes__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/></svg><span class=\"m-app-goodnotes__cur m-app-goodnotes__c1\">▲ Pen 0.5mm</span><span class=\"m-app-goodnotes__cur m-app-goodnotes__c2\">▲ Lasso</span></div></div>\n<style>.m-app-goodnotes{position:absolute;inset:0;display:grid;place-items:center;background:#f8fafc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-goodnotes__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-goodnotes__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-goodnotes__nd{transition:r .25s,fill .25s}.m-app-goodnotes__nd.is-hi{fill:#2B9CF6;filter:drop-shadow(0 0 8px #2B9CF6)}.m-app-goodnotes__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-goodnotes__c1{background:#2B9CF6;left:24px;top:24px}.m-app-goodnotes__c2{background:#f59e0b;left:140px;top:92px}</style>",
+    "html": "<div class=\"m-app-goodnotes\"><div class=\"m-app-goodnotes__board\"><svg class=\"m-app-goodnotes__svg\" viewBox=\"0 0 240 140\"><line x1=\"44\" y1=\"42\" x2=\"126\" y2=\"30\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"196\" y2=\"56\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"44\" y1=\"42\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"126\" y1=\"30\" x2=\"86\" y2=\"102\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"86\" y1=\"102\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><line x1=\"196\" y1=\"56\" x2=\"168\" y2=\"108\" stroke=\"rgba(128,128,128,.32)\" stroke-width=\"1.5\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"0\" cx=\"44\" cy=\"42\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"1\" cx=\"126\" cy=\"30\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"2\" cx=\"196\" cy=\"56\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"3\" cx=\"86\" cy=\"102\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/><circle class=\"m-app-goodnotes__nd\" data-i=\"4\" cx=\"168\" cy=\"108\" r=\"8\" fill=\"#ffffff\" stroke=\"#2B9CF6\" stroke-width=\"2.2\"/></svg><span class=\"m-app-goodnotes__cur m-app-goodnotes__c1\">▲ Pen 0.5mm</span><span class=\"m-app-goodnotes__cur m-app-goodnotes__c2\">▲ Lasso</span></div></div>",
+    "css": ".m-app-goodnotes{position:absolute;inset:0;display:grid;place-items:center;background:#f8fafc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-goodnotes__board{position:relative;width:min(88%,262px);height:146px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.18);overflow:hidden;cursor:pointer;background-image:radial-gradient(rgba(128,128,128,.16) 1px,transparent 1px);background-size:14px 14px}.m-app-goodnotes__svg{position:absolute;inset:0;width:100%;height:100%}.m-app-goodnotes__nd{transition:r .25s,fill .25s}.m-app-goodnotes__nd.is-hi{fill:#2B9CF6;filter:drop-shadow(0 0 8px #2B9CF6)}.m-app-goodnotes__cur{position:absolute;padding:3px 7px;border-radius:999px;font:600 9.5px/1 'Geist Mono',monospace;color:#fff;transition:transform .82s cubic-bezier(.22,1,.36,1);pointer-events:none;box-shadow:0 4px 10px rgba(0,0,0,.25)}.m-app-goodnotes__c1{background:#2B9CF6;left:24px;top:24px}.m-app-goodnotes__c2{background:#f59e0b;left:140px;top:92px}",
+    "js": "var el=root.querySelector('.m-app-goodnotes');if(!el)return;var c1=el.querySelector('.m-app-goodnotes__c1'),c2=el.querySelector('.m-app-goodnotes__c2'),nds=[].slice.call(el.querySelectorAll('.m-app-goodnotes__nd'));var pts=[[20,16,136,86],[106,12,68,84],[162,38,144,94],[64,84,110,16]],idx=0,touched=false,dead=false;function move(i){idx=i;var p=pts[i];c1.style.transform='translate('+p[0]+'px,'+p[1]+'px)';c2.style.transform='translate('+(p[2]-140)+'px,'+(p[3]-92)+'px)';nds.forEach(function(n,j){n.classList.toggle('is-hi',j===i||j===(i+2)%nds.length);});}el.addEventListener('click',function(){touched=true;move((idx+1)%pts.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)move((idx+1)%pts.length);},1650);move(0);return function(){dead=true;clearInterval(iv);};"
+  }
+]

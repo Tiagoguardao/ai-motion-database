@@ -1048,10 +1048,16 @@ void main() {{ gl_FragColor = transition(v_uv); }}`;
   }};
 
   function renderApps() {{
-    const cats = ['All', ...new Set(ALL_APPS.map(a => a.category).filter(Boolean))];
-    $('appCats').innerHTML = cats.map(c =>
-      `<button type="button" data-cat="${{esc(c)}}" aria-pressed="${{state.appCat === c}}">${{esc(c)}}</button>`
-    ).join('');
+    const catCounts = new Map();
+    for (const a of ALL_APPS) {{
+      if (!a.category) continue;
+      catCounts.set(a.category, (catCounts.get(a.category) || 0) + 1);
+    }}
+    const cats = ['All', ...[...catCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([c]) => c)];
+    $('appCats').innerHTML = cats.map(c => {{
+      const n = c === 'All' ? ALL_APPS.length : catCounts.get(c);
+      return `<button type="button" data-cat="${{esc(c)}}" aria-pressed="${{state.appCat === c}}">${{esc(c)}} <span style="opacity:.62;font-family:var(--mono);font-size:11px">${{n}}</span></button>`;
+    }}).join('');
     $('appCats').querySelectorAll('button').forEach(b => {{
       b.onclick = () => {{ state.appCat = b.dataset.cat; renderApps(); }};
     }});

@@ -1,0 +1,1254 @@
+[
+  {
+    "id": "app-cash-app-numpad-amount-spring",
+    "title": "Cash App: Numpad Amount Spring & Green Pay Bounce",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 340,
+    "ease": {
+      "t": "spring",
+      "k": 380,
+      "c": 20
+    },
+    "easeLabel": "spring(380, 20)",
+    "props": [
+      "transform: scale (amount pop)",
+      "background-color (send confirmation)",
+      "opacity"
+    ],
+    "src": "Cash App",
+    "srcUrl": "https://apps.apple.com/us/app/cash-app/id711923939?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Cash App",
+      "slug": "cash-app",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#00D632",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/77/49/7d77495e-19e7-c1bf-aaab-296b504643d4/AppIcon-0-0-1x_U007ephone-0-1-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/cash-app/id711923939?uo=4",
+      "bundleId": "com.squareup.cash"
+    },
+    "summary": "Entering digits on Cash App's signature green home screen scales the oversized dollar figure with snappy spring overshoot while the rounded Pay pill confirms instantaneously.",
+    "hint": "Tap digits or Pay to trigger bounce",
+    "choreography": [
+      "0-45ms: pressed keypad cell compresses to scale(0.9) for crisp tactile contact.",
+      "45-240ms: hero currency figure scales 0.84 -> 1.12 -> 1.0 on spring(380, 20) as new digits append.",
+      "240-340ms: Pay pill blooms into emerald confirmation state with soft shadow lift."
+    ],
+    "agentPrompt": "Build Cash App's numpad payment screen on #00D632 or deep obsidian #09130b with #00D632 accents: render an oversized tabular currency readout that springs scale(0.84 -> 1.12 -> 1) over 340ms cubic-bezier(0.22, 1.45, 0.36, 1) on every digit tap, paired with tactile keypad buttons and a rounded pill Pay CTA that confirms in place.",
+    "extractableCode": "<!-- Cash App: Numpad Amount Spring & Green Pay Bounce -->\n<div class=\"m-app-cash-app\"><div class=\"m-app-cash-app\"><div class=\"m-app-cash-app__amt\"><span>$</span><b>25</b></div><div class=\"m-app-cash-app__sub\">Cash Balance · Instant</div><div class=\"m-app-cash-app__pad\"><button type=\"button\" data-d=\"1\">1</button><button type=\"button\" data-d=\"2\">2</button><button type=\"button\" data-d=\"5\">5</button><button type=\"button\" data-d=\"0\">0</button><button type=\"button\" class=\"m-app-cash-app__cta\">Pay</button></div></div></div>\n<style>.m-app-cash-app{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#08140b;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-cash-app__amt{display:flex;align-items:baseline;gap:2px;font:800 38px/1 'Host Grotesk',sans-serif;letter-spacing:-.04em;transition:transform .28s cubic-bezier(.22,1.4,.36,1)}.m-app-cash-app__amt span{font-size:22px;opacity:.75}.m-app-cash-app__amt.is-pop{animation:m-cash-app-pop .34s cubic-bezier(.22,1.45,.36,1)}@keyframes m-cash-app-pop{0%{transform:scale(.84)}55%{transform:scale(1.12)}100%{transform:scale(1)}}.m-app-cash-app__sub{font:500 11px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56);letter-spacing:.02em}.m-app-cash-app__pad{display:flex;align-items:center;gap:6px;margin-top:4px}.m-app-cash-app__pad button{height:34px;min-width:34px;padding:0 10px;border:1px solid rgba(128,128,128,.2);border-radius:10px;background:#122417;color:#f4f5f7;font:600 13px/1 'Geist Mono',monospace;cursor:pointer;transition:transform .12s,background .18s}.m-app-cash-app__pad button:active{transform:scale(.9)}.m-app-cash-app__pad .m-app-cash-app__cta{padding:0 16px;border-radius:999px;border:0;background:#00D632;color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;box-shadow:0 6px 18px #00D63244}.m-app-cash-app__pad .m-app-cash-app__cta.is-sent{background:#00B82B;transform:scale(1.06)}</style>",
+    "html": "<div class=\"m-app-cash-app\"><div class=\"m-app-cash-app__amt\"><span>$</span><b>25</b></div><div class=\"m-app-cash-app__sub\">Cash Balance · Instant</div><div class=\"m-app-cash-app__pad\"><button type=\"button\" data-d=\"1\">1</button><button type=\"button\" data-d=\"2\">2</button><button type=\"button\" data-d=\"5\">5</button><button type=\"button\" data-d=\"0\">0</button><button type=\"button\" class=\"m-app-cash-app__cta\">Pay</button></div></div>",
+    "css": ".m-app-cash-app{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#08140b;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-cash-app__amt{display:flex;align-items:baseline;gap:2px;font:800 38px/1 'Host Grotesk',sans-serif;letter-spacing:-.04em;transition:transform .28s cubic-bezier(.22,1.4,.36,1)}.m-app-cash-app__amt span{font-size:22px;opacity:.75}.m-app-cash-app__amt.is-pop{animation:m-cash-app-pop .34s cubic-bezier(.22,1.45,.36,1)}@keyframes m-cash-app-pop{0%{transform:scale(.84)}55%{transform:scale(1.12)}100%{transform:scale(1)}}.m-app-cash-app__sub{font:500 11px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56);letter-spacing:.02em}.m-app-cash-app__pad{display:flex;align-items:center;gap:6px;margin-top:4px}.m-app-cash-app__pad button{height:34px;min-width:34px;padding:0 10px;border:1px solid rgba(128,128,128,.2);border-radius:10px;background:#122417;color:#f4f5f7;font:600 13px/1 'Geist Mono',monospace;cursor:pointer;transition:transform .12s,background .18s}.m-app-cash-app__pad button:active{transform:scale(.9)}.m-app-cash-app__pad .m-app-cash-app__cta{padding:0 16px;border-radius:999px;border:0;background:#00D632;color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;box-shadow:0 6px 18px #00D63244}.m-app-cash-app__pad .m-app-cash-app__cta.is-sent{background:#00B82B;transform:scale(1.06)}",
+    "js": "var el=root.querySelector('.m-app-cash-app');if(!el)return;var amt=el.querySelector('.m-app-cash-app__amt'),num=amt.querySelector('b'),cta=el.querySelector('.m-app-cash-app__cta');var presets=[\"25\", \"45\", \"120\", \"85\"],idx=0,cur=presets[0],touched=false,dead=false;function pop(v){num.textContent=v;amt.classList.remove('is-pop');void amt.offsetWidth;amt.classList.add('is-pop');}el.querySelectorAll('[data-d]').forEach(function(b){b.addEventListener('click',function(){touched=true;cur=(cur.length>=4?'':cur)+b.dataset.d;pop(cur||'0');});});cta.addEventListener('click',function(){touched=true;cta.classList.add('is-sent');cta.textContent='Sent ✓';setTimeout(function(){cta.classList.remove('is-sent');cta.textContent=\"Pay\";},900);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%presets.length;cur=presets[idx];pop(cur);}},1750);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-venmo-social-payment-pulse",
+    "title": "Venmo: Emoji Payment Send & Social Feed Pop",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 360,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 21
+    },
+    "easeLabel": "spring(340, 21)",
+    "props": [
+      "transform: scale",
+      "background-color",
+      "box-shadow"
+    ],
+    "src": "Venmo",
+    "srcUrl": "https://apps.apple.com/us/app/venmo/id351727428?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Venmo",
+      "slug": "venmo",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#008CFF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d4/f1/8d/d4f18dd9-c6eb-6851-6ae2-12eaaff39ead/AppIcon-0-0-1x_U007emarketing-0-8-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/venmo/id351727428?uo=4",
+      "bundleId": "net.kortina.labs.Venmo"
+    },
+    "summary": "Venmo's peer-to-peer pay sheet pairs crisp blue amount bounces with playful instant confirmation feedback designed for casual split payments.",
+    "hint": "Tap keypad digits or Pay pill",
+    "choreography": [
+      "0-50ms: digit tap depresses keycap 10% and shifts numeric readout.",
+      "50-260ms: currency total springs upward with buoyant overshoot in Venmo cobalt (#008CFF).",
+      "260-360ms: Pay CTA pulses into verified sent pill with subtle shadow bloom."
+    ],
+    "agentPrompt": "Implement a Venmo-style P2P payment keypad on a clean #f5f9ff surface with #008CFF primary buttons: animate the dollar figure on every input using spring(340, 21) scale(0.84 -> 1.12 -> 1) and transition the Pay pill cleanly into a confirmed state.",
+    "extractableCode": "<!-- Venmo: Emoji Payment Send & Social Feed Pop -->\n<div class=\"m-app-venmo\"><div class=\"m-app-venmo\"><div class=\"m-app-venmo__amt\"><span>$</span><b>18</b></div><div class=\"m-app-venmo__sub\">🍕 Dinner split · Friends</div><div class=\"m-app-venmo__pad\"><button type=\"button\" data-d=\"1\">1</button><button type=\"button\" data-d=\"2\">2</button><button type=\"button\" data-d=\"5\">5</button><button type=\"button\" data-d=\"0\">0</button><button type=\"button\" class=\"m-app-venmo__cta\">Pay @alex</button></div></div></div>\n<style>.m-app-venmo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#f2f7ff;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-venmo__amt{display:flex;align-items:baseline;gap:2px;font:800 38px/1 'Host Grotesk',sans-serif;letter-spacing:-.04em;transition:transform .28s cubic-bezier(.22,1.4,.36,1)}.m-app-venmo__amt span{font-size:22px;opacity:.75}.m-app-venmo__amt.is-pop{animation:m-venmo-pop .34s cubic-bezier(.22,1.45,.36,1)}@keyframes m-venmo-pop{0%{transform:scale(.84)}55%{transform:scale(1.12)}100%{transform:scale(1)}}.m-app-venmo__sub{font:500 11px/1 'Geist Mono',monospace;color:#6b7280;letter-spacing:.02em}.m-app-venmo__pad{display:flex;align-items:center;gap:6px;margin-top:4px}.m-app-venmo__pad button{height:34px;min-width:34px;padding:0 10px;border:1px solid rgba(128,128,128,.2);border-radius:10px;background:#ffffff;color:#0f172a;font:600 13px/1 'Geist Mono',monospace;cursor:pointer;transition:transform .12s,background .18s}.m-app-venmo__pad button:active{transform:scale(.9)}.m-app-venmo__pad .m-app-venmo__cta{padding:0 16px;border-radius:999px;border:0;background:#008CFF;color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;box-shadow:0 6px 18px #008CFF44}.m-app-venmo__pad .m-app-venmo__cta.is-sent{background:#0070d6;transform:scale(1.06)}</style>",
+    "html": "<div class=\"m-app-venmo\"><div class=\"m-app-venmo__amt\"><span>$</span><b>18</b></div><div class=\"m-app-venmo__sub\">🍕 Dinner split · Friends</div><div class=\"m-app-venmo__pad\"><button type=\"button\" data-d=\"1\">1</button><button type=\"button\" data-d=\"2\">2</button><button type=\"button\" data-d=\"5\">5</button><button type=\"button\" data-d=\"0\">0</button><button type=\"button\" class=\"m-app-venmo__cta\">Pay @alex</button></div></div>",
+    "css": ".m-app-venmo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#f2f7ff;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-venmo__amt{display:flex;align-items:baseline;gap:2px;font:800 38px/1 'Host Grotesk',sans-serif;letter-spacing:-.04em;transition:transform .28s cubic-bezier(.22,1.4,.36,1)}.m-app-venmo__amt span{font-size:22px;opacity:.75}.m-app-venmo__amt.is-pop{animation:m-venmo-pop .34s cubic-bezier(.22,1.45,.36,1)}@keyframes m-venmo-pop{0%{transform:scale(.84)}55%{transform:scale(1.12)}100%{transform:scale(1)}}.m-app-venmo__sub{font:500 11px/1 'Geist Mono',monospace;color:#6b7280;letter-spacing:.02em}.m-app-venmo__pad{display:flex;align-items:center;gap:6px;margin-top:4px}.m-app-venmo__pad button{height:34px;min-width:34px;padding:0 10px;border:1px solid rgba(128,128,128,.2);border-radius:10px;background:#ffffff;color:#0f172a;font:600 13px/1 'Geist Mono',monospace;cursor:pointer;transition:transform .12s,background .18s}.m-app-venmo__pad button:active{transform:scale(.9)}.m-app-venmo__pad .m-app-venmo__cta{padding:0 16px;border-radius:999px;border:0;background:#008CFF;color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;box-shadow:0 6px 18px #008CFF44}.m-app-venmo__pad .m-app-venmo__cta.is-sent{background:#0070d6;transform:scale(1.06)}",
+    "js": "var el=root.querySelector('.m-app-venmo');if(!el)return;var amt=el.querySelector('.m-app-venmo__amt'),num=amt.querySelector('b'),cta=el.querySelector('.m-app-venmo__cta');var presets=[\"18\", \"32\", \"64\", \"24\"],idx=0,cur=presets[0],touched=false,dead=false;function pop(v){num.textContent=v;amt.classList.remove('is-pop');void amt.offsetWidth;amt.classList.add('is-pop');}el.querySelectorAll('[data-d]').forEach(function(b){b.addEventListener('click',function(){touched=true;cur=(cur.length>=4?'':cur)+b.dataset.d;pop(cur||'0');});});cta.addEventListener('click',function(){touched=true;cta.classList.add('is-sent');cta.textContent='Sent ✓';setTimeout(function(){cta.classList.remove('is-sent');cta.textContent=\"Pay @alex\";},900);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%presets.length;cur=presets[idx];pop(cur);}},1750);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-robinhood-sparkline-haptic-scrub",
+    "title": "Robinhood: Live Sparkline Scrub & Price Odometer",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 240,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "cx/cy (SVG scrub dot)",
+      "x1/x2 (vertical crosshair)",
+      "textContent (live ticker)"
+    ],
+    "src": "Robinhood",
+    "srcUrl": "https://apps.apple.com/us/app/robinhood-trading-investing/id938003185?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Robinhood",
+      "slug": "robinhood",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#00C805",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/76/fb/7a/76fb7a32-5bff-5d43-c0c2-b440391d53f0/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/robinhood-trading-investing/id938003185?uo=4",
+      "bundleId": "com.robinhood.release.Robinhood"
+    },
+    "summary": "Dragging across Robinhood's portfolio chart slides a crisp vertical hairline and glowing green node along the price spline while updating the live dollar valuation in lockstep.",
+    "hint": "Move pointer or click chart to scrub",
+    "choreography": [
+      "0-60ms: pointer horizontal position maps to nearest tick sample along the SVG polyline.",
+      "60-180ms: glowing #00C805 reticle and dashed vertical crosshair glide smoothly via cubic-bezier(0.22, 1, 0.36, 1).",
+      "180-240ms: tabular price readout snaps to the exact timestamp value without layout shift."
+    ],
+    "agentPrompt": "Create a Robinhood interactive SVG sparkline on #0b0e11: draw a 2.2px #00C805 polyline over a translucent vertical gradient fill, track pointer X to glide a 4.5px dot and dashed vertical crosshair with 160ms cubic-bezier(0.22, 1, 0.36, 1), and update a monospace price header synchronously.",
+    "extractableCode": "<!-- Robinhood: Live Sparkline Scrub & Price Odometer -->\n<div class=\"m-app-robinhood\"><div class=\"m-app-robinhood__card\"><div class=\"m-app-robinhood__top\"><span>Investing</span><em class=\"m-app-robinhood__d\">+$412.80 (+2.71%)</em></div><div class=\"m-app-robinhood__val\">$<b>15,632.90</b></div><svg class=\"m-app-robinhood__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-robinhood-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#00C805\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#00C805\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-robinhood__area\" d=\"M0.0 50 L22.2 44 L44.4 47 L66.7 36 L88.9 40 L111.1 26 L133.3 30 L155.6 19 L177.8 23 L200.0 11 L200 66 L0 66 Z\" fill=\"url(#m-robinhood-g)\"/><path class=\"m-app-robinhood__line\" d=\"M0.0 50 L22.2 44 L44.4 47 L66.7 36 L88.9 40 L111.1 26 L133.3 30 L155.6 19 L177.8 23 L200.0 11\" fill=\"none\" stroke=\"#00C805\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-robinhood__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#00C805\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-robinhood__dot\" cx=\"200.0\" cy=\"11\" r=\"4.5\" fill=\"#00C805\" stroke=\"#13171d\" stroke-width=\"2\"/></svg></div></div>\n<style>.m-app-robinhood{position:absolute;inset:0;display:grid;place-items:center;background:#0b0e11;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-robinhood__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#13171d;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-robinhood__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-robinhood__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#00C805}.m-app-robinhood__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-robinhood__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-robinhood__dot,.m-app-robinhood__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}</style>",
+    "html": "<div class=\"m-app-robinhood\"><div class=\"m-app-robinhood__card\"><div class=\"m-app-robinhood__top\"><span>Investing</span><em class=\"m-app-robinhood__d\">+$412.80 (+2.71%)</em></div><div class=\"m-app-robinhood__val\">$<b>15,632.90</b></div><svg class=\"m-app-robinhood__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-robinhood-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#00C805\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#00C805\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-robinhood__area\" d=\"M0.0 50 L22.2 44 L44.4 47 L66.7 36 L88.9 40 L111.1 26 L133.3 30 L155.6 19 L177.8 23 L200.0 11 L200 66 L0 66 Z\" fill=\"url(#m-robinhood-g)\"/><path class=\"m-app-robinhood__line\" d=\"M0.0 50 L22.2 44 L44.4 47 L66.7 36 L88.9 40 L111.1 26 L133.3 30 L155.6 19 L177.8 23 L200.0 11\" fill=\"none\" stroke=\"#00C805\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-robinhood__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#00C805\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-robinhood__dot\" cx=\"200.0\" cy=\"11\" r=\"4.5\" fill=\"#00C805\" stroke=\"#13171d\" stroke-width=\"2\"/></svg></div></div>",
+    "css": ".m-app-robinhood{position:absolute;inset:0;display:grid;place-items:center;background:#0b0e11;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-robinhood__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#13171d;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-robinhood__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-robinhood__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#00C805}.m-app-robinhood__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-robinhood__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-robinhood__dot,.m-app-robinhood__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-robinhood');if(!el)return;var card=el.querySelector('.m-app-robinhood__card'),dot=el.querySelector('.m-app-robinhood__dot'),guide=el.querySelector('.m-app-robinhood__guide'),val=el.querySelector('.m-app-robinhood__val b');var coords=[[0.0, 50], [22.2, 44], [44.4, 47], [66.7, 36], [88.9, 40], [111.1, 26], [133.3, 30], [155.6, 19], [177.8, 23], [200.0, 11]],vals=[\"14,820.10\", \"14,940.50\", \"14,880.00\", \"15,120.40\", \"15,060.20\", \"15,310.80\", \"15,240.00\", \"15,490.60\", \"15,410.15\", \"15,632.90\"],idx=coords.length-1,touched=false,dead=false;function setIdx(i){i=Math.max(0,Math.min(coords.length-1,i));dot.setAttribute('cx',coords[i][0]);dot.setAttribute('cy',coords[i][1]);guide.setAttribute('x1',coords[i][0]);guide.setAttribute('x2',coords[i][0]);val.textContent=vals[i];}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));setIdx(Math.round(p*(coords.length-1)));});card.addEventListener('click',function(){touched=true;idx=(idx+2)%coords.length;setIdx(idx);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%coords.length;setIdx(idx);}},900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-coinbase-crypto-swap-flip",
+    "title": "Coinbase: Instant Crypto Convert Flip & Rate Lock",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 22
+    },
+    "easeLabel": "spring(310, 22)",
+    "props": [
+      "transform: translateY (asset card swap)",
+      "transform: rotate (180deg swap button)"
+    ],
+    "src": "Coinbase",
+    "srcUrl": "https://apps.apple.com/us/app/coinbase-buy-crypto-stocks/id886427730?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Coinbase",
+      "slug": "coinbase",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0052FF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/57/a6/81/57a68149-273b-49dd-a63b-f1ff1de17035/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/coinbase-buy-crypto-stocks/id886427730?uo=4",
+      "bundleId": "com.vilcsak.bitcoin2"
+    },
+    "summary": "Tapping Coinbase's central convert arrow rotates the cobalt button 180° while the source and destination asset cards cross-slide seamlessly into each other's slots.",
+    "hint": "Tap swap arrow to invert pair",
+    "choreography": [
+      "0-80ms: circular #0052FF swap button depresses and begins a 180° rotation.",
+      "40-340ms: BTC and USD cards translate vertically across each other by ±62px on spring(310, 22).",
+      "340-420ms: swapped cards settle cleanly with zero overlap flicker."
+    ],
+    "agentPrompt": "Build a Coinbase crypto convert widget on #0a0b0d with #0052FF accent: stack two 54px asset cards separated by an 8px gap and overlay a centered 34px circular swap button; on toggle, rotate the button 180deg while translating the top card +62px and bottom card -62px over 420ms cubic-bezier(0.22, 1.18, 0.36, 1).",
+    "extractableCode": "<!-- Coinbase: Instant Crypto Convert Flip & Rate Lock -->\n<div class=\"m-app-coinbase\"><div class=\"m-app-coinbase__wrap\"><div class=\"m-app-coinbase__box m-app-coinbase__top\"><span>BTC</span><b>0.1840</b></div><button type=\"button\" class=\"m-app-coinbase__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-coinbase__box m-app-coinbase__bot\"><span>USD</span><b>16,842.00</b></div></div></div>\n<style>.m-app-coinbase{position:absolute;inset:0;display:grid;place-items:center;background:#0a0b0d;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-coinbase__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-coinbase__box{height:54px;padding:0 14px;border-radius:14px;background:#14161c;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-coinbase__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#0052FF22;color:#0052FF}.m-app-coinbase__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-coinbase.is-flip .m-app-coinbase__top{transform:translateY(62px)}.m-app-coinbase.is-flip .m-app-coinbase__bot{transform:translateY(-62px)}.m-app-coinbase__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #0a0b0d;background:#0052FF;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-coinbase.is-flip .m-app-coinbase__swap{transform:rotate(180deg)}</style>",
+    "html": "<div class=\"m-app-coinbase\"><div class=\"m-app-coinbase__wrap\"><div class=\"m-app-coinbase__box m-app-coinbase__top\"><span>BTC</span><b>0.1840</b></div><button type=\"button\" class=\"m-app-coinbase__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-coinbase__box m-app-coinbase__bot\"><span>USD</span><b>16,842.00</b></div></div></div>",
+    "css": ".m-app-coinbase{position:absolute;inset:0;display:grid;place-items:center;background:#0a0b0d;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-coinbase__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-coinbase__box{height:54px;padding:0 14px;border-radius:14px;background:#14161c;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-coinbase__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#0052FF22;color:#0052FF}.m-app-coinbase__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-coinbase.is-flip .m-app-coinbase__top{transform:translateY(62px)}.m-app-coinbase.is-flip .m-app-coinbase__bot{transform:translateY(-62px)}.m-app-coinbase__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #0a0b0d;background:#0052FF;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-coinbase.is-flip .m-app-coinbase__swap{transform:rotate(180deg)}",
+    "js": "var el=root.querySelector('.m-app-coinbase');if(!el)return;var btn=el.querySelector('.m-app-coinbase__swap'),fl=false,touched=false,dead=false;function flip(){fl=!fl;el.classList.toggle('is-flip',fl);}btn.addEventListener('click',function(){touched=true;flip();});el.addEventListener('click',function(e){if(e.target!==btn){touched=true;flip();}});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-paypal-express-pay-confirm",
+    "title": "PayPal: Express Checkout Slide & Verified Blue Check",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 290,
+      "c": 24
+    },
+    "easeLabel": "spring(290, 24)",
+    "props": [
+      "transform: translateX (thumb)",
+      "transform: scaleX (progress wash)",
+      "color"
+    ],
+    "src": "PayPal",
+    "srcUrl": "https://apps.apple.com/us/app/paypal-pay-send-save/id283646709?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "PayPal",
+      "slug": "paypal",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#003087",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2c/00/5a/2c005a68-aae8-b46d-7017-88feffc9753a/AppIcon-0-0-1x_U007ephone-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/paypal-pay-send-save/id283646709?uo=4",
+      "bundleId": "com.yourcompany.PPClient"
+    },
+    "summary": "PayPal's express payment rail glides a deep navy thumb across the pill track, sweeping a solid confirmation fill behind it before morphing the arrow into a checkmark.",
+    "hint": "Click rail to confirm PayPal transfer",
+    "choreography": [
+      "0-120ms: circular #003087 thumb accelerates rightward across the 48px track.",
+      "80-420ms: scaleX confirmation wash sweeps left-to-right while prompt text shifts from muted slate to white.",
+      "420-520ms: thumb settles at the right cap with subtle spring overshoot and switches icon to ✓."
+    ],
+    "agentPrompt": "Recreate PayPal's slide-to-pay confirmation rail on #f5f7fa: use a 48px rounded track with a left-anchored scaleX(0->1) #003087 fill layer and a 40px circular handle that translates to the far edge over 520ms cubic-bezier(0.22, 1.14, 0.36, 1) while inverting colors into a verified checkmark.",
+    "extractableCode": "<!-- PayPal: Express Checkout Slide & Verified Blue Check -->\n<div class=\"m-app-paypal\"><div class=\"m-app-paypal__rail\" role=\"button\" tabindex=\"0\"><div class=\"m-app-paypal__fill\"></div><span class=\"m-app-paypal__txt\">Slide to Pay $68.00</span><div class=\"m-app-paypal__knob\">→</div></div></div>\n<style>.m-app-paypal{position:absolute;inset:0;display:grid;place-items:center;background:#eef2f9;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-paypal__rail{position:relative;width:min(84%,238px);height:48px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.22);overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-paypal__fill{position:absolute;inset:0;background:#003087;transform:scaleX(0);transform-origin:left center;transition:transform .52s cubic-bezier(.22,1,.36,1)}.m-app-paypal__rail.is-done .m-app-paypal__fill{transform:scaleX(1)}.m-app-paypal__txt{position:relative;z-index:2;font:600 12.5px/1 inherit;color:#6b7280;transition:color .25s}.m-app-paypal__rail.is-done .m-app-paypal__txt{color:#fff}.m-app-paypal__knob{position:absolute;left:4px;top:4px;width:40px;height:40px;border-radius:50%;background:#003087;color:#fff;font:700 16px/1 inherit;display:grid;place-items:center;z-index:3;box-shadow:0 4px 12px rgba(0,0,0,.28);transition:transform .52s cubic-bezier(.22,1.14,.36,1),background .25s}.m-app-paypal__rail.is-done .m-app-paypal__knob{transform:translateX(190px);background:#fff;color:#003087}</style>",
+    "html": "<div class=\"m-app-paypal\"><div class=\"m-app-paypal__rail\" role=\"button\" tabindex=\"0\"><div class=\"m-app-paypal__fill\"></div><span class=\"m-app-paypal__txt\">Slide to Pay $68.00</span><div class=\"m-app-paypal__knob\">→</div></div></div>",
+    "css": ".m-app-paypal{position:absolute;inset:0;display:grid;place-items:center;background:#eef2f9;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-paypal__rail{position:relative;width:min(84%,238px);height:48px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.22);overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-paypal__fill{position:absolute;inset:0;background:#003087;transform:scaleX(0);transform-origin:left center;transition:transform .52s cubic-bezier(.22,1,.36,1)}.m-app-paypal__rail.is-done .m-app-paypal__fill{transform:scaleX(1)}.m-app-paypal__txt{position:relative;z-index:2;font:600 12.5px/1 inherit;color:#6b7280;transition:color .25s}.m-app-paypal__rail.is-done .m-app-paypal__txt{color:#fff}.m-app-paypal__knob{position:absolute;left:4px;top:4px;width:40px;height:40px;border-radius:50%;background:#003087;color:#fff;font:700 16px/1 inherit;display:grid;place-items:center;z-index:3;box-shadow:0 4px 12px rgba(0,0,0,.28);transition:transform .52s cubic-bezier(.22,1.14,.36,1),background .25s}.m-app-paypal__rail.is-done .m-app-paypal__knob{transform:translateX(190px);background:#fff;color:#003087}",
+    "js": "var el=root.querySelector('.m-app-paypal');if(!el)return;var rail=el.querySelector('.m-app-paypal__rail'),txt=el.querySelector('.m-app-paypal__txt'),knob=el.querySelector('.m-app-paypal__knob');var on=false,touched=false,dead=false,t1=\"Slide to Pay $68.00\",t2=\"Paid with PayPal \\u2713\";function tog(){on=!on;rail.classList.toggle('is-done',on);txt.textContent=on?t2:t1;knob.textContent=on?'✓':'→';var w=rail.clientWidth-48;knob.style.transform=on?'translateX('+Math.max(120,w)+'px)':'translateX(0px)';}rail.addEventListener('click',function(){touched=true;tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},2000);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-monzo-hot-coral-card-freeze",
+    "title": "Monzo: Hot Coral Card Freeze Frost Wipe & 3D Tilt",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 480,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "clip-path: inset (frost wipe)",
+      "transform: rotateX + rotateY",
+      "filter: saturate"
+    ],
+    "src": "Monzo",
+    "srcUrl": "https://apps.apple.com/us/app/monzo-bank-mobile-banking/id1052238659?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Monzo",
+      "slug": "monzo",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF4F40",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/3e/55/193e55b2-6eaa-712e-ceb6-6cb6fbb59c32/AppIconProd-0-0-1x_U007ephone-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/monzo-bank-mobile-banking/id1052238659?uo=4",
+      "bundleId": "io.b2a.BankProd"
+    },
+    "summary": "Toggling Freeze on Monzo's iconic Hot Coral debit card wipes a frosted ice sheen across the surface via clip-path while desaturating and tilting the card in 3D perspective.",
+    "hint": "Hover to tilt or tap Freeze card",
+    "choreography": [
+      "0-120ms: card tilts slightly backward in perspective(680px) as desaturation begins.",
+      "80-420ms: translucent frosted glass overlay sweeps left-to-right via clip-path: inset(0 100% 0 0 -> 0 0 0 0).",
+      "420-480ms: button label switches to 'Frozen ❄' while pointer tilt remains live."
+    ],
+    "agentPrompt": "Design Monzo's Hot Coral card freeze interaction on #111827: render a 222x126px #FF4F40 card inside perspective(680px) with pointer-driven rotateX/rotateY tilt and a diagonal sheen; on Freeze toggle, animate a frosted backdrop-filter: blur(5px) overlay with clip-path: inset(0 100% 0 0 -> 0) over 480ms cubic-bezier(0.22, 1, 0.36, 1) and filter: saturate(0.35).",
+    "extractableCode": "<!-- Monzo: Hot Coral Card Freeze Frost Wipe & 3D Tilt -->\n<div class=\"m-app-monzo\"><div class=\"m-app-monzo__card\"><div class=\"m-app-monzo__sheen\"></div><div class=\"m-app-monzo__frost\"></div><div class=\"m-app-monzo__row\"><b>monzo</b><i>NFC</i></div><div class=\"m-app-monzo__num\">•••• 8914</div></div><button type=\"button\" class=\"m-app-monzo__btn\">Freeze card</button></div>\n<style>.m-app-monzo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#111827;color:#f4f5f7;perspective:680px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-monzo__card{position:relative;width:min(78%,222px);height:126px;border-radius:16px;padding:15px 16px;background:linear-gradient(135deg,#FF4F40,#e0382a);color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 16px 32px rgba(0,0,0,.32);transition:transform .35s cubic-bezier(.22,1,.36,1),filter .35s;cursor:pointer}.m-app-monzo__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-60%);transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-monzo__card:hover .m-app-monzo__sheen,.m-app-monzo__card.is-tilt .m-app-monzo__sheen{transform:translateX(60%)}.m-app-monzo__frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,235,255,.68),rgba(235,248,255,.45));backdrop-filter:blur(5px);clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-monzo__card.is-frozen .m-app-monzo__frost{clip-path:inset(0 0 0 0)}.m-app-monzo__card.is-frozen{filter:saturate(.35)}.m-app-monzo__row{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:13px}.m-app-monzo__row i{font-style:normal;font:600 9.5px/1 'Geist Mono',monospace;opacity:.8}.m-app-monzo__num{position:relative;font:600 13.5px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-monzo__btn{height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(128,128,128,.22);background:#1f2937;color:#f4f5f7;font:600 11.5px/1 inherit;cursor:pointer;transition:transform .16s}.m-app-monzo__btn:active{transform:scale(.94)}</style>",
+    "html": "<div class=\"m-app-monzo\"><div class=\"m-app-monzo__card\"><div class=\"m-app-monzo__sheen\"></div><div class=\"m-app-monzo__frost\"></div><div class=\"m-app-monzo__row\"><b>monzo</b><i>NFC</i></div><div class=\"m-app-monzo__num\">•••• 8914</div></div><button type=\"button\" class=\"m-app-monzo__btn\">Freeze card</button></div>",
+    "css": ".m-app-monzo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#111827;color:#f4f5f7;perspective:680px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-monzo__card{position:relative;width:min(78%,222px);height:126px;border-radius:16px;padding:15px 16px;background:linear-gradient(135deg,#FF4F40,#e0382a);color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 16px 32px rgba(0,0,0,.32);transition:transform .35s cubic-bezier(.22,1,.36,1),filter .35s;cursor:pointer}.m-app-monzo__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-60%);transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-monzo__card:hover .m-app-monzo__sheen,.m-app-monzo__card.is-tilt .m-app-monzo__sheen{transform:translateX(60%)}.m-app-monzo__frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,235,255,.68),rgba(235,248,255,.45));backdrop-filter:blur(5px);clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-monzo__card.is-frozen .m-app-monzo__frost{clip-path:inset(0 0 0 0)}.m-app-monzo__card.is-frozen{filter:saturate(.35)}.m-app-monzo__row{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:13px}.m-app-monzo__row i{font-style:normal;font:600 9.5px/1 'Geist Mono',monospace;opacity:.8}.m-app-monzo__num{position:relative;font:600 13.5px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-monzo__btn{height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(128,128,128,.22);background:#1f2937;color:#f4f5f7;font:600 11.5px/1 inherit;cursor:pointer;transition:transform .16s}.m-app-monzo__btn:active{transform:scale(.94)}",
+    "js": "var el=root.querySelector('.m-app-monzo');if(!el)return;var card=el.querySelector('.m-app-monzo__card'),btn=el.querySelector('.m-app-monzo__btn');var frozen=false,touched=false,dead=false,l1=\"Freeze card\",l2=\"Unfreeze \\u2744\";function flip(){frozen=!frozen;card.classList.toggle('is-frozen',frozen);card.classList.toggle('is-tilt',!frozen);btn.textContent=frozen?l2:l1;card.style.transform=frozen?'rotateY(-8deg) rotateX(4deg) scale(.97)':'rotateY(8deg) rotateX(5deg)';}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='rotateY('+(x*22).toFixed(1)+'deg) rotateX('+(-y*16).toFixed(1)+'deg)';});card.addEventListener('pointerleave',function(){card.style.transform='';});btn.addEventListener('click',function(){touched=true;flip();});card.addEventListener('click',function(){touched=true;flip();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},2200);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-n26-spaces-pill-switcher",
+    "title": "N26: Spaces Sub-Account Segmented Glide",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 330,
+      "c": 24
+    },
+    "easeLabel": "spring(330, 24)",
+    "props": [
+      "transform: translateX (shared thumb)",
+      "color",
+      "textContent"
+    ],
+    "src": "N26",
+    "srcUrl": "https://apps.apple.com/us/app/n26-love-your-bank/id956857223?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "N26",
+      "slug": "n26",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#36A18B",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/27/d3/09/27d309fd-6dbc-b794-7270-9889e1c4f68c/AppIcon_app_live-0-0-1x_U007ephone-0-1-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/n26-love-your-bank/id956857223?uo=4",
+      "bundleId": "de.no26.Number26"
+    },
+    "summary": "Switching between N26's Main Account, Travel Space, and Tax Vault glides a teal pill indicator cleanly beneath the labels with crisp German neo-bank restraint.",
+    "hint": "Click tabs to switch N26 Spaces",
+    "choreography": [
+      "0-60ms: tapped segment highlights immediately while the shared indicator launches.",
+      "60-320ms: #36A18B indicator slides across columns via translateX(i * 100%) on spring(330, 24).",
+      "320-380ms: balance readout card updates to the selected Space's total."
+    ],
+    "agentPrompt": "Build an N26 Spaces segmented switcher on #f4f7f6 with #36A18B indicator: use a 3-column CSS grid with an absolutely positioned active thumb translating by translateX(index * 100%) over 380ms cubic-bezier(0.22, 1.18, 0.36, 1) above a minimalist balance summary card.",
+    "extractableCode": "<!-- N26: Spaces Sub-Account Segmented Glide -->\n<div class=\"m-app-n26\"><div class=\"m-app-n26__box\"><div class=\"m-app-n26__seg\"><span class=\"m-app-n26__thumb\"></span><button type=\"button\" data-i=\"0\">Main</button><button type=\"button\" data-i=\"1\">Travel</button><button type=\"button\" data-i=\"2\">Vault</button></div><div class=\"m-app-n26__out\"><b>€4,280</b><span>Main</span></div></div></div>\n<style>.m-app-n26{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7f6;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-n26__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-n26__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#ffffff;border:1px solid rgba(128,128,128,.16)}.m-app-n26__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#36A18B;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-n26__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:#6b7280;cursor:pointer;transition:color .2s}.m-app-n26__seg button.is-on{color:#fff}.m-app-n26__out{padding:14px;border-radius:14px;background:#ffffff;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-n26__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-n26__out span{font-size:11px;color:#6b7280}</style>",
+    "html": "<div class=\"m-app-n26\"><div class=\"m-app-n26__box\"><div class=\"m-app-n26__seg\"><span class=\"m-app-n26__thumb\"></span><button type=\"button\" data-i=\"0\">Main</button><button type=\"button\" data-i=\"1\">Travel</button><button type=\"button\" data-i=\"2\">Vault</button></div><div class=\"m-app-n26__out\"><b>€4,280</b><span>Main</span></div></div></div>",
+    "css": ".m-app-n26{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7f6;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-n26__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-n26__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#ffffff;border:1px solid rgba(128,128,128,.16)}.m-app-n26__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#36A18B;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-n26__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:#6b7280;cursor:pointer;transition:color .2s}.m-app-n26__seg button.is-on{color:#fff}.m-app-n26__out{padding:14px;border-radius:14px;background:#ffffff;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-n26__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-n26__out span{font-size:11px;color:#6b7280}",
+    "js": "var el=root.querySelector('.m-app-n26');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-n26__seg button')),th=el.querySelector('.m-app-n26__thumb'),b=el.querySelector('.m-app-n26__out b'),sp=el.querySelector('.m-app-n26__out span');var tabs=[\"Main\", \"Travel\", \"Vault\"],vals=[\"\\u20ac4,280\", \"\\u20ac1,150\", \"\\u20ac9,400\"],idx=0,touched=false,dead=false;function set(i){idx=i;th.style.transform='translateX('+(i*100)+'%)';btns.forEach(function(x,j){x.classList.toggle('is-on',j===i);});b.textContent=vals[i];sp.textContent=tabs[i];}btns.forEach(function(x,i){x.addEventListener('click',function(){touched=true;set(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%tabs.length);},1800);set(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-nubank-ultravioleta-card-tilt",
+    "title": "Nubank: Ultravioleta Metallic Card Sheen & Privacy Lock",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 460,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: rotateX + rotateY",
+      "transform: translateX (specular sheen)",
+      "clip-path"
+    ],
+    "src": "Nubank",
+    "srcUrl": "https://apps.apple.com/us/app/nu-everyday-mobile-banking/id814456780?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Nubank",
+      "slug": "nubank",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#820AD1",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5e/98/5a/5e985af1-854f-6234-0124-2dabba620f51/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/nu-everyday-mobile-banking/id814456780?uo=4",
+      "bundleId": "com.nu.iphone"
+    },
+    "summary": "Nubank's signature violet card catches a sweeping metallic highlight across its gradient face as you move the pointer, with a crisp one-tap privacy shield wipe.",
+    "hint": "Move pointer or tap to lock card",
+    "choreography": [
+      "Continuous hover: pointer offsets drive subtle ±11° Y and ±8° X 3D tilt.",
+      "0-460ms on click: specular gloss sweeps across the #820AD1 surface while privacy frost wipes over card digits.",
+      "Release: card glides smoothly back to flat neutral plane."
+    ],
+    "agentPrompt": "Build Nubank's Ultravioleta 3D tilt card on #140821 using linear-gradient(135deg, #820AD1, #4c0680): add pointer-tracked rotateX/rotateY perspective tilt, a 115deg white specular sheen sweep, and a clip-path privacy frost toggle over 460ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Nubank: Ultravioleta Metallic Card Sheen & Privacy Lock -->\n<div class=\"m-app-nubank\"><div class=\"m-app-nubank__card\"><div class=\"m-app-nubank__sheen\"></div><div class=\"m-app-nubank__frost\"></div><div class=\"m-app-nubank__row\"><b>nu</b><i>NFC</i></div><div class=\"m-app-nubank__num\">•••• 3091</div></div><button type=\"button\" class=\"m-app-nubank__btn\">Hide details</button></div>\n<style>.m-app-nubank{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#12071d;color:#f4f5f7;perspective:680px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-nubank__card{position:relative;width:min(78%,222px);height:126px;border-radius:16px;padding:15px 16px;background:linear-gradient(135deg,#820AD1,#4f0582);color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 16px 32px rgba(0,0,0,.32);transition:transform .35s cubic-bezier(.22,1,.36,1),filter .35s;cursor:pointer}.m-app-nubank__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-60%);transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-nubank__card:hover .m-app-nubank__sheen,.m-app-nubank__card.is-tilt .m-app-nubank__sheen{transform:translateX(60%)}.m-app-nubank__frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,235,255,.68),rgba(235,248,255,.45));backdrop-filter:blur(5px);clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-nubank__card.is-frozen .m-app-nubank__frost{clip-path:inset(0 0 0 0)}.m-app-nubank__card.is-frozen{filter:saturate(.35)}.m-app-nubank__row{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:13px}.m-app-nubank__row i{font-style:normal;font:600 9.5px/1 'Geist Mono',monospace;opacity:.8}.m-app-nubank__num{position:relative;font:600 13.5px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-nubank__btn{height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(128,128,128,.22);background:#231036;color:#f4f5f7;font:600 11.5px/1 inherit;cursor:pointer;transition:transform .16s}.m-app-nubank__btn:active{transform:scale(.94)}</style>",
+    "html": "<div class=\"m-app-nubank\"><div class=\"m-app-nubank__card\"><div class=\"m-app-nubank__sheen\"></div><div class=\"m-app-nubank__frost\"></div><div class=\"m-app-nubank__row\"><b>nu</b><i>NFC</i></div><div class=\"m-app-nubank__num\">•••• 3091</div></div><button type=\"button\" class=\"m-app-nubank__btn\">Hide details</button></div>",
+    "css": ".m-app-nubank{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#12071d;color:#f4f5f7;perspective:680px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-nubank__card{position:relative;width:min(78%,222px);height:126px;border-radius:16px;padding:15px 16px;background:linear-gradient(135deg,#820AD1,#4f0582);color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 16px 32px rgba(0,0,0,.32);transition:transform .35s cubic-bezier(.22,1,.36,1),filter .35s;cursor:pointer}.m-app-nubank__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-60%);transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-nubank__card:hover .m-app-nubank__sheen,.m-app-nubank__card.is-tilt .m-app-nubank__sheen{transform:translateX(60%)}.m-app-nubank__frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,235,255,.68),rgba(235,248,255,.45));backdrop-filter:blur(5px);clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-nubank__card.is-frozen .m-app-nubank__frost{clip-path:inset(0 0 0 0)}.m-app-nubank__card.is-frozen{filter:saturate(.35)}.m-app-nubank__row{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:13px}.m-app-nubank__row i{font-style:normal;font:600 9.5px/1 'Geist Mono',monospace;opacity:.8}.m-app-nubank__num{position:relative;font:600 13.5px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-nubank__btn{height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(128,128,128,.22);background:#231036;color:#f4f5f7;font:600 11.5px/1 inherit;cursor:pointer;transition:transform .16s}.m-app-nubank__btn:active{transform:scale(.94)}",
+    "js": "var el=root.querySelector('.m-app-nubank');if(!el)return;var card=el.querySelector('.m-app-nubank__card'),btn=el.querySelector('.m-app-nubank__btn');var frozen=false,touched=false,dead=false,l1=\"Hide details\",l2=\"Hidden \\u2022\\u2022\\u2022\\u2022\";function flip(){frozen=!frozen;card.classList.toggle('is-frozen',frozen);card.classList.toggle('is-tilt',!frozen);btn.textContent=frozen?l2:l1;card.style.transform=frozen?'rotateY(-8deg) rotateX(4deg) scale(.97)':'rotateY(8deg) rotateX(5deg)';}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='rotateY('+(x*22).toFixed(1)+'deg) rotateX('+(-y*16).toFixed(1)+'deg)';});card.addEventListener('pointerleave',function(){card.style.transform='';});btn.addEventListener('click',function(){touched=true;flip();});card.addEventListener('click',function(){touched=true;flip();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},2200);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-klarna-pay-in-4-stepper",
+    "title": "Klarna: Pay-in-4 Installment Step Progress Bar",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 450,
+    "ease": {
+      "t": "spring",
+      "k": 300,
+      "c": 23
+    },
+    "easeLabel": "spring(300, 23)",
+    "props": [
+      "width (connector fill)",
+      "transform: scale (active milestone)",
+      "box-shadow"
+    ],
+    "src": "Klarna",
+    "srcUrl": "https://apps.apple.com/us/app/klarna-smarter-everyday-money/id1115120118?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Klarna",
+      "slug": "klarna",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FFB3C7",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f8/0b/0a/f80b0aa5-224e-6e7a-e29e-6c4cb1ef1815/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/klarna-smarter-everyday-money/id1115120118?uo=4",
+      "bundleId": "com.klarna.app"
+    },
+    "summary": "Klarna's installment timeline animates a pink-and-ink progress connector across four scheduled bi-weekly payments, popping the active milestone ring with a soft halo.",
+    "hint": "Tap any installment step",
+    "choreography": [
+      "0-80ms: selected payment milestone pops to scale(1.2) with a soft coral halo ring.",
+      "40-380ms: horizontal progress track glides smoothly to the target step percentage.",
+      "380-450ms: preceding nodes lock into filled completed state."
+    ],
+    "agentPrompt": "Build Klarna's Pay-in-4 installment stepper on #fff5f8 with #101114 ink and #f472b6 highlight: connect 4 circular step buttons over a 4px track whose fill width transitions over 450ms cubic-bezier(0.22, 1.15, 0.36, 1) while the current node scales 1.2x with a 5px translucent ring.",
+    "extractableCode": "<!-- Klarna: Pay-in-4 Installment Step Progress Bar -->\n<div class=\"m-app-klarna\"><div class=\"m-app-klarna__card\"><div class=\"m-app-klarna__bar\"><span class=\"m-app-klarna__fill\"></span></div><div class=\"m-app-klarna__row\"><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"0\"><i>1</i><span>Today</span></button><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"1\"><i>2</i><span>2 wks</span></button><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"2\"><i>3</i><span>4 wks</span></button><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"3\"><i>4</i><span>6 wks</span></button></div></div></div>\n<style>.m-app-klarna{position:absolute;inset:0;display:grid;place-items:center;background:#fff5f8;color:#101114;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-klarna__card{width:min(88%,268px);padding:18px 14px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);position:relative}.m-app-klarna__bar{position:relative;height:4px;border-radius:999px;background:rgba(128,128,128,.2);margin:12px 18px 0}.m-app-klarna__fill{position:absolute;inset:0;width:33%;border-radius:999px;background:#e11d74;transition:width .45s cubic-bezier(.22,1.15,.36,1)}.m-app-klarna__row{display:flex;justify-content:space-between;margin-top:-15px;position:relative;z-index:2}.m-app-klarna__n{border:0;background:none;color:#6b7280;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:0}.m-app-klarna__n i{width:26px;height:26px;border-radius:50%;background:#ffffff;border:2px solid rgba(128,128,128,.3);font:700 11px/1 'Geist Mono',monospace;font-style:normal;display:grid;place-items:center;transition:all .32s cubic-bezier(.22,1.35,.36,1)}.m-app-klarna__n.is-done i{background:#e11d74;border-color:#e11d74;color:#fff}.m-app-klarna__n.is-cur i{transform:scale(1.2);box-shadow:0 0 0 5px #e11d7433}.m-app-klarna__n span{font:600 10px/1 inherit}.m-app-klarna__n.is-cur span{color:#101114}</style>",
+    "html": "<div class=\"m-app-klarna\"><div class=\"m-app-klarna__card\"><div class=\"m-app-klarna__bar\"><span class=\"m-app-klarna__fill\"></span></div><div class=\"m-app-klarna__row\"><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"0\"><i>1</i><span>Today</span></button><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"1\"><i>2</i><span>2 wks</span></button><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"2\"><i>3</i><span>4 wks</span></button><button type=\"button\" class=\"m-app-klarna__n\" data-i=\"3\"><i>4</i><span>6 wks</span></button></div></div></div>",
+    "css": ".m-app-klarna{position:absolute;inset:0;display:grid;place-items:center;background:#fff5f8;color:#101114;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-klarna__card{width:min(88%,268px);padding:18px 14px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);position:relative}.m-app-klarna__bar{position:relative;height:4px;border-radius:999px;background:rgba(128,128,128,.2);margin:12px 18px 0}.m-app-klarna__fill{position:absolute;inset:0;width:33%;border-radius:999px;background:#e11d74;transition:width .45s cubic-bezier(.22,1.15,.36,1)}.m-app-klarna__row{display:flex;justify-content:space-between;margin-top:-15px;position:relative;z-index:2}.m-app-klarna__n{border:0;background:none;color:#6b7280;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:0}.m-app-klarna__n i{width:26px;height:26px;border-radius:50%;background:#ffffff;border:2px solid rgba(128,128,128,.3);font:700 11px/1 'Geist Mono',monospace;font-style:normal;display:grid;place-items:center;transition:all .32s cubic-bezier(.22,1.35,.36,1)}.m-app-klarna__n.is-done i{background:#e11d74;border-color:#e11d74;color:#fff}.m-app-klarna__n.is-cur i{transform:scale(1.2);box-shadow:0 0 0 5px #e11d7433}.m-app-klarna__n span{font:600 10px/1 inherit}.m-app-klarna__n.is-cur span{color:#101114}",
+    "js": "var el=root.querySelector('.m-app-klarna');if(!el)return;var ns=[].slice.call(el.querySelectorAll('.m-app-klarna__n')),fill=el.querySelector('.m-app-klarna__fill');var idx=1,touched=false,dead=false;function go(i){idx=i;fill.style.width=(i/(ns.length-1)*100)+'%';ns.forEach(function(n,j){n.classList.toggle('is-done',j<=i);n.classList.toggle('is-cur',j===i);});}ns.forEach(function(n,i){n.addEventListener('click',function(){touched=true;go(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)go((idx+1)%ns.length);},1550);go(1);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-ramp-receipt-laser-auto-match",
+    "title": "Ramp: Receipt Laser Scan & Instant Expense Match",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translateY (volt laser beam)",
+      "transform: scale (match pill)",
+      "opacity"
+    ],
+    "src": "Ramp",
+    "srcUrl": "https://apps.apple.com/us/app/ramp/id1628197245?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Ramp",
+      "slug": "ramp",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#E4F222",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/99/80/62/998062fb-8e4b-4efc-afe6-e2e9bca602c0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/ramp/id1628197245?uo=4",
+      "bundleId": "com.ramp.Ramp.ios"
+    },
+    "summary": "Ramp's automated receipt capture sweeps a luminous lime-yellow scan beam across receipt lines before snapping an instant policy-matched badge into focus.",
+    "hint": "Tap scanner to trigger receipt match",
+    "choreography": [
+      "Continuous: 2.5px #d4e815 scan beam oscillates vertically across the receipt field with soft glow.",
+      "0-360ms on hit: match pill springs from scale(0.9) opacity 0.65 to scale(1.04) full clarity.",
+      "360-420ms: matched transaction total locks cleanly in monospace."
+    ],
+    "agentPrompt": "Create Ramp's receipt auto-match scanner on #111312 with #d4e815 electric-volt accent: animate a glowing horizontal laser line oscillating vertically across stylized receipt bars, paired with a bottom pill badge that springs to scale(1.04) when a receipt matches.",
+    "extractableCode": "<!-- Ramp: Receipt Laser Scan & Instant Expense Match -->\n<div class=\"m-app-ramp\"><div class=\"m-app-ramp__box\"><div class=\"m-app-ramp__bars\"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class=\"m-app-ramp__beam\"></div><div class=\"m-app-ramp__res\"><b>$142.50</b><span>Auto-Matched</span></div></div></div>\n<style>.m-app-ramp{position:absolute;inset:0;display:grid;place-items:center;background:#111312;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ramp__box{position:relative;width:min(84%,238px);height:132px;border-radius:16px;background:#191c1a;border:1px solid rgba(128,128,128,.18);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer}.m-app-ramp__bars{display:flex;gap:5px;height:40px;align-items:stretch;opacity:.5}.m-app-ramp__bars i{width:4px;background:#f4f5f7;border-radius:2px}.m-app-ramp__bars i:nth-child(2n){width:8px}.m-app-ramp__bars i:nth-child(3n){width:2px}.m-app-ramp__beam{position:absolute;left:14px;right:14px;top:24px;height:2.5px;background:#cde016;box-shadow:0 0 14px #cde016;animation:m-ramp-sc 1.8s ease-in-out infinite alternate}@keyframes m-ramp-sc{0%{transform:translateY(0)}100%{transform:translateY(76px)}}.m-app-ramp__res{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#cde0161f;border:1px solid #cde01655;transform:scale(.9);opacity:.65;transition:all .36s cubic-bezier(.22,1.3,.36,1)}.m-app-ramp.is-hit .m-app-ramp__res{transform:scale(1.04);opacity:1}.m-app-ramp__res b{font:700 12px/1 'Geist Mono',monospace;color:#cde016}.m-app-ramp__res span{font:600 11px/1 inherit}</style>",
+    "html": "<div class=\"m-app-ramp\"><div class=\"m-app-ramp__box\"><div class=\"m-app-ramp__bars\"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class=\"m-app-ramp__beam\"></div><div class=\"m-app-ramp__res\"><b>$142.50</b><span>Auto-Matched</span></div></div></div>",
+    "css": ".m-app-ramp{position:absolute;inset:0;display:grid;place-items:center;background:#111312;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ramp__box{position:relative;width:min(84%,238px);height:132px;border-radius:16px;background:#191c1a;border:1px solid rgba(128,128,128,.18);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer}.m-app-ramp__bars{display:flex;gap:5px;height:40px;align-items:stretch;opacity:.5}.m-app-ramp__bars i{width:4px;background:#f4f5f7;border-radius:2px}.m-app-ramp__bars i:nth-child(2n){width:8px}.m-app-ramp__bars i:nth-child(3n){width:2px}.m-app-ramp__beam{position:absolute;left:14px;right:14px;top:24px;height:2.5px;background:#cde016;box-shadow:0 0 14px #cde016;animation:m-ramp-sc 1.8s ease-in-out infinite alternate}@keyframes m-ramp-sc{0%{transform:translateY(0)}100%{transform:translateY(76px)}}.m-app-ramp__res{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#cde0161f;border:1px solid #cde01655;transform:scale(.9);opacity:.65;transition:all .36s cubic-bezier(.22,1.3,.36,1)}.m-app-ramp.is-hit .m-app-ramp__res{transform:scale(1.04);opacity:1}.m-app-ramp__res b{font:700 12px/1 'Geist Mono',monospace;color:#cde016}.m-app-ramp__res span{font:600 11px/1 inherit}",
+    "js": "var el=root.querySelector('.m-app-ramp');if(!el)return;var on=false,touched=false,dead=false;function hit(){on=!on;el.classList.toggle('is-hit',on);}el.addEventListener('click',function(){touched=true;hit();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)hit();},1600);hit();return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-mercury-wire-approval-slide",
+    "title": "Mercury: Treasury Wire Slide-to-Approve Rail",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 280,
+      "c": 24
+    },
+    "easeLabel": "spring(280, 24)",
+    "props": [
+      "transform: translateX (handle)",
+      "transform: scaleX (indigo fill)",
+      "color"
+    ],
+    "src": "Mercury",
+    "srcUrl": "https://apps.apple.com/us/app/mercury-bank-differently/id1491984028?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Mercury",
+      "slug": "mercury",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#5E6AD2",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/20/a4/00/20a4004d-022c-8294-de2b-742d25aaa137/AppIcon-Release-0-0-1x_U007ephone-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/mercury-bank-differently/id1491984028?uo=4",
+      "bundleId": "com.mercury.iOSApp"
+    },
+    "summary": "Approving a high-value startup wire in Mercury uses a calm, deliberate slide-to-send rail that sweeps cool indigo across the track and flips into a verified confirmation.",
+    "hint": "Click rail to approve wire transfer",
+    "choreography": [
+      "0-100ms: circular indigo thumb glides out of its left detent.",
+      "80-440ms: full-height #5E6AD2 wash fills left-to-right behind crisp monospace text.",
+      "440-520ms: handle snaps to the right cap and flips arrow to ✓."
+    ],
+    "agentPrompt": "Design Mercury's wire-transfer approval rail on #0e1017 with #5E6AD2 indigo: build a 48px pill track containing a scaleX(0->1) fill layer and a 40px circular thumb that translates to the right edge over 520ms cubic-bezier(0.22, 1.14, 0.36, 1) to confirm a $25,000 wire.",
+    "extractableCode": "<!-- Mercury: Treasury Wire Slide-to-Approve Rail -->\n<div class=\"m-app-mercury\"><div class=\"m-app-mercury__rail\" role=\"button\" tabindex=\"0\"><div class=\"m-app-mercury__fill\"></div><span class=\"m-app-mercury__txt\">Slide to send $25,000</span><div class=\"m-app-mercury__knob\">→</div></div></div>\n<style>.m-app-mercury{position:absolute;inset:0;display:grid;place-items:center;background:#0e1017;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-mercury__rail{position:relative;width:min(84%,238px);height:48px;border-radius:999px;background:#171a24;border:1px solid rgba(128,128,128,.22);overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-mercury__fill{position:absolute;inset:0;background:#5E6AD2;transform:scaleX(0);transform-origin:left center;transition:transform .52s cubic-bezier(.22,1,.36,1)}.m-app-mercury__rail.is-done .m-app-mercury__fill{transform:scaleX(1)}.m-app-mercury__txt{position:relative;z-index:2;font:600 12.5px/1 inherit;color:rgba(255,255,255,.56);transition:color .25s}.m-app-mercury__rail.is-done .m-app-mercury__txt{color:#fff}.m-app-mercury__knob{position:absolute;left:4px;top:4px;width:40px;height:40px;border-radius:50%;background:#5E6AD2;color:#fff;font:700 16px/1 inherit;display:grid;place-items:center;z-index:3;box-shadow:0 4px 12px rgba(0,0,0,.28);transition:transform .52s cubic-bezier(.22,1.14,.36,1),background .25s}.m-app-mercury__rail.is-done .m-app-mercury__knob{transform:translateX(190px);background:#fff;color:#5E6AD2}</style>",
+    "html": "<div class=\"m-app-mercury\"><div class=\"m-app-mercury__rail\" role=\"button\" tabindex=\"0\"><div class=\"m-app-mercury__fill\"></div><span class=\"m-app-mercury__txt\">Slide to send $25,000</span><div class=\"m-app-mercury__knob\">→</div></div></div>",
+    "css": ".m-app-mercury{position:absolute;inset:0;display:grid;place-items:center;background:#0e1017;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-mercury__rail{position:relative;width:min(84%,238px);height:48px;border-radius:999px;background:#171a24;border:1px solid rgba(128,128,128,.22);overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-mercury__fill{position:absolute;inset:0;background:#5E6AD2;transform:scaleX(0);transform-origin:left center;transition:transform .52s cubic-bezier(.22,1,.36,1)}.m-app-mercury__rail.is-done .m-app-mercury__fill{transform:scaleX(1)}.m-app-mercury__txt{position:relative;z-index:2;font:600 12.5px/1 inherit;color:rgba(255,255,255,.56);transition:color .25s}.m-app-mercury__rail.is-done .m-app-mercury__txt{color:#fff}.m-app-mercury__knob{position:absolute;left:4px;top:4px;width:40px;height:40px;border-radius:50%;background:#5E6AD2;color:#fff;font:700 16px/1 inherit;display:grid;place-items:center;z-index:3;box-shadow:0 4px 12px rgba(0,0,0,.28);transition:transform .52s cubic-bezier(.22,1.14,.36,1),background .25s}.m-app-mercury__rail.is-done .m-app-mercury__knob{transform:translateX(190px);background:#fff;color:#5E6AD2}",
+    "js": "var el=root.querySelector('.m-app-mercury');if(!el)return;var rail=el.querySelector('.m-app-mercury__rail'),txt=el.querySelector('.m-app-mercury__txt'),knob=el.querySelector('.m-app-mercury__knob');var on=false,touched=false,dead=false,t1=\"Slide to send $25,000\",t2=\"Wire Sent \\u2713\";function tog(){on=!on;rail.classList.toggle('is-done',on);txt.textContent=on?t2:t1;knob.textContent=on?'✓':'→';var w=rail.clientWidth-48;knob.style.transform=on?'translateX('+Math.max(120,w)+'px)':'translateX(0px)';}rail.addEventListener('click',function(){touched=true;tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},2000);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-brex-spend-limit-tabs",
+    "title": "Brex: Corporate Spend Budget Segmented Morph",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 25
+    },
+    "easeLabel": "spring(340, 25)",
+    "props": [
+      "transform: translateX (active pill)",
+      "color",
+      "textContent"
+    ],
+    "src": "Brex",
+    "srcUrl": "https://apps.apple.com/us/app/brex/id1472905508?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Brex",
+      "slug": "brex",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F46A25",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fd/aa/42/fdaa42f8-33eb-836f-c4cc-29cbcfd76fb0/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/brex/id1472905508?uo=4",
+      "bundleId": "com.brex.mobile.ios"
+    },
+    "summary": "Toggling between Brex's Travel, Software, and Events spend limits glides a sharp orange indicator across the control bar while updating remaining monthly budgets.",
+    "hint": "Click budget categories",
+    "choreography": [
+      "0-60ms: tapped category takes crisp white contrast immediately.",
+      "60-320ms: #F46A25 sliding pill translates cleanly into the target column.",
+      "320-380ms: bottom budget panel reflects the live remaining spend cap."
+    ],
+    "agentPrompt": "Build a Brex spend-limit segmented control on #121214 with #F46A25 accent: slide a rounded pill indicator across 3 equal columns using translateX(i * 100%) over 380ms cubic-bezier(0.22, 1.18, 0.36, 1) synchronized with a remaining-budget card.",
+    "extractableCode": "<!-- Brex: Corporate Spend Budget Segmented Morph -->\n<div class=\"m-app-brex\"><div class=\"m-app-brex__box\"><div class=\"m-app-brex__seg\"><span class=\"m-app-brex__thumb\"></span><button type=\"button\" data-i=\"0\">Travel</button><button type=\"button\" data-i=\"1\">SaaS</button><button type=\"button\" data-i=\"2\">Events</button></div><div class=\"m-app-brex__out\"><b>$12,400</b><span>Travel</span></div></div></div>\n<style>.m-app-brex{position:absolute;inset:0;display:grid;place-items:center;background:#121214;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-brex__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-brex__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#1c1d21;border:1px solid rgba(128,128,128,.16)}.m-app-brex__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#F46A25;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-brex__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-brex__seg button.is-on{color:#fff}.m-app-brex__out{padding:14px;border-radius:14px;background:#1c1d21;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-brex__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-brex__out span{font-size:11px;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-brex\"><div class=\"m-app-brex__box\"><div class=\"m-app-brex__seg\"><span class=\"m-app-brex__thumb\"></span><button type=\"button\" data-i=\"0\">Travel</button><button type=\"button\" data-i=\"1\">SaaS</button><button type=\"button\" data-i=\"2\">Events</button></div><div class=\"m-app-brex__out\"><b>$12,400</b><span>Travel</span></div></div></div>",
+    "css": ".m-app-brex{position:absolute;inset:0;display:grid;place-items:center;background:#121214;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-brex__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-brex__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#1c1d21;border:1px solid rgba(128,128,128,.16)}.m-app-brex__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#F46A25;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-brex__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-brex__seg button.is-on{color:#fff}.m-app-brex__out{padding:14px;border-radius:14px;background:#1c1d21;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-brex__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-brex__out span{font-size:11px;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-brex');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-brex__seg button')),th=el.querySelector('.m-app-brex__thumb'),b=el.querySelector('.m-app-brex__out b'),sp=el.querySelector('.m-app-brex__out span');var tabs=[\"Travel\", \"SaaS\", \"Events\"],vals=[\"$12,400\", \"$48,900\", \"$6,250\"],idx=0,touched=false,dead=false;function set(i){idx=i;th.style.transform='translateX('+(i*100)+'%)';btns.forEach(function(x,j){x.classList.toggle('is-on',j===i);});b.textContent=vals[i];sp.textContent=tabs[i];}btns.forEach(function(x,i){x.addEventListener('click',function(){touched=true;set(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%tabs.length);},1800);set(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-wealthfront-apy-cash-vessel",
+    "title": "Wealthfront: Cash Account APY Liquid Compound Fill",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "dark",
+    "dur": 680,
+    "ease": {
+      "t": "spring",
+      "k": 240,
+      "c": 20
+    },
+    "easeLabel": "spring(240, 20)",
+    "props": [
+      "height (liquid level)",
+      "transform: translateX + rotate (wave crest)",
+      "textContent"
+    ],
+    "src": "Wealthfront",
+    "srcUrl": "https://apps.apple.com/us/app/wealthfront-save-and-invest/id816020992?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Wealthfront",
+      "slug": "wealthfront",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#4840BB",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8a/a2/87/8aa28769-92d7-2431-558b-a66e50bb0f7f/Wealthfront_Icon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/wealthfront-save-and-invest/id816020992?uo=4",
+      "bundleId": "com.wealthfront.Wealthfront"
+    },
+    "summary": "Wealthfront's automated savings goal fills a softly rounded indigo vessel with a gently undulating wave crest as monthly deposits compound toward the target.",
+    "hint": "Tap vessel to add deposit step",
+    "choreography": [
+      "Continuous: dual-toned indigo wave crest sways gently left-to-right every 2.4s.",
+      "0-560ms on click: liquid column rises smoothly with elastic overshoot to the next goal milestone.",
+      "560-680ms: center tabular APY/progress readout updates cleanly over the fill."
+    ],
+    "agentPrompt": "Build a Wealthfront savings goal liquid vessel on #131126 with #4840BB/#6d63e8 fill: animate a rounded container's bottom-anchored fill height over 680ms cubic-bezier(0.22, 1.18, 0.36, 1) topped by a swaying curved wave crest.",
+    "extractableCode": "<!-- Wealthfront: Cash Account APY Liquid Compound Fill -->\n<div class=\"m-app-wealthfront\"><button type=\"button\" class=\"m-app-wealthfront__cup\"><div class=\"m-app-wealthfront__liq\"><div class=\"m-app-wealthfront__wave\"></div></div><div class=\"m-app-wealthfront__txt\"><b>$24K</b><span>4.50% APY</span></div></button></div>\n<style>.m-app-wealthfront{position:absolute;inset:0;display:grid;place-items:center;background:#121024;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-wealthfront__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#1d1a38;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-wealthfront__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#635bff,#4840BB);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-wealthfront__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#635bff;opacity:.65;animation:m-wealthfront-wv 2.4s ease-in-out infinite alternate}@keyframes m-wealthfront-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-wealthfront__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-wealthfront__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-wealthfront__txt span{font:600 10px/1 inherit;opacity:.9}</style>",
+    "html": "<div class=\"m-app-wealthfront\"><button type=\"button\" class=\"m-app-wealthfront__cup\"><div class=\"m-app-wealthfront__liq\"><div class=\"m-app-wealthfront__wave\"></div></div><div class=\"m-app-wealthfront__txt\"><b>$24K</b><span>4.50% APY</span></div></button></div>",
+    "css": ".m-app-wealthfront{position:absolute;inset:0;display:grid;place-items:center;background:#121024;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-wealthfront__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#1d1a38;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-wealthfront__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#635bff,#4840BB);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-wealthfront__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#635bff;opacity:.65;animation:m-wealthfront-wv 2.4s ease-in-out infinite alternate}@keyframes m-wealthfront-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-wealthfront__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-wealthfront__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-wealthfront__txt span{font:600 10px/1 inherit;opacity:.9}",
+    "js": "var el=root.querySelector('.m-app-wealthfront');if(!el)return;var cup=el.querySelector('.m-app-wealthfront__cup'),liq=el.querySelector('.m-app-wealthfront__liq'),b=el.querySelector('.m-app-wealthfront__txt b');var vals=[\"$12K\", \"$24K\", \"$38K\", \"$50K\"],pcts=[35,62,85,98],idx=1,touched=false,dead=false;function set(i){idx=i;liq.style.height=pcts[i]+'%';b.textContent=vals[i];}cup.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-betterment-retirement-goal-ring",
+    "title": "Betterment: Retirement Goal Dual-Ring Progress Sweep",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "light",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (outer & inner arcs)",
+      "textContent"
+    ],
+    "src": "Betterment",
+    "srcUrl": "https://apps.apple.com/us/app/betterment-invest-save-money/id393156562?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Betterment",
+      "slug": "betterment",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#1D6AE5",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1a/0a/87/1a0a8789-2cbb-c227-63c1-58e3d3fbc9aa/BMT_App_Icon_iOS_Prod-0-0-1x_U007ephone-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/betterment-invest-save-money/id393156562?uo=4",
+      "bundleId": "betterment"
+    },
+    "summary": "Betterment's goal tracker sweeps concentric blue and sky arcs around the projected target percentage to make long-term investment progress immediately legible.",
+    "hint": "Tap ring to cycle projection scenarios",
+    "choreography": [
+      "0-180ms: concentric SVG tracks initialize from top 12-o'clock anchor.",
+      "180-680ms: outer cobalt arc and inner sky arc sweep smoothly via stroke-dashoffset.",
+      "680-720ms: center percentage and 'On track' pill settle cleanly."
+    ],
+    "agentPrompt": "Build a Betterment dual-ring SVG goal gauge on #f3f7fc with #1D6AE5 and #60a5fa strokes: animate two concentric circles rotated -90deg via stroke-dashoffset over 720ms cubic-bezier(0.22, 1, 0.36, 1) with a centered monospace percentage readout.",
+    "extractableCode": "<!-- Betterment: Retirement Goal Dual-Ring Progress Sweep -->\n<div class=\"m-app-betterment\"><button type=\"button\" class=\"m-app-betterment__btn\"><svg class=\"m-app-betterment__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-betterment__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#1D6AE5\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-betterment__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#60a5fa\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-betterment__mid\"><b>78%</b><span>Goal Track</span></div><em class=\"m-app-betterment__tag\">On track</em></button></div>\n<style>.m-app-betterment{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7fc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-betterment__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-betterment__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #1D6AE533)}.m-app-betterment__arc1,.m-app-betterment__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-betterment__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-betterment__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-betterment__mid span{font:500 9.5px/1.2 inherit;color:#6b7280;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-betterment__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.18);color:#1D6AE5}</style>",
+    "html": "<div class=\"m-app-betterment\"><button type=\"button\" class=\"m-app-betterment__btn\"><svg class=\"m-app-betterment__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-betterment__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#1D6AE5\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-betterment__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#60a5fa\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-betterment__mid\"><b>78%</b><span>Goal Track</span></div><em class=\"m-app-betterment__tag\">On track</em></button></div>",
+    "css": ".m-app-betterment{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7fc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-betterment__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-betterment__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #1D6AE533)}.m-app-betterment__arc1,.m-app-betterment__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-betterment__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-betterment__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-betterment__mid span{font:500 9.5px/1.2 inherit;color:#6b7280;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-betterment__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.18);color:#1D6AE5}",
+    "js": "var el=root.querySelector('.m-app-betterment');if(!el)return;var btn=el.querySelector('.m-app-betterment__btn'),a1=el.querySelector('.m-app-betterment__arc1'),a2=el.querySelector('.m-app-betterment__arc2'),num=el.querySelector('.m-app-betterment__mid b');var scores=[78, 86, 94, 68],unit=\"%\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-chime-spotme-boost-fill",
+    "title": "Chime: SpotMe Boost Liquid Reserve Meter",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 640,
+    "ease": {
+      "t": "spring",
+      "k": 260,
+      "c": 20
+    },
+    "easeLabel": "spring(260, 20)",
+    "props": [
+      "height (mint fill)",
+      "transform: translateX (wave surface)"
+    ],
+    "src": "Chime",
+    "srcUrl": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Chime",
+      "slug": "chime",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#1EC677",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/72/b9/c4/72b9c447-5d91-6e3a-6b7c-1efb345876a0/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269?uo=4",
+      "bundleId": "com.1debit.ChimeProdApp"
+    },
+    "summary": "Receiving a SpotMe boost in Chime raises a vibrant mint-green wave column inside the limit capsule with bouncy, friendly spring ease.",
+    "hint": "Tap capsule to add +$5 SpotMe boost",
+    "choreography": [
+      "0-100ms: boost triggers upward surge in the mint liquid container.",
+      "100-540ms: fluid level rises to the next SpotMe tier with gentle wave slosh.",
+      "540-640ms: updated boost allowance locks in the center."
+    ],
+    "agentPrompt": "Build a Chime SpotMe liquid reserve meter on #eefbf4 with #1EC677 mint gradient: animate the rising fill height over 640ms cubic-bezier(0.22, 1.18, 0.36, 1) with an oscillating rounded top wave crest.",
+    "extractableCode": "<!-- Chime: SpotMe Boost Liquid Reserve Meter -->\n<div class=\"m-app-chime\"><button type=\"button\" class=\"m-app-chime__cup\"><div class=\"m-app-chime__liq\"><div class=\"m-app-chime__wave\"></div></div><div class=\"m-app-chime__txt\"><b>$80</b><span>SpotMe Limit</span></div></button></div>\n<style>.m-app-chime{position:absolute;inset:0;display:grid;place-items:center;background:#eefbf4;color:#064e3b;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-chime__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#ffffff;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-chime__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#1EC677,#10b981);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-chime__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#1EC677;opacity:.65;animation:m-chime-wv 2.4s ease-in-out infinite alternate}@keyframes m-chime-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-chime__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-chime__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-chime__txt span{font:600 10px/1 inherit;opacity:.9}</style>",
+    "html": "<div class=\"m-app-chime\"><button type=\"button\" class=\"m-app-chime__cup\"><div class=\"m-app-chime__liq\"><div class=\"m-app-chime__wave\"></div></div><div class=\"m-app-chime__txt\"><b>$80</b><span>SpotMe Limit</span></div></button></div>",
+    "css": ".m-app-chime{position:absolute;inset:0;display:grid;place-items:center;background:#eefbf4;color:#064e3b;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-chime__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#ffffff;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-chime__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#1EC677,#10b981);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-chime__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#1EC677;opacity:.65;animation:m-chime-wv 2.4s ease-in-out infinite alternate}@keyframes m-chime-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-chime__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-chime__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-chime__txt span{font:600 10px/1 inherit;opacity:.9}",
+    "js": "var el=root.querySelector('.m-app-chime');if(!el)return;var cup=el.querySelector('.m-app-chime__cup'),liq=el.querySelector('.m-app-chime__liq'),b=el.querySelector('.m-app-chime__txt b');var vals=[\"$40\", \"$80\", \"$140\", \"$200\"],pcts=[35,62,85,98],idx=1,touched=false,dead=false;function set(i){idx=i;liq.style.height=pcts[i]+'%';b.textContent=vals[i];}cup.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-sofi-vault-allocation-switch",
+    "title": "SoFi: Savings Vault Tab Glide & APY Counter",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 24
+    },
+    "easeLabel": "spring(320, 24)",
+    "props": [
+      "transform: translateX (cyan pill)",
+      "color",
+      "textContent"
+    ],
+    "src": "SoFi",
+    "srcUrl": "https://apps.apple.com/us/app/sofi-mobile-bank-investing/id1191985736?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "SoFi",
+      "slug": "sofi",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#00A2C7",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a9/88/c8/a988c84f-87de-b38d-c584-82132bc28622/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/sofi-mobile-bank-investing/id1191985736?uo=4",
+      "bundleId": "com.sofi.mobile"
+    },
+    "summary": "Browsing SoFi's Checking, Vaults, and Invest buckets glides a bright cyan pill across the header while surfacing live balance and APY badges.",
+    "hint": "Switch between SoFi buckets",
+    "choreography": [
+      "0-60ms: active tab text switches to high-contrast white.",
+      "60-320ms: #00A2C7 pill glides horizontally with subtle spring overshoot.",
+      "320-380ms: summary tile updates balance cleanly."
+    ],
+    "agentPrompt": "Implement SoFi's account bucket switcher on #0b141a with #00A2C7 cyan highlight: slide a shared-layout pill across Checking/Vaults/Invest over 380ms cubic-bezier(0.22, 1.18, 0.36, 1) paired with a live monospace summary row.",
+    "extractableCode": "<!-- SoFi: Savings Vault Tab Glide & APY Counter -->\n<div class=\"m-app-sofi\"><div class=\"m-app-sofi__box\"><div class=\"m-app-sofi__seg\"><span class=\"m-app-sofi__thumb\"></span><button type=\"button\" data-i=\"0\">Checking</button><button type=\"button\" data-i=\"1\">Vaults</button><button type=\"button\" data-i=\"2\">Invest</button></div><div class=\"m-app-sofi__out\"><b>$3,940</b><span>Checking</span></div></div></div>\n<style>.m-app-sofi{position:absolute;inset:0;display:grid;place-items:center;background:#0b141a;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-sofi__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-sofi__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#14222b;border:1px solid rgba(128,128,128,.16)}.m-app-sofi__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#00A2C7;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-sofi__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-sofi__seg button.is-on{color:#fff}.m-app-sofi__out{padding:14px;border-radius:14px;background:#14222b;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-sofi__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-sofi__out span{font-size:11px;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-sofi\"><div class=\"m-app-sofi__box\"><div class=\"m-app-sofi__seg\"><span class=\"m-app-sofi__thumb\"></span><button type=\"button\" data-i=\"0\">Checking</button><button type=\"button\" data-i=\"1\">Vaults</button><button type=\"button\" data-i=\"2\">Invest</button></div><div class=\"m-app-sofi__out\"><b>$3,940</b><span>Checking</span></div></div></div>",
+    "css": ".m-app-sofi{position:absolute;inset:0;display:grid;place-items:center;background:#0b141a;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-sofi__box{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-sofi__seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:#14222b;border:1px solid rgba(128,128,128,.16)}.m-app-sofi__thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:#00A2C7;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}.m-app-sofi__seg button{position:relative;z-index:2;border:0;background:none;padding:7px 4px;font:600 11.5px/1 inherit;color:rgba(255,255,255,.56);cursor:pointer;transition:color .2s}.m-app-sofi__seg button.is-on{color:#fff}.m-app-sofi__out{padding:14px;border-radius:14px;background:#14222b;border:1px solid rgba(128,128,128,.14);display:flex;justify-content:space-between;align-items:baseline;transition:transform .28s cubic-bezier(.22,1.2,.36,1)}.m-app-sofi__out b{font:700 18px/1 'Geist Mono',monospace}.m-app-sofi__out span{font-size:11px;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-sofi');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-sofi__seg button')),th=el.querySelector('.m-app-sofi__thumb'),b=el.querySelector('.m-app-sofi__out b'),sp=el.querySelector('.m-app-sofi__out span');var tabs=[\"Checking\", \"Vaults\", \"Invest\"],vals=[\"$3,940\", \"$18,200\", \"$42,610\"],idx=0,touched=false,dead=false;function set(i){idx=i;th.style.transform='translateX('+(i*100)+'%)';btns.forEach(function(x,j){x.classList.toggle('is-on',j===i);});b.textContent=vals[i];sp.textContent=tabs[i];}btns.forEach(function(x,i){x.addEventListener('click',function(){touched=true;set(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%tabs.length);},1800);set(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-splitwise-group-split-balance-flip",
+    "title": "Splitwise: Group Split Balance Pair Swap",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 22
+    },
+    "easeLabel": "spring(320, 22)",
+    "props": [
+      "transform: translateY (payer/payee cards)",
+      "transform: rotate (180deg swap)"
+    ],
+    "src": "Splitwise",
+    "srcUrl": "https://apps.apple.com/us/app/splitwise/id458023433?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Splitwise",
+      "slug": "splitwise",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#1CC29F",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fa/c1/f5/fac1f59d-7195-a199-a391-e0a0a16c34ad/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/splitwise/id458023433?uo=4",
+      "bundleId": "com.Splitwise.SplitwiseMobile"
+    },
+    "summary": "Flipping payer and recipient in Splitwise rotates the teal swap button 180° while smoothly exchanging the two expense share cards vertically.",
+    "hint": "Tap swap button to flip payer",
+    "choreography": [
+      "0-80ms: central #1CC29F circle rotates 180deg with spring kick.",
+      "40-360ms: 'You paid' and 'Alex owes' rows exchange vertical slots seamlessly.",
+      "360-420ms: settled cards align cleanly with crisp border contrast."
+    ],
+    "agentPrompt": "Build a Splitwise payer/payee swap card on #f2fbf9 with #1CC29F accent: vertically cross-translate two 54px balance rows by ±62px while rotating the central 34px swap button 180deg over 420ms cubic-bezier(0.22, 1.18, 0.36, 1).",
+    "extractableCode": "<!-- Splitwise: Group Split Balance Pair Swap -->\n<div class=\"m-app-splitwise\"><div class=\"m-app-splitwise__wrap\"><div class=\"m-app-splitwise__box m-app-splitwise__top\"><span>YOU PAID</span><b>$128.40</b></div><button type=\"button\" class=\"m-app-splitwise__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-splitwise__box m-app-splitwise__bot\"><span>SPLIT / 2</span><b>$64.20</b></div></div></div>\n<style>.m-app-splitwise{position:absolute;inset:0;display:grid;place-items:center;background:#f2fbf9;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-splitwise__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-splitwise__box{height:54px;padding:0 14px;border-radius:14px;background:#ffffff;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-splitwise__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#1CC29F22;color:#1CC29F}.m-app-splitwise__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-splitwise.is-flip .m-app-splitwise__top{transform:translateY(62px)}.m-app-splitwise.is-flip .m-app-splitwise__bot{transform:translateY(-62px)}.m-app-splitwise__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #f2fbf9;background:#1CC29F;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-splitwise.is-flip .m-app-splitwise__swap{transform:rotate(180deg)}</style>",
+    "html": "<div class=\"m-app-splitwise\"><div class=\"m-app-splitwise__wrap\"><div class=\"m-app-splitwise__box m-app-splitwise__top\"><span>YOU PAID</span><b>$128.40</b></div><button type=\"button\" class=\"m-app-splitwise__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-splitwise__box m-app-splitwise__bot\"><span>SPLIT / 2</span><b>$64.20</b></div></div></div>",
+    "css": ".m-app-splitwise{position:absolute;inset:0;display:grid;place-items:center;background:#f2fbf9;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-splitwise__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-splitwise__box{height:54px;padding:0 14px;border-radius:14px;background:#ffffff;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-splitwise__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#1CC29F22;color:#1CC29F}.m-app-splitwise__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-splitwise.is-flip .m-app-splitwise__top{transform:translateY(62px)}.m-app-splitwise.is-flip .m-app-splitwise__bot{transform:translateY(-62px)}.m-app-splitwise__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #f2fbf9;background:#1CC29F;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-splitwise.is-flip .m-app-splitwise__swap{transform:rotate(180deg)}",
+    "js": "var el=root.querySelector('.m-app-splitwise');if(!el)return;var btn=el.querySelector('.m-app-splitwise__swap'),fl=false,touched=false,dead=false;function flip(){fl=!fl;el.classList.toggle('is-flip',fl);}btn.addEventListener('click',function(){touched=true;flip();});el.addEventListener('click',function(e){if(e.target!==btn){touched=true;flip();}});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-copilot-money-monthly-budget-ring",
+    "title": "Copilot Money: Monthly Budget Spend Ring & Pace Glow",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (budget & pace rings)",
+      "filter: drop-shadow"
+    ],
+    "src": "Copilot Money",
+    "srcUrl": "https://apps.apple.com/us/app/copilot-track-budget-money/id1447330651?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Copilot Money",
+      "slug": "copilot-money",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#4F6BFF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/44/bc/fd/44bcfd8f-5def-3a55-9cca-4ebc1fa17768/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/copilot-track-budget-money/id1447330651?uo=4",
+      "bundleId": "com.copilot.production"
+    },
+    "summary": "Copilot Money's dark-mode budget card sweeps glowing cobalt and mint rings around remaining spend to show instantly whether you are under monthly pace.",
+    "hint": "Tap ring to cycle budget categories",
+    "choreography": [
+      "0-160ms: dark OLED ring tracks prime with subtle radial glow.",
+      "160-660ms: outer cobalt spend arc and inner pace ring animate simultaneously via stroke-dashoffset.",
+      "660-720ms: center budget percentage and '$420 left' pill settle smoothly."
+    ],
+    "agentPrompt": "Create Copilot Money's OLED dark-mode budget ring on #0b0d14 with #4F6BFF and #34d399 strokes: animate two concentric SVG arcs over 720ms cubic-bezier(0.22, 1, 0.36, 1) with soft drop-shadow glow and a crisp pill status tag.",
+    "extractableCode": "<!-- Copilot Money: Monthly Budget Spend Ring & Pace Glow -->\n<div class=\"m-app-copilot-money\"><button type=\"button\" class=\"m-app-copilot-money__btn\"><svg class=\"m-app-copilot-money__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-copilot-money__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#4F6BFF\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-copilot-money__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#34d399\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-copilot-money__mid\"><b>64%</b><span>Monthly Cap</span></div><em class=\"m-app-copilot-money__tag\">$420 under pace</em></button></div>\n<style>.m-app-copilot-money{position:absolute;inset:0;display:grid;place-items:center;background:#0b0d14;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-copilot-money__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-copilot-money__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #4F6BFF33)}.m-app-copilot-money__arc1,.m-app-copilot-money__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-copilot-money__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-copilot-money__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-copilot-money__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-copilot-money__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#151926;border:1px solid rgba(128,128,128,.18);color:#4F6BFF}</style>",
+    "html": "<div class=\"m-app-copilot-money\"><button type=\"button\" class=\"m-app-copilot-money__btn\"><svg class=\"m-app-copilot-money__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-copilot-money__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#4F6BFF\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-copilot-money__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#34d399\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-copilot-money__mid\"><b>64%</b><span>Monthly Cap</span></div><em class=\"m-app-copilot-money__tag\">$420 under pace</em></button></div>",
+    "css": ".m-app-copilot-money{position:absolute;inset:0;display:grid;place-items:center;background:#0b0d14;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-copilot-money__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-copilot-money__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #4F6BFF33)}.m-app-copilot-money__arc1,.m-app-copilot-money__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-copilot-money__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-copilot-money__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-copilot-money__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-copilot-money__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#151926;border:1px solid rgba(128,128,128,.18);color:#4F6BFF}",
+    "js": "var el=root.querySelector('.m-app-copilot-money');if(!el)return;var btn=el.querySelector('.m-app-copilot-money__btn'),a1=el.querySelector('.m-app-copilot-money__arc1'),a2=el.querySelector('.m-app-copilot-money__arc2'),num=el.querySelector('.m-app-copilot-money__mid b');var scores=[64, 78, 52, 89],unit=\"%\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-monarch-money-net-worth-scrub-curve",
+    "title": "Monarch Money: Net Worth Interactive Area Scrub",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Hover",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 240,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "cx/cy (dot)",
+      "x1/x2 (hairline)",
+      "textContent (net worth)"
+    ],
+    "src": "Monarch Money",
+    "srcUrl": "https://apps.apple.com/us/app/monarch-budget-track-money/id1459319842?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Monarch Money",
+      "slug": "monarch-money",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF6B35",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/dc/c6/91/dcc691ff-15f5-8ea8-e8b0-9f8b4ee58afd/AppIcon-Default-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/monarch-budget-track-money/id1459319842?uo=4",
+      "bundleId": "com.monarchmoney.mobile"
+    },
+    "summary": "Scrubbing Monarch Money's warm-coral net worth spline glides the hairline marker across months while displaying exact historical net worth snapshots.",
+    "hint": "Hover or tap chart to scrub net worth",
+    "choreography": [
+      "0-50ms: pointer X maps cleanly to monthly net-worth sample points.",
+      "50-190ms: #FF6B35 marker dot and dashed vertical guide track with silk ease.",
+      "190-240ms: tabular dollar total updates instantaneously."
+    ],
+    "agentPrompt": "Build Monarch Money's net worth scrub chart on #131110 with #FF6B35 stroke and vertical area gradient: track pointer X across the SVG path to glide the indicator dot and dashed vertical line over 160ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Monarch Money: Net Worth Interactive Area Scrub -->\n<div class=\"m-app-monarch-money\"><div class=\"m-app-monarch-money__card\"><div class=\"m-app-monarch-money__top\"><span>Net Worth</span><em class=\"m-app-monarch-money__d\">+$18,420 (6M)</em></div><div class=\"m-app-monarch-money__val\">$<b>142,520</b></div><svg class=\"m-app-monarch-money__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-monarch-money-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#FF6B35\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#FF6B35\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-monarch-money__area\" d=\"M0.0 54 L22.2 48 L44.4 45 L66.7 41 L88.9 36 L111.1 33 L133.3 27 L155.6 24 L177.8 18 L200.0 13 L200 66 L0 66 Z\" fill=\"url(#m-monarch-money-g)\"/><path class=\"m-app-monarch-money__line\" d=\"M0.0 54 L22.2 48 L44.4 45 L66.7 41 L88.9 36 L111.1 33 L133.3 27 L155.6 24 L177.8 18 L200.0 13\" fill=\"none\" stroke=\"#FF6B35\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-monarch-money__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#FF6B35\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-monarch-money__dot\" cx=\"200.0\" cy=\"13\" r=\"4.5\" fill=\"#FF6B35\" stroke=\"#1d1a18\" stroke-width=\"2\"/></svg></div></div>\n<style>.m-app-monarch-money{position:absolute;inset:0;display:grid;place-items:center;background:#131110;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-monarch-money__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#1d1a18;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-monarch-money__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-monarch-money__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#FF6B35}.m-app-monarch-money__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-monarch-money__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-monarch-money__dot,.m-app-monarch-money__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}</style>",
+    "html": "<div class=\"m-app-monarch-money\"><div class=\"m-app-monarch-money__card\"><div class=\"m-app-monarch-money__top\"><span>Net Worth</span><em class=\"m-app-monarch-money__d\">+$18,420 (6M)</em></div><div class=\"m-app-monarch-money__val\">$<b>142,520</b></div><svg class=\"m-app-monarch-money__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-monarch-money-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#FF6B35\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#FF6B35\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-monarch-money__area\" d=\"M0.0 54 L22.2 48 L44.4 45 L66.7 41 L88.9 36 L111.1 33 L133.3 27 L155.6 24 L177.8 18 L200.0 13 L200 66 L0 66 Z\" fill=\"url(#m-monarch-money-g)\"/><path class=\"m-app-monarch-money__line\" d=\"M0.0 54 L22.2 48 L44.4 45 L66.7 41 L88.9 36 L111.1 33 L133.3 27 L155.6 24 L177.8 18 L200.0 13\" fill=\"none\" stroke=\"#FF6B35\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-monarch-money__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#FF6B35\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-monarch-money__dot\" cx=\"200.0\" cy=\"13\" r=\"4.5\" fill=\"#FF6B35\" stroke=\"#1d1a18\" stroke-width=\"2\"/></svg></div></div>",
+    "css": ".m-app-monarch-money{position:absolute;inset:0;display:grid;place-items:center;background:#131110;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-monarch-money__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#1d1a18;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-monarch-money__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-monarch-money__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#FF6B35}.m-app-monarch-money__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-monarch-money__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-monarch-money__dot,.m-app-monarch-money__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-monarch-money');if(!el)return;var card=el.querySelector('.m-app-monarch-money__card'),dot=el.querySelector('.m-app-monarch-money__dot'),guide=el.querySelector('.m-app-monarch-money__guide'),val=el.querySelector('.m-app-monarch-money__val b');var coords=[[0.0, 54], [22.2, 48], [44.4, 45], [66.7, 41], [88.9, 36], [111.1, 33], [133.3, 27], [155.6, 24], [177.8, 18], [200.0, 13]],vals=[\"124,100\", \"126,800\", \"128,450\", \"130,900\", \"133,200\", \"135,600\", \"138,100\", \"139,850\", \"141,200\", \"142,520\"],idx=coords.length-1,touched=false,dead=false;function setIdx(i){i=Math.max(0,Math.min(coords.length-1,i));dot.setAttribute('cx',coords[i][0]);dot.setAttribute('cy',coords[i][1]);guide.setAttribute('x1',coords[i][0]);guide.setAttribute('x2',coords[i][0]);val.textContent=vals[i];}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));setIdx(Math.round(p*(coords.length-1)));});card.addEventListener('click',function(){touched=true;idx=(idx+2)%coords.length;setIdx(idx);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%coords.length;setIdx(idx);}},900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-phantom-solana-token-swap-spin",
+    "title": "Phantom: Solana Token Swap Flip & Violet Pulse",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 20
+    },
+    "easeLabel": "spring(340, 20)",
+    "props": [
+      "transform: translateY (SOL/USDC cards)",
+      "transform: rotate (180deg)"
+    ],
+    "src": "Phantom",
+    "srcUrl": "https://apps.apple.com/us/app/phantom-trading-wallet/id1598432977?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Phantom",
+      "slug": "phantom",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#AB9FF2",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f1/60/c0/f160c0af-6065-f927-4d5a-7f912c00786a/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/phantom-trading-wallet/id1598432977?uo=4",
+      "bundleId": "app.phantom"
+    },
+    "summary": "Swapping tokens in Phantom flips the signature lavender button 180° with spring overshoot while the SOL and USDC balance rows exchange places smoothly.",
+    "hint": "Tap swap arrow to flip SOL ↔ USDC",
+    "choreography": [
+      "0-70ms: centered #AB9FF2 swap disc springs into a 180° rotation.",
+      "40-360ms: SOL and USDC cards translate vertically past each other on spring(340, 20).",
+      "360-420ms: swapped cards land with clean violet token badges."
+    ],
+    "agentPrompt": "Recreate Phantom wallet's token swap card on #1c1b22 with #AB9FF2 lavender accent: stack two 54px token cards with an overlapping 34px swap button; on click, rotate the button 180deg and cross-translate both cards ±62px over 420ms cubic-bezier(0.22, 1.18, 0.36, 1).",
+    "extractableCode": "<!-- Phantom: Solana Token Swap Flip & Violet Pulse -->\n<div class=\"m-app-phantom\"><div class=\"m-app-phantom__wrap\"><div class=\"m-app-phantom__box m-app-phantom__top\"><span>SOL</span><b>18.40</b></div><button type=\"button\" class=\"m-app-phantom__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-phantom__box m-app-phantom__bot\"><span>USDC</span><b>3,412.80</b></div></div></div>\n<style>.m-app-phantom{position:absolute;inset:0;display:grid;place-items:center;background:#18171e;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-phantom__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-phantom__box{height:54px;padding:0 14px;border-radius:14px;background:#23222b;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-phantom__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#AB9FF222;color:#AB9FF2}.m-app-phantom__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-phantom.is-flip .m-app-phantom__top{transform:translateY(62px)}.m-app-phantom.is-flip .m-app-phantom__bot{transform:translateY(-62px)}.m-app-phantom__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #18171e;background:#AB9FF2;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-phantom.is-flip .m-app-phantom__swap{transform:rotate(180deg)}</style>",
+    "html": "<div class=\"m-app-phantom\"><div class=\"m-app-phantom__wrap\"><div class=\"m-app-phantom__box m-app-phantom__top\"><span>SOL</span><b>18.40</b></div><button type=\"button\" class=\"m-app-phantom__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-phantom__box m-app-phantom__bot\"><span>USDC</span><b>3,412.80</b></div></div></div>",
+    "css": ".m-app-phantom{position:absolute;inset:0;display:grid;place-items:center;background:#18171e;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-phantom__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-phantom__box{height:54px;padding:0 14px;border-radius:14px;background:#23222b;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-phantom__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#AB9FF222;color:#AB9FF2}.m-app-phantom__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-phantom.is-flip .m-app-phantom__top{transform:translateY(62px)}.m-app-phantom.is-flip .m-app-phantom__bot{transform:translateY(-62px)}.m-app-phantom__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #18171e;background:#AB9FF2;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-phantom.is-flip .m-app-phantom__swap{transform:rotate(180deg)}",
+    "js": "var el=root.querySelector('.m-app-phantom');if(!el)return;var btn=el.querySelector('.m-app-phantom__swap'),fl=false,touched=false,dead=false;function flip(){fl=!fl;el.classList.toggle('is-flip',fl);}btn.addEventListener('click',function(){touched=true;flip();});el.addEventListener('click',function(e){if(e.target!==btn){touched=true;flip();}});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-metamask-eth-swap-network-flip",
+    "title": "MetaMask: ETH Token Swap Flip & Fox-Orange Accent",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 22
+    },
+    "easeLabel": "spring(320, 22)",
+    "props": [
+      "transform: translateY",
+      "transform: rotate"
+    ],
+    "src": "MetaMask",
+    "srcUrl": "https://apps.apple.com/us/app/metamask-trade-crypto/id1438144202?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "MetaMask",
+      "slug": "metamask",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F6851B",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f7/a3/b4/f7a3b477-2e7d-b6b5-0e87-5e1d867faf68/AppIcon-0-0-1x_U007ephone-0-11-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/metamask-trade-crypto/id1438144202?uo=4",
+      "bundleId": "io.metamask.MetaMask"
+    },
+    "summary": "MetaMask's mobile swap sheet pairs a bold fox-orange central invert button with smooth vertical cross-translation of Ethereum token amounts.",
+    "hint": "Tap orange arrow to swap ETH ↔ ARB",
+    "choreography": [
+      "0-70ms: #F6851B central circle spins 180° on tap.",
+      "40-350ms: ETH and ARB balance cards glide vertically past each other.",
+      "350-420ms: cards settle with crisp dark-slate borders."
+    ],
+    "agentPrompt": "Build MetaMask's token swap interaction on #121417 with #F6851B accent: animate two stacked asset cards translating ±62px vertically while the overlapping circular button rotates 180deg over 420ms cubic-bezier(0.22, 1.18, 0.36, 1).",
+    "extractableCode": "<!-- MetaMask: ETH Token Swap Flip & Fox-Orange Accent -->\n<div class=\"m-app-metamask\"><div class=\"m-app-metamask__wrap\"><div class=\"m-app-metamask__box m-app-metamask__top\"><span>ETH</span><b>1.250</b></div><button type=\"button\" class=\"m-app-metamask__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-metamask__box m-app-metamask__bot\"><span>ARB</span><b>4,190</b></div></div></div>\n<style>.m-app-metamask{position:absolute;inset:0;display:grid;place-items:center;background:#121417;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-metamask__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-metamask__box{height:54px;padding:0 14px;border-radius:14px;background:#1b1f24;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-metamask__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#F6851B22;color:#F6851B}.m-app-metamask__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-metamask.is-flip .m-app-metamask__top{transform:translateY(62px)}.m-app-metamask.is-flip .m-app-metamask__bot{transform:translateY(-62px)}.m-app-metamask__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #121417;background:#F6851B;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-metamask.is-flip .m-app-metamask__swap{transform:rotate(180deg)}</style>",
+    "html": "<div class=\"m-app-metamask\"><div class=\"m-app-metamask__wrap\"><div class=\"m-app-metamask__box m-app-metamask__top\"><span>ETH</span><b>1.250</b></div><button type=\"button\" class=\"m-app-metamask__swap\" aria-label=\"Swap\">⇅</button><div class=\"m-app-metamask__box m-app-metamask__bot\"><span>ARB</span><b>4,190</b></div></div></div>",
+    "css": ".m-app-metamask{position:absolute;inset:0;display:grid;place-items:center;background:#121417;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-metamask__wrap{position:relative;width:min(84%,244px);display:flex;flex-direction:column;gap:8px}.m-app-metamask__box{height:54px;padding:0 14px;border-radius:14px;background:#1b1f24;border:1px solid rgba(128,128,128,.18);display:flex;align-items:center;justify-content:space-between;transition:transform .42s cubic-bezier(.22,1.18,.36,1)}.m-app-metamask__box span{font:700 12px/1 'Geist Mono',monospace;padding:5px 8px;border-radius:8px;background:#F6851B22;color:#F6851B}.m-app-metamask__box b{font:700 16px/1 'Geist Mono',monospace}.m-app-metamask.is-flip .m-app-metamask__top{transform:translateY(62px)}.m-app-metamask.is-flip .m-app-metamask__bot{transform:translateY(-62px)}.m-app-metamask__swap{position:absolute;left:50%;top:50%;margin:-17px 0 0 -17px;z-index:3;width:34px;height:34px;border-radius:50%;border:2px solid #121417;background:#F6851B;color:#fff;font:700 15px/1 inherit;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.3,.36,1)}.m-app-metamask.is-flip .m-app-metamask__swap{transform:rotate(180deg)}",
+    "js": "var el=root.querySelector('.m-app-metamask');if(!el)return;var btn=el.querySelector('.m-app-metamask__swap'),fl=false,touched=false,dead=false;function flip(){fl=!fl;el.classList.toggle('is-flip',fl);}btn.addEventListener('click',function(){touched=true;flip();});el.addEventListener('click',function(e){if(e.target!==btn){touched=true;flip();}});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-rainbow-wallet-holo-wallet-card-tilt",
+    "title": "Rainbow: Iridescent Holographic Wallet Card Tilt",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 460,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: rotateX + rotateY",
+      "transform: translateX (holographic sheen)",
+      "clip-path"
+    ],
+    "src": "Rainbow",
+    "srcUrl": "https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Rainbow",
+      "slug": "rainbow-wallet",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#001E59",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0d/04/2b/0d042b0e-0f5d-5389-5b0d-b3249f4310ff/AppIcon-0-0-1x_U007emarketing-0-6-0-P3-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021?uo=4",
+      "bundleId": "me.rainbow"
+    },
+    "summary": "Rainbow's expressive wallet card responds to pointer tilt in 3D perspective with a prism gloss sweep and a playful one-tap vault privacy veil.",
+    "hint": "Hover to tilt or tap to toggle privacy",
+    "choreography": [
+      "Hover: cursor position drives ±11° rotateY and ±8° rotateX with metallic sheen sweep.",
+      "Tap: frosted veil wipes smoothly over ENS address and card sheen.",
+      "Leave: card glides back to calm resting angle."
+    ],
+    "agentPrompt": "Create a Rainbow-style holographic crypto wallet card on #0a0f1f using a vibrant #3b82f6 -> #ec4899 gradient: add pointer-mapped 3D perspective tilt, diagonal specular sheen translation, and a smooth clip-path privacy frost toggle.",
+    "extractableCode": "<!-- Rainbow: Iridescent Holographic Wallet Card Tilt -->\n<div class=\"m-app-rainbow-wallet\"><div class=\"m-app-rainbow-wallet__card\"><div class=\"m-app-rainbow-wallet__sheen\"></div><div class=\"m-app-rainbow-wallet__frost\"></div><div class=\"m-app-rainbow-wallet__row\"><b>rainbow.eth</b><i>NFC</i></div><div class=\"m-app-rainbow-wallet__num\">0x71C…9a4E</div></div><button type=\"button\" class=\"m-app-rainbow-wallet__btn\">Privacy blur</button></div>\n<style>.m-app-rainbow-wallet{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0a0f1f;color:#f4f5f7;perspective:680px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-rainbow-wallet__card{position:relative;width:min(78%,222px);height:126px;border-radius:16px;padding:15px 16px;background:linear-gradient(135deg,#3b82f6,#ec4899);color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 16px 32px rgba(0,0,0,.32);transition:transform .35s cubic-bezier(.22,1,.36,1),filter .35s;cursor:pointer}.m-app-rainbow-wallet__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-60%);transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-rainbow-wallet__card:hover .m-app-rainbow-wallet__sheen,.m-app-rainbow-wallet__card.is-tilt .m-app-rainbow-wallet__sheen{transform:translateX(60%)}.m-app-rainbow-wallet__frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,235,255,.68),rgba(235,248,255,.45));backdrop-filter:blur(5px);clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-rainbow-wallet__card.is-frozen .m-app-rainbow-wallet__frost{clip-path:inset(0 0 0 0)}.m-app-rainbow-wallet__card.is-frozen{filter:saturate(.35)}.m-app-rainbow-wallet__row{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:13px}.m-app-rainbow-wallet__row i{font-style:normal;font:600 9.5px/1 'Geist Mono',monospace;opacity:.8}.m-app-rainbow-wallet__num{position:relative;font:600 13.5px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-rainbow-wallet__btn{height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(128,128,128,.22);background:#151d36;color:#f4f5f7;font:600 11.5px/1 inherit;cursor:pointer;transition:transform .16s}.m-app-rainbow-wallet__btn:active{transform:scale(.94)}</style>",
+    "html": "<div class=\"m-app-rainbow-wallet\"><div class=\"m-app-rainbow-wallet__card\"><div class=\"m-app-rainbow-wallet__sheen\"></div><div class=\"m-app-rainbow-wallet__frost\"></div><div class=\"m-app-rainbow-wallet__row\"><b>rainbow.eth</b><i>NFC</i></div><div class=\"m-app-rainbow-wallet__num\">0x71C…9a4E</div></div><button type=\"button\" class=\"m-app-rainbow-wallet__btn\">Privacy blur</button></div>",
+    "css": ".m-app-rainbow-wallet{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0a0f1f;color:#f4f5f7;perspective:680px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-rainbow-wallet__card{position:relative;width:min(78%,222px);height:126px;border-radius:16px;padding:15px 16px;background:linear-gradient(135deg,#3b82f6,#ec4899);color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;box-shadow:0 16px 32px rgba(0,0,0,.32);transition:transform .35s cubic-bezier(.22,1,.36,1),filter .35s;cursor:pointer}.m-app-rainbow-wallet__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-60%);transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-rainbow-wallet__card:hover .m-app-rainbow-wallet__sheen,.m-app-rainbow-wallet__card.is-tilt .m-app-rainbow-wallet__sheen{transform:translateX(60%)}.m-app-rainbow-wallet__frost{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,235,255,.68),rgba(235,248,255,.45));backdrop-filter:blur(5px);clip-path:inset(0 100% 0 0);transition:clip-path .48s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-rainbow-wallet__card.is-frozen .m-app-rainbow-wallet__frost{clip-path:inset(0 0 0 0)}.m-app-rainbow-wallet__card.is-frozen{filter:saturate(.35)}.m-app-rainbow-wallet__row{position:relative;display:flex;justify-content:space-between;align-items:center;font-size:13px}.m-app-rainbow-wallet__row i{font-style:normal;font:600 9.5px/1 'Geist Mono',monospace;opacity:.8}.m-app-rainbow-wallet__num{position:relative;font:600 13.5px/1 'Geist Mono',monospace;letter-spacing:.08em}.m-app-rainbow-wallet__btn{height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(128,128,128,.22);background:#151d36;color:#f4f5f7;font:600 11.5px/1 inherit;cursor:pointer;transition:transform .16s}.m-app-rainbow-wallet__btn:active{transform:scale(.94)}",
+    "js": "var el=root.querySelector('.m-app-rainbow-wallet');if(!el)return;var card=el.querySelector('.m-app-rainbow-wallet__card'),btn=el.querySelector('.m-app-rainbow-wallet__btn');var frozen=false,touched=false,dead=false,l1=\"Privacy blur\",l2=\"Revealed \\ud83c\\udf08\";function flip(){frozen=!frozen;card.classList.toggle('is-frozen',frozen);card.classList.toggle('is-tilt',!frozen);btn.textContent=frozen?l2:l1;card.style.transform=frozen?'rotateY(-8deg) rotateX(4deg) scale(.97)':'rotateY(8deg) rotateX(5deg)';}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform='rotateY('+(x*22).toFixed(1)+'deg) rotateX('+(-y*16).toFixed(1)+'deg)';});card.addEventListener('pointerleave',function(){card.style.transform='';});btn.addEventListener('click',function(){touched=true;flip();});card.addEventListener('click',function(){touched=true;flip();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},2200);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-ynab-budget-envelope-bars",
+    "title": "YNAB: Zero-Based Envelope Category Fill Cascade",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 620,
+    "ease": {
+      "t": "spring",
+      "k": 280,
+      "c": 22
+    },
+    "easeLabel": "spring(280, 22)",
+    "props": [
+      "width (staggered envelope bars)",
+      "transition-delay (90ms stagger)"
+    ],
+    "src": "YNAB",
+    "srcUrl": "https://apps.apple.com/us/app/ynab-budget-money-planner/id1010865877?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "YNAB",
+      "slug": "ynab",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#3B5EDA",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7b/23/3f/7b233f6a-0443-3c9c-da15-c1b44e7bd55f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/ynab-budget-money-planner/id1010865877?uo=4",
+      "bundleId": "com.youneedabudget.evergreen.YNAB-Evergreen"
+    },
+    "summary": "Assigning ready-to-assign dollars in YNAB cascades crisp indigo progress bars across Rent, Groceries, and Fun Money with a 90ms stagger.",
+    "hint": "Tap card to fund budget envelopes",
+    "choreography": [
+      "0ms: first budget envelope bar begins expanding toward its monthly target.",
+      "90-180ms: subsequent envelope bars stagger in cleanly with cubic-bezier(0.22, 1.16, 0.36, 1).",
+      "480-620ms: funded percentages settle cleanly with tabular alignment."
+    ],
+    "agentPrompt": "Build YNAB's staggered envelope budget progress list on #f4f6fc with #3B5EDA -> #60a5fa bars: transition each 8px rounded bar's width over 620ms cubic-bezier(0.22, 1.16, 0.36, 1) with a 90ms per-row stagger delay.",
+    "extractableCode": "<!-- YNAB: Zero-Based Envelope Category Fill Cascade -->\n<div class=\"m-app-ynab\"><div class=\"m-app-ynab__card\"><div class=\"m-app-ynab__r\"><span>Rent</span><div class=\"m-app-ynab__tr\"><i data-p=\"100\" style=\"width:12%;transition-delay:0ms\"></i></div><b>100%</b></div><div class=\"m-app-ynab__r\"><span>Groceries</span><div class=\"m-app-ynab__tr\"><i data-p=\"82\" style=\"width:12%;transition-delay:90ms\"></i></div><b>82%</b></div><div class=\"m-app-ynab__r\"><span>Travel</span><div class=\"m-app-ynab__tr\"><i data-p=\"64\" style=\"width:12%;transition-delay:180ms\"></i></div><b>64%</b></div></div></div>\n<style>.m-app-ynab{position:absolute;inset:0;display:grid;place-items:center;background:#f4f6fc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ynab__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-ynab__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-ynab__r span{color:#6b7280;font-weight:600}.m-app-ynab__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-ynab__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-ynab__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#3B5EDA,#60a5fa);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-ynab\"><div class=\"m-app-ynab__card\"><div class=\"m-app-ynab__r\"><span>Rent</span><div class=\"m-app-ynab__tr\"><i data-p=\"100\" style=\"width:12%;transition-delay:0ms\"></i></div><b>100%</b></div><div class=\"m-app-ynab__r\"><span>Groceries</span><div class=\"m-app-ynab__tr\"><i data-p=\"82\" style=\"width:12%;transition-delay:90ms\"></i></div><b>82%</b></div><div class=\"m-app-ynab__r\"><span>Travel</span><div class=\"m-app-ynab__tr\"><i data-p=\"64\" style=\"width:12%;transition-delay:180ms\"></i></div><b>64%</b></div></div></div>",
+    "css": ".m-app-ynab{position:absolute;inset:0;display:grid;place-items:center;background:#f4f6fc;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ynab__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-ynab__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-ynab__r span{color:#6b7280;font-weight:600}.m-app-ynab__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-ynab__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-ynab__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#3B5EDA,#60a5fa);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-ynab');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-ynab__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-acorns-roundup-jar-fill",
+    "title": "Acorns: Spare Change Round-Up Liquid Jar Fill",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 660,
+    "ease": {
+      "t": "spring",
+      "k": 260,
+      "c": 20
+    },
+    "easeLabel": "spring(260, 20)",
+    "props": [
+      "height (green fill level)",
+      "transform: translateX (wave crest)"
+    ],
+    "src": "Acorns",
+    "srcUrl": "https://apps.apple.com/us/app/acorns-save-invest-money/id883324671?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Acorns",
+      "slug": "acorns",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#74C947",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5e/5e/20/5e5e2099-d7dd-47e0-15b1-f31e272466b4/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/acorns-save-invest-money/id883324671?uo=4",
+      "bundleId": "com.acorns.investor"
+    },
+    "summary": "Each spare-change round-up in Acorns raises the vibrant leaf-green liquid level inside the rounded investment jar with a gentle wave motion.",
+    "hint": "Tap jar to invest next round-up",
+    "choreography": [
+      "0-100ms: round-up click pushes liquid level upward smoothly.",
+      "100-560ms: oscillating #74C947 wave surface settles at the next round-up milestone.",
+      "560-660ms: updated round-up total centers clearly inside the jar."
+    ],
+    "agentPrompt": "Build an Acorns round-up jar animation on #f4fbf0 with #74C947 -> #4ea82a liquid fill: transition the container fill height over 660ms cubic-bezier(0.22, 1.18, 0.36, 1) topped by an oscillating wave crest.",
+    "extractableCode": "<!-- Acorns: Spare Change Round-Up Liquid Jar Fill -->\n<div class=\"m-app-acorns\"><button type=\"button\" class=\"m-app-acorns__cup\"><div class=\"m-app-acorns__liq\"><div class=\"m-app-acorns__wave\"></div></div><div class=\"m-app-acorns__txt\"><b>$3.20</b><span>Round-Ups</span></div></button></div>\n<style>.m-app-acorns{position:absolute;inset:0;display:grid;place-items:center;background:#f4fbf0;color:#14532d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-acorns__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#ffffff;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-acorns__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#74C947,#4ea82a);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-acorns__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#74C947;opacity:.65;animation:m-acorns-wv 2.4s ease-in-out infinite alternate}@keyframes m-acorns-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-acorns__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-acorns__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-acorns__txt span{font:600 10px/1 inherit;opacity:.9}</style>",
+    "html": "<div class=\"m-app-acorns\"><button type=\"button\" class=\"m-app-acorns__cup\"><div class=\"m-app-acorns__liq\"><div class=\"m-app-acorns__wave\"></div></div><div class=\"m-app-acorns__txt\"><b>$3.20</b><span>Round-Ups</span></div></button></div>",
+    "css": ".m-app-acorns{position:absolute;inset:0;display:grid;place-items:center;background:#f4fbf0;color:#14532d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-acorns__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#ffffff;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-acorns__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#74C947,#4ea82a);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-acorns__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#74C947;opacity:.65;animation:m-acorns-wv 2.4s ease-in-out infinite alternate}@keyframes m-acorns-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-acorns__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-acorns__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-acorns__txt span{font:600 10px/1 inherit;opacity:.9}",
+    "js": "var el=root.querySelector('.m-app-acorns');if(!el)return;var cup=el.querySelector('.m-app-acorns__cup'),liq=el.querySelector('.m-app-acorns__liq'),b=el.querySelector('.m-app-acorns__txt b');var vals=[\"$1.45\", \"$3.20\", \"$4.85\", \"$5.00\"],pcts=[35,62,85,98],idx=1,touched=false,dead=false;function set(i){idx=i;liq.style.height=pcts[i]+'%';b.textContent=vals[i];}cup.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-trading-212-pie-live-chart-scrub",
+    "title": "Trading 212: AutoInvest Pie Live Return Scrub",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 240,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "cx/cy (dot)",
+      "x1/x2 (guide)",
+      "textContent"
+    ],
+    "src": "Trading 212",
+    "srcUrl": "https://apps.apple.com/gb/app/trading-212/id566325832?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Trading 212",
+      "slug": "trading-212",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#00A7E1",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/84/fc/1d/84fc1dd1-5ab9-fc6a-2f4c-a00ba6add421/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/gb/app/trading-212/id566325832?uo=4",
+      "bundleId": "com.avuscapital.trading212"
+    },
+    "summary": "Scrubbing across a Trading 212 AutoInvest Pie chart smoothly tracks the glowing cyan marker and crosshair to preview exact historical return points.",
+    "hint": "Hover or tap chart to scrub Pie value",
+    "choreography": [
+      "0-50ms: horizontal pointer coordinate resolves to discrete return samples.",
+      "50-190ms: #00A7E1 dot and vertical dashed guide glide across the SVG curve.",
+      "190-240ms: live Pie valuation updates cleanly in tabular monospace."
+    ],
+    "agentPrompt": "Create a Trading 212 AutoInvest Pie sparkline scrubber on #0c1118 with #00A7E1 cyan stroke and area fade: map pointer X to sample points and transition the indicator circle and vertical guide over 160ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Trading 212: AutoInvest Pie Live Return Scrub -->\n<div class=\"m-app-trading-212\"><div class=\"m-app-trading-212__card\"><div class=\"m-app-trading-212__top\"><span>Tech Pie</span><em class=\"m-app-trading-212__d\">+14.2% all time</em></div><div class=\"m-app-trading-212__val\">€<b>9,680</b></div><svg class=\"m-app-trading-212__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-trading-212-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#00A7E1\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#00A7E1\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-trading-212__area\" d=\"M0.0 52 L22.2 47 L44.4 41 L66.7 44 L88.9 35 L111.1 29 L133.3 32 L155.6 22 L177.8 17 L200.0 10 L200 66 L0 66 Z\" fill=\"url(#m-trading-212-g)\"/><path class=\"m-app-trading-212__line\" d=\"M0.0 52 L22.2 47 L44.4 41 L66.7 44 L88.9 35 L111.1 29 L133.3 32 L155.6 22 L177.8 17 L200.0 10\" fill=\"none\" stroke=\"#00A7E1\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-trading-212__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#00A7E1\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-trading-212__dot\" cx=\"200.0\" cy=\"10\" r=\"4.5\" fill=\"#00A7E1\" stroke=\"#141c26\" stroke-width=\"2\"/></svg></div></div>\n<style>.m-app-trading-212{position:absolute;inset:0;display:grid;place-items:center;background:#0c1118;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-trading-212__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#141c26;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-trading-212__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-trading-212__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#00A7E1}.m-app-trading-212__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-trading-212__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-trading-212__dot,.m-app-trading-212__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}</style>",
+    "html": "<div class=\"m-app-trading-212\"><div class=\"m-app-trading-212__card\"><div class=\"m-app-trading-212__top\"><span>Tech Pie</span><em class=\"m-app-trading-212__d\">+14.2% all time</em></div><div class=\"m-app-trading-212__val\">€<b>9,680</b></div><svg class=\"m-app-trading-212__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-trading-212-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#00A7E1\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#00A7E1\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-trading-212__area\" d=\"M0.0 52 L22.2 47 L44.4 41 L66.7 44 L88.9 35 L111.1 29 L133.3 32 L155.6 22 L177.8 17 L200.0 10 L200 66 L0 66 Z\" fill=\"url(#m-trading-212-g)\"/><path class=\"m-app-trading-212__line\" d=\"M0.0 52 L22.2 47 L44.4 41 L66.7 44 L88.9 35 L111.1 29 L133.3 32 L155.6 22 L177.8 17 L200.0 10\" fill=\"none\" stroke=\"#00A7E1\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-trading-212__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#00A7E1\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-trading-212__dot\" cx=\"200.0\" cy=\"10\" r=\"4.5\" fill=\"#00A7E1\" stroke=\"#141c26\" stroke-width=\"2\"/></svg></div></div>",
+    "css": ".m-app-trading-212{position:absolute;inset:0;display:grid;place-items:center;background:#0c1118;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-trading-212__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#141c26;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-trading-212__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-trading-212__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#00A7E1}.m-app-trading-212__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-trading-212__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-trading-212__dot,.m-app-trading-212__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-trading-212');if(!el)return;var card=el.querySelector('.m-app-trading-212__card'),dot=el.querySelector('.m-app-trading-212__dot'),guide=el.querySelector('.m-app-trading-212__guide'),val=el.querySelector('.m-app-trading-212__val b');var coords=[[0.0, 52], [22.2, 47], [44.4, 41], [66.7, 44], [88.9, 35], [111.1, 29], [133.3, 32], [155.6, 22], [177.8, 17], [200.0, 10]],vals=[\"8,120\", \"8,290\", \"8,490\", \"8,410\", \"8,760\", \"8,990\", \"8,880\", \"9,240\", \"9,410\", \"9,680\"],idx=coords.length-1,touched=false,dead=false;function setIdx(i){i=Math.max(0,Math.min(coords.length-1,i));dot.setAttribute('cx',coords[i][0]);dot.setAttribute('cy',coords[i][1]);guide.setAttribute('x1',coords[i][0]);guide.setAttribute('x2',coords[i][0]);val.textContent=vals[i];}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));setIdx(Math.round(p*(coords.length-1)));});card.addEventListener('click',function(){touched=true;idx=(idx+2)%coords.length;setIdx(idx);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%coords.length;setIdx(idx);}},900);return function(){dead=true;clearInterval(iv);};"
+  }
+]

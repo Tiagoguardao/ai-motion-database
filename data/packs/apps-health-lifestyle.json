@@ -1,0 +1,1261 @@
+[
+  {
+    "id": "app-oura-readiness-crown-ring-sweep",
+    "title": "Oura: Nocturnal Readiness Dual-Ring Sweep & Crown Glow",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "dark",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (Readiness & Sleep rings)",
+      "filter: drop-shadow",
+      "textContent"
+    ],
+    "src": "Oura",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.ouraring.oura",
+    "collection": "Apps",
+    "app": {
+      "name": "Oura",
+      "slug": "oura",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#2D3142",
+      "iconUrl": "https://play-lh.googleusercontent.com/5mz7MxEkUtzJzPlPrSFx4pboosI8vXSCQEGCwwoGQth8Vu8Bwu-dmmbmQK669T81O5B6UcJ2Yu7O-ny1KeWE6A=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.ouraring.oura",
+      "bundleId": "com.ouraring.oura"
+    },
+    "summary": "Opening Oura sweeps luminous ice-blue and champagne rings smoothly around your morning Readiness score with calm Nordic serenity.",
+    "hint": "Tap ring to cycle Readiness / Sleep / Activity",
+    "choreography": [
+      "0-180ms: dark obsidian ring tracks prime from 12-o'clock.",
+      "180-660ms: outer Readiness arc and inner Sleep arc sweep simultaneously via stroke-dashoffset.",
+      "660-720ms: center score and 'Optimal ♛' tag settle gently."
+    ],
+    "agentPrompt": "Build Oura's nocturnal Readiness dual-ring gauge on #0b0d12 with #93c5fd ice-blue and #fbbf24 crown-gold concentric SVG arcs animating stroke-dashoffset over 720ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Oura: Nocturnal Readiness Dual-Ring Sweep & Crown Glow -->\n<div class=\"m-app-oura\"><button type=\"button\" class=\"m-app-oura__btn\"><svg class=\"m-app-oura__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-oura__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-oura__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#fbbf24\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-oura__mid\"><b>91</b><span>Readiness</span></div><em class=\"m-app-oura__tag\">♛ Optimal</em></button></div>\n<style>.m-app-oura{position:absolute;inset:0;display:grid;place-items:center;background:#0b0d12;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-oura__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-oura__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #93c5fd33)}.m-app-oura__arc1,.m-app-oura__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-oura__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-oura__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-oura__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-oura__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#151924;border:1px solid rgba(128,128,128,.18);color:#93c5fd}</style>",
+    "html": "<div class=\"m-app-oura\"><button type=\"button\" class=\"m-app-oura__btn\"><svg class=\"m-app-oura__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-oura__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-oura__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#fbbf24\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-oura__mid\"><b>91</b><span>Readiness</span></div><em class=\"m-app-oura__tag\">♛ Optimal</em></button></div>",
+    "css": ".m-app-oura{position:absolute;inset:0;display:grid;place-items:center;background:#0b0d12;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-oura__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-oura__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #93c5fd33)}.m-app-oura__arc1,.m-app-oura__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-oura__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-oura__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-oura__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-oura__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#151924;border:1px solid rgba(128,128,128,.18);color:#93c5fd}",
+    "js": "var el=root.querySelector('.m-app-oura');if(!el)return;var btn=el.querySelector('.m-app-oura__btn'),a1=el.querySelector('.m-app-oura__arc1'),a2=el.querySelector('.m-app-oura__arc2'),num=el.querySelector('.m-app-oura__mid b');var scores=[91, 86, 94, 79],unit=\"\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-whoop-recovery-strain-ring-dial",
+    "title": "WHOOP: Tactical Recovery & Day Strain Concentric Dial",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 700,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (Recovery green & Strain blue)",
+      "filter: drop-shadow"
+    ],
+    "src": "WHOOP",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.whoop.android",
+    "collection": "Apps",
+    "app": {
+      "name": "WHOOP",
+      "slug": "whoop",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#101114",
+      "iconUrl": "https://play-lh.googleusercontent.com/R-7Z9KcEXvT0_aGq9Zm8b5-C3kVXtTErGRQE2wKi0Wr3qTcgjsyLMKvNo0gZ2q6WvgTNJ9E0UpJUuiSxoX-KhA=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.whoop.android",
+      "bundleId": "com.whoop.android"
+    },
+    "summary": "WHOOP's dark tactical dashboard sweeps an electric green Recovery ring around a bright cyan Day Strain inner arc with razor-sharp monospace telemetry.",
+    "hint": "Tap dial to cycle Recovery profiles",
+    "choreography": [
+      "0-160ms: high-contrast black ring container primes.",
+      "160-640ms: #16ec06 Recovery arc and #38bdf8 Strain arc sweep crisply via stroke-dashoffset.",
+      "640-700ms: center recovery percentage locks cleanly."
+    ],
+    "agentPrompt": "Recreate WHOOP's Recovery & Strain concentric ring gauge on #090b0d with #16ec06 neon green outer arc and #38bdf8 inner arc animated over 700ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- WHOOP: Tactical Recovery & Day Strain Concentric Dial -->\n<div class=\"m-app-whoop\"><button type=\"button\" class=\"m-app-whoop__btn\"><svg class=\"m-app-whoop__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-whoop__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#16ec06\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-whoop__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-whoop__mid\"><b>84%</b><span>Recovery</span></div><em class=\"m-app-whoop__tag\">Peak Ready</em></button></div>\n<style>.m-app-whoop{position:absolute;inset:0;display:grid;place-items:center;background:#090b0d;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-whoop__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-whoop__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #16ec0633)}.m-app-whoop__arc1,.m-app-whoop__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-whoop__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-whoop__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-whoop__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-whoop__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#14171c;border:1px solid rgba(128,128,128,.18);color:#16ec06}</style>",
+    "html": "<div class=\"m-app-whoop\"><button type=\"button\" class=\"m-app-whoop__btn\"><svg class=\"m-app-whoop__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-whoop__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#16ec06\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-whoop__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-whoop__mid\"><b>84%</b><span>Recovery</span></div><em class=\"m-app-whoop__tag\">Peak Ready</em></button></div>",
+    "css": ".m-app-whoop{position:absolute;inset:0;display:grid;place-items:center;background:#090b0d;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-whoop__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-whoop__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #16ec0633)}.m-app-whoop__arc1,.m-app-whoop__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-whoop__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-whoop__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-whoop__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-whoop__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#14171c;border:1px solid rgba(128,128,128,.18);color:#16ec06}",
+    "js": "var el=root.querySelector('.m-app-whoop');if(!el)return;var btn=el.querySelector('.m-app-whoop__btn'),a1=el.querySelector('.m-app-whoop__arc1'),a2=el.querySelector('.m-app-whoop__arc2'),num=el.querySelector('.m-app-whoop__mid b');var scores=[84, 92, 61, 77],unit=\"%\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-nike-run-club-volt-pace-split-bars",
+    "title": "Nike Run Club: Volt Run Pace Zones & Split Cascade",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 600,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 22
+    },
+    "easeLabel": "spring(320, 22)",
+    "props": [
+      "width (volt split bars)",
+      "transition-delay (90ms)"
+    ],
+    "src": "Nike Run Club",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.nike.plusgps",
+    "collection": "Apps",
+    "app": {
+      "name": "Nike Run Club",
+      "slug": "nike-run-club",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#CCFF00",
+      "iconUrl": "https://play-lh.googleusercontent.com/nx_wxu1Dsx7THHRNIrdGNY60lS3zxFwyBvfu-DpvEOcTN46JXq57YARSX3PLEBApghfwIn50mxJcLU-RD5qzJQ=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.nike.plusgps",
+      "bundleId": "com.nike.plusgps"
+    },
+    "summary": "Nike Run Club's post-run summary shoots bold neon-volt split bars across pace zones with athletic 90ms stagger.",
+    "hint": "Tap card to replay split bars",
+    "choreography": [
+      "0ms: 5K Pace bar fires rightward in signature Nike Volt (#CCFF00).",
+      "90-180ms: Cadence and Negative Split bars cascade with crisp spring settle.",
+      "480-600ms: tabular metrics lock cleanly."
+    ],
+    "agentPrompt": "Build Nike Run Club's volt split-bar cascade on #0d0e0f with #CCFF00 -> #84cc16 bars animating width over 600ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- Nike Run Club: Volt Run Pace Zones & Split Cascade -->\n<div class=\"m-app-nike-run-club\"><div class=\"m-app-nike-run-club__card\"><div class=\"m-app-nike-run-club__r\"><span>1K Split</span><div class=\"m-app-nike-run-club__tr\"><i data-p=\"94\" style=\"width:12%;transition-delay:0ms\"></i></div><b>94%</b></div><div class=\"m-app-nike-run-club__r\"><span>Cadence</span><div class=\"m-app-nike-run-club__tr\"><i data-p=\"86\" style=\"width:12%;transition-delay:90ms\"></i></div><b>86%</b></div><div class=\"m-app-nike-run-club__r\"><span>Zone 4</span><div class=\"m-app-nike-run-club__tr\"><i data-p=\"72\" style=\"width:12%;transition-delay:180ms\"></i></div><b>72%</b></div></div></div>\n<style>.m-app-nike-run-club{position:absolute;inset:0;display:grid;place-items:center;background:#0d0e0f;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-nike-run-club__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#181a1c;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-nike-run-club__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-nike-run-club__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-nike-run-club__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-nike-run-club__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-nike-run-club__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#CCFF00,#84cc16);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-nike-run-club\"><div class=\"m-app-nike-run-club__card\"><div class=\"m-app-nike-run-club__r\"><span>1K Split</span><div class=\"m-app-nike-run-club__tr\"><i data-p=\"94\" style=\"width:12%;transition-delay:0ms\"></i></div><b>94%</b></div><div class=\"m-app-nike-run-club__r\"><span>Cadence</span><div class=\"m-app-nike-run-club__tr\"><i data-p=\"86\" style=\"width:12%;transition-delay:90ms\"></i></div><b>86%</b></div><div class=\"m-app-nike-run-club__r\"><span>Zone 4</span><div class=\"m-app-nike-run-club__tr\"><i data-p=\"72\" style=\"width:12%;transition-delay:180ms\"></i></div><b>72%</b></div></div></div>",
+    "css": ".m-app-nike-run-club{position:absolute;inset:0;display:grid;place-items:center;background:#0d0e0f;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-nike-run-club__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#181a1c;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-nike-run-club__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-nike-run-club__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-nike-run-club__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-nike-run-club__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-nike-run-club__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#CCFF00,#84cc16);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-nike-run-club');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-nike-run-club__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-peloton-leaderboard-output-bars",
+    "title": "Peloton: Live Ride Output & Leaderboard Surge Bars",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Rhythmic",
+    "surface": "dark",
+    "dur": 620,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 21
+    },
+    "easeLabel": "spring(310, 21)",
+    "props": [
+      "width (crimson output bars)",
+      "transition-delay"
+    ],
+    "src": "Peloton",
+    "srcUrl": "https://apps.apple.com/us/app/peloton-fitness-workouts/id792750948?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Peloton",
+      "slug": "peloton",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#DF1C2F",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/32/c5/ab/32c5ab1d-f454-1a9d-3072-fc10222ad2bb/peloton-white-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/peloton-fitness-workouts/id792750948?uo=4",
+      "bundleId": "com.Peloton.PelotonApp"
+    },
+    "summary": "Peloton's live ride telemetry drives punchy crimson output, cadence, and resistance bars upward as you push toward a new PR.",
+    "hint": "Tap telemetry card to surge output",
+    "choreography": [
+      "0ms: Output bar surges rightward in #DF1C2F Peloton crimson.",
+      "90-180ms: Cadence and Resistance bars stagger in smoothly.",
+      "500-620ms: live percentage readouts settle cleanly."
+    ],
+    "agentPrompt": "Build Peloton's live ride metric bar card on #101114 with #DF1C2F -> #fb7185 bars animating width over 620ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- Peloton: Live Ride Output & Leaderboard Surge Bars -->\n<div class=\"m-app-peloton\"><div class=\"m-app-peloton__card\"><div class=\"m-app-peloton__r\"><span>Output</span><div class=\"m-app-peloton__tr\"><i data-p=\"92\" style=\"width:12%;transition-delay:0ms\"></i></div><b>92%</b></div><div class=\"m-app-peloton__r\"><span>Cadence</span><div class=\"m-app-peloton__tr\"><i data-p=\"84\" style=\"width:12%;transition-delay:90ms\"></i></div><b>84%</b></div><div class=\"m-app-peloton__r\"><span>Resist</span><div class=\"m-app-peloton__tr\"><i data-p=\"68\" style=\"width:12%;transition-delay:180ms\"></i></div><b>68%</b></div></div></div>\n<style>.m-app-peloton{position:absolute;inset:0;display:grid;place-items:center;background:#101114;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-peloton__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#1b1d22;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-peloton__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-peloton__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-peloton__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-peloton__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-peloton__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#DF1C2F,#fb7185);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-peloton\"><div class=\"m-app-peloton__card\"><div class=\"m-app-peloton__r\"><span>Output</span><div class=\"m-app-peloton__tr\"><i data-p=\"92\" style=\"width:12%;transition-delay:0ms\"></i></div><b>92%</b></div><div class=\"m-app-peloton__r\"><span>Cadence</span><div class=\"m-app-peloton__tr\"><i data-p=\"84\" style=\"width:12%;transition-delay:90ms\"></i></div><b>84%</b></div><div class=\"m-app-peloton__r\"><span>Resist</span><div class=\"m-app-peloton__tr\"><i data-p=\"68\" style=\"width:12%;transition-delay:180ms\"></i></div><b>68%</b></div></div></div>",
+    "css": ".m-app-peloton{position:absolute;inset:0;display:grid;place-items:center;background:#101114;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-peloton__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#1b1d22;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-peloton__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-peloton__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-peloton__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-peloton__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-peloton__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#DF1C2F,#fb7185);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-peloton');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-peloton__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-myfitnesspal-macro-calorie-bars",
+    "title": "MyFitnessPal: Daily Macro Breakdown Staggered Bars",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 620,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1.16,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1.16, 0.36, 1)",
+    "props": [
+      "width (macro bars)",
+      "transition-delay (90ms)"
+    ],
+    "src": "MyFitnessPal",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.myfitnesspal.android",
+    "collection": "Apps",
+    "app": {
+      "name": "MyFitnessPal",
+      "slug": "myfitnesspal",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0066EE",
+      "iconUrl": "https://play-lh.googleusercontent.com/iGPZDsKZoF58BABAEIebIQk_X1sdYHviEJAwUyoYyJO4L-bN8XA6yWiXuBJcVJwIEc4wHSvxWjbFU23Y7cn1sMo=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.myfitnesspal.android",
+      "bundleId": "com.myfitnesspal.android"
+    },
+    "summary": "Logging a meal in MyFitnessPal smoothly cascades Protein, Carbs, and Fat bars across crisp royal blue progress tracks.",
+    "hint": "Tap card to log meal & fill macros",
+    "choreography": [
+      "0ms: Protein bar advances cleanly in #0066EE blue.",
+      "90-180ms: Carbs and Fat tracks stagger into updated daily totals.",
+      "500-620ms: tabular macro percentages align crisply."
+    ],
+    "agentPrompt": "Build MyFitnessPal's daily macro bars on #f3f7fd with #0066EE -> #38bdf8 tracks expanding over 620ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- MyFitnessPal: Daily Macro Breakdown Staggered Bars -->\n<div class=\"m-app-myfitnesspal\"><div class=\"m-app-myfitnesspal__card\"><div class=\"m-app-myfitnesspal__r\"><span>Protein</span><div class=\"m-app-myfitnesspal__tr\"><i data-p=\"88\" style=\"width:12%;transition-delay:0ms\"></i></div><b>88%</b></div><div class=\"m-app-myfitnesspal__r\"><span>Carbs</span><div class=\"m-app-myfitnesspal__tr\"><i data-p=\"74\" style=\"width:12%;transition-delay:90ms\"></i></div><b>74%</b></div><div class=\"m-app-myfitnesspal__r\"><span>Fats</span><div class=\"m-app-myfitnesspal__tr\"><i data-p=\"58\" style=\"width:12%;transition-delay:180ms\"></i></div><b>58%</b></div></div></div>\n<style>.m-app-myfitnesspal{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7fd;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-myfitnesspal__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-myfitnesspal__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-myfitnesspal__r span{color:#6b7280;font-weight:600}.m-app-myfitnesspal__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-myfitnesspal__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-myfitnesspal__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#0066EE,#38bdf8);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-myfitnesspal\"><div class=\"m-app-myfitnesspal__card\"><div class=\"m-app-myfitnesspal__r\"><span>Protein</span><div class=\"m-app-myfitnesspal__tr\"><i data-p=\"88\" style=\"width:12%;transition-delay:0ms\"></i></div><b>88%</b></div><div class=\"m-app-myfitnesspal__r\"><span>Carbs</span><div class=\"m-app-myfitnesspal__tr\"><i data-p=\"74\" style=\"width:12%;transition-delay:90ms\"></i></div><b>74%</b></div><div class=\"m-app-myfitnesspal__r\"><span>Fats</span><div class=\"m-app-myfitnesspal__tr\"><i data-p=\"58\" style=\"width:12%;transition-delay:180ms\"></i></div><b>58%</b></div></div></div>",
+    "css": ".m-app-myfitnesspal{position:absolute;inset:0;display:grid;place-items:center;background:#f3f7fd;color:#0f172a;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-myfitnesspal__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-myfitnesspal__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-myfitnesspal__r span{color:#6b7280;font-weight:600}.m-app-myfitnesspal__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-myfitnesspal__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-myfitnesspal__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#0066EE,#38bdf8);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-myfitnesspal');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-myfitnesspal__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-macrofactor-expenditure-trend-scrub",
+    "title": "MacroFactor: Adaptive TDEE Expenditure Sparkline Scrub",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Hover",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 240,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "cx/cy (dot)",
+      "x1/x2 (guide)",
+      "textContent (kcal)"
+    ],
+    "src": "MacroFactor",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.sbs.diet",
+    "collection": "Apps",
+    "app": {
+      "name": "MacroFactor",
+      "slug": "macrofactor",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#1F2937",
+      "iconUrl": "https://play-lh.googleusercontent.com/4gfovnH1uoLSJr-ga0iswuqW-jR7Go1iQdJTVWblLLrb3DeAGj1VqtF8n-lFi2e6hWEIBVshkGqTqjjIl99AptM=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.sbs.diet",
+      "bundleId": "com.sbs.diet"
+    },
+    "summary": "Scrubbing MacroFactor's expenditure curve slides a crisp glowing node along your adaptive calorie trend with zero visual noise.",
+    "hint": "Hover or tap chart to scrub TDEE",
+    "choreography": [
+      "0-50ms: horizontal scrub maps cleanly to daily expenditure estimates.",
+      "50-190ms: indigo marker and dashed vertical crosshair glide smoothly.",
+      "190-240ms: monospace kcal figure updates in real time."
+    ],
+    "agentPrompt": "Build MacroFactor's adaptive expenditure sparkline scrubber on #0f1218 with #818cf8 curve and pointer-tracked reticle gliding over 160ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- MacroFactor: Adaptive TDEE Expenditure Sparkline Scrub -->\n<div class=\"m-app-macrofactor\"><div class=\"m-app-macrofactor__card\"><div class=\"m-app-macrofactor__top\"><span>Expenditure</span><em class=\"m-app-macrofactor__d\">2,640 kcal avg</em></div><div class=\"m-app-macrofactor__val\"><b>2,690</b></div><svg class=\"m-app-macrofactor__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-macrofactor-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#818cf8\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#818cf8\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-macrofactor__area\" d=\"M0.0 44 L22.2 42 L44.4 39 L66.7 41 L88.9 36 L111.1 33 L133.3 30 L155.6 27 L177.8 24 L200.0 20 L200 66 L0 66 Z\" fill=\"url(#m-macrofactor-g)\"/><path class=\"m-app-macrofactor__line\" d=\"M0.0 44 L22.2 42 L44.4 39 L66.7 41 L88.9 36 L111.1 33 L133.3 30 L155.6 27 L177.8 24 L200.0 20\" fill=\"none\" stroke=\"#818cf8\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-macrofactor__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#818cf8\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-macrofactor__dot\" cx=\"200.0\" cy=\"20\" r=\"4.5\" fill=\"#818cf8\" stroke=\"#181d26\" stroke-width=\"2\"/></svg></div></div>\n<style>.m-app-macrofactor{position:absolute;inset:0;display:grid;place-items:center;background:#0f1218;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-macrofactor__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#181d26;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-macrofactor__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-macrofactor__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#818cf8}.m-app-macrofactor__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-macrofactor__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-macrofactor__dot,.m-app-macrofactor__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}</style>",
+    "html": "<div class=\"m-app-macrofactor\"><div class=\"m-app-macrofactor__card\"><div class=\"m-app-macrofactor__top\"><span>Expenditure</span><em class=\"m-app-macrofactor__d\">2,640 kcal avg</em></div><div class=\"m-app-macrofactor__val\"><b>2,690</b></div><svg class=\"m-app-macrofactor__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-macrofactor-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#818cf8\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#818cf8\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-macrofactor__area\" d=\"M0.0 44 L22.2 42 L44.4 39 L66.7 41 L88.9 36 L111.1 33 L133.3 30 L155.6 27 L177.8 24 L200.0 20 L200 66 L0 66 Z\" fill=\"url(#m-macrofactor-g)\"/><path class=\"m-app-macrofactor__line\" d=\"M0.0 44 L22.2 42 L44.4 39 L66.7 41 L88.9 36 L111.1 33 L133.3 30 L155.6 27 L177.8 24 L200.0 20\" fill=\"none\" stroke=\"#818cf8\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-macrofactor__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#818cf8\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-macrofactor__dot\" cx=\"200.0\" cy=\"20\" r=\"4.5\" fill=\"#818cf8\" stroke=\"#181d26\" stroke-width=\"2\"/></svg></div></div>",
+    "css": ".m-app-macrofactor{position:absolute;inset:0;display:grid;place-items:center;background:#0f1218;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-macrofactor__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#181d26;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-macrofactor__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-macrofactor__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#818cf8}.m-app-macrofactor__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-macrofactor__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-macrofactor__dot,.m-app-macrofactor__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-macrofactor');if(!el)return;var card=el.querySelector('.m-app-macrofactor__card'),dot=el.querySelector('.m-app-macrofactor__dot'),guide=el.querySelector('.m-app-macrofactor__guide'),val=el.querySelector('.m-app-macrofactor__val b');var coords=[[0.0, 44], [22.2, 42], [44.4, 39], [66.7, 41], [88.9, 36], [111.1, 33], [133.3, 30], [155.6, 27], [177.8, 24], [200.0, 20]],vals=[\"2,510\", \"2,530\", \"2,555\", \"2,540\", \"2,580\", \"2,605\", \"2,620\", \"2,645\", \"2,665\", \"2,690\"],idx=coords.length-1,touched=false,dead=false;function setIdx(i){i=Math.max(0,Math.min(coords.length-1,i));dot.setAttribute('cx',coords[i][0]);dot.setAttribute('cy',coords[i][1]);guide.setAttribute('x1',coords[i][0]);guide.setAttribute('x2',coords[i][0]);val.textContent=vals[i];}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));setIdx(Math.round(p*(coords.length-1)));});card.addEventListener('click',function(){touched=true;idx=(idx+2)%coords.length;setIdx(idx);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%coords.length;setIdx(idx);}},900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-gentler-streak-activity-path-ring-glow",
+    "title": "Gentler Streak: Organic Activity Path Ring & Gentle Zone",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Organic",
+    "surface": "light",
+    "dur": 740,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (organic arcs)",
+      "textContent"
+    ],
+    "src": "Gentler Streak",
+    "srcUrl": "https://apps.apple.com/us/app/gentler-streak-workout-tracker/id1576857102?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Gentler Streak",
+      "slug": "gentler-streak",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#78C850",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/56/5e/15565ef5-679f-2e38-3643-27951997359a/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/gentler-streak-workout-tracker/id1576857102?uo=4",
+      "bundleId": "app.gentler.activity"
+    },
+    "summary": "Gentler Streak replaces harsh fitness rings with warm leaf-green and sunny-amber arcs that sweep smoothly to keep training inside your healthy zone.",
+    "hint": "Tap ring to preview healthy zone states",
+    "choreography": [
+      "0-180ms: warm cream dial primes smoothly.",
+      "180-680ms: #78C850 green and #fbbf24 sun arcs glide via stroke-dashoffset.",
+      "680-740ms: friendly 'In the Zone' badge anchors below."
+    ],
+    "agentPrompt": "Create Gentler Streak's warm organic ring gauge on #f6faf2 with #78C850 and #fbbf24 concentric SVG arcs sweeping over 740ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Gentler Streak: Organic Activity Path Ring & Gentle Zone -->\n<div class=\"m-app-gentler-streak\"><button type=\"button\" class=\"m-app-gentler-streak__btn\"><svg class=\"m-app-gentler-streak__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-gentler-streak__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#65a30d\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-gentler-streak__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-gentler-streak__mid\"><b>76%</b><span>Activity</span></div><em class=\"m-app-gentler-streak__tag\">In the Zone</em></button></div>\n<style>.m-app-gentler-streak{position:absolute;inset:0;display:grid;place-items:center;background:#f6faf2;color:#1c2419;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-gentler-streak__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-gentler-streak__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #65a30d33)}.m-app-gentler-streak__arc1,.m-app-gentler-streak__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-gentler-streak__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-gentler-streak__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-gentler-streak__mid span{font:500 9.5px/1.2 inherit;color:#6b7280;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-gentler-streak__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.18);color:#65a30d}</style>",
+    "html": "<div class=\"m-app-gentler-streak\"><button type=\"button\" class=\"m-app-gentler-streak__btn\"><svg class=\"m-app-gentler-streak__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-gentler-streak__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#65a30d\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-gentler-streak__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#f59e0b\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-gentler-streak__mid\"><b>76%</b><span>Activity</span></div><em class=\"m-app-gentler-streak__tag\">In the Zone</em></button></div>",
+    "css": ".m-app-gentler-streak{position:absolute;inset:0;display:grid;place-items:center;background:#f6faf2;color:#1c2419;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-gentler-streak__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-gentler-streak__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #65a30d33)}.m-app-gentler-streak__arc1,.m-app-gentler-streak__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-gentler-streak__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-gentler-streak__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-gentler-streak__mid span{font:500 9.5px/1.2 inherit;color:#6b7280;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-gentler-streak__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.18);color:#65a30d}",
+    "js": "var el=root.querySelector('.m-app-gentler-streak');if(!el)return;var btn=el.querySelector('.m-app-gentler-streak__btn'),a1=el.querySelector('.m-app-gentler-streak__arc1'),a2=el.querySelector('.m-app-gentler-streak__arc2'),num=el.querySelector('.m-app-gentler-streak__mid b');var scores=[76, 84, 68, 90],unit=\"%\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-hevy-set-complete-swipe-timer",
+    "title": "Hevy: Completed Set Row Swipe & Rest Timer Toast",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 400,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 22
+    },
+    "easeLabel": "spring(340, 22)",
+    "props": [
+      "transform: translateX (set row)",
+      "background-color (check)",
+      "transform: translateY (rest toast)"
+    ],
+    "src": "Hevy",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.hevy",
+    "collection": "Apps",
+    "app": {
+      "name": "Hevy",
+      "slug": "hevy",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#1E88E5",
+      "iconUrl": "https://play-lh.googleusercontent.com/bLlRnwjt0tKva6ob0ZrtxkUs-z4MhQ4cPIOnXeh_knD8QVAXSLFiMGyKo2kLF7PV2uSK1Wly1L4q-6Sv1k13=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.hevy",
+      "bundleId": "com.hevy"
+    },
+    "summary": "Checking off a heavy gym set in Hevy flashes the set row cleanly across vibrant electric blue while popping the automatic rest-timer bar underneath.",
+    "hint": "Tap set row to log & start rest timer",
+    "choreography": [
+      "0-80ms: circular checkbox fills #1E88E5 immediately.",
+      "40-340ms: set card translates +92px over the logged backing.",
+      "160-400ms: bottom rest-timer pill springs up smoothly."
+    ],
+    "agentPrompt": "Build Hevy's set-completion row interaction on #0e1116 with #1E88E5 action backing: slide the workout row +92px over 400ms cubic-bezier(0.22, 1.14, 0.36, 1) and float a rest-timer toast.",
+    "extractableCode": "<!-- Hevy: Completed Set Row Swipe & Rest Timer Toast -->\n<div class=\"m-app-hevy\"><div class=\"m-app-hevy__wrap\"><div class=\"m-app-hevy__bg\"><span>Logged ✓</span></div><button type=\"button\" class=\"m-app-hevy__row\"><i class=\"m-app-hevy__chk\"></i><div><b>Bench Press · 85 kg × 8</b><span>Set 3 of 4 · RPE 8</span></div></button></div><div class=\"m-app-hevy__toast\"><span>Loggedd</span><b>Undo</b></div></div>\n<style>.m-app-hevy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0e1116;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-hevy__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-hevy__bg{position:absolute;inset:0;background:#1E88E5;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-hevy__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#171d26;color:#f4f5f7;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-hevy.is-sw .m-app-hevy__row{transform:translateX(92px)}.m-app-hevy__chk{width:18px;height:18px;border-radius:50%;border:2px solid #1E88E5;flex:none;transition:background .2s}.m-app-hevy.is-sw .m-app-hevy__chk{background:#1E88E5}.m-app-hevy__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-hevy__row span{font-size:11px;color:rgba(255,255,255,.56)}.m-app-hevy__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-hevy__toast b{color:#1E88E5}.m-app-hevy.is-sw .m-app-hevy__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-hevy\"><div class=\"m-app-hevy__wrap\"><div class=\"m-app-hevy__bg\"><span>Logged ✓</span></div><button type=\"button\" class=\"m-app-hevy__row\"><i class=\"m-app-hevy__chk\"></i><div><b>Bench Press · 85 kg × 8</b><span>Set 3 of 4 · RPE 8</span></div></button></div><div class=\"m-app-hevy__toast\"><span>Loggedd</span><b>Undo</b></div></div>",
+    "css": ".m-app-hevy{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#0e1116;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-hevy__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-hevy__bg{position:absolute;inset:0;background:#1E88E5;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-hevy__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#171d26;color:#f4f5f7;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-hevy.is-sw .m-app-hevy__row{transform:translateX(92px)}.m-app-hevy__chk{width:18px;height:18px;border-radius:50%;border:2px solid #1E88E5;flex:none;transition:background .2s}.m-app-hevy.is-sw .m-app-hevy__chk{background:#1E88E5}.m-app-hevy__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-hevy__row span{font-size:11px;color:rgba(255,255,255,.56)}.m-app-hevy__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-hevy__toast b{color:#1E88E5}.m-app-hevy.is-sw .m-app-hevy__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-hevy');if(!el)return;var row=el.querySelector('.m-app-hevy__row'),toast=el.querySelector('.m-app-hevy__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-strong-pr-set-check-swipe",
+    "title": "Strong: New PR Set Check Swipe & Rest Bar Pop",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 400,
+    "ease": {
+      "t": "spring",
+      "k": 330,
+      "c": 23
+    },
+    "easeLabel": "spring(330, 23)",
+    "props": [
+      "transform: translateX",
+      "transform: translateY"
+    ],
+    "src": "Strong",
+    "srcUrl": "https://play.google.com/store/apps/details?id=io.strongapp.strong",
+    "collection": "Apps",
+    "app": {
+      "name": "Strong",
+      "slug": "strong",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#38BDF8",
+      "iconUrl": "https://play-lh.googleusercontent.com/prYQZxqDLEC8QErKJO1zefAmFdYk-LhIuE0UMV2ThL0oseAaHd7g-s5GMy80AiXPlCoSE8Gtwu68Yu60iKZ2=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=io.strongapp.strong",
+      "bundleId": "io.strongapp.strong"
+    },
+    "summary": "Completing a Personal Record set in Strong locks the exercise row cleanly across crisp sky-blue feedback with an instant Undo/Rest snackbar.",
+    "hint": "Tap workout set to log PR",
+    "choreography": [
+      "0-80ms: check circle fills #38BDF8 sky blue.",
+      "40-340ms: row slides +92px revealing PR confirmation.",
+      "160-400ms: toast rises smoothly beneath."
+    ],
+    "agentPrompt": "Create Strong's set-log swipe card on #10141a with #38BDF8 sky-blue reveal and bottom toast springing upward over 400ms.",
+    "extractableCode": "<!-- Strong: New PR Set Check Swipe & Rest Bar Pop -->\n<div class=\"m-app-strong\"><div class=\"m-app-strong__wrap\"><div class=\"m-app-strong__bg\"><span>PR Saved ✓</span></div><button type=\"button\" class=\"m-app-strong__row\"><i class=\"m-app-strong__chk\"></i><div><b>Deadlift · 140 kg × 5</b><span>🏆 New 5RM Personal Record</span></div></button></div><div class=\"m-app-strong__toast\"><span>PR Savedd</span><b>Undo</b></div></div>\n<style>.m-app-strong{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#10141a;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-strong__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-strong__bg{position:absolute;inset:0;background:#0ea5e9;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-strong__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#1a212b;color:#f4f5f7;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-strong.is-sw .m-app-strong__row{transform:translateX(92px)}.m-app-strong__chk{width:18px;height:18px;border-radius:50%;border:2px solid #0ea5e9;flex:none;transition:background .2s}.m-app-strong.is-sw .m-app-strong__chk{background:#0ea5e9}.m-app-strong__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-strong__row span{font-size:11px;color:rgba(255,255,255,.56)}.m-app-strong__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-strong__toast b{color:#0ea5e9}.m-app-strong.is-sw .m-app-strong__toast{opacity:1;transform:translateY(0)}</style>",
+    "html": "<div class=\"m-app-strong\"><div class=\"m-app-strong__wrap\"><div class=\"m-app-strong__bg\"><span>PR Saved ✓</span></div><button type=\"button\" class=\"m-app-strong__row\"><i class=\"m-app-strong__chk\"></i><div><b>Deadlift · 140 kg × 5</b><span>🏆 New 5RM Personal Record</span></div></button></div><div class=\"m-app-strong__toast\"><span>PR Savedd</span><b>Undo</b></div></div>",
+    "css": ".m-app-strong{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#10141a;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-strong__wrap{position:relative;width:min(88%,262px);height:56px;border-radius:14px;overflow:hidden}.m-app-strong__bg{position:absolute;inset:0;background:#0ea5e9;color:#fff;display:flex;align-items:center;padding:0 16px;font:700 12px/1 inherit}.m-app-strong__row{position:relative;width:100%;height:100%;border:1px solid rgba(128,128,128,.16);border-radius:14px;background:#1a212b;color:#f4f5f7;padding:0 14px;display:flex;align-items:center;gap:11px;text-align:left;cursor:pointer;transition:transform .42s cubic-bezier(.22,1.14,.36,1)}.m-app-strong.is-sw .m-app-strong__row{transform:translateX(92px)}.m-app-strong__chk{width:18px;height:18px;border-radius:50%;border:2px solid #0ea5e9;flex:none;transition:background .2s}.m-app-strong.is-sw .m-app-strong__chk{background:#0ea5e9}.m-app-strong__row b{display:block;font:600 12.5px/1.2 inherit}.m-app-strong__row span{font-size:11px;color:rgba(255,255,255,.56)}.m-app-strong__toast{display:inline-flex;align-items:center;gap:14px;padding:7px 13px;border-radius:10px;background:#181a20;color:#fff;font-size:11.5px;opacity:0;transform:translateY(10px);transition:all .3s cubic-bezier(.22,1.2,.36,1)}.m-app-strong__toast b{color:#0ea5e9}.m-app-strong.is-sw .m-app-strong__toast{opacity:1;transform:translateY(0)}",
+    "js": "var el=root.querySelector('.m-app-strong');if(!el)return;var row=el.querySelector('.m-app-strong__row'),toast=el.querySelector('.m-app-strong__toast'),on=false,touched=false,dead=false;function tog(){on=!on;el.classList.toggle('is-sw',on);}row.addEventListener('click',function(){touched=true;tog();});toast.addEventListener('click',function(){touched=true;if(on)tog();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},1950);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-ladder-strength-interval-bars",
+    "title": "Ladder: Volt Strength Block Progress Cascade",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 600,
+    "ease": {
+      "t": "spring",
+      "k": 330,
+      "c": 22
+    },
+    "easeLabel": "spring(330, 22)",
+    "props": [
+      "width (volt workout bars)",
+      "transition-delay"
+    ],
+    "src": "Ladder",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.tech.ladder",
+    "collection": "Apps",
+    "app": {
+      "name": "Ladder",
+      "slug": "ladder",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#CCFF00",
+      "iconUrl": "https://play-lh.googleusercontent.com/LIr8hO_uS7FFwudb41xIrXcy51PLCunFNRzQrFK5TpCjmtLPT_mcpTG2TIqrDKr7bP2JvPo2RSCgT92ULuzb=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.tech.ladder",
+      "bundleId": "com.tech.ladder"
+    },
+    "summary": "Ladder's athletic workout tracker snaps bold volt-yellow block progress bars across Warmup, Strength, and Finisher sets.",
+    "hint": "Tap card to advance workout block",
+    "choreography": [
+      "0ms: Warmup bar snaps full in #CCFF00 volt.",
+      "90-180ms: Strength and Conditioning bars stagger cleanly.",
+      "480-600ms: completion percentages align crisply."
+    ],
+    "agentPrompt": "Build Ladder's volt strength block progress bars on #0d0e0f with #CCFF00 -> #a3e635 gradients cascading over 600ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- Ladder: Volt Strength Block Progress Cascade -->\n<div class=\"m-app-ladder\"><div class=\"m-app-ladder__card\"><div class=\"m-app-ladder__r\"><span>Warmup</span><div class=\"m-app-ladder__tr\"><i data-p=\"100\" style=\"width:12%;transition-delay:0ms\"></i></div><b>100%</b></div><div class=\"m-app-ladder__r\"><span>Strength</span><div class=\"m-app-ladder__tr\"><i data-p=\"78\" style=\"width:12%;transition-delay:90ms\"></i></div><b>78%</b></div><div class=\"m-app-ladder__r\"><span>Finisher</span><div class=\"m-app-ladder__tr\"><i data-p=\"45\" style=\"width:12%;transition-delay:180ms\"></i></div><b>45%</b></div></div></div>\n<style>.m-app-ladder{position:absolute;inset:0;display:grid;place-items:center;background:#0d0e0f;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ladder__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#181a1d;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-ladder__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-ladder__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-ladder__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-ladder__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-ladder__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#CCFF00,#a3e635);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-ladder\"><div class=\"m-app-ladder__card\"><div class=\"m-app-ladder__r\"><span>Warmup</span><div class=\"m-app-ladder__tr\"><i data-p=\"100\" style=\"width:12%;transition-delay:0ms\"></i></div><b>100%</b></div><div class=\"m-app-ladder__r\"><span>Strength</span><div class=\"m-app-ladder__tr\"><i data-p=\"78\" style=\"width:12%;transition-delay:90ms\"></i></div><b>78%</b></div><div class=\"m-app-ladder__r\"><span>Finisher</span><div class=\"m-app-ladder__tr\"><i data-p=\"45\" style=\"width:12%;transition-delay:180ms\"></i></div><b>45%</b></div></div></div>",
+    "css": ".m-app-ladder{position:absolute;inset:0;display:grid;place-items:center;background:#0d0e0f;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ladder__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#181a1d;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-ladder__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-ladder__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-ladder__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-ladder__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-ladder__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#CCFF00,#a3e635);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-ladder');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-ladder__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-fitbit-step-goal-ring-sweep",
+    "title": "Fitbit: 10,000 Steps Teal Ring Completion Sweep",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (step & active zone rings)",
+      "filter: drop-shadow"
+    ],
+    "src": "Fitbit",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.fitbit.FitbitMobile",
+    "collection": "Apps",
+    "app": {
+      "name": "Fitbit",
+      "slug": "fitbit",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#00B0B9",
+      "iconUrl": "https://play-lh.googleusercontent.com/W1N5QAjSPsNwmwLo135MWqTnlCpkULVTVvf4eN_FekTOJ3gV53vi_lhxd3pk8oVXdUuqKPU8SkhA1iRnPzJeng=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.fitbit.FitbitMobile",
+      "bundleId": "com.fitbit.FitbitMobile"
+    },
+    "summary": "Fitbit's daily goal dial sweeps radiant teal and mint arcs smoothly around your step progress until the 10K milestone locks in.",
+    "hint": "Tap ring to advance daily steps",
+    "choreography": [
+      "0-180ms: concentric teal tracks prime smoothly.",
+      "180-660ms: outer Steps ring and inner Active Zone ring fill via stroke-dashoffset.",
+      "660-720ms: center percentage and milestone pill lock cleanly."
+    ],
+    "agentPrompt": "Create Fitbit's dual-ring step tracker on #0d1517 with #00B0B9 teal and #34d399 mint SVG arcs sweeping over 720ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Fitbit: 10,000 Steps Teal Ring Completion Sweep -->\n<div class=\"m-app-fitbit\"><button type=\"button\" class=\"m-app-fitbit__btn\"><svg class=\"m-app-fitbit__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-fitbit__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#00B0B9\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-fitbit__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#34d399\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-fitbit__mid\"><b>82%</b><span>Step Goal</span></div><em class=\"m-app-fitbit__tag\">10,000 target</em></button></div>\n<style>.m-app-fitbit{position:absolute;inset:0;display:grid;place-items:center;background:#0d1517;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-fitbit__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-fitbit__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #00B0B933)}.m-app-fitbit__arc1,.m-app-fitbit__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-fitbit__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-fitbit__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-fitbit__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-fitbit__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#152326;border:1px solid rgba(128,128,128,.18);color:#00B0B9}</style>",
+    "html": "<div class=\"m-app-fitbit\"><button type=\"button\" class=\"m-app-fitbit__btn\"><svg class=\"m-app-fitbit__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-fitbit__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#00B0B9\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-fitbit__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#34d399\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-fitbit__mid\"><b>82%</b><span>Step Goal</span></div><em class=\"m-app-fitbit__tag\">10,000 target</em></button></div>",
+    "css": ".m-app-fitbit{position:absolute;inset:0;display:grid;place-items:center;background:#0d1517;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-fitbit__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-fitbit__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #00B0B933)}.m-app-fitbit__arc1,.m-app-fitbit__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-fitbit__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-fitbit__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-fitbit__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-fitbit__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#152326;border:1px solid rgba(128,128,128,.18);color:#00B0B9}",
+    "js": "var el=root.querySelector('.m-app-fitbit');if(!el)return;var btn=el.querySelector('.m-app-fitbit__btn'),a1=el.querySelector('.m-app-fitbit__arc1'),a2=el.querySelector('.m-app-fitbit__arc2'),num=el.querySelector('.m-app-fitbit__mid b');var scores=[82, 95, 100, 64],unit=\"%\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-garmin-connect-body-battery-scrub",
+    "title": "Garmin Connect: Body Battery Charge/Drain Interactive Curve",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 240,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "cx/cy (dot)",
+      "x1/x2 (guide)",
+      "textContent (battery score)"
+    ],
+    "src": "Garmin Connect",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.garmin.android.apps.connectmobile",
+    "collection": "Apps",
+    "app": {
+      "name": "Garmin Connect",
+      "slug": "garmin-connect",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#007CC3",
+      "iconUrl": "https://play-lh.googleusercontent.com/wQVBsxZBX7buxjAlBIsBTRth7hknBOcbOUbzxNprfH22T9_ejF6VO5QC3CrMpvNivFvkyHHKvmiTnFO9P39S=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.garmin.android.apps.connectmobile",
+      "bundleId": "com.garmin.android.apps.connectmobile"
+    },
+    "summary": "Scrubbing Garmin Connect's Body Battery timeline glides a bright cyan telemetry marker across hourly energy charge and drain samples.",
+    "hint": "Hover or tap curve to inspect Body Battery",
+    "choreography": [
+      "0-50ms: pointer X resolves to hourly Body Battery telemetry.",
+      "50-190ms: #007CC3/#38bdf8 dot and vertical hairline track cleanly.",
+      "190-240ms: numeric score updates without flicker."
+    ],
+    "agentPrompt": "Build Garmin Connect's Body Battery SVG scrubber on #0b1118 with #0ea5e9 stroke and vertical gradient fill, tracking pointer X over 160ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Garmin Connect: Body Battery Charge/Drain Interactive Curve -->\n<div class=\"m-app-garmin-connect\"><div class=\"m-app-garmin-connect__card\"><div class=\"m-app-garmin-connect__top\"><span>Body Battery</span><em class=\"m-app-garmin-connect__d\">+48 overnight</em></div><div class=\"m-app-garmin-connect__val\"><b>78 / 100</b></div><svg class=\"m-app-garmin-connect__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-garmin-connect-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#0ea5e9\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#0ea5e9\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-garmin-connect__area\" d=\"M0.0 14 L22.2 18 L44.4 24 L66.7 31 L88.9 36 L111.1 42 L133.3 48 L155.6 52 L177.8 44 L200.0 30 L200 66 L0 66 Z\" fill=\"url(#m-garmin-connect-g)\"/><path class=\"m-app-garmin-connect__line\" d=\"M0.0 14 L22.2 18 L44.4 24 L66.7 31 L88.9 36 L111.1 42 L133.3 48 L155.6 52 L177.8 44 L200.0 30\" fill=\"none\" stroke=\"#0ea5e9\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-garmin-connect__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#0ea5e9\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-garmin-connect__dot\" cx=\"200.0\" cy=\"30\" r=\"4.5\" fill=\"#0ea5e9\" stroke=\"#131d29\" stroke-width=\"2\"/></svg></div></div>\n<style>.m-app-garmin-connect{position:absolute;inset:0;display:grid;place-items:center;background:#0b1118;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-garmin-connect__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#131d29;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-garmin-connect__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-garmin-connect__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#0ea5e9}.m-app-garmin-connect__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-garmin-connect__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-garmin-connect__dot,.m-app-garmin-connect__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}</style>",
+    "html": "<div class=\"m-app-garmin-connect\"><div class=\"m-app-garmin-connect__card\"><div class=\"m-app-garmin-connect__top\"><span>Body Battery</span><em class=\"m-app-garmin-connect__d\">+48 overnight</em></div><div class=\"m-app-garmin-connect__val\"><b>78 / 100</b></div><svg class=\"m-app-garmin-connect__svg\" viewBox=\"0 0 200 66\" preserveAspectRatio=\"none\"><defs><linearGradient id=\"m-garmin-connect-g\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#0ea5e9\" stop-opacity=\".35\"/><stop offset=\"100%\" stop-color=\"#0ea5e9\" stop-opacity=\"0\"/></linearGradient></defs><path class=\"m-app-garmin-connect__area\" d=\"M0.0 14 L22.2 18 L44.4 24 L66.7 31 L88.9 36 L111.1 42 L133.3 48 L155.6 52 L177.8 44 L200.0 30 L200 66 L0 66 Z\" fill=\"url(#m-garmin-connect-g)\"/><path class=\"m-app-garmin-connect__line\" d=\"M0.0 14 L22.2 18 L44.4 24 L66.7 31 L88.9 36 L111.1 42 L133.3 48 L155.6 52 L177.8 44 L200.0 30\" fill=\"none\" stroke=\"#0ea5e9\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line class=\"m-app-garmin-connect__guide\" x1=\"200.0\" y1=\"4\" x2=\"200.0\" y2=\"64\" stroke=\"#0ea5e9\" stroke-opacity=\".35\" stroke-dasharray=\"2 3\"/><circle class=\"m-app-garmin-connect__dot\" cx=\"200.0\" cy=\"30\" r=\"4.5\" fill=\"#0ea5e9\" stroke=\"#131d29\" stroke-width=\"2\"/></svg></div></div>",
+    "css": ".m-app-garmin-connect{position:absolute;inset:0;display:grid;place-items:center;background:#0b1118;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-garmin-connect__card{width:min(86%,256px);padding:14px 16px;border-radius:16px;background:#131d29;border:1px solid rgba(128,128,128,.16);cursor:ew-resize;display:flex;flex-direction:column;gap:5px}.m-app-garmin-connect__top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:rgba(255,255,255,.56)}.m-app-garmin-connect__d{font-style:normal;font:600 10.5px/1 'Geist Mono',monospace;color:#0ea5e9}.m-app-garmin-connect__val{font:700 22px/1.1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-garmin-connect__svg{width:100%;height:66px;overflow:visible;margin-top:4px}.m-app-garmin-connect__dot,.m-app-garmin-connect__guide{transition:all .16s cubic-bezier(.22,1,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-garmin-connect');if(!el)return;var card=el.querySelector('.m-app-garmin-connect__card'),dot=el.querySelector('.m-app-garmin-connect__dot'),guide=el.querySelector('.m-app-garmin-connect__guide'),val=el.querySelector('.m-app-garmin-connect__val b');var coords=[[0.0, 14], [22.2, 18], [44.4, 24], [66.7, 31], [88.9, 36], [111.1, 42], [133.3, 48], [155.6, 52], [177.8, 44], [200.0, 30]],vals=[\"94 / 100\", \"90 / 100\", \"84 / 100\", \"77 / 100\", \"72 / 100\", \"65 / 100\", \"58 / 100\", \"53 / 100\", \"62 / 100\", \"78 / 100\"],idx=coords.length-1,touched=false,dead=false;function setIdx(i){i=Math.max(0,Math.min(coords.length-1,i));dot.setAttribute('cx',coords[i][0]);dot.setAttribute('cy',coords[i][1]);guide.setAttribute('x1',coords[i][0]);guide.setAttribute('x2',coords[i][0]);val.textContent=vals[i];}card.addEventListener('pointermove',function(e){touched=true;var r=card.getBoundingClientRect();var p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));setIdx(Math.round(p*(coords.length-1)));});card.addEventListener('click',function(){touched=true;idx=(idx+2)%coords.length;setIdx(idx);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%coords.length;setIdx(idx);}},900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-flo-cycle-wheel-orbital-dial",
+    "title": "Flo: Cycle Phase Wheel Rotary Day Dial",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "light",
+    "dur": 440,
+    "ease": {
+      "t": "spring",
+      "k": 280,
+      "c": 22
+    },
+    "easeLabel": "spring(280, 22)",
+    "props": [
+      "transform: rotate (phase indicator)",
+      "textContent (cycle day)"
+    ],
+    "src": "Flo",
+    "srcUrl": "https://play.google.com/store/apps/details?id=org.iggymedia.periodtracker",
+    "collection": "Apps",
+    "app": {
+      "name": "Flo",
+      "slug": "flo",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF5C8D",
+      "iconUrl": "https://play-lh.googleusercontent.com/OvzRuefx4NHjHu5YIcWsuIbmSL4Oam6-G7QsvWg4RBmkv4h5g76z98IJ-A1QFW5A0KdySfQ-gEkByDqSTU8DyXI=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=org.iggymedia.periodtracker",
+      "bundleId": "org.iggymedia.periodtracker"
+    },
+    "summary": "Stepping through Flo's soft coral cycle wheel rotates a delicate glowing day marker cleanly across radial day ticks.",
+    "hint": "Tap wheel to step cycle days",
+    "choreography": [
+      "0-70ms: tap advances the cycle wheel to the next phase milestone.",
+      "40-380ms: #FF5C8D coral marker orbits smoothly around the 128px dial.",
+      "380-440ms: centered day label locks cleanly."
+    ],
+    "agentPrompt": "Build Flo's pastel cycle-phase rotary wheel on #fff5f8 with #FF5C8D coral indicator rotating around radial day ticks over 440ms cubic-bezier(0.22, 1.22, 0.36, 1).",
+    "extractableCode": "<!-- Flo: Cycle Phase Wheel Rotary Day Dial -->\n<div class=\"m-app-flo\"><button type=\"button\" class=\"m-app-flo__dial\"><div class=\"m-app-flo__ticks\"><i style=\"transform:rotate(-120deg)\"></i><i style=\"transform:rotate(-100deg)\"></i><i style=\"transform:rotate(-80deg)\"></i><i style=\"transform:rotate(-60deg)\"></i><i style=\"transform:rotate(-40deg)\"></i><i style=\"transform:rotate(-20deg)\"></i><i style=\"transform:rotate(0deg)\"></i><i style=\"transform:rotate(20deg)\"></i><i style=\"transform:rotate(40deg)\"></i><i style=\"transform:rotate(60deg)\"></i><i style=\"transform:rotate(80deg)\"></i><i style=\"transform:rotate(100deg)\"></i><i style=\"transform:rotate(120deg)\"></i></div><div class=\"m-app-flo__needle\"><span></span></div><div class=\"m-app-flo__val\"><b>Day 14</b><small>CYCLE DAY</small></div></button></div>\n<style>.m-app-flo{position:absolute;inset:0;display:grid;place-items:center;background:#fff5f8;color:#1f1720;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-flo__dial{position:relative;width:128px;height:128px;border-radius:50%;border:1px solid rgba(128,128,128,.22);background:#ffffff;color:#1f1720;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25)}.m-app-flo__ticks{position:absolute;inset:8px;pointer-events:none}.m-app-flo__ticks i{position:absolute;left:50%;top:0;width:2px;height:8px;margin-left:-1px;background:rgba(128,128,128,.4);transform-origin:50% 56px;border-radius:1px}.m-app-flo__needle{position:absolute;inset:14px;transition:transform .42s cubic-bezier(.22,1.22,.36,1);pointer-events:none}.m-app-flo__needle span{position:absolute;left:50%;top:0;width:4px;height:14px;margin-left:-2px;border-radius:99px;background:#FF5C8D;box-shadow:0 0 10px #FF5C8D}.m-app-flo__val{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-flo__val b{font:700 18px/1 'Geist Mono',monospace;color:#FF5C8D}.m-app-flo__val small{font:600 9.5px/1 'Geist Mono',monospace;color:#6b7280;letter-spacing:.08em}</style>",
+    "html": "<div class=\"m-app-flo\"><button type=\"button\" class=\"m-app-flo__dial\"><div class=\"m-app-flo__ticks\"><i style=\"transform:rotate(-120deg)\"></i><i style=\"transform:rotate(-100deg)\"></i><i style=\"transform:rotate(-80deg)\"></i><i style=\"transform:rotate(-60deg)\"></i><i style=\"transform:rotate(-40deg)\"></i><i style=\"transform:rotate(-20deg)\"></i><i style=\"transform:rotate(0deg)\"></i><i style=\"transform:rotate(20deg)\"></i><i style=\"transform:rotate(40deg)\"></i><i style=\"transform:rotate(60deg)\"></i><i style=\"transform:rotate(80deg)\"></i><i style=\"transform:rotate(100deg)\"></i><i style=\"transform:rotate(120deg)\"></i></div><div class=\"m-app-flo__needle\"><span></span></div><div class=\"m-app-flo__val\"><b>Day 14</b><small>CYCLE DAY</small></div></button></div>",
+    "css": ".m-app-flo{position:absolute;inset:0;display:grid;place-items:center;background:#fff5f8;color:#1f1720;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-flo__dial{position:relative;width:128px;height:128px;border-radius:50%;border:1px solid rgba(128,128,128,.22);background:#ffffff;color:#1f1720;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25)}.m-app-flo__ticks{position:absolute;inset:8px;pointer-events:none}.m-app-flo__ticks i{position:absolute;left:50%;top:0;width:2px;height:8px;margin-left:-1px;background:rgba(128,128,128,.4);transform-origin:50% 56px;border-radius:1px}.m-app-flo__needle{position:absolute;inset:14px;transition:transform .42s cubic-bezier(.22,1.22,.36,1);pointer-events:none}.m-app-flo__needle span{position:absolute;left:50%;top:0;width:4px;height:14px;margin-left:-2px;border-radius:99px;background:#FF5C8D;box-shadow:0 0 10px #FF5C8D}.m-app-flo__val{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-flo__val b{font:700 18px/1 'Geist Mono',monospace;color:#FF5C8D}.m-app-flo__val small{font:600 9.5px/1 'Geist Mono',monospace;color:#6b7280;letter-spacing:.08em}",
+    "js": "var el=root.querySelector('.m-app-flo');if(!el)return;var dial=el.querySelector('.m-app-flo__dial'),nd=el.querySelector('.m-app-flo__needle'),b=el.querySelector('.m-app-flo__val b');var vals=[\"Day 4\", \"Day 10\", \"Day 14\", \"Day 21\", \"Day 27\"],idx=2,touched=false,dead=false;function set(i){idx=i;var deg=-100+(i/(vals.length-1))*200;nd.style.transform='rotate('+deg+'deg)';b.textContent=vals[i];}dial.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1500);set(2);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-clue-concentric-cycle-dial",
+    "title": "Clue: Concentric Cycle Tracker Precision Dial",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 23
+    },
+    "easeLabel": "spring(310, 23)",
+    "props": [
+      "transform: rotate (coral pointer)",
+      "textContent"
+    ],
+    "src": "Clue",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.clue.android",
+    "collection": "Apps",
+    "app": {
+      "name": "Clue",
+      "slug": "clue",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF5252",
+      "iconUrl": "https://play-lh.googleusercontent.com/k6vuyDURLVvlHryevs4WdWeG5rqtUMYWqxz4rv-VQdI8Atf6k1xSBG2Vj8_OSqwDf3s8xB7y1dbjFvobP9bxaQ=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.clue.android",
+      "bundleId": "com.clue.android"
+    },
+    "summary": "Clue's scientific cycle wheel pairs crisp Swiss-grid typography with a bright coral radial pointer snapping accurately across cycle milestones.",
+    "hint": "Tap dial to step cycle predictions",
+    "choreography": [
+      "0-70ms: tap advances dial to next prediction marker.",
+      "40-360ms: #FF5252 pointer rotates smoothly across calibrated ticks.",
+      "360-420ms: monospace cycle status updates cleanly."
+    ],
+    "agentPrompt": "Create Clue's Swiss-style rotary cycle dial on #fafafa with #FF5252 coral pointer rotating across 13 radial ticks over 420ms cubic-bezier(0.22, 1.22, 0.36, 1).",
+    "extractableCode": "<!-- Clue: Concentric Cycle Tracker Precision Dial -->\n<div class=\"m-app-clue\"><button type=\"button\" class=\"m-app-clue__dial\"><div class=\"m-app-clue__ticks\"><i style=\"transform:rotate(-120deg)\"></i><i style=\"transform:rotate(-100deg)\"></i><i style=\"transform:rotate(-80deg)\"></i><i style=\"transform:rotate(-60deg)\"></i><i style=\"transform:rotate(-40deg)\"></i><i style=\"transform:rotate(-20deg)\"></i><i style=\"transform:rotate(0deg)\"></i><i style=\"transform:rotate(20deg)\"></i><i style=\"transform:rotate(40deg)\"></i><i style=\"transform:rotate(60deg)\"></i><i style=\"transform:rotate(80deg)\"></i><i style=\"transform:rotate(100deg)\"></i><i style=\"transform:rotate(120deg)\"></i></div><div class=\"m-app-clue__needle\"><span></span></div><div class=\"m-app-clue__val\"><b>Ovulat.</b><small>PHASE</small></div></button></div>\n<style>.m-app-clue{position:absolute;inset:0;display:grid;place-items:center;background:#f9f9fb;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-clue__dial{position:relative;width:128px;height:128px;border-radius:50%;border:1px solid rgba(128,128,128,.22);background:#ffffff;color:#111827;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25)}.m-app-clue__ticks{position:absolute;inset:8px;pointer-events:none}.m-app-clue__ticks i{position:absolute;left:50%;top:0;width:2px;height:8px;margin-left:-1px;background:rgba(128,128,128,.4);transform-origin:50% 56px;border-radius:1px}.m-app-clue__needle{position:absolute;inset:14px;transition:transform .42s cubic-bezier(.22,1.22,.36,1);pointer-events:none}.m-app-clue__needle span{position:absolute;left:50%;top:0;width:4px;height:14px;margin-left:-2px;border-radius:99px;background:#FF5252;box-shadow:0 0 10px #FF5252}.m-app-clue__val{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-clue__val b{font:700 18px/1 'Geist Mono',monospace;color:#FF5252}.m-app-clue__val small{font:600 9.5px/1 'Geist Mono',monospace;color:#6b7280;letter-spacing:.08em}</style>",
+    "html": "<div class=\"m-app-clue\"><button type=\"button\" class=\"m-app-clue__dial\"><div class=\"m-app-clue__ticks\"><i style=\"transform:rotate(-120deg)\"></i><i style=\"transform:rotate(-100deg)\"></i><i style=\"transform:rotate(-80deg)\"></i><i style=\"transform:rotate(-60deg)\"></i><i style=\"transform:rotate(-40deg)\"></i><i style=\"transform:rotate(-20deg)\"></i><i style=\"transform:rotate(0deg)\"></i><i style=\"transform:rotate(20deg)\"></i><i style=\"transform:rotate(40deg)\"></i><i style=\"transform:rotate(60deg)\"></i><i style=\"transform:rotate(80deg)\"></i><i style=\"transform:rotate(100deg)\"></i><i style=\"transform:rotate(120deg)\"></i></div><div class=\"m-app-clue__needle\"><span></span></div><div class=\"m-app-clue__val\"><b>Ovulat.</b><small>PHASE</small></div></button></div>",
+    "css": ".m-app-clue{position:absolute;inset:0;display:grid;place-items:center;background:#f9f9fb;color:#111827;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-clue__dial{position:relative;width:128px;height:128px;border-radius:50%;border:1px solid rgba(128,128,128,.22);background:#ffffff;color:#111827;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25)}.m-app-clue__ticks{position:absolute;inset:8px;pointer-events:none}.m-app-clue__ticks i{position:absolute;left:50%;top:0;width:2px;height:8px;margin-left:-1px;background:rgba(128,128,128,.4);transform-origin:50% 56px;border-radius:1px}.m-app-clue__needle{position:absolute;inset:14px;transition:transform .42s cubic-bezier(.22,1.22,.36,1);pointer-events:none}.m-app-clue__needle span{position:absolute;left:50%;top:0;width:4px;height:14px;margin-left:-2px;border-radius:99px;background:#FF5252;box-shadow:0 0 10px #FF5252}.m-app-clue__val{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-clue__val b{font:700 18px/1 'Geist Mono',monospace;color:#FF5252}.m-app-clue__val small{font:600 9.5px/1 'Geist Mono',monospace;color:#6b7280;letter-spacing:.08em}",
+    "js": "var el=root.querySelector('.m-app-clue');if(!el)return;var dial=el.querySelector('.m-app-clue__dial'),nd=el.querySelector('.m-app-clue__needle'),b=el.querySelector('.m-app-clue__val b');var vals=[\"Day 1\", \"Day 7\", \"Ovulat.\", \"Day 20\", \"Day 28\"],idx=2,touched=false,dead=false;function set(i){idx=i;var deg=-100+(i/(vals.length-1))*200;nd.style.transform='rotate('+deg+'deg)';b.textContent=vals[i];}dial.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1500);set(2);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-sleep-cycle-dawn-alarm-sunrise-orb",
+    "title": "Sleep Cycle: Smart Dawn Alarm Sunrise Glow Orb",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "dark",
+    "dur": 560,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: scale + border-radius (sunrise orb)",
+      "transform: scale + opacity (dawn ripples)"
+    ],
+    "src": "Sleep Cycle",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.northcube.sleepcycle",
+    "collection": "Apps",
+    "app": {
+      "name": "Sleep Cycle",
+      "slug": "sleep-cycle",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F59E0B",
+      "iconUrl": "https://play-lh.googleusercontent.com/9S0oQiNt1RS-yh7K-7Wcta7yBpwEt0-IDyheyu76h0FaGEUf2jf3diyZXkqbxjGg93LtrQQ7JDkHyd2WJbDs=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.northcube.sleepcycle",
+      "bundleId": "com.northcube.sleepcycle"
+    },
+    "summary": "Sleep Cycle's smart wake window pulses a warm amber sunrise orb with slow, tranquil ripple halos as you transition from deep to light sleep.",
+    "hint": "Tap dawn orb to cycle sleep stages",
+    "choreography": [
+      "Continuous: warm amber dawn halos expand smoothly every 2.6s.",
+      "Tap: glowing #F59E0B sun orb morphs organically between Deep, REM, and Smart Wake."
+    ],
+    "agentPrompt": "Build Sleep Cycle's warm dawn orb on #0d1018 with #F59E0B -> #ea580c radial sun gradient, organic border-radius morphs, and 2.6s expanding sunrise rings.",
+    "extractableCode": "<!-- Sleep Cycle: Smart Dawn Alarm Sunrise Glow Orb -->\n<div class=\"m-app-sleep-cycle\"><button type=\"button\" class=\"m-app-sleep-cycle__stage\"><span class=\"m-app-sleep-cycle__r1\"></span><span class=\"m-app-sleep-cycle__r2\"></span><span class=\"m-app-sleep-cycle__orb\"></span><em class=\"m-app-sleep-cycle__lbl\">Deep Sleep · 2:14</em></button></div>\n<style>.m-app-sleep-cycle{position:absolute;inset:0;display:grid;place-items:center;background:#0d1018;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-sleep-cycle__stage{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;padding:12px}.m-app-sleep-cycle__r1,.m-app-sleep-cycle__r2{position:absolute;top:12px;width:82px;height:82px;border-radius:50%;border:1.5px solid #F59E0B66;animation:m-sleep-cycle-rip 2.6s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none}.m-app-sleep-cycle__r2{animation-delay:1.3s}@keyframes m-sleep-cycle-rip{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.85);opacity:0}}.m-app-sleep-cycle__orb{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8,#F59E0B 48%,#ea580c);box-shadow:0 0 32px #F59E0B55;transition:transform .52s cubic-bezier(.22,1.25,.36,1),border-radius .52s ease}.m-app-sleep-cycle.s1 .m-app-sleep-cycle__orb{transform:scale(1.14, .92);border-radius:46% 54% 52% 48%/54% 46% 54% 46%}.m-app-sleep-cycle.s2 .m-app-sleep-cycle__orb{transform:scale(.94, 1.12);border-radius:54% 46% 45% 55%/46% 55% 45% 54%}.m-app-sleep-cycle__lbl{font-style:normal;font:500 11.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-sleep-cycle\"><button type=\"button\" class=\"m-app-sleep-cycle__stage\"><span class=\"m-app-sleep-cycle__r1\"></span><span class=\"m-app-sleep-cycle__r2\"></span><span class=\"m-app-sleep-cycle__orb\"></span><em class=\"m-app-sleep-cycle__lbl\">Deep Sleep · 2:14</em></button></div>",
+    "css": ".m-app-sleep-cycle{position:absolute;inset:0;display:grid;place-items:center;background:#0d1018;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-sleep-cycle__stage{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;padding:12px}.m-app-sleep-cycle__r1,.m-app-sleep-cycle__r2{position:absolute;top:12px;width:82px;height:82px;border-radius:50%;border:1.5px solid #F59E0B66;animation:m-sleep-cycle-rip 2.6s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none}.m-app-sleep-cycle__r2{animation-delay:1.3s}@keyframes m-sleep-cycle-rip{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.85);opacity:0}}.m-app-sleep-cycle__orb{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8,#F59E0B 48%,#ea580c);box-shadow:0 0 32px #F59E0B55;transition:transform .52s cubic-bezier(.22,1.25,.36,1),border-radius .52s ease}.m-app-sleep-cycle.s1 .m-app-sleep-cycle__orb{transform:scale(1.14, .92);border-radius:46% 54% 52% 48%/54% 46% 54% 46%}.m-app-sleep-cycle.s2 .m-app-sleep-cycle__orb{transform:scale(.94, 1.12);border-radius:54% 46% 45% 55%/46% 55% 45% 54%}.m-app-sleep-cycle__lbl{font-style:normal;font:500 11.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-sleep-cycle');if(!el)return;var btn=el.querySelector('.m-app-sleep-cycle__stage'),lbl=el.querySelector('.m-app-sleep-cycle__lbl');var states=[\"Deep Sleep \\u00b7 2:14\", \"REM Cycle \\u00b7 5:40\", \"Smart Wake \\u00b7 6:52\"],idx=0,touched=false,dead=false;function step(){idx=(idx+1)%states.length;el.classList.remove('s1','s2');if(idx===1)el.classList.add('s1');if(idx===2)el.classList.add('s2');lbl.textContent=states[idx];}btn.addEventListener('click',function(){touched=true;step();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)step();},1650);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-endel-generative-focus-soundscape-orb",
+    "title": "Endel: Generative Focus Soundscape Harmonic Orb",
+    "use": "Generative",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Organic",
+    "surface": "dark",
+    "dur": 540,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: scale + border-radius (harmonic blob)",
+      "transform: scale + opacity (sound ripples)"
+    ],
+    "src": "Endel",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.endel.endel",
+    "collection": "Apps",
+    "app": {
+      "name": "Endel",
+      "slug": "endel",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#101114",
+      "iconUrl": "https://play-lh.googleusercontent.com/75g-tfFZB38Iv-arPOXgst76_hxzgiuPrjHg4jyRkLiG55CjQYwX4jjmtNhq89zJsAtUz7UAiIFjXb8Prvt3=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.endel.endel",
+      "bundleId": "com.endel.endel"
+    },
+    "summary": "Endel's adaptive audio engine breathes a monochrome liquid-silver orb framed by minimalist concentric acoustic rings synced to your circadian mode.",
+    "hint": "Tap orb to switch Focus / Relax / Sleep",
+    "choreography": [
+      "Continuous: twin hairline acoustic rings expand outward over 2.6s.",
+      "Mode tap: liquid silver orb softly reshapes its organic silhouette across Focus, Relax, and Sleep."
+    ],
+    "agentPrompt": "Build Endel's minimalist adaptive soundscape orb on #09090b with silver-white radial sphere, organic border-radius morphing over 520ms, and twin 2.6s expanding hairline rings.",
+    "extractableCode": "<!-- Endel: Generative Focus Soundscape Harmonic Orb -->\n<div class=\"m-app-endel\"><button type=\"button\" class=\"m-app-endel__stage\"><span class=\"m-app-endel__r1\"></span><span class=\"m-app-endel__r2\"></span><span class=\"m-app-endel__orb\"></span><em class=\"m-app-endel__lbl\">Focus · 108 BPM</em></button></div>\n<style>.m-app-endel{position:absolute;inset:0;display:grid;place-items:center;background:#09090b;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-endel__stage{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;padding:12px}.m-app-endel__r1,.m-app-endel__r2{position:absolute;top:12px;width:82px;height:82px;border-radius:50%;border:1.5px solid #e4e4e766;animation:m-endel-rip 2.6s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none}.m-app-endel__r2{animation-delay:1.3s}@keyframes m-endel-rip{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.85);opacity:0}}.m-app-endel__orb{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8,#e4e4e7 48%,#52525b);box-shadow:0 0 32px #e4e4e755;transition:transform .52s cubic-bezier(.22,1.25,.36,1),border-radius .52s ease}.m-app-endel.s1 .m-app-endel__orb{transform:scale(1.14, .92);border-radius:46% 54% 52% 48%/54% 46% 54% 46%}.m-app-endel.s2 .m-app-endel__orb{transform:scale(.94, 1.12);border-radius:54% 46% 45% 55%/46% 55% 45% 54%}.m-app-endel__lbl{font-style:normal;font:500 11.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-endel\"><button type=\"button\" class=\"m-app-endel__stage\"><span class=\"m-app-endel__r1\"></span><span class=\"m-app-endel__r2\"></span><span class=\"m-app-endel__orb\"></span><em class=\"m-app-endel__lbl\">Focus · 108 BPM</em></button></div>",
+    "css": ".m-app-endel{position:absolute;inset:0;display:grid;place-items:center;background:#09090b;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-endel__stage{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;padding:12px}.m-app-endel__r1,.m-app-endel__r2{position:absolute;top:12px;width:82px;height:82px;border-radius:50%;border:1.5px solid #e4e4e766;animation:m-endel-rip 2.6s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none}.m-app-endel__r2{animation-delay:1.3s}@keyframes m-endel-rip{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.85);opacity:0}}.m-app-endel__orb{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8,#e4e4e7 48%,#52525b);box-shadow:0 0 32px #e4e4e755;transition:transform .52s cubic-bezier(.22,1.25,.36,1),border-radius .52s ease}.m-app-endel.s1 .m-app-endel__orb{transform:scale(1.14, .92);border-radius:46% 54% 52% 48%/54% 46% 54% 46%}.m-app-endel.s2 .m-app-endel__orb{transform:scale(.94, 1.12);border-radius:54% 46% 45% 55%/46% 55% 45% 54%}.m-app-endel__lbl{font-style:normal;font:500 11.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-endel');if(!el)return;var btn=el.querySelector('.m-app-endel__stage'),lbl=el.querySelector('.m-app-endel__lbl');var states=[\"Focus \\u00b7 108 BPM\", \"Relax \\u00b7 Deep Alpha\", \"Sleep \\u00b7 Pink Noise\"],idx=0,touched=false,dead=false;function step(){idx=(idx+1)%states.length;el.classList.remove('s1','s2');if(idx===1)el.classList.add('s1');if(idx===2)el.classList.add('s2');lbl.textContent=states[idx];}btn.addEventListener('click',function(){touched=true;step();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)step();},1650);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-waking-up-mindfulness-bell-ripple",
+    "title": "Waking Up: Terracotta Mindfulness Bell Ripple Orb",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "dark",
+    "dur": 560,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: scale (bell resonance rings)",
+      "border-radius (breathing sphere)"
+    ],
+    "src": "Waking Up",
+    "srcUrl": "https://play.google.com/store/apps/details?id=org.wakingup.android",
+    "collection": "Apps",
+    "app": {
+      "name": "Waking Up",
+      "slug": "waking-up",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#E06D3B",
+      "iconUrl": "https://play-lh.googleusercontent.com/itRAH70PPbadqD9Iu-GDauiVud8XvSpuz9G1g-f-OyPHhinLEL-JgD5CJRsAzHNaSRjJz4o3-kbzlV7_rebf5Po=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=org.wakingup.android",
+      "bundleId": "org.wakingup.android"
+    },
+    "summary": "Beginning a session in Waking Up resonates calm terracotta bell ripples outward from a warm matte clay sphere.",
+    "hint": "Tap sphere to shift meditation cue",
+    "choreography": [
+      "Continuous: delicate #E06D3B resonance rings expand gently over 2.6s.",
+      "Tap: warm terracotta sphere gently shifts cadence between Notice, Breathe, and Rest."
+    ],
+    "agentPrompt": "Build Waking Up's contemplative terracotta orb on #141110 with #E06D3B -> #9a3412 sphere and slow 2.6s concentric bell ripples.",
+    "extractableCode": "<!-- Waking Up: Terracotta Mindfulness Bell Ripple Orb -->\n<div class=\"m-app-waking-up\"><button type=\"button\" class=\"m-app-waking-up__stage\"><span class=\"m-app-waking-up__r1\"></span><span class=\"m-app-waking-up__r2\"></span><span class=\"m-app-waking-up__orb\"></span><em class=\"m-app-waking-up__lbl\">Begin · 10:00</em></button></div>\n<style>.m-app-waking-up{position:absolute;inset:0;display:grid;place-items:center;background:#141110;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-waking-up__stage{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;padding:12px}.m-app-waking-up__r1,.m-app-waking-up__r2{position:absolute;top:12px;width:82px;height:82px;border-radius:50%;border:1.5px solid #E06D3B66;animation:m-waking-up-rip 2.6s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none}.m-app-waking-up__r2{animation-delay:1.3s}@keyframes m-waking-up-rip{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.85);opacity:0}}.m-app-waking-up__orb{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8,#E06D3B 48%,#9a3412);box-shadow:0 0 32px #E06D3B55;transition:transform .52s cubic-bezier(.22,1.25,.36,1),border-radius .52s ease}.m-app-waking-up.s1 .m-app-waking-up__orb{transform:scale(1.14, .92);border-radius:46% 54% 52% 48%/54% 46% 54% 46%}.m-app-waking-up.s2 .m-app-waking-up__orb{transform:scale(.94, 1.12);border-radius:54% 46% 45% 55%/46% 55% 45% 54%}.m-app-waking-up__lbl{font-style:normal;font:500 11.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}</style>",
+    "html": "<div class=\"m-app-waking-up\"><button type=\"button\" class=\"m-app-waking-up__stage\"><span class=\"m-app-waking-up__r1\"></span><span class=\"m-app-waking-up__r2\"></span><span class=\"m-app-waking-up__orb\"></span><em class=\"m-app-waking-up__lbl\">Begin · 10:00</em></button></div>",
+    "css": ".m-app-waking-up{position:absolute;inset:0;display:grid;place-items:center;background:#141110;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-waking-up__stage{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer;padding:12px}.m-app-waking-up__r1,.m-app-waking-up__r2{position:absolute;top:12px;width:82px;height:82px;border-radius:50%;border:1.5px solid #E06D3B66;animation:m-waking-up-rip 2.6s cubic-bezier(.16,1,.3,1) infinite;pointer-events:none}.m-app-waking-up__r2{animation-delay:1.3s}@keyframes m-waking-up-rip{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.85);opacity:0}}.m-app-waking-up__orb{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff8,#E06D3B 48%,#9a3412);box-shadow:0 0 32px #E06D3B55;transition:transform .52s cubic-bezier(.22,1.25,.36,1),border-radius .52s ease}.m-app-waking-up.s1 .m-app-waking-up__orb{transform:scale(1.14, .92);border-radius:46% 54% 52% 48%/54% 46% 54% 46%}.m-app-waking-up.s2 .m-app-waking-up__orb{transform:scale(.94, 1.12);border-radius:54% 46% 45% 55%/46% 55% 45% 54%}.m-app-waking-up__lbl{font-style:normal;font:500 11.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56)}",
+    "js": "var el=root.querySelector('.m-app-waking-up');if(!el)return;var btn=el.querySelector('.m-app-waking-up__stage'),lbl=el.querySelector('.m-app-waking-up__lbl');var states=[\"Begin \\u00b7 10:00\", \"Notice Breath\", \"Open Awareness\"],idx=0,touched=false,dead=false;function step(){idx=(idx+1)%states.length;el.classList.remove('s1','s2');if(idx===1)el.classList.add('s1');if(idx===2)el.classList.add('s2');lbl.textContent=states[idx];}btn.addEventListener('click',function(){touched=true;step();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)step();},1650);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-finch-self-care-pet-heart-pop",
+    "title": "Finch: Self-Care Pet Goal Check & Rainbow Heart Burst",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 360,
+      "c": 17
+    },
+    "easeLabel": "spring(360, 17)",
+    "props": [
+      "transform: scale + rotate (heart)",
+      "transform: translate (sparkles)",
+      "background-color"
+    ],
+    "src": "Finch",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.finch.finch",
+    "collection": "Apps",
+    "app": {
+      "name": "Finch",
+      "slug": "finch",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#62C370",
+      "iconUrl": "https://play-lh.googleusercontent.com/fsYShU5YDNZxBQgZF-UjT-cq7Mxtqmz71_Q8isHj3DzpOX9Me4KZLD780Oe2DxTRVPzA76xlDNigl9SXjEsPfw=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.finch.finch",
+      "bundleId": "com.finch.finch"
+    },
+    "summary": "Completing a daily self-care goal in Finch pops a joyful pastel-emerald sparkle burst and cheers your companion pet forward.",
+    "hint": "Tap goal pill to energize Finch",
+    "choreography": [
+      "0-80ms: heart pops 1.3x with playful tilt into #62C370 Finch green.",
+      "60-460ms: 6 joyful sparkles radiate outward cleanly.",
+      "240-400ms: pet energy counter increments."
+    ],
+    "agentPrompt": "Build Finch's playful self-care goal reward pill on #f2fbf4 with #22c55e/#62C370 accent: spring-scale the heart 1.3x and burst 6 radial sparkles over 480ms.",
+    "extractableCode": "<!-- Finch: Self-Care Pet Goal Check & Rainbow Heart Burst -->\n<div class=\"m-app-finch\"><div class=\"m-app-finch__card\"><div class=\"m-app-finch__top\"><b>Pip the Finch · Adventure</b><span>2m</span></div><p>Drink water &amp; stretch for 2 minutes (+5 Energy!)</p><div class=\"m-app-finch__row\"><button type=\"button\" class=\"m-app-finch__btn\"><i>💚</i><em>45</em><span class=\"m-app-finch__sparks\"></span></button></div></div></div>\n<style>.m-app-finch{position:absolute;inset:0;display:grid;place-items:center;background:#f2fbf4;color:#14532d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-finch__card{width:min(86%,254px);padding:14px 15px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:8px}.m-app-finch__top{display:flex;justify-content:space-between;font-size:12px}.m-app-finch__top span{color:#6b7280}.m-app-finch__card p{margin:0;font-size:12.5px;line-height:1.4;color:#6b7280}.m-app-finch__btn{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(128,128,128,.2);background:transparent;color:#14532d;font:600 12px/1 'Geist Mono',monospace;cursor:pointer;transition:all .2s}.m-app-finch__btn i{font-style:normal;font-size:14px;display:inline-block;transition:transform .38s cubic-bezier(.22,1.4,.36,1)}.m-app-finch__btn em{font-style:normal}.m-app-finch__btn.is-on{background:#22c55e1f;border-color:#22c55e66;color:#22c55e}.m-app-finch__btn.is-on i{transform:scale(1.3) rotate(-8deg)}.m-app-finch__sparks{position:absolute;left:16px;top:16px;pointer-events:none}.m-app-finch__dot{position:absolute;width:5px;height:5px;border-radius:50%;background:#22c55e;animation:m-finch-sp .48s cubic-bezier(.16,1,.3,1) forwards}@keyframes m-finch-sp{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}</style>",
+    "html": "<div class=\"m-app-finch\"><div class=\"m-app-finch__card\"><div class=\"m-app-finch__top\"><b>Pip the Finch · Adventure</b><span>2m</span></div><p>Drink water &amp; stretch for 2 minutes (+5 Energy!)</p><div class=\"m-app-finch__row\"><button type=\"button\" class=\"m-app-finch__btn\"><i>💚</i><em>45</em><span class=\"m-app-finch__sparks\"></span></button></div></div></div>",
+    "css": ".m-app-finch{position:absolute;inset:0;display:grid;place-items:center;background:#f2fbf4;color:#14532d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-finch__card{width:min(86%,254px);padding:14px 15px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:8px}.m-app-finch__top{display:flex;justify-content:space-between;font-size:12px}.m-app-finch__top span{color:#6b7280}.m-app-finch__card p{margin:0;font-size:12.5px;line-height:1.4;color:#6b7280}.m-app-finch__btn{position:relative;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(128,128,128,.2);background:transparent;color:#14532d;font:600 12px/1 'Geist Mono',monospace;cursor:pointer;transition:all .2s}.m-app-finch__btn i{font-style:normal;font-size:14px;display:inline-block;transition:transform .38s cubic-bezier(.22,1.4,.36,1)}.m-app-finch__btn em{font-style:normal}.m-app-finch__btn.is-on{background:#22c55e1f;border-color:#22c55e66;color:#22c55e}.m-app-finch__btn.is-on i{transform:scale(1.3) rotate(-8deg)}.m-app-finch__sparks{position:absolute;left:16px;top:16px;pointer-events:none}.m-app-finch__dot{position:absolute;width:5px;height:5px;border-radius:50%;background:#22c55e;animation:m-finch-sp .48s cubic-bezier(.16,1,.3,1) forwards}@keyframes m-finch-sp{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}",
+    "js": "var el=root.querySelector('.m-app-finch');if(!el)return;var btn=el.querySelector('.m-app-finch__btn'),em=btn.querySelector('em'),sp=btn.querySelector('.m-app-finch__sparks');var on=false,base=45,touched=false,dead=false;function fire(){on=!on;btn.classList.toggle('is-on',on);em.textContent=String(on?base+1:base);if(on){sp.innerHTML='';for(var i=0;i<6;i++){var a=i*Math.PI/3,d=16+Math.random()*8,p=document.createElement('span');p.className='m-app-finch__dot';p.style.setProperty('--x',(Math.cos(a)*d).toFixed(1)+'px');p.style.setProperty('--y',(Math.sin(a)*d).toFixed(1)+'px');sp.appendChild(p);}}}btn.addEventListener('click',function(){touched=true;fire();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)fire();},1850);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-waterllama-hydration-sloshing-bottle",
+    "title": "Waterllama: Sloshing Hydration Wave Bottle Fill",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 680,
+    "ease": {
+      "t": "spring",
+      "k": 250,
+      "c": 18
+    },
+    "easeLabel": "spring(250, 18)",
+    "props": [
+      "height (water level)",
+      "transform: translateX + rotate (sloshing wave)"
+    ],
+    "src": "Waterllama",
+    "srcUrl": "https://apps.apple.com/us/app/water-tracker-waterllama/id1454778585?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Waterllama",
+      "slug": "waterllama",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#38BDF8",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/31/b5/6c/31b56c91-99de-2aea-ed44-448ed05345d0/AppIcon-Main-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/water-tracker-waterllama/id1454778585?uo=4",
+      "bundleId": "com.vitalii.water"
+    },
+    "summary": "Logging a glass of water in Waterllama surges bright sky-blue liquid upward inside the rounded hydration bottle with a cheerful sloshing surface wave.",
+    "hint": "Tap bottle to log +250ml water",
+    "choreography": [
+      "Continuous: glossy aqua wave sways smoothly side-to-side every 2.4s.",
+      "0-580ms on tap: water level jumps upward with buoyant spring overshoot.",
+      "580-680ms: updated hydration total centers cleanly."
+    ],
+    "agentPrompt": "Recreate Waterllama's sloshing bottle fill on #eff9ff with #38BDF8 -> #0284c7 liquid gradient: transition fill height over 680ms cubic-bezier(0.22, 1.18, 0.36, 1) with an oscillating wave crest.",
+    "extractableCode": "<!-- Waterllama: Sloshing Hydration Wave Bottle Fill -->\n<div class=\"m-app-waterllama\"><button type=\"button\" class=\"m-app-waterllama__cup\"><div class=\"m-app-waterllama__liq\"><div class=\"m-app-waterllama__wave\"></div></div><div class=\"m-app-waterllama__txt\"><b>1.25 L</b><span>Hydration</span></div></button></div>\n<style>.m-app-waterllama{position:absolute;inset:0;display:grid;place-items:center;background:#eff9ff;color:#0c4a6e;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-waterllama__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#ffffff;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-waterllama__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#38BDF8,#0284c7);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-waterllama__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#38BDF8;opacity:.65;animation:m-waterllama-wv 2.4s ease-in-out infinite alternate}@keyframes m-waterllama-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-waterllama__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-waterllama__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-waterllama__txt span{font:600 10px/1 inherit;opacity:.9}</style>",
+    "html": "<div class=\"m-app-waterllama\"><button type=\"button\" class=\"m-app-waterllama__cup\"><div class=\"m-app-waterllama__liq\"><div class=\"m-app-waterllama__wave\"></div></div><div class=\"m-app-waterllama__txt\"><b>1.25 L</b><span>Hydration</span></div></button></div>",
+    "css": ".m-app-waterllama{position:absolute;inset:0;display:grid;place-items:center;background:#eff9ff;color:#0c4a6e;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-waterllama__cup{position:relative;width:116px;height:138px;border-radius:26px;border:2px solid rgba(128,128,128,.24);background:#ffffff;overflow:hidden;cursor:pointer;display:grid;place-items:center}.m-app-waterllama__liq{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#38BDF8,#0284c7);transition:height .68s cubic-bezier(.22,1.18,.36,1)}.m-app-waterllama__wave{position:absolute;top:-10px;left:-25%;width:150%;height:20px;border-radius:42%;background:#38BDF8;opacity:.65;animation:m-waterllama-wv 2.4s ease-in-out infinite alternate}@keyframes m-waterllama-wv{0%{transform:translateX(-12%) rotate(-2deg)}100%{transform:translateX(12%) rotate(2deg)}}.m-app-waterllama__txt{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px;mix-blend-mode:normal;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)}.m-app-waterllama__txt b{font:800 22px/1 'Geist Mono',monospace}.m-app-waterllama__txt span{font:600 10px/1 inherit;opacity:.9}",
+    "js": "var el=root.querySelector('.m-app-waterllama');if(!el)return;var cup=el.querySelector('.m-app-waterllama__cup'),liq=el.querySelector('.m-app-waterllama__liq'),b=el.querySelector('.m-app-waterllama__txt b');var vals=[\"750 ml\", \"1.25 L\", \"1.75 L\", \"2.00 L\"],pcts=[35,62,85,98],idx=1,touched=false,dead=false;function set(i){idx=i;liq.style.height=pcts[i]+'%';b.textContent=vals[i];}cup.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1900);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-streaks-habit-ring-completion",
+    "title": "Streaks: Bold Tactile Habit Ring Fill & Orange Glow",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 680,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (habit ring)",
+      "filter: drop-shadow",
+      "textContent"
+    ],
+    "src": "Streaks",
+    "srcUrl": "https://apps.apple.com/us/app/streaks/id963034692?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Streaks",
+      "slug": "streaks",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF6B35",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/d8/c1/64d8c196-bb61-f60a-b0f8-dac3993ac611/orange_normal-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/streaks/id963034692?uo=4",
+      "bundleId": "com.streaksapp.streak"
+    },
+    "summary": "Holding or tapping a Streaks habit ring sweeps bold vermilion-orange ink around the circular dial until the daily streak snaps complete.",
+    "hint": "Tap ring to complete habit streak",
+    "choreography": [
+      "0-160ms: matte charcoal ring primes cleanly.",
+      "160-620ms: #FF6B35 and #fbbf24 arcs sweep around to completion.",
+      "620-680ms: streak day count locks firmly in place."
+    ],
+    "agentPrompt": "Build Streaks' Apple Design Award habit ring on #171210 with #FF6B35 orange and #fbbf24 concentric SVG arcs sweeping over 680ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Streaks: Bold Tactile Habit Ring Fill & Orange Glow -->\n<div class=\"m-app-streaks\"><button type=\"button\" class=\"m-app-streaks__btn\"><svg class=\"m-app-streaks__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-streaks__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#FF6B35\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-streaks__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#fbbf24\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-streaks__mid\"><b>12d</b><span>Read 20m</span></div><em class=\"m-app-streaks__tag\">Daily Streak</em></button></div>\n<style>.m-app-streaks{position:absolute;inset:0;display:grid;place-items:center;background:#171210;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-streaks__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-streaks__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #FF6B3533)}.m-app-streaks__arc1,.m-app-streaks__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-streaks__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-streaks__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-streaks__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-streaks__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#261c17;border:1px solid rgba(128,128,128,.18);color:#FF6B35}</style>",
+    "html": "<div class=\"m-app-streaks\"><button type=\"button\" class=\"m-app-streaks__btn\"><svg class=\"m-app-streaks__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-streaks__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#FF6B35\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-streaks__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#fbbf24\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-streaks__mid\"><b>12d</b><span>Read 20m</span></div><em class=\"m-app-streaks__tag\">Daily Streak</em></button></div>",
+    "css": ".m-app-streaks{position:absolute;inset:0;display:grid;place-items:center;background:#171210;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-streaks__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-streaks__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #FF6B3533)}.m-app-streaks__arc1,.m-app-streaks__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-streaks__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-streaks__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-streaks__mid span{font:500 9.5px/1.2 inherit;color:rgba(255,255,255,.56);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-streaks__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#261c17;border:1px solid rgba(128,128,128,.18);color:#FF6B35}",
+    "js": "var el=root.querySelector('.m-app-streaks');if(!el)return;var btn=el.querySelector('.m-app-streaks__btn'),a1=el.querySelector('.m-app-streaks__arc1'),a2=el.querySelector('.m-app-streaks__arc2'),num=el.querySelector('.m-app-streaks__mid b');var scores=[12, 24, 38, 45],unit=\"d\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-lifesum-life-score-ring-sweep",
+    "title": "Lifesum: Fresh Green Life Score Ring & Vitality Gauge",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (Life Score arc)",
+      "textContent"
+    ],
+    "src": "Lifesum",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.sillens.shapeupclub",
+    "collection": "Apps",
+    "app": {
+      "name": "Lifesum",
+      "slug": "lifesum",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#4ADE80",
+      "iconUrl": "https://play-lh.googleusercontent.com/gMeT8cxzZOnlrCKwYIOPHT90C9kb9pPbE0mHlk2gixDIadJ_B9QmslnPkQ3Sc0y9KuS8KMxPDxFgsL_GLnXbsg=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.sillens.shapeupclub",
+      "bundleId": "com.sillens.shapeupclub"
+    },
+    "summary": "Lifesum's Life Score sweeps bright leaf-green and mint arcs around a clean white wellness gauge to highlight nutrition balance.",
+    "hint": "Tap gauge to cycle Life Score",
+    "choreography": [
+      "0-160ms: crisp white wellness card primes.",
+      "160-660ms: emerald and mint concentric rings fill via stroke-dashoffset.",
+      "660-720ms: center Life Score settles crisply."
+    ],
+    "agentPrompt": "Build Lifesum's Life Score ring gauge on #f2fbf5 with #22c55e and #86efac SVG arcs animating over 720ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Lifesum: Fresh Green Life Score Ring & Vitality Gauge -->\n<div class=\"m-app-lifesum\"><button type=\"button\" class=\"m-app-lifesum__btn\"><svg class=\"m-app-lifesum__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-lifesum__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-lifesum__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#86efac\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-lifesum__mid\"><b>84</b><span>Life Score</span></div><em class=\"m-app-lifesum__tag\">Balanced</em></button></div>\n<style>.m-app-lifesum{position:absolute;inset:0;display:grid;place-items:center;background:#f2fbf5;color:#14532d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-lifesum__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-lifesum__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #22c55e33)}.m-app-lifesum__arc1,.m-app-lifesum__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-lifesum__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-lifesum__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-lifesum__mid span{font:500 9.5px/1.2 inherit;color:#6b7280;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-lifesum__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.18);color:#22c55e}</style>",
+    "html": "<div class=\"m-app-lifesum\"><button type=\"button\" class=\"m-app-lifesum__btn\"><svg class=\"m-app-lifesum__svg\" viewBox=\"0 0 112 112\"><circle cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"rgba(128,128,128,.18)\" stroke-width=\"7\"/><circle class=\"m-app-lifesum__arc1\" cx=\"56\" cy=\"56\" r=\"42\" fill=\"none\" stroke=\"#22c55e\" stroke-width=\"7\" stroke-linecap=\"round\" stroke-dasharray=\"263.9\" stroke-dashoffset=\"263.9\" transform=\"rotate(-90 56 56)\"/><circle cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"rgba(128,128,128,.12)\" stroke-width=\"5\"/><circle class=\"m-app-lifesum__arc2\" cx=\"56\" cy=\"56\" r=\"31\" fill=\"none\" stroke=\"#86efac\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-dasharray=\"194.8\" stroke-dashoffset=\"194.8\" transform=\"rotate(-90 56 56)\"/></svg><div class=\"m-app-lifesum__mid\"><b>84</b><span>Life Score</span></div><em class=\"m-app-lifesum__tag\">Balanced</em></button></div>",
+    "css": ".m-app-lifesum{position:absolute;inset:0;display:grid;place-items:center;background:#f2fbf5;color:#14532d;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-lifesum__btn{position:relative;border:0;background:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px}.m-app-lifesum__svg{width:116px;height:116px;overflow:visible;filter:drop-shadow(0 0 12px #22c55e33)}.m-app-lifesum__arc1,.m-app-lifesum__arc2{transition:stroke-dashoffset .72s cubic-bezier(.22,1,.36,1)}.m-app-lifesum__mid{position:absolute;top:40px;display:flex;flex-direction:column;align-items:center}.m-app-lifesum__mid b{font:700 22px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-lifesum__mid span{font:500 9.5px/1.2 inherit;color:#6b7280;margin-top:3px;text-transform:uppercase;letter-spacing:.06em}.m-app-lifesum__tag{font-style:normal;font:600 11px/1 'Geist Mono',monospace;padding:4px 10px;border-radius:999px;background:#ffffff;border:1px solid rgba(128,128,128,.18);color:#22c55e}",
+    "js": "var el=root.querySelector('.m-app-lifesum');if(!el)return;var btn=el.querySelector('.m-app-lifesum__btn'),a1=el.querySelector('.m-app-lifesum__arc1'),a2=el.querySelector('.m-app-lifesum__arc2'),num=el.querySelector('.m-app-lifesum__mid b');var scores=[84, 91, 72, 88],unit=\"\",c1=263.9,c2=194.8,idx=0,touched=false,dead=false;function apply(s){var p=Math.max(8,Math.min(100,s))/100;a1.style.strokeDashoffset=(c1*(1-p)).toFixed(1);a2.style.strokeDashoffset=(c2*(1-Math.min(1,p*0.86))).toFixed(1);num.textContent=s+unit;}btn.addEventListener('click',function(){touched=true;idx=(idx+1)%scores.length;apply(scores[idx]);});var t0=setTimeout(function(){if(!dead)apply(scores[0]);},180);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){idx=(idx+1)%scores.length;apply(scores[idx]);}},2200);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-noom-color-density-bars",
+    "title": "Noom: Calorie Density Color-Zone Bars Cascade",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 620,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1.16,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1.16, 0.36, 1)",
+    "props": [
+      "width (density bars)",
+      "transition-delay (90ms)"
+    ],
+    "src": "Noom",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.wsl.noom",
+    "collection": "Apps",
+    "app": {
+      "name": "Noom",
+      "slug": "noom",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F25C54",
+      "iconUrl": "https://play-lh.googleusercontent.com/IBrBpVeDWHFGqtPWIp_ygdxL-TWg1RFQiSfBJpjCbk0JmEPLgvBpgvZAli93rK3Bgb3MOM3BRsZnqCfceyuvKw=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.wsl.noom",
+      "bundleId": "com.wsl.noom"
+    },
+    "summary": "Noom's food-color budget smoothly cascades Green, Yellow, and Orange density bars to give calm, intuitive portion clarity.",
+    "hint": "Tap card to animate color zones",
+    "choreography": [
+      "0ms: Green Foods bar glides across warm cream card.",
+      "90-180ms: Yellow and Orange bars follow in 90ms stagger.",
+      "500-620ms: percentages settle cleanly."
+    ],
+    "agentPrompt": "Create Noom's color-density progress card on #fdf8f6 with #F25C54 -> #fb923c bars expanding over 620ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- Noom: Calorie Density Color-Zone Bars Cascade -->\n<div class=\"m-app-noom\"><div class=\"m-app-noom__card\"><div class=\"m-app-noom__r\"><span>Green</span><div class=\"m-app-noom__tr\"><i data-p=\"86\" style=\"width:12%;transition-delay:0ms\"></i></div><b>86%</b></div><div class=\"m-app-noom__r\"><span>Yellow</span><div class=\"m-app-noom__tr\"><i data-p=\"62\" style=\"width:12%;transition-delay:90ms\"></i></div><b>62%</b></div><div class=\"m-app-noom__r\"><span>Orange</span><div class=\"m-app-noom__tr\"><i data-p=\"34\" style=\"width:12%;transition-delay:180ms\"></i></div><b>34%</b></div></div></div>\n<style>.m-app-noom{position:absolute;inset:0;display:grid;place-items:center;background:#fdf8f6;color:#1c1917;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-noom__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-noom__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-noom__r span{color:#6b7280;font-weight:600}.m-app-noom__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-noom__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-noom__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#F25C54);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-noom\"><div class=\"m-app-noom__card\"><div class=\"m-app-noom__r\"><span>Green</span><div class=\"m-app-noom__tr\"><i data-p=\"86\" style=\"width:12%;transition-delay:0ms\"></i></div><b>86%</b></div><div class=\"m-app-noom__r\"><span>Yellow</span><div class=\"m-app-noom__tr\"><i data-p=\"62\" style=\"width:12%;transition-delay:90ms\"></i></div><b>62%</b></div><div class=\"m-app-noom__r\"><span>Orange</span><div class=\"m-app-noom__tr\"><i data-p=\"34\" style=\"width:12%;transition-delay:180ms\"></i></div><b>34%</b></div></div></div>",
+    "css": ".m-app-noom{position:absolute;inset:0;display:grid;place-items:center;background:#fdf8f6;color:#1c1917;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-noom__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#ffffff;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-noom__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-noom__r span{color:#6b7280;font-weight:600}.m-app-noom__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-noom__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-noom__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#22c55e,#F25C54);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-noom');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-noom__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-runna-interval-pace-zone-bars",
+    "title": "Runna: Interval Split Target Bars & Pace Shift",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 600,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 22
+    },
+    "easeLabel": "spring(320, 22)",
+    "props": [
+      "width (interval bars)",
+      "transition-delay"
+    ],
+    "src": "Runna",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.runbuddy.prod",
+    "collection": "Apps",
+    "app": {
+      "name": "Runna",
+      "slug": "runna",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF3B5C",
+      "iconUrl": "https://play-lh.googleusercontent.com/NNuHUeaxbDmyqZRWAao-iE5kgqE-NSr-v_RxJ15vzmdqTQrUuMwFJl_TOGqRB5h_kRHqA63Kc6uZ25rDvMYxXA=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.runbuddy.prod",
+      "bundleId": "com.runbuddy.prod"
+    },
+    "summary": "Runna's structured training plan cascades bold rose-coral interval bars across Tempo, Threshold, and Recovery splits.",
+    "hint": "Tap card to step training intervals",
+    "choreography": [
+      "0ms: Tempo split bar launches rightward in #FF3B5C.",
+      "90-180ms: Threshold and Recovery bars cascade cleanly.",
+      "480-600ms: split targets lock sharply."
+    ],
+    "agentPrompt": "Build Runna's interval training progress bars on #121014 with #FF3B5C -> #fb7185 gradients animating over 600ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- Runna: Interval Split Target Bars & Pace Shift -->\n<div class=\"m-app-runna\"><div class=\"m-app-runna__card\"><div class=\"m-app-runna__r\"><span>Tempo</span><div class=\"m-app-runna__tr\"><i data-p=\"92\" style=\"width:12%;transition-delay:0ms\"></i></div><b>92%</b></div><div class=\"m-app-runna__r\"><span>Thresh</span><div class=\"m-app-runna__tr\"><i data-p=\"84\" style=\"width:12%;transition-delay:90ms\"></i></div><b>84%</b></div><div class=\"m-app-runna__r\"><span>Easy</span><div class=\"m-app-runna__tr\"><i data-p=\"60\" style=\"width:12%;transition-delay:180ms\"></i></div><b>60%</b></div></div></div>\n<style>.m-app-runna{position:absolute;inset:0;display:grid;place-items:center;background:#121014;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-runna__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#1d1921;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-runna__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-runna__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-runna__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-runna__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-runna__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#FF3B5C,#fb7185);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-runna\"><div class=\"m-app-runna__card\"><div class=\"m-app-runna__r\"><span>Tempo</span><div class=\"m-app-runna__tr\"><i data-p=\"92\" style=\"width:12%;transition-delay:0ms\"></i></div><b>92%</b></div><div class=\"m-app-runna__r\"><span>Thresh</span><div class=\"m-app-runna__tr\"><i data-p=\"84\" style=\"width:12%;transition-delay:90ms\"></i></div><b>84%</b></div><div class=\"m-app-runna__r\"><span>Easy</span><div class=\"m-app-runna__tr\"><i data-p=\"60\" style=\"width:12%;transition-delay:180ms\"></i></div><b>60%</b></div></div></div>",
+    "css": ".m-app-runna{position:absolute;inset:0;display:grid;place-items:center;background:#121014;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-runna__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#1d1921;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-runna__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-runna__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-runna__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-runna__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-runna__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#FF3B5C,#fb7185);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-runna');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-runna__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-eight-sleep-thermal-pod-dial-scrub",
+    "title": "Eight Sleep: Dual-Zone Thermal Pod Dial (-4° Cool ↔ +4° Warm)",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 290,
+      "c": 23
+    },
+    "easeLabel": "spring(290, 23)",
+    "props": [
+      "transform: rotate (thermal indicator)",
+      "textContent (temperature)"
+    ],
+    "src": "Eight Sleep",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.eightsleep.eight",
+    "collection": "Apps",
+    "app": {
+      "name": "Eight Sleep",
+      "slug": "eight-sleep",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#3B82F6",
+      "iconUrl": "https://play-lh.googleusercontent.com/xJ8arru4PmRrE3iCrPH7-2H6woFBO5V8_l_n3ZPZQj7srcgvQo36Wn-Xqpfs7JAS6KkqLXHAHq1kp8KpdqChVfo=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.eightsleep.eight",
+      "bundleId": "com.eightsleep.eight"
+    },
+    "summary": "Dialing your Eight Sleep Pod temperature rotates a crisp ice-blue indicator across calibrated radial detents from -4° deep cool to +3° gentle wake warmth.",
+    "hint": "Tap dial to adjust Pod temperature",
+    "choreography": [
+      "0-70ms: tap steps thermal target to the next sleep phase setting.",
+      "40-360ms: glowing #3B82F6 needle glides smoothly across the dark dial.",
+      "360-420ms: center degree readout settles cleanly."
+    ],
+    "agentPrompt": "Recreate Eight Sleep's thermal control dial on #0a0e17 with #3B82F6 glowing indicator needle rotating across radial ticks over 420ms cubic-bezier(0.22, 1.22, 0.36, 1).",
+    "extractableCode": "<!-- Eight Sleep: Dual-Zone Thermal Pod Dial (-4° Cool ↔ +4° Warm) -->\n<div class=\"m-app-eight-sleep\"><button type=\"button\" class=\"m-app-eight-sleep__dial\"><div class=\"m-app-eight-sleep__ticks\"><i style=\"transform:rotate(-120deg)\"></i><i style=\"transform:rotate(-100deg)\"></i><i style=\"transform:rotate(-80deg)\"></i><i style=\"transform:rotate(-60deg)\"></i><i style=\"transform:rotate(-40deg)\"></i><i style=\"transform:rotate(-20deg)\"></i><i style=\"transform:rotate(0deg)\"></i><i style=\"transform:rotate(20deg)\"></i><i style=\"transform:rotate(40deg)\"></i><i style=\"transform:rotate(60deg)\"></i><i style=\"transform:rotate(80deg)\"></i><i style=\"transform:rotate(100deg)\"></i><i style=\"transform:rotate(120deg)\"></i></div><div class=\"m-app-eight-sleep__needle\"><span></span></div><div class=\"m-app-eight-sleep__val\"><b>0°</b><small>POD TEMP</small></div></button></div>\n<style>.m-app-eight-sleep{position:absolute;inset:0;display:grid;place-items:center;background:#0a0e17;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-eight-sleep__dial{position:relative;width:128px;height:128px;border-radius:50%;border:1px solid rgba(128,128,128,.22);background:#131b2b;color:#f4f5f7;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25)}.m-app-eight-sleep__ticks{position:absolute;inset:8px;pointer-events:none}.m-app-eight-sleep__ticks i{position:absolute;left:50%;top:0;width:2px;height:8px;margin-left:-1px;background:rgba(128,128,128,.4);transform-origin:50% 56px;border-radius:1px}.m-app-eight-sleep__needle{position:absolute;inset:14px;transition:transform .42s cubic-bezier(.22,1.22,.36,1);pointer-events:none}.m-app-eight-sleep__needle span{position:absolute;left:50%;top:0;width:4px;height:14px;margin-left:-2px;border-radius:99px;background:#3B82F6;box-shadow:0 0 10px #3B82F6}.m-app-eight-sleep__val{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-eight-sleep__val b{font:700 18px/1 'Geist Mono',monospace;color:#3B82F6}.m-app-eight-sleep__val small{font:600 9.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56);letter-spacing:.08em}</style>",
+    "html": "<div class=\"m-app-eight-sleep\"><button type=\"button\" class=\"m-app-eight-sleep__dial\"><div class=\"m-app-eight-sleep__ticks\"><i style=\"transform:rotate(-120deg)\"></i><i style=\"transform:rotate(-100deg)\"></i><i style=\"transform:rotate(-80deg)\"></i><i style=\"transform:rotate(-60deg)\"></i><i style=\"transform:rotate(-40deg)\"></i><i style=\"transform:rotate(-20deg)\"></i><i style=\"transform:rotate(0deg)\"></i><i style=\"transform:rotate(20deg)\"></i><i style=\"transform:rotate(40deg)\"></i><i style=\"transform:rotate(60deg)\"></i><i style=\"transform:rotate(80deg)\"></i><i style=\"transform:rotate(100deg)\"></i><i style=\"transform:rotate(120deg)\"></i></div><div class=\"m-app-eight-sleep__needle\"><span></span></div><div class=\"m-app-eight-sleep__val\"><b>0°</b><small>POD TEMP</small></div></button></div>",
+    "css": ".m-app-eight-sleep{position:absolute;inset:0;display:grid;place-items:center;background:#0a0e17;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-eight-sleep__dial{position:relative;width:128px;height:128px;border-radius:50%;border:1px solid rgba(128,128,128,.22);background:#131b2b;color:#f4f5f7;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.25)}.m-app-eight-sleep__ticks{position:absolute;inset:8px;pointer-events:none}.m-app-eight-sleep__ticks i{position:absolute;left:50%;top:0;width:2px;height:8px;margin-left:-1px;background:rgba(128,128,128,.4);transform-origin:50% 56px;border-radius:1px}.m-app-eight-sleep__needle{position:absolute;inset:14px;transition:transform .42s cubic-bezier(.22,1.22,.36,1);pointer-events:none}.m-app-eight-sleep__needle span{position:absolute;left:50%;top:0;width:4px;height:14px;margin-left:-2px;border-radius:99px;background:#3B82F6;box-shadow:0 0 10px #3B82F6}.m-app-eight-sleep__val{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-eight-sleep__val b{font:700 18px/1 'Geist Mono',monospace;color:#3B82F6}.m-app-eight-sleep__val small{font:600 9.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.56);letter-spacing:.08em}",
+    "js": "var el=root.querySelector('.m-app-eight-sleep');if(!el)return;var dial=el.querySelector('.m-app-eight-sleep__dial'),nd=el.querySelector('.m-app-eight-sleep__needle'),b=el.querySelector('.m-app-eight-sleep__val b');var vals=[\"-4\\u00b0\", \"-2\\u00b0\", \"0\\u00b0\", \"+2\\u00b0\", \"+4\\u00b0\"],idx=2,touched=false,dead=false;function set(i){idx=i;var deg=-100+(i/(vals.length-1))*200;nd.style.transform='rotate('+deg+'deg)';b.textContent=vals[i];}dial.addEventListener('click',function(){touched=true;set((idx+1)%vals.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set((idx+1)%vals.length);},1500);set(2);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-cronometer-micronutrient-target-bars",
+    "title": "Cronometer: Micronutrient Target Cascade Bars",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 620,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1.16,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1.16, 0.36, 1)",
+    "props": [
+      "width (nutrient target bars)",
+      "transition-delay (90ms)"
+    ],
+    "src": "Cronometer",
+    "srcUrl": "https://play.google.com/store/apps/details?id=com.cronometer.android.gold",
+    "collection": "Apps",
+    "app": {
+      "name": "Cronometer",
+      "slug": "cronometer",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF702A",
+      "iconUrl": "https://play-lh.googleusercontent.com/8bWVHZIajvfmDnnwm0K64_aGoUZ86sZVFftpssiPUtOOBYlM-YnCYFZuMyFUv5VqDInp5a8hqJ2Q0f88OtKAnA=s0-br30",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.cronometer.android.gold",
+      "bundleId": "com.cronometer.android.gold"
+    },
+    "summary": "Cronometer's precision nutrition dashboard cascades vibrant tangerine bars across Vitamin D, Magnesium, and Omega-3 daily targets.",
+    "hint": "Tap card to animate nutrient targets",
+    "choreography": [
+      "0ms: Vitamin D bar glides across dark slate track in #FF702A.",
+      "90-180ms: Magnesium and Omega-3 bars stagger smoothly into place.",
+      "500-620ms: tabular RDA percentages lock cleanly."
+    ],
+    "agentPrompt": "Build Cronometer's micronutrient progress bars on #141210 with #FF702A -> #fbbf24 gradients animating width over 620ms cubic-bezier(0.22, 1.16, 0.36, 1) with 90ms stagger.",
+    "extractableCode": "<!-- Cronometer: Micronutrient Target Cascade Bars -->\n<div class=\"m-app-cronometer\"><div class=\"m-app-cronometer__card\"><div class=\"m-app-cronometer__r\"><span>Vit D</span><div class=\"m-app-cronometer__tr\"><i data-p=\"96\" style=\"width:12%;transition-delay:0ms\"></i></div><b>96%</b></div><div class=\"m-app-cronometer__r\"><span>Magnes.</span><div class=\"m-app-cronometer__tr\"><i data-p=\"82\" style=\"width:12%;transition-delay:90ms\"></i></div><b>82%</b></div><div class=\"m-app-cronometer__r\"><span>Omega-3</span><div class=\"m-app-cronometer__tr\"><i data-p=\"74\" style=\"width:12%;transition-delay:180ms\"></i></div><b>74%</b></div></div></div>\n<style>.m-app-cronometer{position:absolute;inset:0;display:grid;place-items:center;background:#141210;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-cronometer__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#201c19;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-cronometer__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-cronometer__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-cronometer__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-cronometer__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-cronometer__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#FF702A,#fbbf24);transition:width .62s cubic-bezier(.22,1.16,.36,1)}</style>",
+    "html": "<div class=\"m-app-cronometer\"><div class=\"m-app-cronometer__card\"><div class=\"m-app-cronometer__r\"><span>Vit D</span><div class=\"m-app-cronometer__tr\"><i data-p=\"96\" style=\"width:12%;transition-delay:0ms\"></i></div><b>96%</b></div><div class=\"m-app-cronometer__r\"><span>Magnes.</span><div class=\"m-app-cronometer__tr\"><i data-p=\"82\" style=\"width:12%;transition-delay:90ms\"></i></div><b>82%</b></div><div class=\"m-app-cronometer__r\"><span>Omega-3</span><div class=\"m-app-cronometer__tr\"><i data-p=\"74\" style=\"width:12%;transition-delay:180ms\"></i></div><b>74%</b></div></div></div>",
+    "css": ".m-app-cronometer{position:absolute;inset:0;display:grid;place-items:center;background:#141210;color:#f4f5f7;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-cronometer__card{width:min(86%,254px);padding:15px 16px;border-radius:16px;background:#201c19;border:1px solid rgba(128,128,128,.16);display:flex;flex-direction:column;gap:11px;cursor:pointer}.m-app-cronometer__r{display:grid;grid-template-columns:62px 1fr 34px;align-items:center;gap:8px;font-size:11.5px}.m-app-cronometer__r span{color:rgba(255,255,255,.56);font-weight:600}.m-app-cronometer__r b{font:600 11px/1 'Geist Mono',monospace;text-align:right}.m-app-cronometer__tr{height:8px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden}.m-app-cronometer__tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#FF702A,#fbbf24);transition:width .62s cubic-bezier(.22,1.16,.36,1)}",
+    "js": "var el=root.querySelector('.m-app-cronometer');if(!el)return;var bars=[].slice.call(el.querySelectorAll('.m-app-cronometer__tr i')),full=false,touched=false,dead=false;function apply(){full=!full;bars.forEach(function(b){b.style.width=(full?b.dataset.p:Math.max(18,Number(b.dataset.p)-42))+'%';});}el.addEventListener('click',function(){touched=true;apply();});var t0=setTimeout(function(){if(!dead)apply();},220);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  }
+]
