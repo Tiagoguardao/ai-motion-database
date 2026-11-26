@@ -41,7 +41,11 @@ def main() -> int:
     run([sys.executable, "scripts/build_site.py"])
 
     # 2. Commit & push to GitHub
-    run(["git", "add", "index.html", "data", "scripts", "netlify.toml", ".gitignore"])
+    add_paths = ["index.html", "data", "scripts", "netlify.toml", ".gitignore"]
+    for extra in ("assets", "netlify", "mcp", "docs", "package.json", ".env.example"):
+        if (ROOT / extra).exists():
+            add_paths.append(extra)
+    run(["git", "add", *add_paths])
     diff = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
     if diff.returncode != 0:
         run(["git", "commit", "-m", args.message])

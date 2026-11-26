@@ -1,8 +1,85 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["data/motions.json"]
+
+# ---------- REST API v1 & MCP routing ----------
+
+[[redirects]]
+  from = "/api/v1/motions/:id/code"
+  to = "/.netlify/functions/api-motion-code?id=:id"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/motions"
+  to = "/.netlify/functions/api-motions"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/extract/:jobId"
+  to = "/.netlify/functions/api-extract?jobId=:jobId"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/extract"
+  to = "/.netlify/functions/api-extract"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/checkout"
+  to = "/.netlify/functions/api-billing?action=checkout"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/portal"
+  to = "/.netlify/functions/api-billing?action=portal"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/webhooks/stripe"
+  to = "/.netlify/functions/api-billing?action=webhook"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/keys/issue"
+  to = "/.netlify/functions/api-billing?action=issue-key"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/v1/keys/verify"
+  to = "/.netlify/functions/api-billing?action=verify-key"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/mcp"
+  to = "/.netlify/functions/api-mcp"
+  status = 200
+  force = true
+
+# ---------- Headers ----------
+
 [[headers]]
   for = "/data/motions.json"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization, X-API-Key, Mcp-Session-Id"
+    Access-Control-Expose-Headers = "X-MotionIndex-Tier, X-MotionIndex-Quota-Remaining, X-MotionIndex-Quota-Limit, X-MotionIndex-Credits-Remaining"

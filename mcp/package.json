@@ -1,0 +1,23 @@
+{
+  "name": "@motion-index/mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Zero-dependency stdio MCP server for Motion Index (search_motions, get_motion_code, extract_motion).",
+  "bin": {
+    "motion-index-mcp": "./server.mjs"
+  },
+  "main": "./server.mjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "motion-index",
+    "ui-motion",
+    "animation",
+    "claude-code",
+    "cursor",
+    "codex"
+  ],
+  "license": "MIT"
+}

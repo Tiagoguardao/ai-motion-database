@@ -102,6 +102,7 @@ def build_html(motions):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/monetization.css">
 <style>
   :root {{
     --paper: #ffffff;
@@ -419,6 +420,7 @@ def build_html(motions):
         <button type="button" data-view="apps">Apps <span class="nav-pill" id="appsNavCount"></span></button>
         <button type="button" data-view="collections">Collections</button>
         <button type="button" data-view="agents">For agents</button>
+        <button type="button" data-view="pricing">Pricing</button>
       </div>
     </nav>
     <div class="group" id="usesGroup">
@@ -433,6 +435,7 @@ def build_html(motions):
         <label>Source <select id="collection" aria-label="Collection"></select></label>
       </div>
     </div>
+    <div id="planPillMount" class="plan-pill-mount"></div>
     <p class="side-foot">Live database from curated X posts &amp; open-source repos. <a href="data/motions.json" target="_blank">motions.json ↗</a></p>
   </aside>
 
@@ -472,11 +475,14 @@ def build_html(motions):
       <div class="agent-doc">
         <div>
           <h2>Structured catalog for coding agents</h2>
-          <p>Every motion on this site is compiled into a machine-readable JSON index at <code>data/motions.json</code> with timing curves, spring constants, animated properties, choreography beats, standalone code, and an adaptation prompt.</p>
+          <p>Every motion on this site is compiled into a machine-readable JSON index at <code>data/motions.json</code> and served via our metered REST API and MCP server with timing curves, spring constants, animated properties, choreography beats, standalone code, and stack adaptation prompts.</p>
         </div>
+        <div id="agentsInteractiveMount"></div>
         <pre id="agentSchemaPreview"></pre>
       </div>
     </section>
+
+    <section class="view-panel" id="pricingView" hidden></section>
 
     <footer>
       <span>Interact directly inside any stage, or click its title to open the spec &amp; code sheet.</span>
@@ -513,7 +519,11 @@ def build_html(motions):
         <button type="button" role="tab" data-tab="code" aria-selected="false">Code</button>
       </div>
       <div class="code"><pre id="d-code"></pre></div>
-      <button type="button" class="copy" id="d-copy">Copy</button>
+      <div class="sheet-quota-meta" id="d-quota-meta"></div>
+      <div class="sheet-cta-row">
+        <button type="button" class="copy" id="d-copy">Copy</button>
+        <button type="button" class="share-agent" id="d-share">Share for agent</button>
+      </div>
     </div>
   </div>
 </dialog>
@@ -1157,11 +1167,13 @@ void main() {{ gl_FragColor = transition(v_uv); }}`;
     $('appsView').hidden = view !== 'apps';
     $('collectionsView').hidden = view !== 'collections';
     $('agentsView').hidden = view !== 'agents';
+    if ($('pricingView')) $('pricingView').hidden = view !== 'pricing';
     $('introSection').hidden = view !== 'motions';
     if (view === 'motions') renderGrid();
     if (view === 'apps') renderApps();
     if (view === 'collections') renderCollections();
     if (view === 'agents') renderAgentDoc();
+    window.dispatchEvent(new CustomEvent('motionindex:view', {{ detail: {{ view }} }}));
   }}
 
   $('sectionNav').addEventListener('click', e => {{
@@ -1262,6 +1274,7 @@ void main() {{ gl_FragColor = transition(v_uv); }}`;
     $('d-code').textContent = texts(current)[tab];
     document.querySelectorAll('#d-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
     $('d-copy').textContent = {{ prompt: 'Copy agent prompt', spec: 'Copy motion spec', code: 'Copy code' }}[tab];
+    window.dispatchEvent(new CustomEvent('motionindex:sheet', {{ detail: {{ motion: current, tab }} }}));
   }}
 
   function openSheet(m) {{
@@ -1313,9 +1326,23 @@ void main() {{ gl_FragColor = transition(v_uv); }}`;
     history.replaceState(null, '', location.pathname);
   }});
   $('d-copy').onclick = async () => {{
-    try {{ await navigator.clipboard.writeText(texts(current)[tab]); $('d-copy').textContent = 'Copied ✓'; }}
+    let outText = texts(current)[tab];
+    if (typeof window.__MOTION_COPY_GUARD === 'function') {{
+      const verdict = window.__MOTION_COPY_GUARD(current, tab, outText);
+      if (!verdict || !verdict.allowed) return;
+      if (typeof verdict.text === 'string') outText = verdict.text;
+    }}
+    try {{ await navigator.clipboard.writeText(outText); $('d-copy').textContent = 'Copied ✓'; }}
     catch {{ $('d-copy').textContent = 'Copy failed — select text above.'; }}
     setTimeout(showTab, 1500);
+  }};
+
+  window.__MOTION_UI = {{
+    getCurrent: () => current,
+    getTab: () => tab,
+    setView,
+    openSheet,
+    showTab,
   }};
 
   renderGrid();
@@ -1323,6 +1350,7 @@ void main() {{ gl_FragColor = transition(v_uv); }}`;
   if (linked) openSheet(linked);
 }})();
 </script>
+<script src="assets/monetization.js"></script>
 </body>
 </html>
 """

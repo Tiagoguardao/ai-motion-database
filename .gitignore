@@ -1,5 +1,5 @@
 .DS_Store
 .cache/
 .netlify/
-
-
+.env
+node_modules/
