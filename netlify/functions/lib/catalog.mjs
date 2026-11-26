@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sanitizeBrandTokens } from './auth.mjs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const CATALOG_DIR = path.dirname(fileURLToPath(import.meta.url));
 
 let cachedCatalog = null;
 let cachedCatalogPath = null;
@@ -11,9 +11,9 @@ let cachedCatalogPath = null;
 function resolveCatalogPath() {
   const candidates = [
     path.resolve(process.cwd(), 'data/motions.json'),
-    path.resolve(__dirname, '../../../data/motions.json'),
-    path.resolve(__dirname, '../../data/motions.json'),
-    path.resolve(__dirname, '../data/motions.json'),
+    path.resolve(CATALOG_DIR, '../../../data/motions.json'),
+    path.resolve(CATALOG_DIR, '../../data/motions.json'),
+    path.resolve(CATALOG_DIR, '../data/motions.json'),
   ];
   for (const p of candidates) {
     if (fs.existsSync(p)) return p;
