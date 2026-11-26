@@ -1,0 +1,228 @@
+[
+  {
+    "id": "app-khan-streak-banner-reveal",
+    "title": "Khan Academy: Streak Banner Expand & Notebook Card Reveal",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Calm",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "max-height + opacity (week streak banner expansion)",
+      "opacity + transform: translateY (illustrated notebook card)",
+      "transform: scale (emerald hexagon emblem)"
+    ],
+    "src": "Khan Academy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Khan Academy",
+      "slug": "khan-academy",
+      "category": "Education",
+      "platform": ["iOS", "Android"],
+      "accent": "#14BF96",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "bundleId": "org.khanacademy.Khan-Academy"
+    },
+    "summary": "Live-captured from Khan Academy: launching resolves the 'Loading your streak...' strip smoothly into the expanded '0 week streak' banner while crossfading the sage-green spiral notebook illustration and #1865F2 Sign in card below.",
+    "hint": "Tap stage to replay streak banner & card reveal",
+    "choreography": [
+      "0-200ms: 'Loading your streak...' muted top bar holds compact height while the sage placeholder frame loads.",
+      "180-460ms: top banner smoothly expands to reveal the flame icon, bold '0 week streak', and motivation copy while pushing content cleanly down.",
+      "240-520ms: illustrated spiral notebook + hexagonal leaf emblem and #1865F2 'Sign in' button fade into crisp clarity."
+    ],
+    "agentPrompt": "Build Khan Academy's Home launch streak expansion & welcome card reveal on #ffffff:\n1. Top strip transitions from muted 'Loading your streak...' (26px) to expanded streak banner (46px) showing a flame badge, bold '0 week streak', and supporting caption over 360ms cubic-bezier(0.22, 1, 0.36, 1).\n2. Below, crossfade a sage-green (#9ecbb1 -> #4f9d69) placeholder into an illustrated notebook block with a centered Khan hexagon emblem, 'Ready to start learning?' heading, and #1865F2 'Sign in' button.",
+    "extractableCode": "<!-- Khan Academy Streak Banner Expansion -->\n<div class=\"ka-home\"><div class=\"ka-streak\">🔥 0 week streak</div><div class=\"ka-card\">Ready to start learning?</div></div>",
+    "html": "<div class=\"m-app-ka-launch\"><div class=\"m-app-ka-launch__hdr\"><b>Khan Academy</b><span>⚙</span></div><div class=\"m-app-ka-launch__streak\"><div class=\"m-app-ka-launch__sk\">Loading your streak…</div><div class=\"m-app-ka-launch__real\"><i>🔥</i><b>0</b><span>week streak · Reach proficient on 1 skill</span></div></div><div class=\"m-app-ka-launch__hero\"><div class=\"m-app-ka-launch__pad\"><span class=\"m-app-ka-launch__hex\">⬢</span></div></div><div class=\"m-app-ka-launch__foot\"><b>Ready to start learning?</b><span>Sign in</span></div></div>",
+    "css": ".m-app-ka-launch{position:absolute;inset:0;background:#fff;color:#1f2937;display:flex;flex-direction:column;user-select:none;cursor:pointer;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ka-launch__hdr{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid #e5e7eb;font-size:11.5px}.m-app-ka-launch__hdr span{color:#1865f2;font-size:13px}.m-app-ka-launch__streak{position:relative;padding:6px 14px;border-bottom:1px solid #f1f5f9;min-height:28px;transition:min-height .36s cubic-bezier(.22,1,.36,1)}.m-app-ka-launch.is-ready .m-app-ka-launch__streak{min-height:38px}.m-app-ka-launch__sk{font:500 10px/1.4 inherit;color:#9ca3af;transition:opacity .22s}.m-app-ka-launch.is-ready .m-app-ka-launch__sk{opacity:0;pointer-events:none;position:absolute}.m-app-ka-launch__real{display:flex;align-items:center;gap:6px;opacity:0;transform:translateY(-4px);transition:opacity .32s ease .08s,transform .36s cubic-bezier(.22,1,.36,1) .08s}.m-app-ka-launch.is-ready .m-app-ka-launch__real{opacity:1;transform:none}.m-app-ka-launch__real i{font-style:normal;font-size:12px}.m-app-ka-launch__real b{font:800 13px/1 'Geist Mono',monospace}.m-app-ka-launch__real span{font:500 9.5px/1.2 inherit;color:#4b5563}.m-app-ka-launch__hero{flex:1;background:#b7d8c5;display:grid;place-items:center;position:relative;overflow:hidden;transition:background .4s ease}.m-app-ka-launch.is-ready .m-app-ka-launch__hero{background:linear-gradient(125deg,#55a665 0 28%,#eef2eb 28% 82%,#f59e0b 82% 100%)}.m-app-ka-launch__pad{width:54px;height:54px;border-radius:12px;background:#fff;border:2px solid #111827;display:grid;place-items:center;opacity:0;transform:scale(.82);transition:opacity .36s ease .12s,transform .42s cubic-bezier(.22,1.25,.36,1) .12s;box-shadow:0 6px 16px rgba(0,0,0,.12)}.m-app-ka-launch.is-ready .m-app-ka-launch__pad{opacity:1;transform:none}.m-app-ka-launch__hex{color:#14bf96;font-size:28px;line-height:1}.m-app-ka-launch__foot{padding:9px 14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px}.m-app-ka-launch__foot b{font:700 12px/1 inherit;color:#111827}.m-app-ka-launch__foot span{background:#1865f2;color:#fff;padding:6px 26px;border-radius:5px;font:600 10.5px/1 inherit;opacity:.45;transition:opacity .3s ease}.m-app-ka-launch.is-ready .m-app-ka-launch__foot span{opacity:1}",
+    "js": "var el=root.querySelector('.m-app-ka-launch');if(!el)return;var touched=false,dead=false,tm=0;function play(){el.classList.remove('is-ready');clearTimeout(tm);tm=setTimeout(function(){if(!dead)el.classList.add('is-ready');},580);}el.addEventListener('click',function(){touched=true;play();});play();var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)play();},2900);return function(){dead=true;clearTimeout(tm);clearInterval(iv);};"
+  },
+  {
+    "id": "app-khan-subject-accordion-expand",
+    "title": "Khan Academy: Subject Accordion Expand & Cyan Course List",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 360,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "max-height + opacity (nested course drawer)",
+      "transform: rotate (180deg disclosure chevron)",
+      "transform: translateY (nested course row stagger)"
+    ],
+    "src": "Khan Academy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Khan Academy",
+      "slug": "khan-academy",
+      "category": "Education",
+      "platform": ["iOS", "Android"],
+      "accent": "#14BF96",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "bundleId": "org.khanacademy.Khan-Academy"
+    },
+    "summary": "Live-captured from Khan Academy: tapping a yellow Math subject row in Explore rotates its disclosure chevron 180° and smoothly opens nested cyan #00A4D3 course tiles (Algebra 1, Geometry, Algebra 2, Trigonometry) while pushing sibling subjects down.",
+    "hint": "Tap Math: High school & college to toggle accordion",
+    "choreography": [
+      "0-140ms: right disclosure chevron rotates smoothly 0deg -> 180deg as the parent row highlights.",
+      "40-360ms: nested course container expands max-height cleanly from 0 to full height pushing 'Test prep' downward.",
+      "80-360ms: cyan #00A4D3 rounded-square course rows (Algebra 1, Geometry, Algebra 2) glide softly into view."
+    ],
+    "agentPrompt": "Build Khan Academy's Explore subject accordion on #ffffff:\n1. Top-level subject rows pair a 22px #F5B700 golden-amber square icon with label text and a right `⌄` chevron.\n2. Clicking 'Math: High school & college' rotates its chevron 180deg over 260ms and expands a nested course list (`max-height: 0 -> 130px` over 360ms cubic-bezier(0.22, 1, 0.36, 1)) containing 3 indented course rows (`Algebra 1`, `Geometry`, `Trigonometry`) with #00A4D3 cyan square icons, cleanly displacing sibling rows below.",
+    "extractableCode": "<!-- Khan Academy Subject Accordion -->\n<div class=\"ka-acc\"><button>Math: High school & college <i>⌄</i></button><div class=\"ka-sub\"><div>Algebra 1</div><div>Geometry</div></div></div>",
+    "html": "<div class=\"m-app-ka-acc\"><div class=\"m-app-ka-acc__card\"><div class=\"m-app-ka-acc__h\">Browse Khan Academy</div><button type=\"button\" class=\"m-app-ka-acc__row\"><span class=\"m-app-ka-acc__ic y\">±</span><b>Math: High school &amp; college</b><i>⌄</i></button><div class=\"m-app-ka-acc__sub\"><div><span class=\"m-app-ka-acc__ic c\">x</span>Algebra 1</div><div><span class=\"m-app-ka-acc__ic c\">△</span>Geometry</div><div><span class=\"m-app-ka-acc__ic c\">∿</span>Trigonometry</div></div><div class=\"m-app-ka-acc__sib\"><span class=\"m-app-ka-acc__ic y\">★</span><b>Test prep</b><i>⌄</i></div></div></div>",
+    "css": ".m-app-ka-acc{position:absolute;inset:0;background:#f4f6f8;color:#1f2937;display:grid;place-items:center;padding:12px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ka-acc__card{width:min(94%,268px);background:#fff;border-radius:12px;border:1px solid #e5e7eb;padding:10px 12px;display:flex;flex-direction:column;gap:2px}.m-app-ka-acc__h{font:700 12px/1.2 inherit;color:#111827;margin-bottom:4px}.m-app-ka-acc__row,.m-app-ka-acc__sib{width:100%;border:0;border-bottom:1px solid #f1f5f9;background:none;padding:7px 0;display:flex;align-items:center;gap:8px;text-align:left;font-size:11px;color:#1f2937}.m-app-ka-acc__row{cursor:pointer}.m-app-ka-acc__row b,.m-app-ka-acc__sib b{flex:1;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.m-app-ka-acc__row i,.m-app-ka-acc__sib i{font-style:normal;color:#6b7280;transition:transform .28s cubic-bezier(.22,1,.36,1)}.m-app-ka-acc.is-open .m-app-ka-acc__row i{transform:rotate(180deg);color:#1865f2}.m-app-ka-acc__ic{width:20px;height:20px;border-radius:4px;display:grid;place-items:center;font:700 10px/1 'Geist Mono',monospace;color:#fff;flex:none}.m-app-ka-acc__ic.y{background:#f5b700}.m-app-ka-acc__ic.c{background:#00a4d3}.m-app-ka-acc__sub{max-height:0;opacity:0;overflow:hidden;transition:max-height .36s cubic-bezier(.22,1,.36,1),opacity .28s ease}.m-app-ka-acc.is-open .m-app-ka-acc__sub{max-height:112px;opacity:1}.m-app-ka-acc__sub div{display:flex;align-items:center;gap:8px;padding:6px 0 6px 10px;border-bottom:1px solid #f8fafc;font:500 11px/1 inherit;color:#374151}",
+    "js": "var el=root.querySelector('.m-app-ka-acc');if(!el)return;var row=el.querySelector('.m-app-ka-acc__row'),open=false,touched=false,dead=false;function tog(){open=!open;el.classList.toggle('is-open',open);}row.addEventListener('click',function(){touched=true;tog();});var t0=setTimeout(function(){if(!dead)tog();},320);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},2100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-khan-course-navy-header-reveal",
+    "title": "Khan Academy: Deep-Navy Course Banner & Cyan Badge Hydrate",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "background-color + transform: scale (gray placeholder -> #00A4D3 unit emblem)",
+      "transform: scaleX (#1865F2 'Up next' top accent rule)",
+      "opacity (unit lessons crossfade)"
+    ],
+    "src": "Khan Academy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Khan Academy",
+      "slug": "khan-academy",
+      "category": "Education",
+      "platform": ["iOS", "Android"],
+      "accent": "#14BF96",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "bundleId": "org.khanacademy.Khan-Academy"
+    },
+    "summary": "Live-captured from Khan Academy: entering Algebra 1 anchors the signature #0A2A66 deep-navy course banner while circular gray placeholders bloom smoothly into bright #00A4D3 math badges beneath a crisp #1865F2 'Up next for you' top bar.",
+    "hint": "Tap course screen to replay unit hydration",
+    "choreography": [
+      "0-180ms: #0A2A66 navy header displays breadcrumb ('Math: High school & college / Algebra 1') and '182 skills to make proficient' strip.",
+      "160-440ms: circular #e5e7eb unit icon placeholders crossfade and pop scale(0.88 -> 1) into vivid #00A4D3 cyan math glyphs (`2(x+3)`, `2x+4`).",
+      "200-520ms: 2.5px #1865F2 'Up next for you' accent border sweeps left-to-right across the recommended unit card."
+    ],
+    "agentPrompt": "Build Khan Academy's Algebra 1 course page hydration animation:\n1. Top banner: #0A2A66 deep navy header with `←`, muted breadcrumb, bold `Algebra 1`, and white sub-strip `182 skills to make proficient`.\n2. Unit cards: start with light gray circular badge placeholders (`#e5e7eb`) and dimmed lesson rows, then hydrate after 480ms by popping the badges into `#00A4D3` circles (`2(x+3)`, `2x+4`) via scale(0.86 -> 1) while sweeping a 2.5px `#1865F2` top accent bar across the 'Up next for you' card.",
+    "extractableCode": "<!-- Khan Academy Navy Course Banner & Unit Hydration -->\n<div class=\"ka-crs\"><header>Algebra 1</header><div class=\"ka-unit\"><i>2(x+3)</i><b>Algebra foundations</b></div></div>",
+    "html": "<div class=\"m-app-ka-crs\"><div class=\"m-app-ka-crs__hdr\"><span>← Math: High school &amp; college</span><b>Algebra 1</b></div><div class=\"m-app-ka-crs__sub\">182 skills to make proficient</div><div class=\"m-app-ka-crs__u m-app-ka-crs__u1\"><i class=\"m-app-ka-crs__rule\"></i><div class=\"m-app-ka-crs__top\"><span class=\"m-app-ka-crs__ico\">2(x+3)</span><div><em>Up next for you</em><b>Algebra foundations</b><small>7 skills to make proficient</small></div></div><div class=\"m-app-ka-crs__li\">Overview and history of algebra</div><div class=\"m-app-ka-crs__li\">Introduction to variables</div></div><div class=\"m-app-ka-crs__u\"><div class=\"m-app-ka-crs__top\"><span class=\"m-app-ka-crs__ico\">2x+4</span><div><b>Solving equations</b><small>11 skills to make proficient</small></div></div></div></div>",
+    "css": ".m-app-ka-crs{position:absolute;inset:0;background:#f4f6f8;color:#1f2937;display:flex;flex-direction:column;user-select:none;cursor:pointer;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ka-crs__hdr{background:#0a2a66;color:#fff;padding:10px 14px 9px;display:flex;flex-direction:column;gap:2px}.m-app-ka-crs__hdr span{font-size:9.5px;color:rgba(255,255,255,.72)}.m-app-ka-crs__hdr b{font:700 14px/1.1 inherit}.m-app-ka-crs__sub{background:#fff;padding:6px 14px;font:600 10.5px/1 inherit;color:#374151;border-bottom:1px solid #e5e7eb}.m-app-ka-crs__u{position:relative;background:#fff;margin:8px 10px 0;border-radius:8px;padding:9px 11px;border:1px solid #e5e7eb;overflow:hidden}.m-app-ka-crs__rule{position:absolute;left:0;right:0;top:0;height:2.5px;background:#1865f2;transform:scaleX(0);transform-origin:left;transition:transform .44s cubic-bezier(.22,1,.36,1)}.m-app-ka-crs.is-hyd .m-app-ka-crs__rule{transform:scaleX(1)}.m-app-ka-crs__top{display:flex;align-items:center;gap:9px}.m-app-ka-crs__ico{width:30px;height:30px;border-radius:50%;background:#e5e7eb;color:transparent;font:700 7.5px/1 'Geist Mono',monospace;display:grid;place-items:center;flex:none;transform:scale(.88);transition:background .3s ease,color .25s ease,transform .38s cubic-bezier(.22,1.35,.36,1)}.m-app-ka-crs.is-hyd .m-app-ka-crs__ico{background:#00a4d3;color:#fff;transform:scale(1)}.m-app-ka-crs__top em{display:block;font-style:normal;font:600 9px/1 inherit;color:#1865f2}.m-app-ka-crs__top b{display:block;font:700 11px/1.2 inherit;color:#111827}.m-app-ka-crs__top small{display:block;font:400 9.5px/1.2 inherit;color:#6b7280}.m-app-ka-crs__li{margin-top:6px;padding-top:5px;border-top:1px solid #f1f5f9;font:500 10px/1.1 inherit;color:#4b5563;opacity:.35;transition:opacity .32s ease}.m-app-ka-crs.is-hyd .m-app-ka-crs__li{opacity:1}",
+    "js": "var el=root.querySelector('.m-app-ka-crs');if(!el)return;var touched=false,dead=false,tm=0;function run(){el.classList.remove('is-hyd');clearTimeout(tm);tm=setTimeout(function(){if(!dead)el.classList.add('is-hyd');},480);}el.addEventListener('click',function(){touched=true;run();});run();var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)run();},2700);return function(){dead=true;clearTimeout(tm);clearInterval(iv);};"
+  },
+  {
+    "id": "app-khan-bookmark-ribbon-dialog",
+    "title": "Khan Academy: Bookmark Ribbon Fill & Offline Dialog Pop",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 340,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 22
+    },
+    "easeLabel": "spring(340, 22)",
+    "props": [
+      "fill + transform: scale (bookmark ribbon SVG pop)",
+      "opacity (modal scrim)",
+      "transform: scale + opacity (Material confirmation dialog)"
+    ],
+    "src": "Khan Academy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Khan Academy",
+      "slug": "khan-academy",
+      "category": "Education",
+      "platform": ["iOS", "Android"],
+      "accent": "#14BF96",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "bundleId": "org.khanacademy.Khan-Academy"
+    },
+    "summary": "Live-captured from Khan Academy: tapping a topic's bookmark icon inside Unit: Algebra foundations fills the SVG ribbon solid #1865F2 blue with a crisp spring pop and raises the offline Bookmarks confirmation dialog.",
+    "hint": "Tap bookmark icon to save topic & pop confirmation",
+    "choreography": [
+      "0-160ms: outline bookmark ribbon snaps to filled #1865F2 while popping scale(1 -> 1.26 -> 1).",
+      "60-280ms: dark modal scrim fades cleanly to rgba(0,0,0,0.45) over the unit lesson list.",
+      "80-340ms: crisp Material alert card ('You added a topic to Bookmarks!' with teal 'GOT IT' / 'GO TO BOOKMARKS' actions) pops from scale(0.92) to 1."
+    ],
+    "agentPrompt": "Recreate Khan Academy's Unit Bookmark ribbon & confirmation alert:\n1. Header bar in #0A2A66 (`Unit: Algebra foundations`) above white topic section (`Overview and history of algebra`) with right-aligned SVG bookmark ribbon button and #1865F2 play-circle lesson items.\n2. Clicking the bookmark ribbon fills it solid #1865F2 with a scale(1.26 -> 1) spring pop and presents a centered white Material dialog ('You added a topic to Bookmarks!' + #0f766e 'GOT IT' / 'GO TO BOOKMARKS' buttons) scaling 0.92 -> 1 over a 0.45 scrim.",
+    "extractableCode": "<!-- Khan Academy Bookmark Ribbon & Dialog -->\n<div class=\"ka-bm\"><button class=\"ka-rib\">🔖</button><div class=\"ka-dlg\">You added a topic to Bookmarks!</div></div>",
+    "html": "<div class=\"m-app-ka-bm\"><div class=\"m-app-ka-bm__hdr\">← Unit: Algebra foundations</div><div class=\"m-app-ka-bm__sec\"><div class=\"m-app-ka-bm__row\"><b>Overview and history of algebra</b><button type=\"button\" class=\"m-app-ka-bm__rib\" aria-label=\"Bookmark\"><svg viewBox=\"0 0 18 22\"><path d=\"M3 2h12v18l-6-4-6 4V2z\"/></svg></button></div><div class=\"m-app-ka-bm__vid\"><i>▶</i><span>Origins of algebra</span></div><div class=\"m-app-ka-bm__vid\"><i>▶</i><span>Abstract-ness</span></div><div class=\"m-app-ka-bm__vid\"><i>▶</i><span>The beauty of algebra</span></div></div><div class=\"m-app-ka-bm__scrim\"><div class=\"m-app-ka-bm__dlg\"><b>You added a topic to Bookmarks!</b><p>Now you can download it for offline use in Bookmarks.</p><div class=\"m-app-ka-bm__acts\"><button type=\"button\" class=\"m-app-ka-bm__ok\">GOT IT</button><button type=\"button\" class=\"m-app-ka-bm__ok\">GO TO BOOKMARKS</button></div></div></div></div>",
+    "css": ".m-app-ka-bm{position:absolute;inset:0;background:#fff;color:#1f2937;display:flex;flex-direction:column;user-select:none;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ka-bm__hdr{background:#0a2a66;color:#fff;padding:10px 14px;font:700 12px/1 inherit}.m-app-ka-bm__sec{padding:11px 14px;display:flex;flex-direction:column;gap:9px}.m-app-ka-bm__row{display:flex;justify-content:space-between;align-items:center;font-size:11px}.m-app-ka-bm__rib{border:0;background:none;padding:3px;cursor:pointer}.m-app-ka-bm__rib svg{width:15px;height:18px;fill:transparent;stroke:#6b7280;stroke-width:1.8;transition:fill .2s,stroke .2s,transform .32s cubic-bezier(.22,1.4,.36,1)}.m-app-ka-bm.is-saved .m-app-ka-bm__rib svg{fill:#1865f2;stroke:#1865f2;transform:scale(1.22)}.m-app-ka-bm__vid{display:flex;align-items:center;gap:8px;font-size:11px;color:#374151}.m-app-ka-bm__vid i{width:18px;height:18px;border-radius:50%;border:1.5px solid #1865f2;color:#1865f2;font-style:normal;font-size:8px;display:grid;place-items:center}.m-app-ka-bm__scrim{position:absolute;inset:0;background:rgba(0,0,0,.46);display:grid;place-items:center;padding:14px;opacity:0;pointer-events:none;transition:opacity .24s ease}.m-app-ka-bm.is-dlg .m-app-ka-bm__scrim{opacity:1;pointer-events:auto}.m-app-ka-bm__dlg{width:min(94%,244px);background:#fff;border-radius:6px;padding:13px 14px 10px;box-shadow:0 16px 36px rgba(0,0,0,.3);transform:scale(.92);transition:transform .28s cubic-bezier(.22,1.25,.36,1)}.m-app-ka-bm.is-dlg .m-app-ka-bm__dlg{transform:scale(1)}.m-app-ka-bm__dlg b{display:block;font:700 12px/1.25 inherit;color:#111827}.m-app-ka-bm__dlg p{margin:5px 0 10px;font:400 10.5px/1.35 inherit;color:#4b5563}.m-app-ka-bm__acts{display:flex;justify-content:flex-end;gap:12px}.m-app-ka-bm__ok{border:0;background:none;color:#0f766e;font:700 10px/1 inherit;cursor:pointer;padding:4px 2px}",
+    "js": "var el=root.querySelector('.m-app-ka-bm');if(!el)return;var rib=el.querySelector('.m-app-ka-bm__rib'),oks=[].slice.call(el.querySelectorAll('.m-app-ka-bm__ok'));var saved=false,touched=false,dead=false;function toggle(){saved=!saved;el.classList.toggle('is-saved',saved);el.classList.toggle('is-dlg',saved);}rib.addEventListener('click',function(){touched=true;toggle();});oks.forEach(function(b){b.addEventListener('click',function(){touched=true;el.classList.remove('is-dlg');});});var k=0,iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){k=(k+1)%3;if(k===1){saved=true;el.classList.add('is-saved','is-dlg');}else if(k===2){el.classList.remove('is-dlg');}else{saved=false;el.classList.remove('is-saved','is-dlg');}}},1750);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-khan-bottom-tab-book-mascot",
+    "title": "Khan Academy: Bottom Tab Switch & Empty Bookmarks Illustration",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Tab switch",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 340,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 22
+    },
+    "easeLabel": "spring(310, 22)",
+    "props": [
+      "color + transform: scale (bottom tab icon snap)",
+      "opacity + transform: translateY (view crossfade)",
+      "transform: translateY + rotate (floating open-book mascot)"
+    ],
+    "src": "Khan Academy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Khan Academy",
+      "slug": "khan-academy",
+      "category": "Education",
+      "platform": ["iOS", "Android"],
+      "accent": "#14BF96",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "bundleId": "org.khanacademy.Khan-Academy"
+    },
+    "summary": "Live-captured from Khan Academy: switching across Home, Explore, and Bookmarks pops active #1865F2 icons and crossfades cleanly into the illustrated open-book empty state with playful bounce.",
+    "hint": "Tap Home, Explore, or Bookmarks tabs",
+    "choreography": [
+      "0-160ms: tapped bottom-bar icon pops scale(0.88 -> 1.12 -> 1) and switches into #1865F2 Khan blue.",
+      "40-340ms: active panel fades and slides upward 6px into view (Home streak ↔ Explore subjects ↔ Bookmarks open-book mascot)."
+    ],
+    "agentPrompt": "Build Khan Academy's 3-tab bottom navigation (`Home`, `Explore`, `Bookmarks`) on #ffffff:\n1. Active tab tints `#1865F2` with a crisp icon scale pop (`0.88 -> 1.12 -> 1` over 260ms).\n2. Crossfade panels cleanly (`translateY(6px -> 0)`, opacity `0 -> 1`), featuring the Bookmarks tab's charming illustrated sky-blue & magenta open book mascot above 'You have no bookmarks.'",
+    "extractableCode": "<!-- Khan Academy 3-Tab Bottom Nav & Bookmarks Mascot -->\n<div class=\"ka-tabs\"><div class=\"ka-pane\"></div><nav><button>Home</button><button>Explore</button><button>Bookmarks</button></nav></div>",
+    "html": "<div class=\"m-app-ka-nav\"><div class=\"m-app-ka-nav__body\"><div class=\"m-app-ka-nav__p p0 is-on\"><b>Home · Recent lessons</b><span>Resume Algebra foundations</span></div><div class=\"m-app-ka-nav__p p1\"><b>Browse Khan Academy</b><div class=\"m-app-ka-nav__pills\"><i>Math</i><i>Science</i><i>Test prep</i></div></div><div class=\"m-app-ka-nav__p p2\"><div class=\"m-app-ka-nav__book\"><span></span><span></span></div><b>You have no bookmarks.</b><span>Download videos for offline viewing</span></div></div><div class=\"m-app-ka-nav__bar\"><button type=\"button\" data-i=\"0\" class=\"is-on\"><i>⬢</i><span>Home</span></button><button type=\"button\" data-i=\"1\"><i>🔍</i><span>Explore</span></button><button type=\"button\" data-i=\"2\"><i>🔖</i><span>Bookmarks</span></button></div></div>",
+    "css": ".m-app-ka-nav{position:absolute;inset:0;background:#fff;color:#1f2937;display:flex;flex-direction:column;user-select:none;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-ka-nav__body{position:relative;flex:1;background:#f8fafc}.m-app-ka-nav__p{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;text-align:center;opacity:0;transform:translateY(7px);transition:opacity .26s ease,transform .32s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-ka-nav__p.is-on{opacity:1;transform:none;pointer-events:auto}.m-app-ka-nav__p b{font:700 12.5px/1.2 inherit;color:#111827}.m-app-ka-nav__p span{font:400 10.5px/1.3 inherit;color:#6b7280}.m-app-ka-nav__pills{display:flex;gap:6px;margin-top:4px}.m-app-ka-nav__pills i{font-style:normal;padding:4px 9px;border-radius:6px;background:#fef3c7;color:#92400e;font:600 10px/1 inherit}.m-app-ka-nav__book{display:flex;gap:3px;padding:6px 8px;border-radius:8px;border:2px solid #9d174d;background:#e0f2fe;margin-bottom:2px;animation:m-ka-bk 2.2s ease-in-out infinite alternate}@keyframes m-ka-bk{from{transform:translateY(0) rotate(-1.5deg)}to{transform:translateY(-4px) rotate(1.5deg)}}.m-app-ka-nav__book span{width:20px;height:24px;border-radius:3px;background:#bae6fd;border-top:4px solid #f472b6}.m-app-ka-nav__bar{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e5e7eb;background:#fff;padding:6px 0 7px}.m-app-ka-nav__bar button{border:0;background:none;color:#6b7280;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;transition:color .18s}.m-app-ka-nav__bar button i{font-style:normal;font-size:13px;line-height:1;transition:transform .28s cubic-bezier(.22,1.4,.36,1)}.m-app-ka-nav__bar button span{font:600 9.5px/1 inherit}.m-app-ka-nav__bar button.is-on{color:#1865f2}.m-app-ka-nav__bar button.is-on i{transform:scale(1.18)}",
+    "js": "var el=root.querySelector('.m-app-ka-nav');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-ka-nav__bar button')),panes=[].slice.call(el.querySelectorAll('.m-app-ka-nav__p'));var idx=0,touched=false,dead=false;function go(i){idx=i;btns.forEach(function(b,j){b.classList.toggle('is-on',j===i);});panes.forEach(function(p,j){p.classList.toggle('is-on',j===i);});}btns.forEach(function(b,i){b.addEventListener('click',function(){touched=true;go(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)go((idx+1)%3);},1950);return function(){dead=true;clearInterval(iv);};"
+  }
+]

@@ -1,6 +1,6 @@
 {
-  "count": 542,
-  "appsCount": 25,
+  "count": 558,
+  "appsCount": 28,
   "apps": [
     {
       "name": "Duolingo",
@@ -406,6 +406,67 @@
       "bundleId": "com.burbn.barcelona",
       "motionIds": [
         "app-threads-repost-pull"
+      ]
+    },
+    {
+      "name": "Booking.com",
+      "slug": "booking-com",
+      "category": "Travel",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#003B95",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "bundleId": "com.booking.BookingApp",
+      "motionIds": [
+        "app-booking-service-tab-morph",
+        "app-booking-date-sheet-rise",
+        "app-booking-calendar-range-flex",
+        "app-booking-guests-stepper-sheet",
+        "app-booking-search-collapse-skeleton",
+        "app-booking-sort-radio-sheet"
+      ]
+    },
+    {
+      "name": "Etsy",
+      "slug": "etsy",
+      "category": "Shopping",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F1641E",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "bundleId": "com.etsy.etsyforios",
+      "motionIds": [
+        "app-etsy-artisan-hero-reel",
+        "app-etsy-search-attribute-chips",
+        "app-etsy-shared-element-listing",
+        "app-etsy-refinement-pill-reorder",
+        "app-etsy-filter-drawer-sheet"
+      ]
+    },
+    {
+      "name": "Khan Academy",
+      "slug": "khan-academy",
+      "category": "Education",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#14BF96",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "bundleId": "org.khanacademy.Khan-Academy",
+      "motionIds": [
+        "app-khan-streak-banner-reveal",
+        "app-khan-subject-accordion-expand",
+        "app-khan-course-navy-header-reveal",
+        "app-khan-bookmark-ribbon-dialog",
+        "app-khan-bottom-tab-book-mascot"
       ]
     }
   ],
@@ -19735,6 +19796,773 @@
       ],
       "agentPrompt": "Add the \"Zoom wipe right\" GLSL screen/image transition from gl-transitions (ZoomWipeRight.glsl).\n\nTrigger: view/slide change or hover scrub\nDuration: 1200 ms\nEasing: cubic-bezier(0.45, 0, 0.55, 1)\nUniforms: progress (0.0 to 1.0), ratio (width/height), getFromColor(uv), getToColor(uv)\n\nCompile the GLSL fragment function inside a WebGL quad pass and fall back to a 220ms opacity crossfade under prefers-reduced-motion.",
       "code": "// Author: Handk\n// License: MIT\n// Description: Zooms into the outgoing image, then the incoming one wipes in from left to right\n// Tags: zoom, wipe, horizontal\n// Preview: 0.75\n\n// @param Part of the first half spent zooming (capped at 0.5)\nuniform float zoom_quickness; // = 0.8\nvec2 zoom(vec2 uv, float amount) {\n  if(amount<0.5)\n  return 0.5 + ((uv - 0.5) * (1.0-amount));\n  else\n  return 0.5 + ((uv - 0.5) * (amount));\n  \n}\n\nvec4 transition (vec2 uv) {\n  float nQuick = clamp(zoom_quickness,0.0,0.5);\n  if(progress<0.5){\n    vec4 c= mix(\n      getFromColor(zoom(uv, smoothstep(0.0, nQuick, progress))),\n      getToColor(uv),\n     step(0.5, progress)\n    );\n    \n    return c;\n  }\n  else{\n    vec2 p=uv.xy/vec2(1.0).xy;\n    vec4 d=getFromColor(p);\n    vec4 e=getToColor(p);\n    vec4 f= mix(d, e, step(0.0+p.x,(progress-0.5)*2.0));\n    \n    return f;\n  }\n}"
+    },
+    {
+      "id": "app-booking-service-tab-morph",
+      "title": "Booking.com: Service Pill Rail & Yellow Search Card Morph",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Tab switch",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 360,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "border-color + background-color (active service pill)",
+        "max-height + opacity (yellow search card fields)",
+        "transform: translateY (field crossfade)"
+      ],
+      "source": "Booking.com (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Booking.com: switching top service pills (Stays, Flights, Car rental) in the #003B95 header snaps a crisp white outline onto the active pill while morphing the iconic #FEBB02 yellow-bordered search form's rows and height.",
+      "choreography": [
+        "0-90ms: tapped service pill gains 1.5px solid white border and rgba(255,255,255,0.14) capsule tint while previous pill dissolves its outline.",
+        "60-320ms: the #FEBB02 yellow-bordered search container smoothly transitions its rows (Stays 3-row stack ↔ Flights round-trip/from/to ↔ Car rental pickup toggle).",
+        "180-360ms: incoming field rows ease upward 6px into full opacity while the #006CE4 Search CTA stays anchored at the bottom edge."
+      ],
+      "agentPrompt": "Recreate Booking.com's top service tab switch & yellow search card morph:\n1. Header band: #003B95 deep navy background with horizontal pill buttons ('Stays', 'Flights', 'Car rental'). Active pill receives 1.5px solid #ffffff border and rgba(255,255,255,0.14) background over 220ms ease.\n2. Overlapping search box: crisp 3.5px #FEBB02 yellow border with 10px radius wrapping stacked white field rows separated by 2px #FEBB02 dividers and a bottom #006CE4 full-width Search CTA.\n3. On tab switch, crossfade and slide incoming rows translateY(6px -> 0) over 320ms cubic-bezier(0.22, 1, 0.36, 1) as the card dynamically adapts between Stays (destination/dates/guests), Flights (Round-trip + OPO → Where to?), and Car rental (Return to same location switch + pickup).",
+      "code": "<!-- Booking.com Service Pill & Yellow Search Card Morph -->\n<div class=\"bk-head\"><button class=\"is-on\">Stays</button><button>Flights</button><button>Car rental</button></div>\n<div class=\"bk-box\"><div class=\"bk-fields\"></div><button class=\"bk-go\">Search</button></div>",
+      "app": {
+        "name": "Booking.com",
+        "slug": "booking-com",
+        "category": "Travel",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#003B95",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+        "bundleId": "com.booking.BookingApp"
+      }
+    },
+    {
+      "id": "app-booking-date-sheet-rise",
+      "title": "Booking.com: Select Dates Sheet Rise & Flexibility Chips",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 380,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "transform: translateY (bottom sheet)",
+        "opacity (dark scrim)",
+        "border-color + background (flexibility pill chips)"
+      ],
+      "source": "Booking.com (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Booking.com: tapping the date row dims the navy/yellow search bar under a dark scrim while the white Select Dates modal rises smoothly with Exact dates and ±1/±2/±3 day chips.",
+      "choreography": [
+        "0-260ms: dark modal scrim fades to rgba(0,0,0,0.48) over the navy Booking.com header.",
+        "0-380ms: rounded-top white calendar sheet translates smoothly from translateY(100%) to 0 via cubic-bezier(0.22, 1, 0.36, 1).",
+        "Interaction: tapping flexibility chips snaps a #006CE4 border and #EBF3FF fill onto the chosen tolerance while updating the summary line."
+      ],
+      "agentPrompt": "Build Booking.com's Select Dates bottom sheet entrance & flexibility chips:\n1. Background shows the #003B95 header and #FEBB02 search strip, overlaid by a 0->0.48 black scrim over 260ms.\n2. Slide a white rounded-top (14px) sheet upward from translateY(100%) to 0 over 380ms cubic-bezier(0.22, 1, 0.36, 1).\n3. Inside the sheet, show a compact date row with #006CE4 selected day tiles and horizontally arranged pill chips ('Exact dates', '± 1 day', '± 2 days', '± 3 days') where the active chip uses 1.5px #006CE4 border and #EBF3FF background above a #006CE4 'Select dates' CTA.",
+      "code": "<!-- Booking.com Select Dates Sheet & Flexibility Chips -->\n<div class=\"bk-cal-sheet\"><div class=\"bk-flex-chips\"><button class=\"is-on\">Exact dates</button><button>± 1 day</button><button>± 2 days</button></div></div>",
+      "app": {
+        "name": "Booking.com",
+        "slug": "booking-com",
+        "category": "Travel",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#003B95",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+        "bundleId": "com.booking.BookingApp"
+      }
+    },
+    {
+      "id": "app-booking-calendar-range-flex",
+      "title": "Booking.com: Calendar Range Span Fill & Flexible Tabs",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 320,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "transform: translateX (tab underline)",
+        "background-color (date endpoints & span fill)",
+        "background-color (disabled -> active CTA wake)"
+      ],
+      "source": "Booking.com (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Booking.com: selecting a check-in date temporarily disables the Select dates CTA until check-out is tapped, filling intermediate nights in #EBF3FF and snapping the CTA awake; switching to I'm flexible glides the 2px blue tab bar into selectable month tiles.",
+      "choreography": [
+        "Check-in tap: day cell snaps to solid #006CE4 while bottom CTA dims to #e5e7eb awaiting a checkout date.",
+        "Check-out tap: endpoint cell locks #006CE4, intervening nights wash #EBF3FF, and the bottom CTA wakes to vivid #006CE4 with updated night count.",
+        "Tab switch: 2px #006CE4 underline glides 100% horizontally from Calendar to I'm flexible revealing month-picker tiles (Nov/Dec/Jan)."
+      ],
+      "agentPrompt": "Implement Booking.com's Calendar ↔ I'm flexible date range interaction:\n1. Top tab bar: two equal columns ('Calendar', 'I'm flexible') with a 2px #006CE4 bottom indicator translating translateX(0 <-> 100%) over 260ms cubic-bezier(0.22, 1, 0.36, 1).\n2. Calendar view: 7-column day grid where tapping check-in highlights that cell #006CE4 and sets the bottom CTA to disabled (#e5e7eb); tapping a later check-out fills intermediate cells #ebf3ff and wakes the CTA to #006CE4.\n3. Flexible view: radio pills ('A weekend', 'A week', 'A month') above square rounded month cards (Nov/Dec/Jan 2026) with 1.5px #006CE4 border and #ebf3ff fill on selection.",
+      "code": "<!-- Booking.com Calendar Range & Flexible Tab Switcher -->\n<div class=\"bk-rf\"><div class=\"bk-rf-tabs\"><button>Calendar</button><button>I'm flexible</button><i></i></div></div>",
+      "app": {
+        "name": "Booking.com",
+        "slug": "booking-com",
+        "category": "Travel",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#003B95",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+        "bundleId": "com.booking.BookingApp"
+      }
+    },
+    {
+      "id": "app-booking-guests-stepper-sheet",
+      "title": "Booking.com: Rooms & Guests Stepper Sheet & Switches",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Tactile",
+      "surface": "light",
+      "durationMs": 340,
+      "easing": {
+        "t": "spring",
+        "k": 340,
+        "c": 24
+      },
+      "easingLabel": "spring(340, 24)",
+      "properties": [
+        "transform: scale (stepper +/- pop)",
+        "transform: translateX (Material toggle knob)",
+        "background-color (active toggle track)"
+      ],
+      "source": "Booking.com (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Booking.com: the Select rooms and guests bottom sheet pairs bordered - / + numeric steppers (muting '-' at minimum and popping digits on tap) with smooth Material switches for work & pets.",
+      "choreography": [
+        "0-90ms: tapping '+' depresses the button 8% while the center tabular count pops scale(1.18 -> 1).",
+        "Min boundary: '-' button dims to #9ca3af and loses pointer emphasis when value reaches floor (Rooms=1, Adults=1, Children=0).",
+        "Toggle switch: circular thumb slides 16px across the 38px pill track as the track shifts from #9ca3af to #006CE4."
+      ],
+      "agentPrompt": "Build Booking.com's 'Select rooms and guests' modal card on #f2f4f8:\n1. White rounded sheet with centered top grab pill (32x4px #d1d5db) and bold title.\n2. Rows for Rooms, Adults, and Children each paired with a bordered 92x30px stepper capsule (`-`, tabular count, `+`) where active buttons are #006CE4 and min-floor '-' dims to #cbd5e1. Pop the count span scale(1.2 -> 1) on every increment.\n3. Below, include a 'Traveling with pets?' Material pill switch (38x22px, #9ca3af -> #006CE4, sliding 16px knob over 240ms cubic-bezier(0.22, 1.2, 0.36, 1)) and full-width #006CE4 'Apply' CTA.",
+      "code": "<!-- Booking.com Rooms & Guests Stepper Sheet -->\n<div class=\"bk-occ\"><div class=\"bk-row\"><span>Adults</span><div class=\"bk-step\"><button>−</button><b>2</b><button>+</button></div></div></div>",
+      "app": {
+        "name": "Booking.com",
+        "slug": "booking-com",
+        "category": "Travel",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#003B95",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+        "bundleId": "com.booking.BookingApp"
+      }
+    },
+    {
+      "id": "app-booking-search-collapse-skeleton",
+      "title": "Booking.com: Search Bar Collapse → Skeleton Shimmer → Results",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 680,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "background-position (skeleton shimmer sweep)",
+        "opacity + transform: translateY (hotel card reveal)",
+        "border-color (yellow sticky query pill)"
+      ],
+      "source": "Booking.com (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Booking.com: hitting Search collapses the stacked yellow form into a single sticky #FEBB02 query bar while diagonal-shimmering card skeletons resolve into crisp Lisbon hotel cards with navy 8.5 score badges.",
+      "choreography": [
+        "0-180ms: compact #FEBB02-bordered '← Lisbon · Nov 28 - Dec 01' header locks beneath the #003B95 status strip.",
+        "180-520ms: placeholder thumbnail and text lines sweep a smooth linear-gradient shimmer left-to-right.",
+        "460-680ms: real hotel cards cross-fade and glide upward 8px revealing navy 8.5 review badges, Black Friday Deal pills, and discounted pricing."
+      ],
+      "agentPrompt": "Build Booking.com's Search Results skeleton-to-card loading transition:\n1. Top sticky bar: #003B95 top strip with an overlapping white #FEBB02-bordered pill (`← Lisbon · Nov 28 - Dec 01`) above a `Sort | Filter | Map` action strip.\n2. Loading state: 2 horizontal card skeletons (left 54x64px thumbnail block + 3 text bars) running a 1.1s linear-gradient shimmer sweep.\n3. Loaded state: crossfade & translateY(8px -> 0) over 360ms cubic-bezier(0.22, 1, 0.36, 1) into real hotel cards featuring a #003B95 rounded-square rating badge (`8.5`), dark `Black Friday Deal` tag, and bold price.",
+      "code": "<!-- Booking.com Sticky Query Bar + Skeleton -> Results Reveal -->\n<div class=\"bk-res\"><div class=\"bk-pill\">← Lisbon · Nov 28 – Dec 01</div><div class=\"bk-sk\"></div></div>",
+      "app": {
+        "name": "Booking.com",
+        "slug": "booking-com",
+        "category": "Travel",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#003B95",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+        "bundleId": "com.booking.BookingApp"
+      }
+    },
+    {
+      "id": "app-booking-sort-radio-sheet",
+      "title": "Booking.com: Sort By Bottom Sheet Loader → Radio Snap",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 420,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "transform: translateY (sort bottom sheet)",
+        "transform: rotate (blue spinner arc)",
+        "transform: scale (selected radio inner dot)"
+      ],
+      "source": "Booking.com (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Booking.com: tapping Sort raises a compact white sheet with a spinning #006CE4 progress arc that resolves into crisp right-aligned radio rows with elastic dot selection.",
+      "choreography": [
+        "0-260ms: sheet slides up over the dimmed results list while a 20px #006CE4 arc spins cleanly at center.",
+        "240-420ms: spinner crossfades into 4 crisp sort rows ('Our top picks', 'Price (low to high)', 'Guest Review Score', 'Distance').",
+        "Selection: tapped row snaps its right-aligned radio ring into #006CE4 with an inner dot scaling 0 -> 1.15 -> 1."
+      ],
+      "agentPrompt": "Recreate Booking.com's 'Sort by' bottom sheet:\n1. Rounded-top white sheet rising over a dimmed backdrop, initially displaying a 22px circular #006CE4 spinner for 320ms before crossfading into sort option rows.\n2. Each row places left-aligned label text opposite a 16px circular radio control; active radio sets border-color #006CE4 and springs an 8px inner blue dot from scale(0) to scale(1) over 240ms cubic-bezier(0.22, 1.4, 0.36, 1).\n3. Anchor a full-width #006CE4 'Apply' CTA at the bottom.",
+      "code": "<!-- Booking.com Sort By Radio Sheet -->\n<div class=\"bk-sort\"><button class=\"is-on\">Our top picks <i></i></button><button>Price (low to high) <i></i></button></div>",
+      "app": {
+        "name": "Booking.com",
+        "slug": "booking-com",
+        "category": "Travel",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#003B95",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/59/e0/09/59e009f6-133e-1b0c-2dd8-d39c5eea28db/AppIcon-0-0-1x_U007epad-0-9-0-85-220.jpeg/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/booking-com-hotels-travel/id367003839?uo=4",
+        "bundleId": "com.booking.BookingApp"
+      }
+    },
+    {
+      "id": "app-etsy-artisan-hero-reel",
+      "title": "Etsy: Artisan Maker Hero Reel & Floating Search Overlay",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Loop",
+      "feel": "Editorial",
+      "surface": "light",
+      "durationMs": 720,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "opacity + transform: scale (full-bleed maker scene crossfade)",
+        "transform: scale (centered #F1641E Etsy tile)",
+        "box-shadow (floating cream search pill)"
+      ],
+      "source": "Etsy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Etsy: full-bleed warm artisan craft scenes crossfade smoothly behind a centered #F1641E Etsy square monogram and floating search pill above warm cream editorial serif typography.",
+      "choreography": [
+        "0-640ms: full-bleed craft scene crossfades opacity 0->1 while subtly scaling 1.06 -> 1.0 for documentary depth.",
+        "Anchor: centered #F1641E square Etsy tile and floating warm-linen search pill stay rock-steady above the reel.",
+        "Lower sheet: warm #F7F5F0 editorial surface anchors Georgia/serif headline and solid #222222 pill CTA."
+      ],
+      "agentPrompt": "Build Etsy's guest welcome hero reel:\n1. Upper 58% viewport: full-bleed craft backdrop cycling across 3 warm photographic tones (molten glass amber, kiln ceramic clay, studio indigo) via 640ms opacity crossfade + gentle scale(1.06 -> 1) Ken Burns ease.\n2. Overlay a translucent cream search pill ('Search for something special') at top and a centered 42px #F1641E square tile with white serif 'Etsy' mark.\n3. Lower 42% on warm linen #F7F5F0: centered editorial serif headline ('One-of-a-kind finds, made by real people') and a full-width #222222 pill Sign In button.",
+      "code": "<!-- Etsy Artisan Hero Reel -->\n<div class=\"etsy-hero\"><div class=\"etsy-bg\"></div><span class=\"etsy-mark\">Etsy</span></div>",
+      "app": {
+        "name": "Etsy",
+        "slug": "etsy",
+        "category": "Shopping",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#F1641E",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+        "bundleId": "com.etsy.etsyforios"
+      }
+    },
+    {
+      "id": "app-etsy-search-attribute-chips",
+      "title": "Etsy: Search Focus Expand & Attribute Chip Crossfade",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 340,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "opacity + transform: translateY (Popular -> Attribute chips)",
+        "transform: scale (camera -> clear button swap)",
+        "border-color (active attribute chip)"
+      ],
+      "source": "Etsy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Etsy: typing a query swaps the search pill's camera icon to a clear '×' and crossfades 'Popular right now' into inline material/color attribute pills (Stoneware, Pottery, Blue, Green) above diagonal ↖ suggestions.",
+      "choreography": [
+        "0-90ms: trailing visual-search camera icon swaps cleanly into a '×' clear button as query text enters.",
+        "40-320ms: 'Popular right now' list crossfades into 'ceramic mugs handmade' plus a horizontal rail of rounded attribute pills (Stoneware, Pottery, Blue, Green, 12oz).",
+        "180-340ms: matching shop suggestions slide smoothly into focus beneath the autocomplete rows."
+      ],
+      "agentPrompt": "Build Etsy's live search autocomplete & inline attribute chip transition on warm linen #F7F5F0:\n1. Top search pill: white capsule with left `<` back chevron, query text, and right action button swapping between Camera icon (empty state) and `×` Clear (typed state).\n2. Empty state shows 'Popular right now' text links.\n3. Typed state ('ceramic mug') crossfades and slides translateY(6px -> 0) over 300ms cubic-bezier(0.22, 1, 0.36, 1) into a primary suggestion row with `↖` arrow, a horizontal row of bordered attribute pills ('Stoneware', 'Pottery', 'Blue', 'Green'), and matching autocomplete queries.",
+      "code": "<!-- Etsy Search Focus & Attribute Chips -->\n<div class=\"et-s\"><div class=\"et-bar\"><input value=\"ceramic mug\"/></div><div class=\"et-chips\"><span>Stoneware</span><span>Pottery</span><span>Blue</span></div></div>",
+      "app": {
+        "name": "Etsy",
+        "slug": "etsy",
+        "category": "Shopping",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#F1641E",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+        "bundleId": "com.etsy.etsyforios"
+      }
+    },
+    {
+      "id": "app-etsy-shared-element-listing",
+      "title": "Etsy: Shared-Element Thumbnail Morph → Listing Detail",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 460,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "width + height + transform (shared-element product image)",
+        "opacity (floating < / ♥ / Find similar pills)",
+        "opacity + transform: translateY (Bestseller + Add to cart detail)"
+      ],
+      "source": "Etsy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Etsy: tapping a ceramic mug tile in the 2-column grid seamlessly expands its thumbnail into a full-bleed hero image while floating ‹, ♥, and 'Find similar' pills and the Bestseller + Add to cart sheet fade in below.",
+      "choreography": [
+        "0-360ms: tapped grid thumbnail detaches and smoothly expands to full stage width (shared-element geometry morph) while sibling cards fade cleanly behind.",
+        "180-420ms: floating white circular ‹ back button, top-right ♥ pill, and bottom-right 'Find similar' badge fade into place over the photo.",
+        "220-460ms: yellow #FDE68A 'Bestseller' pill, bold €38.06+ price, and full-width #222222 'Add to cart' pill rise 10px into view."
+      ],
+      "agentPrompt": "Build Etsy's shared-element grid-to-listing transition on #F7F5F0:\n1. Start with a 2-column product card grid; clicking card 1 smoothly morphs its thumbnail container from left-half card bounds to full-width 110px hero height over 420ms cubic-bezier(0.22, 1, 0.36, 1) while fading out sibling cards.\n2. Fade in floating circular white overlay pills (`‹`, `♥`, `Find similar`) over the expanded hero.\n3. Simultaneously reveal the listing metadata drawer (`Bestseller` warm gold pill, `€38.06+`, `Handmade Ceramic Coffee Mug`, and rounded `#222222` `Add to cart` CTA) with translateY(10px -> 0) and opacity 0 -> 1.",
+      "code": "<!-- Etsy Shared-Element Listing Transition -->\n<div class=\"et-sh\"><div class=\"et-hero-img\"></div><div class=\"et-detail\"><span>Bestseller</span><b>€38.06+</b><button>Add to cart</button></div></div>",
+      "app": {
+        "name": "Etsy",
+        "slug": "etsy",
+        "category": "Shopping",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#F1641E",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+        "bundleId": "com.etsy.etsyforios"
+      }
+    },
+    {
+      "id": "app-etsy-refinement-pill-reorder",
+      "title": "Etsy: Refinement Pill Invert, Reorder & Drop-In Loader",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Tactile",
+      "surface": "light",
+      "durationMs": 440,
+      "easing": {
+        "t": "spring",
+        "k": 320,
+        "c": 23
+      },
+      "easingLabel": "spring(320, 23)",
+      "properties": [
+        "background-color + color (pill invert to #222222)",
+        "order / transform (active pill jumps to front slot)",
+        "transform: translateY + opacity (drop-in circular spinner)"
+      ],
+      "source": "Etsy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Etsy: tapping a refinement pill like 'Under €20' drops a crisp circular white spinner over the results grid, inverts the pill to solid charcoal #222222, and promotes it to the leading slot while refreshing cards.",
+      "choreography": [
+        "0-140ms: circular white floating spinner drops translateY(-20px -> 0) over the top center of the product grid.",
+        "120-380ms: tapped refinement pill inverts to solid #222222 with white text and reorders to slot #1 beside the filter button.",
+        "300-440ms: spinner retracts upward as refreshed masonry cards fade smoothly from 0.55 -> 1.0."
+      ],
+      "agentPrompt": "Recreate Etsy's refinement-pill filter & drop-in loader:\n1. Top horizontal toolbar on #F7F5F0: circular filter button + pill toggles ('Ships local', 'Under €20', 'Etsy\\'s Picks').\n2. When a pill is toggled on, drop a floating 26px white circular spinner pill (shadow 0 4px 12px rgba(0,0,0,0.16)) from translateY(-18px) into the grid top center for 420ms, invert the pill to #222222 background / #ffffff text, and move it to the first slot (`order: -1`).\n3. Fade the 2-column item cards slightly (opacity 0.5) while loading and restore smoothly with updated prices.",
+      "code": "<!-- Etsy Refinement Pill Reorder & Drop-In Spinner -->\n<div class=\"et-ref\"><button class=\"is-on\">Under €20</button><button>Ships local</button></div>",
+      "app": {
+        "name": "Etsy",
+        "slug": "etsy",
+        "category": "Shopping",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#F1641E",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+        "bundleId": "com.etsy.etsyforios"
+      }
+    },
+    {
+      "id": "app-etsy-filter-drawer-sheet",
+      "title": "Etsy: Filters Accordion Sheet & Live Result Count CTA",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 400,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "transform: translateY (Filters bottom sheet)",
+        "transform: rotate (row disclosure chevron)",
+        "textContent (live 'Show X results' CTA)"
+      ],
+      "source": "Etsy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Etsy: tapping the filter icon lifts a warm-linen Filters bottom sheet with clean disclosure rows (Sort by, Price, Shipping) and a sticky footer pairing Reset with a charcoal pill 'Show 10,000+ results' button.",
+      "choreography": [
+        "0-380ms: warm-linen #F7F5F0 Filters sheet slides smoothly upward from translateY(100%) -> 0 over dimmed search results.",
+        "Row toggle: tapping any filter row rotates its right chevron and updates its subtitle value while dynamically recalculating the charcoal bottom pill count.",
+        "Reset tap: clears active selections cleanly and restores full catalog count."
+      ],
+      "agentPrompt": "Build Etsy's Filters bottom sheet on warm linen #F7F5F0:\n1. Rounded-top (18px) sheet rising over a dimmed backdrop over 380ms cubic-bezier(0.22, 1, 0.36, 1) with centered 'Filters' title and right `✕` button.\n2. Stacked hairline-separated rows ('Sort by: Best match', 'Price: Under €20', 'Shipping: Free shipping') with right disclosure chevrons that highlight active selections cleanly.\n3. Sticky bottom bar with text 'Reset' on left and a solid #222222 rounded pill CTA ('Show 4,210 results') on right that pops subtly whenever counts update.",
+      "code": "<!-- Etsy Filters Bottom Sheet -->\n<div class=\"et-flt\"><div class=\"et-row\"><b>Price</b><span>Under €20</span></div><div class=\"et-foot\"><button>Reset</button><button class=\"cta\">Show 4,210 results</button></div></div>",
+      "app": {
+        "name": "Etsy",
+        "slug": "etsy",
+        "category": "Shopping",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#F1641E",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+        "bundleId": "com.etsy.etsyforios"
+      }
+    },
+    {
+      "id": "app-khan-streak-banner-reveal",
+      "title": "Khan Academy: Streak Banner Expand & Notebook Card Reveal",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Calm",
+      "surface": "light",
+      "durationMs": 520,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "max-height + opacity (week streak banner expansion)",
+        "opacity + transform: translateY (illustrated notebook card)",
+        "transform: scale (emerald hexagon emblem)"
+      ],
+      "source": "Khan Academy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Khan Academy: launching resolves the 'Loading your streak...' strip smoothly into the expanded '0 week streak' banner while crossfading the sage-green spiral notebook illustration and #1865F2 Sign in card below.",
+      "choreography": [
+        "0-200ms: 'Loading your streak...' muted top bar holds compact height while the sage placeholder frame loads.",
+        "180-460ms: top banner smoothly expands to reveal the flame icon, bold '0 week streak', and motivation copy while pushing content cleanly down.",
+        "240-520ms: illustrated spiral notebook + hexagonal leaf emblem and #1865F2 'Sign in' button fade into crisp clarity."
+      ],
+      "agentPrompt": "Build Khan Academy's Home launch streak expansion & welcome card reveal on #ffffff:\n1. Top strip transitions from muted 'Loading your streak...' (26px) to expanded streak banner (46px) showing a flame badge, bold '0 week streak', and supporting caption over 360ms cubic-bezier(0.22, 1, 0.36, 1).\n2. Below, crossfade a sage-green (#9ecbb1 -> #4f9d69) placeholder into an illustrated notebook block with a centered Khan hexagon emblem, 'Ready to start learning?' heading, and #1865F2 'Sign in' button.",
+      "code": "<!-- Khan Academy Streak Banner Expansion -->\n<div class=\"ka-home\"><div class=\"ka-streak\">🔥 0 week streak</div><div class=\"ka-card\">Ready to start learning?</div></div>",
+      "app": {
+        "name": "Khan Academy",
+        "slug": "khan-academy",
+        "category": "Education",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#14BF96",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+        "bundleId": "org.khanacademy.Khan-Academy"
+      }
+    },
+    {
+      "id": "app-khan-subject-accordion-expand",
+      "title": "Khan Academy: Subject Accordion Expand & Cyan Course List",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 360,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "max-height + opacity (nested course drawer)",
+        "transform: rotate (180deg disclosure chevron)",
+        "transform: translateY (nested course row stagger)"
+      ],
+      "source": "Khan Academy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Khan Academy: tapping a yellow Math subject row in Explore rotates its disclosure chevron 180° and smoothly opens nested cyan #00A4D3 course tiles (Algebra 1, Geometry, Algebra 2, Trigonometry) while pushing sibling subjects down.",
+      "choreography": [
+        "0-140ms: right disclosure chevron rotates smoothly 0deg -> 180deg as the parent row highlights.",
+        "40-360ms: nested course container expands max-height cleanly from 0 to full height pushing 'Test prep' downward.",
+        "80-360ms: cyan #00A4D3 rounded-square course rows (Algebra 1, Geometry, Algebra 2) glide softly into view."
+      ],
+      "agentPrompt": "Build Khan Academy's Explore subject accordion on #ffffff:\n1. Top-level subject rows pair a 22px #F5B700 golden-amber square icon with label text and a right `⌄` chevron.\n2. Clicking 'Math: High school & college' rotates its chevron 180deg over 260ms and expands a nested course list (`max-height: 0 -> 130px` over 360ms cubic-bezier(0.22, 1, 0.36, 1)) containing 3 indented course rows (`Algebra 1`, `Geometry`, `Trigonometry`) with #00A4D3 cyan square icons, cleanly displacing sibling rows below.",
+      "code": "<!-- Khan Academy Subject Accordion -->\n<div class=\"ka-acc\"><button>Math: High school & college <i>⌄</i></button><div class=\"ka-sub\"><div>Algebra 1</div><div>Geometry</div></div></div>",
+      "app": {
+        "name": "Khan Academy",
+        "slug": "khan-academy",
+        "category": "Education",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#14BF96",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+        "bundleId": "org.khanacademy.Khan-Academy"
+      }
+    },
+    {
+      "id": "app-khan-course-navy-header-reveal",
+      "title": "Khan Academy: Deep-Navy Course Banner & Cyan Badge Hydrate",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 520,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "background-color + transform: scale (gray placeholder -> #00A4D3 unit emblem)",
+        "transform: scaleX (#1865F2 'Up next' top accent rule)",
+        "opacity (unit lessons crossfade)"
+      ],
+      "source": "Khan Academy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Khan Academy: entering Algebra 1 anchors the signature #0A2A66 deep-navy course banner while circular gray placeholders bloom smoothly into bright #00A4D3 math badges beneath a crisp #1865F2 'Up next for you' top bar.",
+      "choreography": [
+        "0-180ms: #0A2A66 navy header displays breadcrumb ('Math: High school & college / Algebra 1') and '182 skills to make proficient' strip.",
+        "160-440ms: circular #e5e7eb unit icon placeholders crossfade and pop scale(0.88 -> 1) into vivid #00A4D3 cyan math glyphs (`2(x+3)`, `2x+4`).",
+        "200-520ms: 2.5px #1865F2 'Up next for you' accent border sweeps left-to-right across the recommended unit card."
+      ],
+      "agentPrompt": "Build Khan Academy's Algebra 1 course page hydration animation:\n1. Top banner: #0A2A66 deep navy header with `←`, muted breadcrumb, bold `Algebra 1`, and white sub-strip `182 skills to make proficient`.\n2. Unit cards: start with light gray circular badge placeholders (`#e5e7eb`) and dimmed lesson rows, then hydrate after 480ms by popping the badges into `#00A4D3` circles (`2(x+3)`, `2x+4`) via scale(0.86 -> 1) while sweeping a 2.5px `#1865F2` top accent bar across the 'Up next for you' card.",
+      "code": "<!-- Khan Academy Navy Course Banner & Unit Hydration -->\n<div class=\"ka-crs\"><header>Algebra 1</header><div class=\"ka-unit\"><i>2(x+3)</i><b>Algebra foundations</b></div></div>",
+      "app": {
+        "name": "Khan Academy",
+        "slug": "khan-academy",
+        "category": "Education",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#14BF96",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+        "bundleId": "org.khanacademy.Khan-Academy"
+      }
+    },
+    {
+      "id": "app-khan-bookmark-ribbon-dialog",
+      "title": "Khan Academy: Bookmark Ribbon Fill & Offline Dialog Pop",
+      "use": "Micro-interactions",
+      "stack": "SVG",
+      "trigger": "Click",
+      "feel": "Tactile",
+      "surface": "light",
+      "durationMs": 340,
+      "easing": {
+        "t": "spring",
+        "k": 340,
+        "c": 22
+      },
+      "easingLabel": "spring(340, 22)",
+      "properties": [
+        "fill + transform: scale (bookmark ribbon SVG pop)",
+        "opacity (modal scrim)",
+        "transform: scale + opacity (Material confirmation dialog)"
+      ],
+      "source": "Khan Academy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Khan Academy: tapping a topic's bookmark icon inside Unit: Algebra foundations fills the SVG ribbon solid #1865F2 blue with a crisp spring pop and raises the offline Bookmarks confirmation dialog.",
+      "choreography": [
+        "0-160ms: outline bookmark ribbon snaps to filled #1865F2 while popping scale(1 -> 1.26 -> 1).",
+        "60-280ms: dark modal scrim fades cleanly to rgba(0,0,0,0.45) over the unit lesson list.",
+        "80-340ms: crisp Material alert card ('You added a topic to Bookmarks!' with teal 'GOT IT' / 'GO TO BOOKMARKS' actions) pops from scale(0.92) to 1."
+      ],
+      "agentPrompt": "Recreate Khan Academy's Unit Bookmark ribbon & confirmation alert:\n1. Header bar in #0A2A66 (`Unit: Algebra foundations`) above white topic section (`Overview and history of algebra`) with right-aligned SVG bookmark ribbon button and #1865F2 play-circle lesson items.\n2. Clicking the bookmark ribbon fills it solid #1865F2 with a scale(1.26 -> 1) spring pop and presents a centered white Material dialog ('You added a topic to Bookmarks!' + #0f766e 'GOT IT' / 'GO TO BOOKMARKS' buttons) scaling 0.92 -> 1 over a 0.45 scrim.",
+      "code": "<!-- Khan Academy Bookmark Ribbon & Dialog -->\n<div class=\"ka-bm\"><button class=\"ka-rib\">🔖</button><div class=\"ka-dlg\">You added a topic to Bookmarks!</div></div>",
+      "app": {
+        "name": "Khan Academy",
+        "slug": "khan-academy",
+        "category": "Education",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#14BF96",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+        "bundleId": "org.khanacademy.Khan-Academy"
+      }
+    },
+    {
+      "id": "app-khan-bottom-tab-book-mascot",
+      "title": "Khan Academy: Bottom Tab Switch & Empty Bookmarks Illustration",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Tab switch",
+      "feel": "Playful",
+      "surface": "light",
+      "durationMs": 340,
+      "easing": {
+        "t": "spring",
+        "k": 310,
+        "c": 22
+      },
+      "easingLabel": "spring(310, 22)",
+      "properties": [
+        "color + transform: scale (bottom tab icon snap)",
+        "opacity + transform: translateY (view crossfade)",
+        "transform: translateY + rotate (floating open-book mascot)"
+      ],
+      "source": "Khan Academy (Live Play Store Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+      "collection": "Apps",
+      "summary": "Live-captured from Khan Academy: switching across Home, Explore, and Bookmarks pops active #1865F2 icons and crossfades cleanly into the illustrated open-book empty state with playful bounce.",
+      "choreography": [
+        "0-160ms: tapped bottom-bar icon pops scale(0.88 -> 1.12 -> 1) and switches into #1865F2 Khan blue.",
+        "40-340ms: active panel fades and slides upward 6px into view (Home streak ↔ Explore subjects ↔ Bookmarks open-book mascot)."
+      ],
+      "agentPrompt": "Build Khan Academy's 3-tab bottom navigation (`Home`, `Explore`, `Bookmarks`) on #ffffff:\n1. Active tab tints `#1865F2` with a crisp icon scale pop (`0.88 -> 1.12 -> 1` over 260ms).\n2. Crossfade panels cleanly (`translateY(6px -> 0)`, opacity `0 -> 1`), featuring the Bookmarks tab's charming illustrated sky-blue & magenta open book mascot above 'You have no bookmarks.'",
+      "code": "<!-- Khan Academy 3-Tab Bottom Nav & Bookmarks Mascot -->\n<div class=\"ka-tabs\"><div class=\"ka-pane\"></div><nav><button>Home</button><button>Explore</button><button>Bookmarks</button></nav></div>",
+      "app": {
+        "name": "Khan Academy",
+        "slug": "khan-academy",
+        "category": "Education",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#14BF96",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/b3/37/13b337e2-3351-9147-ecee-b6b48674ed31/AppIconDefault-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+        "bundleId": "org.khanacademy.Khan-Academy"
+      }
     }
   ]
 }

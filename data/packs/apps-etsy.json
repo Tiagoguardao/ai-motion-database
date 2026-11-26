@@ -1,0 +1,228 @@
+[
+  {
+    "id": "app-etsy-artisan-hero-reel",
+    "title": "Etsy: Artisan Maker Hero Reel & Floating Search Overlay",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "opacity + transform: scale (full-bleed maker scene crossfade)",
+      "transform: scale (centered #F1641E Etsy tile)",
+      "box-shadow (floating cream search pill)"
+    ],
+    "src": "Etsy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Etsy",
+      "slug": "etsy",
+      "category": "Shopping",
+      "platform": ["iOS", "Android"],
+      "accent": "#F1641E",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "bundleId": "com.etsy.etsyforios"
+    },
+    "summary": "Live-captured from Etsy: full-bleed warm artisan craft scenes crossfade smoothly behind a centered #F1641E Etsy square monogram and floating search pill above warm cream editorial serif typography.",
+    "hint": "Tap hero to advance maker scene reel",
+    "choreography": [
+      "0-640ms: full-bleed craft scene crossfades opacity 0->1 while subtly scaling 1.06 -> 1.0 for documentary depth.",
+      "Anchor: centered #F1641E square Etsy tile and floating warm-linen search pill stay rock-steady above the reel.",
+      "Lower sheet: warm #F7F5F0 editorial surface anchors Georgia/serif headline and solid #222222 pill CTA."
+    ],
+    "agentPrompt": "Build Etsy's guest welcome hero reel:\n1. Upper 58% viewport: full-bleed craft backdrop cycling across 3 warm photographic tones (molten glass amber, kiln ceramic clay, studio indigo) via 640ms opacity crossfade + gentle scale(1.06 -> 1) Ken Burns ease.\n2. Overlay a translucent cream search pill ('Search for something special') at top and a centered 42px #F1641E square tile with white serif 'Etsy' mark.\n3. Lower 42% on warm linen #F7F5F0: centered editorial serif headline ('One-of-a-kind finds, made by real people') and a full-width #222222 pill Sign In button.",
+    "extractableCode": "<!-- Etsy Artisan Hero Reel -->\n<div class=\"etsy-hero\"><div class=\"etsy-bg\"></div><span class=\"etsy-mark\">Etsy</span></div>",
+    "html": "<div class=\"m-app-et-hero\"><div class=\"m-app-et-hero__media\"><div class=\"m-app-et-hero__slide s0 is-on\"><span>Glassblowing Studio</span></div><div class=\"m-app-et-hero__slide s1\"><span>Kiln Ceramic Wheel</span></div><div class=\"m-app-et-hero__slide s2\"><span>Hand-Cast Jewelry</span></div><div class=\"m-app-et-hero__pill\">🔍 Search for something special</div><div class=\"m-app-et-hero__mark\">Etsy</div></div><div class=\"m-app-et-hero__foot\"><b>One-of-a-kind finds, made by real people</b><span class=\"m-app-et-hero__cta\">Sign In</span></div></div>",
+    "css": ".m-app-et-hero{position:absolute;inset:0;display:flex;flex-direction:column;background:#f7f5f0;color:#222;user-select:none;cursor:pointer;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-et-hero__media{position:relative;flex:1;overflow:hidden}.m-app-et-hero__slide{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-start;padding:8px 10px;opacity:0;transform:scale(1.07);transition:opacity .65s ease,transform 2.2s cubic-bezier(.22,1,.36,1)}.m-app-et-hero__slide.is-on{opacity:1;transform:scale(1)}.m-app-et-hero__slide span{font:500 9.5px/1 'Geist Mono',monospace;color:rgba(255,255,255,.78);background:rgba(0,0,0,.32);padding:3px 7px;border-radius:999px}.m-app-et-hero__slide.s0{background:radial-gradient(circle at 65% 35%,#f59e0b,#9a3412 52%,#1c1917)}.m-app-et-hero__slide.s1{background:radial-gradient(circle at 38% 45%,#fbbf24,#b45309 48%,#292524)}.m-app-et-hero__slide.s2{background:radial-gradient(circle at 60% 40%,#fb7185,#7c2d12 54%,#18181b)}.m-app-et-hero__pill{position:absolute;left:12px;right:12px;top:10px;height:28px;border-radius:999px;background:rgba(247,245,240,.92);padding:0 11px;display:flex;align-items:center;font:500 10.5px/1 inherit;color:#57534e;box-shadow:0 4px 12px rgba(0,0,0,.18)}.m-app-et-hero__mark{position:absolute;left:50%;top:54%;margin:-20px 0 0 -20px;width:40px;height:40px;border-radius:4px;background:#f1641e;color:#fff;font:700 16px/40px Georgia,serif;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.3)}.m-app-et-hero__foot{padding:11px 16px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}.m-app-et-hero__foot b{font:500 13px/1.2 Georgia,serif;color:#1c1917;max-width:22ch}.m-app-et-hero__cta{width:100%;max-width:210px;height:28px;border-radius:999px;background:#222;color:#fff;font:600 11px/28px inherit}",
+    "js": "var el=root.querySelector('.m-app-et-hero');if(!el)return;var slides=[].slice.call(el.querySelectorAll('.m-app-et-hero__slide')),idx=0,touched=false,dead=false;function go(i){idx=i;slides.forEach(function(s,j){s.classList.toggle('is-on',j===i);});}el.addEventListener('click',function(){touched=true;go((idx+1)%slides.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)go((idx+1)%slides.length);},2100);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-etsy-search-attribute-chips",
+    "title": "Etsy: Search Focus Expand & Attribute Chip Crossfade",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 340,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "opacity + transform: translateY (Popular -> Attribute chips)",
+      "transform: scale (camera -> clear button swap)",
+      "border-color (active attribute chip)"
+    ],
+    "src": "Etsy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Etsy",
+      "slug": "etsy",
+      "category": "Shopping",
+      "platform": ["iOS", "Android"],
+      "accent": "#F1641E",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "bundleId": "com.etsy.etsyforios"
+    },
+    "summary": "Live-captured from Etsy: typing a query swaps the search pill's camera icon to a clear '×' and crossfades 'Popular right now' into inline material/color attribute pills (Stoneware, Pottery, Blue, Green) above diagonal ↖ suggestions.",
+    "hint": "Tap search bar to toggle Popular vs Query attributes",
+    "choreography": [
+      "0-90ms: trailing visual-search camera icon swaps cleanly into a '×' clear button as query text enters.",
+      "40-320ms: 'Popular right now' list crossfades into 'ceramic mugs handmade' plus a horizontal rail of rounded attribute pills (Stoneware, Pottery, Blue, Green, 12oz).",
+      "180-340ms: matching shop suggestions slide smoothly into focus beneath the autocomplete rows."
+    ],
+    "agentPrompt": "Build Etsy's live search autocomplete & inline attribute chip transition on warm linen #F7F5F0:\n1. Top search pill: white capsule with left `<` back chevron, query text, and right action button swapping between Camera icon (empty state) and `×` Clear (typed state).\n2. Empty state shows 'Popular right now' text links.\n3. Typed state ('ceramic mug') crossfades and slides translateY(6px -> 0) over 300ms cubic-bezier(0.22, 1, 0.36, 1) into a primary suggestion row with `↖` arrow, a horizontal row of bordered attribute pills ('Stoneware', 'Pottery', 'Blue', 'Green'), and matching autocomplete queries.",
+    "extractableCode": "<!-- Etsy Search Focus & Attribute Chips -->\n<div class=\"et-s\"><div class=\"et-bar\"><input value=\"ceramic mug\"/></div><div class=\"et-chips\"><span>Stoneware</span><span>Pottery</span><span>Blue</span></div></div>",
+    "html": "<div class=\"m-app-et-srch\"><div class=\"m-app-et-srch__wrap\"><button type=\"button\" class=\"m-app-et-srch__bar\"><span>‹</span><b class=\"m-app-et-srch__q\">Search for something special</b><em class=\"m-app-et-srch__ic\">📷</em></button><div class=\"m-app-et-srch__pop\"><h6>Popular right now</h6><div>handmade crochet stockings</div><div>restored typewriters</div><div>custom photo vase</div></div><div class=\"m-app-et-srch__res\" hidden><div class=\"m-app-et-srch__row\"><b>ceramic mugs handmade</b><i>↖</i></div><div class=\"m-app-et-srch__chips\"><button type=\"button\" class=\"is-on\">Stoneware</button><button type=\"button\">Pottery</button><button type=\"button\">Blue</button><button type=\"button\">12oz</button></div><div class=\"m-app-et-srch__row\"><span>ceramic mug with lid</span><i>↖</i></div><div class=\"m-app-et-srch__row\"><span>ceramic mug set</span><i>↖</i></div></div></div></div>",
+    "css": ".m-app-et-srch{position:absolute;inset:0;background:#f7f5f0;color:#222;display:grid;place-items:center;padding:12px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-et-srch__wrap{width:min(94%,268px);display:flex;flex-direction:column;gap:10px}.m-app-et-srch__bar{width:100%;height:34px;padding:0 12px;border-radius:999px;border:1px solid #d6d3cd;background:#fff;display:flex;align-items:center;gap:8px;cursor:pointer;text-align:left}.m-app-et-srch__bar span{font-size:15px;color:#57534e}.m-app-et-srch__q{flex:1;font:500 11px/1 inherit;color:#78716c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.m-app-et-srch.is-q .m-app-et-srch__q{color:#1c1917;font-weight:600}.m-app-et-srch__ic{font-style:normal;font-size:12px;color:#57534e}.m-app-et-srch__pop,.m-app-et-srch__res{display:flex;flex-direction:column;gap:7px;animation:m-et-in .28s cubic-bezier(.22,1,.36,1)}@keyframes m-et-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.m-app-et-srch__pop h6{margin:0;font:700 10.5px/1 inherit;color:#222}.m-app-et-srch__pop div{font:400 11px/1.2 inherit;color:#44403c}.m-app-et-srch__row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#292524}.m-app-et-srch__row i{font-style:normal;color:#78716c;font-size:12px}.m-app-et-srch__chips{display:flex;gap:5px;flex-wrap:nowrap}.m-app-et-srch__chips button{padding:5px 8px;border-radius:999px;border:1px solid #d6d3cd;background:#fff;color:#292524;font:600 10px/1 inherit;cursor:pointer;transition:all .16s}.m-app-et-srch__chips button.is-on{background:#222;border-color:#222;color:#fff}",
+    "js": "var el=root.querySelector('.m-app-et-srch');if(!el)return;var bar=el.querySelector('.m-app-et-srch__bar'),qEl=el.querySelector('.m-app-et-srch__q'),ic=el.querySelector('.m-app-et-srch__ic'),pop=el.querySelector('.m-app-et-srch__pop'),res=el.querySelector('.m-app-et-srch__res'),chips=[].slice.call(el.querySelectorAll('.m-app-et-srch__chips button'));var typed=false,touched=false,dead=false;function setTyped(v){typed=v;el.classList.toggle('is-q',v);qEl.textContent=v?'ceramic mug':'Search for something special';ic.textContent=v?'✕':'📷';pop.hidden=v;res.hidden=!v;}bar.addEventListener('click',function(){touched=true;setTyped(!typed);});chips.forEach(function(c){c.addEventListener('click',function(e){e.stopPropagation();touched=true;chips.forEach(function(x){x.classList.toggle('is-on',x===c);});});});var t0=setTimeout(function(){if(!dead)setTyped(true);},500);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)setTyped(!typed);},2300);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-etsy-shared-element-listing",
+    "title": "Etsy: Shared-Element Thumbnail Morph → Listing Detail",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "width + height + transform (shared-element product image)",
+      "opacity (floating < / ♥ / Find similar pills)",
+      "opacity + transform: translateY (Bestseller + Add to cart detail)"
+    ],
+    "src": "Etsy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Etsy",
+      "slug": "etsy",
+      "category": "Shopping",
+      "platform": ["iOS", "Android"],
+      "accent": "#F1641E",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "bundleId": "com.etsy.etsyforios"
+    },
+    "summary": "Live-captured from Etsy: tapping a ceramic mug tile in the 2-column grid seamlessly expands its thumbnail into a full-bleed hero image while floating ‹, ♥, and 'Find similar' pills and the Bestseller + Add to cart sheet fade in below.",
+    "hint": "Tap ceramic mug card to morph into listing detail",
+    "choreography": [
+      "0-360ms: tapped grid thumbnail detaches and smoothly expands to full stage width (shared-element geometry morph) while sibling cards fade cleanly behind.",
+      "180-420ms: floating white circular ‹ back button, top-right ♥ pill, and bottom-right 'Find similar' badge fade into place over the photo.",
+      "220-460ms: yellow #FDE68A 'Bestseller' pill, bold €38.06+ price, and full-width #222222 'Add to cart' pill rise 10px into view."
+    ],
+    "agentPrompt": "Build Etsy's shared-element grid-to-listing transition on #F7F5F0:\n1. Start with a 2-column product card grid; clicking card 1 smoothly morphs its thumbnail container from left-half card bounds to full-width 110px hero height over 420ms cubic-bezier(0.22, 1, 0.36, 1) while fading out sibling cards.\n2. Fade in floating circular white overlay pills (`‹`, `♥`, `Find similar`) over the expanded hero.\n3. Simultaneously reveal the listing metadata drawer (`Bestseller` warm gold pill, `€38.06+`, `Handmade Ceramic Coffee Mug`, and rounded `#222222` `Add to cart` CTA) with translateY(10px -> 0) and opacity 0 -> 1.",
+    "extractableCode": "<!-- Etsy Shared-Element Listing Transition -->\n<div class=\"et-sh\"><div class=\"et-hero-img\"></div><div class=\"et-detail\"><span>Bestseller</span><b>€38.06+</b><button>Add to cart</button></div></div>",
+    "html": "<div class=\"m-app-et-sh\"><div class=\"m-app-et-sh__grid\"><div class=\"m-app-et-sh__ghost\"></div><div class=\"m-app-et-sh__sib\"><div class=\"m-app-et-sh__sibimg\"></div><b>Pet Portrait Cup</b><span>€11.25</span></div></div><button type=\"button\" class=\"m-app-et-sh__hero\"><span class=\"m-app-et-sh__back\">‹</span><span class=\"m-app-et-sh__fav\">♡</span><span class=\"m-app-et-sh__sim\">⊞ Find similar</span></button><div class=\"m-app-et-sh__det\"><div class=\"m-app-et-sh__top\"><i>Bestseller</i><b>€38.06+</b></div><p>Handmade Ceramic Coffee Mug</p><div class=\"m-app-et-sh__cta\">Add to cart</div></div></div>",
+    "css": ".m-app-et-sh{position:absolute;inset:0;background:#f7f5f0;color:#222;overflow:hidden;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-et-sh__grid{position:absolute;inset:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;transition:opacity .26s ease}.m-app-et-sh.is-open .m-app-et-sh__grid{opacity:0;pointer-events:none}.m-app-et-sh__sib{display:flex;flex-direction:column;gap:4px}.m-app-et-sh__sibimg{height:106px;border-radius:10px;background:radial-gradient(circle at 50% 60%,#fda4af,#be123c 70%,#4c0519)}.m-app-et-sh__sib b{font:600 10.5px/1.15 inherit}.m-app-et-sh__sib span{font:700 10.5px/1 'Geist Mono',monospace;color:#15803d}.m-app-et-sh__hero{position:absolute;left:12px;top:12px;width:calc(50% - 17px);height:106px;border:0;border-radius:10px;padding:0;background:radial-gradient(circle at 48% 42%,#5eead4,#0f766e 56%,#134e4a);cursor:pointer;transition:left .42s cubic-bezier(.22,1,.36,1),top .42s cubic-bezier(.22,1,.36,1),width .42s cubic-bezier(.22,1,.36,1),height .42s cubic-bezier(.22,1,.36,1),border-radius .42s;overflow:hidden}.m-app-et-sh.is-open .m-app-et-sh__hero{left:0;top:0;width:100%;height:112px;border-radius:0}.m-app-et-sh__back,.m-app-et-sh__fav,.m-app-et-sh__sim{position:absolute;background:rgba(255,255,255,.92);color:#111;border-radius:999px;opacity:0;transform:scale(.85);transition:opacity .26s ease .16s,transform .28s cubic-bezier(.22,1.2,.36,1) .16s}.m-app-et-sh.is-open .m-app-et-sh__back,.m-app-et-sh.is-open .m-app-et-sh__fav,.m-app-et-sh.is-open .m-app-et-sh__sim{opacity:1;transform:none}.m-app-et-sh__back{left:10px;top:10px;width:24px;height:24px;font:700 15px/23px inherit}.m-app-et-sh__fav{right:10px;top:10px;width:24px;height:24px;font:600 13px/24px inherit}.m-app-et-sh__sim{right:10px;bottom:8px;padding:4px 8px;font:600 9.5px/1 inherit}.m-app-et-sh__det{position:absolute;left:0;right:0;bottom:0;top:112px;padding:10px 14px;background:#f7f5f0;display:flex;flex-direction:column;justify-content:space-between;opacity:0;transform:translateY(12px);transition:opacity .3s ease .14s,transform .36s cubic-bezier(.22,1,.36,1) .14s;pointer-events:none}.m-app-et-sh.is-open .m-app-et-sh__det{opacity:1;transform:none;pointer-events:auto}.m-app-et-sh__top{display:flex;align-items:center;gap:7px}.m-app-et-sh__top i{font-style:normal;background:#fde68a;color:#78350f;padding:2px 6px;border-radius:999px;font:700 9px/1 inherit}.m-app-et-sh__top b{font:800 14px/1 'Geist Mono',monospace}.m-app-et-sh__det p{margin:0;font:500 11px/1.2 inherit;color:#44403c}.m-app-et-sh__cta{height:28px;border-radius:999px;background:#222;color:#fff;font:600 11px/28px inherit;text-align:center}",
+    "js": "var el=root.querySelector('.m-app-et-sh');if(!el)return;var hero=el.querySelector('.m-app-et-sh__hero'),open=false,touched=false,dead=false;function tog(){open=!open;el.classList.toggle('is-open',open);}hero.addEventListener('click',function(){touched=true;tog();});el.addEventListener('click',function(e){if(e.target!==hero){touched=true;tog();}});var t0=setTimeout(function(){if(!dead)tog();},450);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)tog();},2300);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-etsy-refinement-pill-reorder",
+    "title": "Etsy: Refinement Pill Invert, Reorder & Drop-In Loader",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 440,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 23
+    },
+    "easeLabel": "spring(320, 23)",
+    "props": [
+      "background-color + color (pill invert to #222222)",
+      "order / transform (active pill jumps to front slot)",
+      "transform: translateY + opacity (drop-in circular spinner)"
+    ],
+    "src": "Etsy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Etsy",
+      "slug": "etsy",
+      "category": "Shopping",
+      "platform": ["iOS", "Android"],
+      "accent": "#F1641E",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "bundleId": "com.etsy.etsyforios"
+    },
+    "summary": "Live-captured from Etsy: tapping a refinement pill like 'Under €20' drops a crisp circular white spinner over the results grid, inverts the pill to solid charcoal #222222, and promotes it to the leading slot while refreshing cards.",
+    "hint": "Tap any refinement pill (Under €20, Etsy's Picks, Ships local)",
+    "choreography": [
+      "0-140ms: circular white floating spinner drops translateY(-20px -> 0) over the top center of the product grid.",
+      "120-380ms: tapped refinement pill inverts to solid #222222 with white text and reorders to slot #1 beside the filter button.",
+      "300-440ms: spinner retracts upward as refreshed masonry cards fade smoothly from 0.55 -> 1.0."
+    ],
+    "agentPrompt": "Recreate Etsy's refinement-pill filter & drop-in loader:\n1. Top horizontal toolbar on #F7F5F0: circular filter button + pill toggles ('Ships local', 'Under €20', 'Etsy\\'s Picks').\n2. When a pill is toggled on, drop a floating 26px white circular spinner pill (shadow 0 4px 12px rgba(0,0,0,0.16)) from translateY(-18px) into the grid top center for 420ms, invert the pill to #222222 background / #ffffff text, and move it to the first slot (`order: -1`).\n3. Fade the 2-column item cards slightly (opacity 0.5) while loading and restore smoothly with updated prices.",
+    "extractableCode": "<!-- Etsy Refinement Pill Reorder & Drop-In Spinner -->\n<div class=\"et-ref\"><button class=\"is-on\">Under €20</button><button>Ships local</button></div>",
+    "html": "<div class=\"m-app-et-ref\"><div class=\"m-app-et-ref__bar\"><span class=\"m-app-et-ref__ic\">☰</span><button type=\"button\" data-p=\"ship\">Ships local</button><button type=\"button\" data-p=\"u20\">Under €20</button><button type=\"button\" data-p=\"pick\">Etsy's Picks</button></div><div class=\"m-app-et-ref__stage\"><div class=\"m-app-et-ref__spin\"><i></i></div><div class=\"m-app-et-ref__cards\"><div class=\"m-app-et-ref__c\"><div class=\"m-app-et-ref__img i1\"></div><b>Stoneware Mug</b><span class=\"m-app-et-ref__p1\">€38.06</span></div><div class=\"m-app-et-ref__c\"><div class=\"m-app-et-ref__img i2\"></div><b>Speckled Cup</b><span class=\"m-app-et-ref__p2\">€16.40</span></div></div></div></div>",
+    "css": ".m-app-et-ref{position:absolute;inset:0;background:#f7f5f0;color:#222;padding:12px;display:flex;flex-direction:column;gap:10px;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;overflow:hidden}.m-app-et-ref__bar{display:flex;align-items:center;gap:6px}.m-app-et-ref__ic{width:26px;height:26px;border-radius:50%;border:1px solid #d6d3cd;background:#fff;display:grid;place-items:center;font-size:11px;flex:none;order:-2}.m-app-et-ref__bar button{height:26px;padding:0 9px;border-radius:999px;border:1px solid #d6d3cd;background:#fff;color:#292524;font:600 10px/1 inherit;cursor:pointer;white-space:nowrap;transition:background .18s,color .18s,border-color .18s,transform .15s}.m-app-et-ref__bar button.is-on{background:#222;border-color:#222;color:#fff;order:-1}.m-app-et-ref__bar button:active{transform:scale(.94)}.m-app-et-ref__stage{position:relative;flex:1}.m-app-et-ref__spin{position:absolute;left:50%;top:2px;margin-left:-14px;z-index:5;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.18);display:grid;place-items:center;opacity:0;transform:translateY(-18px) scale(.8);transition:all .24s cubic-bezier(.22,1.2,.36,1);pointer-events:none}.m-app-et-ref.is-load .m-app-et-ref__spin{opacity:1;transform:none}.m-app-et-ref__spin i{width:14px;height:14px;border-radius:50%;border:2px solid #e7e5e4;border-top-color:#222;animation:m-et-sp .65s linear infinite}@keyframes m-et-sp{to{transform:rotate(360deg)}}.m-app-et-ref__cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;transition:opacity .22s}.m-app-et-ref.is-load .m-app-et-ref__cards{opacity:.48}.m-app-et-ref__c{background:#fff;border-radius:10px;padding:7px;border:1px solid #e7e5e4;display:flex;flex-direction:column;gap:4px}.m-app-et-ref__img{height:76px;border-radius:7px}.m-app-et-ref__img.i1{background:linear-gradient(135deg,#0f766e,#14b8a6)}.m-app-et-ref__img.i2{background:linear-gradient(135deg,#d97706,#fbbf24)}.m-app-et-ref__c b{font:600 10.5px/1.1 inherit}.m-app-et-ref__c span{font:700 11px/1 'Geist Mono',monospace;color:#15803d}",
+    "js": "var el=root.querySelector('.m-app-et-ref');if(!el)return;var btns=[].slice.call(el.querySelectorAll('.m-app-et-ref__bar button')),p1=el.querySelector('.m-app-et-ref__p1'),p2=el.querySelector('.m-app-et-ref__p2');var active='',touched=false,dead=false,tm=0;function pick(b){var k=b.dataset.p;active=(active===k?'':k);btns.forEach(function(x){x.classList.toggle('is-on',x.dataset.p===active);});el.classList.add('is-load');clearTimeout(tm);tm=setTimeout(function(){if(dead)return;el.classList.remove('is-load');p1.textContent=active==='u20'?'€14.90':'€38.06';p2.textContent=active==='pick'?'€19.50 ★':'€16.40';},440);}btns.forEach(function(b){b.addEventListener('click',function(){touched=true;pick(b);});});var k=0,iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){pick(btns[k++%btns.length]);}},1950);return function(){dead=true;clearTimeout(tm);clearInterval(iv);};"
+  },
+  {
+    "id": "app-etsy-filter-drawer-sheet",
+    "title": "Etsy: Filters Accordion Sheet & Live Result Count CTA",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 400,
+    "ease": {
+      "t": "bezier",
+      "p": [0.22, 1, 0.36, 1]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translateY (Filters bottom sheet)",
+      "transform: rotate (row disclosure chevron)",
+      "textContent (live 'Show X results' CTA)"
+    ],
+    "src": "Etsy (Live Play Store Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Etsy",
+      "slug": "etsy",
+      "category": "Shopping",
+      "platform": ["iOS", "Android"],
+      "accent": "#F1641E",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/15/49/78/15497872-92de-9cbf-b658-bd578135a5a1/BOEAppIcon-0-0-1x_U007epad-0-1-0-0-0-0-GLES2_U002c0-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/etsy-shop-from-real-people/id477128284?uo=4",
+      "bundleId": "com.etsy.etsyforios"
+    },
+    "summary": "Live-captured from Etsy: tapping the filter icon lifts a warm-linen Filters bottom sheet with clean disclosure rows (Sort by, Price, Shipping) and a sticky footer pairing Reset with a charcoal pill 'Show 10,000+ results' button.",
+    "hint": "Tap filter rows or Reset to update live result count",
+    "choreography": [
+      "0-380ms: warm-linen #F7F5F0 Filters sheet slides smoothly upward from translateY(100%) -> 0 over dimmed search results.",
+      "Row toggle: tapping any filter row rotates its right chevron and updates its subtitle value while dynamically recalculating the charcoal bottom pill count.",
+      "Reset tap: clears active selections cleanly and restores full catalog count."
+    ],
+    "agentPrompt": "Build Etsy's Filters bottom sheet on warm linen #F7F5F0:\n1. Rounded-top (18px) sheet rising over a dimmed backdrop over 380ms cubic-bezier(0.22, 1, 0.36, 1) with centered 'Filters' title and right `✕` button.\n2. Stacked hairline-separated rows ('Sort by: Best match', 'Price: Under €20', 'Shipping: Free shipping') with right disclosure chevrons that highlight active selections cleanly.\n3. Sticky bottom bar with text 'Reset' on left and a solid #222222 rounded pill CTA ('Show 4,210 results') on right that pops subtly whenever counts update.",
+    "extractableCode": "<!-- Etsy Filters Bottom Sheet -->\n<div class=\"et-flt\"><div class=\"et-row\"><b>Price</b><span>Under €20</span></div><div class=\"et-foot\"><button>Reset</button><button class=\"cta\">Show 4,210 results</button></div></div>",
+    "html": "<div class=\"m-app-et-flt\"><div class=\"m-app-et-flt__sheet\"><div class=\"m-app-et-flt__top\"><span></span><b>Filters</b><em>✕</em></div><div class=\"m-app-et-flt__rows\"><button type=\"button\" data-r=\"sort\"><div><b>Sort by</b><span>Best match</span></div><i>⌄</i></button><button type=\"button\" data-r=\"price\" class=\"is-set\"><div><b>Price</b><span>Under €20</span></div><i>⌄</i></button><button type=\"button\" data-r=\"ship\"><div><b>Shipping</b><span>Any</span></div><i>⌄</i></button></div><div class=\"m-app-et-flt__foot\"><button type=\"button\" class=\"m-app-et-flt__rst\">Reset</button><span class=\"m-app-et-flt__cta\">Show 4,820 results</span></div></div></div>",
+    "css": ".m-app-et-flt{position:absolute;inset:0;background:rgba(28,25,23,.58);display:flex;align-items:flex-end;justify-content:center;padding:12px 12px 0;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;overflow:hidden}.m-app-et-flt__sheet{width:min(96%,268px);background:#f7f5f0;color:#1c1917;border-radius:16px 16px 0 0;padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px;transform:translateY(100%);transition:transform .38s cubic-bezier(.22,1,.36,1);box-shadow:0 -12px 28px rgba(0,0,0,.28)}.m-app-et-flt.is-up .m-app-et-flt__sheet{transform:none}.m-app-et-flt__top{display:grid;grid-template-columns:20px 1fr 20px;align-items:center;text-align:center;font-size:12.5px}.m-app-et-flt__top em{font-style:normal;color:#57534e;font-size:13px}.m-app-et-flt__rows{display:flex;flex-direction:column}.m-app-et-flt__rows button{border:0;border-bottom:1px solid #e7e5e4;background:none;padding:7px 0;display:flex;justify-content:space-between;align-items:center;text-align:left;cursor:pointer}.m-app-et-flt__rows b{display:block;font:600 11px/1.15 inherit;color:#1c1917}.m-app-et-flt__rows span{font:400 10px/1.2 inherit;color:#78716c;transition:color .18s}.m-app-et-flt__rows button.is-set span{color:#f1641e;font-weight:600}.m-app-et-flt__rows i{font-style:normal;color:#78716c;transition:transform .22s}.m-app-et-flt__rows button.is-set i{transform:rotate(180deg);color:#1c1917}.m-app-et-flt__foot{display:flex;align-items:center;justify-content:space-between;padding-top:2px}.m-app-et-flt__rst{border:0;background:none;color:#292524;font:600 11px/1 inherit;cursor:pointer;padding:6px 4px}.m-app-et-flt__cta{padding:7px 14px;border-radius:999px;background:#222;color:#fff;font:600 10.5px/1 inherit;transition:transform .2s cubic-bezier(.22,1.3,.36,1)}.m-app-et-flt__cta.pop{transform:scale(1.06)}",
+    "js": "var el=root.querySelector('.m-app-et-flt');if(!el)return;var rows=[].slice.call(el.querySelectorAll('.m-app-et-flt__rows button')),rst=el.querySelector('.m-app-et-flt__rst'),cta=el.querySelector('.m-app-et-flt__cta');var st={sort:false,price:true,ship:false},touched=false,dead=false;function paint(){var n=10000;if(st.price)n=4820;if(st.ship)n=Math.round(n*0.58);if(st.sort)n=Math.round(n*0.85);rows.forEach(function(r){var k=r.dataset.r,sp=r.querySelector('span');r.classList.toggle('is-set',st[k]);if(k==='sort')sp.textContent=st[k]?'Top customer reviews':'Best match';if(k==='price')sp.textContent=st[k]?'Under €20':'Any price';if(k==='ship')sp.textContent=st[k]?'Free shipping':'Any';});cta.textContent='Show '+(n>=10000?'10,000+':n.toLocaleString())+' results';cta.classList.add('pop');setTimeout(function(){cta.classList.remove('pop');},180);}rows.forEach(function(r){r.addEventListener('click',function(){touched=true;st[r.dataset.r]=!st[r.dataset.r];paint();});});rst.addEventListener('click',function(){touched=true;st={sort:false,price:false,ship:false};paint();});paint();var t0=setTimeout(function(){if(!dead)el.classList.add('is-up');},200);var seq=['ship','sort','price'],idx=0,iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){var k=seq[idx++%seq.length];st[k]=!st[k];paint();}},1750);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  }
+]
