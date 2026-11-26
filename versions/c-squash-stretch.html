@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion Index — version C, Squash and stretch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Figtree:wght@400..800&family=Spline+Sans+Mono:wght@400..600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2438f0;
+    --navy: #0d0f3b;
+    --lemon: #ffe14d;
+    --pink: #ff9cc2;
+    --mint: #8ef0c9;
+    --cloud: #f4f3ff;
+    --display: "Anybody", "Arial Black", sans-serif;
+    --sans: "Figtree", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Spline Sans Mono", ui-monospace, Menlo, monospace;
+    --boing: cubic-bezier(.3, 1.6, .5, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--blue); color: #fff; font: 500 15.5px/1.45 var(--sans); -webkit-font-smoothing: antialiased; }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--lemon); outline-offset: 3px; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- header ---------- */
+  .top { display: flex; align-items: center; gap: 28px; height: 76px; }
+  .ball { width: 26px; height: 26px; border-radius: 50%; background: var(--lemon); display: block; }
+  .nav { display: flex; gap: 24px; }
+  .nav a { color: rgba(255,255,255,.72); text-decoration: none; font-weight: 600; }
+  .nav a:hover, .nav a[aria-current] { color: #fff; }
+  .search { margin-left: auto; width: min(320px, 46vw); }
+  .search input { width: 100%; height: 44px; padding: 0 20px; border-radius: 999px; border: 2px solid rgba(255,255,255,.35); background: transparent; color: #fff; }
+  .search input::placeholder { color: rgba(255,255,255,.65); }
+  .search input:focus { outline: none; border-color: var(--lemon); }
+
+  /* ---------- hero ---------- */
+  .hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding: 26px 0 40px; flex-wrap: wrap; }
+  .mark {
+    margin: 0; font-family: var(--display); font-weight: 900; font-stretch: 135%;
+    font-size: clamp(60px, 12.6vw, 190px); line-height: .9; letter-spacing: -.035em; text-transform: lowercase;
+  }
+  .mark .w { display: block; white-space: nowrap; }
+  .mark .l { display: inline-block; transform-origin: 50% 100%; animation: land .78s both; animation-delay: calc(var(--i) * 55ms); }
+  .mark .tittle { position: relative; }
+  .mark .tittle::after {
+    content: ""; position: absolute; left: 50%; top: -.065em; width: .18em; height: .18em; margin-left: -.09em;
+    border-radius: 50%; background: var(--lemon); transform-origin: 50% 100%;
+    animation: dot 1.5s both; animation-delay: calc(var(--i) * 55ms + 520ms);
+  }
+  @keyframes land {
+    0%   { transform: translateY(-110%) scale(.86, 1.25); opacity: 0; animation-timing-function: cubic-bezier(.5, 0, 1, .6); }
+    52%  { transform: translateY(0) scale(1.2, .7); opacity: 1; }
+    72%  { transform: translateY(-5%) scale(.95, 1.08); }
+    100% { transform: none; }
+  }
+  @keyframes dot {
+    0%   { transform: translateY(-3.2em) scale(.85, 1.2); opacity: 0; animation-timing-function: cubic-bezier(.5, 0, 1, .6); }
+    8%   { opacity: 1; }
+    30%  { transform: translateY(0) scale(1.4, .6); animation-timing-function: cubic-bezier(0, .5, .4, 1); }
+    52%  { transform: translateY(-.75em) scale(.92, 1.1); animation-timing-function: cubic-bezier(.5, 0, 1, .6); }
+    72%  { transform: translateY(0) scale(1.25, .75); animation-timing-function: cubic-bezier(0, .5, .4, 1); }
+    86%  { transform: translateY(-.2em) scale(1); animation-timing-function: cubic-bezier(.5, 0, 1, .6); }
+    100% { transform: none; }
+  }
+  .pitch { max-width: 290px; margin: 0 0 10px; font-size: 19px; line-height: 1.32; font-weight: 600; }
+  .pitch small { display: block; margin-top: 12px; font: 400 12.5px var(--mono); color: rgba(255,255,255,.7); }
+
+  /* ---------- filters ---------- */
+  .filters { display: flex; gap: 10px 8px; flex-wrap: wrap; align-items: center; padding-bottom: 24px; }
+  .chip {
+    height: 42px; padding: 0 18px; border-radius: 999px; border: 2px solid rgba(255,255,255,.35);
+    background: transparent; color: #fff; font-weight: 700; transition: transform .25s var(--boing), background .15s, border-color .15s;
+  }
+  .chip:hover { border-color: #fff; }
+  .chip:active { transform: scale(1.08, .88); }
+  .chip[aria-pressed="true"] { background: var(--lemon); border-color: var(--lemon); color: var(--navy); }
+  .chip b { font: 500 12px var(--mono); margin-left: 6px; opacity: .7; }
+  .gap { flex: 1; }
+  select.chip {
+    appearance: none; -webkit-appearance: none; padding-right: 40px; field-sizing: content;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center;
+  }
+  select.chip option { color: var(--navy); }
+
+  /* ---------- bento ---------- */
+  .bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 262px; grid-auto-flow: dense; gap: 14px; padding-bottom: 72px; }
+  .tile {
+    position: relative; display: flex; flex-direction: column; justify-content: space-between; text-align: left;
+    padding: 18px 20px 18px; border: 0; border-radius: 30px; overflow: hidden;
+    background: var(--bg); color: var(--fg); --ink: var(--fg);
+    transition: transform .35s var(--boing);
+  }
+  .tile:hover { transform: translateY(-5px) scale(1.012); }
+  .tile:active { transform: scale(1.03, .95); }
+  .s-big { grid-column: span 2; grid-row: span 2; }
+  .s-wide { grid-column: span 2; }
+  .s-tall { grid-row: span 2; }
+  .t-lemon { --bg: var(--lemon); --fg: var(--navy); }
+  .t-pink  { --bg: var(--pink);  --fg: var(--navy); }
+  .t-mint  { --bg: var(--mint);  --fg: var(--navy); }
+  .t-cloud { --bg: var(--cloud); --fg: var(--navy); --ink: var(--blue); }
+  .t-navy  { --bg: var(--navy);  --fg: #fff; --ink: var(--lemon); }
+  .tile .hd { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; }
+  .tag { padding: 4px 11px; border: 1.5px solid currentColor; border-radius: 999px; font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+  .ms { font: 500 12px var(--mono); opacity: .75; white-space: nowrap; }
+  .tile h3 { position: relative; z-index: 2; margin: 0; font-family: var(--display); font-weight: 800; font-stretch: 82%; font-size: 25px; line-height: .98; letter-spacing: -.012em; max-width: 12ch; }
+  .s-big h3 { font-size: 46px; }
+  .scene { position: absolute; inset: 50px 0 66px; container-type: size; pointer-events: none; }
+  .s-big .scene { inset: 60px 0 96px; }
+  .s-wide .scene { inset: 44px 0 22px 36%; }
+  .sc { width: 100%; height: 100%; display: grid; place-items: center; }
+  .sc > * { grid-area: 1 / 1; }
+  .tile .sc { scale: 1.45; }
+  .tile.s-wide .sc { scale: 1.25; }
+  .tile.s-big .sc, .tile .sc-cols, .tile .sc-flow { scale: 1; }
+  .sc-cols, .sc-flow { overflow: hidden; }
+  .empty { grid-column: 1 / -1; align-self: center; text-align: center; font-size: 19px; }
+  .empty button { border: 0; background: none; padding: 0; color: var(--lemon); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---------- placeholder scenes: one loop each, drawn in the tile's ink ---------- */
+  .sc i, .sc u { display: block; background: var(--ink); text-decoration: none; }
+
+  .sc-bounce i { width: 20cqmin; height: 20cqmin; border-radius: 50%; transform-origin: 50% 100%; animation: bounce 1.05s infinite; }
+  .sc-bounce u { width: 22cqmin; height: 2.4cqmin; border-radius: 50%; opacity: .22; transform: translateY(21cqmin); animation: shadow 1.05s infinite; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(-24cqmin) scale(1); animation-timing-function: cubic-bezier(.5, 0, 1, .55); }
+    44% { transform: translateY(10cqmin) scale(.9, 1.14); animation-timing-function: linear; }
+    50% { transform: translateY(10cqmin) scale(1.32, .66); animation-timing-function: linear; }
+    57% { transform: translateY(6cqmin) scale(.9, 1.14); animation-timing-function: cubic-bezier(0, .45, .5, 1); }
+  }
+  @keyframes shadow { 0%, 100% { transform: translateY(21cqmin) scale(.5); opacity: .1; } 50% { transform: translateY(21cqmin) scale(1.2); opacity: .28; } }
+
+  .sc-hold i { width: 58cqmin; height: 19cqmin; border-radius: 999px; background: none; border: .9cqmin solid var(--ink); overflow: hidden; animation: pop 2.4s infinite; }
+  .sc-hold i::after { content: ""; display: block; height: 100%; background: var(--ink); transform-origin: 0 50%; animation: fill 2.4s infinite; }
+  @keyframes fill { 0%, 8% { transform: scaleX(0); } 62%, 92% { transform: scaleX(1); } 100% { transform: scaleX(1); opacity: 0; } }
+  @keyframes pop { 0%, 62% { transform: none; } 68% { transform: scale(1.12, .84); } 76% { transform: scale(.95, 1.06); } 84%, 100% { transform: none; } }
+
+  .sc-seg i { width: 66cqmin; height: 17cqmin; border-radius: 5cqmin; background: none; border: .9cqmin solid var(--ink); }
+  .sc-seg u { width: 18cqmin; height: 11cqmin; border-radius: 3cqmin; animation: seg 3s infinite var(--boing); }
+  @keyframes seg { 0%, 20% { transform: translateX(-21cqmin); } 33%, 53% { transform: translateX(0); } 66%, 86% { transform: translateX(21cqmin); } 100% { transform: translateX(-21cqmin); } }
+
+  .sc.sc-part { display: flex; align-items: center; justify-content: center; gap: 3cqmin; }
+  .sc-part i { width: 20cqmin; height: 9cqmin; border-radius: 2cqmin; }
+  .sc-part u { width: 9cqmin; height: 9cqmin; border-radius: 999px; background: none; border: .9cqmin solid var(--ink); animation: part 2.6s infinite var(--boing); }
+  @keyframes part { 0%, 18%, 100% { width: 9cqmin; } 42%, 78% { width: 34cqmin; } }
+
+  .sc.sc-dots { grid-template-columns: repeat(5, 9cqmin); grid-auto-rows: 9cqmin; gap: 3.5cqmin; place-content: center; }
+  .sc-dots i { grid-area: auto; width: 100%; height: 100%; border-radius: 50%; animation: ripple 1.9s infinite; animation-delay: calc(var(--d) * 150ms); }
+  @keyframes ripple { 0%, 55%, 100% { transform: scale(.5); opacity: .5; } 22% { transform: scale(1.2); opacity: 1; } }
+
+  .sc-flow svg { width: 150cqw; height: 70cqmin; overflow: visible; }
+  .sc-flow path { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; animation: flow 3.2s linear infinite; }
+  .sc-flow path:nth-child(2) { animation-duration: 4.4s; opacity: .6; }
+  .sc-flow path:nth-child(3) { animation-duration: 2.6s; opacity: .35; }
+  @keyframes flow { to { transform: translateX(-200px); } }
+
+  .sc-blob i { width: 44cqmin; height: 44cqmin; animation: blob 5s infinite ease-in-out; border-radius: 58% 42% 46% 54% / 44% 56% 44% 56%; }
+  @keyframes blob {
+    33% { border-radius: 40% 60% 62% 38% / 58% 40% 60% 42%; transform: rotate(60deg) scale(1.12, .92); }
+    66% { border-radius: 62% 38% 40% 60% / 38% 62% 44% 56%; transform: rotate(130deg) scale(.92, 1.1); }
+    100% { transform: rotate(180deg); }
+  }
+
+  .sc-over i { width: 60cqmin; height: 15cqmin; border-radius: 2cqmin; opacity: .28; }
+  .sc-over u { width: 60cqmin; height: 15cqmin; border-radius: 2cqmin; transform: rotate(-8deg); animation: wipe 2.8s infinite cubic-bezier(.2, .8, .2, 1); }
+  @keyframes wipe { 0%, 10% { clip-path: inset(0 100% 0 0); } 45%, 80% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 0 100%); } }
+
+  .sc.sc-beam { display: flex; align-items: center; justify-content: center; gap: 2.6cqmin; }
+  .sc-beam i { width: 6cqmin; height: 34cqmin; border-radius: 1.4cqmin; animation: beam 2.2s infinite ease-in-out; animation-delay: calc(var(--d) * 110ms); }
+  @keyframes beam { 0%, 45%, 100% { opacity: .2; transform: scaleY(.82); } 20% { opacity: 1; transform: scaleY(1.12); } }
+
+  .sc.sc-cols { display: flex; justify-content: center; align-items: flex-start; gap: 3cqw; }
+  .sc-cols u { display: grid; gap: 3cqw; background: none; animation: up 4s linear infinite; }
+  .sc-cols u:nth-child(2) { animation-name: down; }
+  .sc-cols i { width: 12cqw; height: 12cqw; border-radius: 3cqw; }
+  .sc-cols u:nth-child(2) i { opacity: .45; }
+  @keyframes up { from { transform: translateY(0); } to { transform: translateY(-45cqw); } }
+  @keyframes down { from { transform: translateY(-45cqw); } to { transform: translateY(0); } }
+
+  .sc-mag i { width: 38cqmin; height: 15cqmin; border-radius: 999px; animation: mag 3.4s infinite var(--boing); }
+  .sc-mag u { width: 5cqmin; height: 5cqmin; border-radius: 50%; background: none; border: .9cqmin solid var(--ink); animation: cursor 3.4s infinite ease-in-out; }
+  @keyframes cursor { 0%, 100% { transform: translate(34cqmin, -22cqmin); } 30% { transform: translate(22cqmin, -9cqmin); } 55% { transform: translate(-26cqmin, 14cqmin); } 80% { transform: translate(-34cqmin, 24cqmin); } }
+  @keyframes mag { 0%, 18%, 100% { transform: none; } 32%, 40% { transform: translate(7cqmin, -4cqmin); } 58%, 66% { transform: translate(-8cqmin, 5cqmin); } 84% { transform: none; } }
+
+  .sc-grow i { width: 16cqmin; height: 11cqmin; border-radius: 3cqmin; animation: grow 3s infinite var(--boing); }
+  @keyframes grow { 0%, 15%, 100% { width: 16cqmin; height: 11cqmin; transform: translate(-20cqmin, 10cqmin); } 45%, 80% { width: 62cqmin; height: 42cqmin; transform: none; } }
+
+  /* ---------- footer ---------- */
+  footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 0 40px; border-top: 2px solid rgba(255,255,255,.2); color: rgba(255,255,255,.75); font-size: 14px; }
+
+  /* ---------- detail ---------- */
+  dialog {
+    width: min(1080px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: 36px; overflow: auto;
+    background: var(--bg); color: var(--fg); --ink: var(--fg);
+  }
+  dialog[open] { animation: boing .5s var(--boing); }
+  dialog::backdrop { background: rgba(13, 15, 59, .62); }
+  @keyframes boing { from { transform: scale(.82, .9); opacity: 0; } }
+  .panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .panel .scene { position: relative; inset: auto; min-height: 540px; }
+  .info { padding: 26px 30px 30px 6px; }
+  .info .hd { display: flex; justify-content: space-between; align-items: center; }
+  .info .x { height: 36px; padding: 0 16px; border-radius: 999px; border: 1.5px solid currentColor; background: none; font-weight: 700; }
+  .info h2 { margin: 18px 0 6px; font-family: var(--display); font-weight: 900; font-stretch: 85%; font-size: clamp(34px, 4.4vw, 58px); line-height: .92; letter-spacing: -.015em; }
+  .info .src { margin: 0; opacity: .7; font-size: 14px; }
+  .info dl { margin: 22px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+  .info dt { font-size: 12.5px; font-weight: 700; opacity: .65; }
+  .info dd { margin: 2px 0 0; font: 500 13.5px var(--mono); }
+  .tabs { display: flex; gap: 6px; margin: 24px 0 10px; }
+  .tabs button { height: 34px; padding: 0 14px; border-radius: 999px; border: 1.5px solid transparent; background: none; font-weight: 700; opacity: .7; }
+  .tabs button[aria-selected="true"] { border-color: currentColor; opacity: 1; }
+  .info pre { margin: 0; padding: 16px 18px; min-height: 176px; border-radius: 18px; background: var(--navy); color: #fff; font: 400 12.5px/1.65 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
+  .t-navy .info pre { background: rgba(255,255,255,.1); }
+  .copy { margin-top: 12px; width: 100%; height: 52px; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font-weight: 800; font-size: 16px; transition: transform .25s var(--boing); }
+  .t-navy .copy { background: var(--lemon); color: var(--navy); }
+  .copy:active { transform: scale(1.04, .9); }
+
+  @media (max-width: 1040px) {
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .s-tall { grid-row: span 1; }
+    .nav { display: none; }
+    .panel { grid-template-columns: 1fr; }
+    .panel .scene { min-height: 300px; }
+    .s-wide .scene { inset: 50px 0 66px; }
+    .info { padding: 0 22px 24px; }
+  }
+  @media (max-width: 620px) {
+    .wrap { padding: 0 16px; }
+    .bento { grid-auto-rows: 210px; gap: 10px; }
+    .s-big { grid-row: span 1; }
+    .s-big .scene { inset: 50px 0 66px; }
+    .tile.s-big .sc { scale: 1.45; }
+    .s-big h3 { font-size: 30px; }
+    .tile { border-radius: 24px; padding: 14px 16px; }
+    .tile h3 { font-size: 21px; }
+    .tile .ms { display: none; }
+    .gap { display: none; }
+    .pitch { margin-bottom: 0; }
+    .hero { padding-bottom: 28px; gap: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .sc-hold i::after { transform: scaleX(.6); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a href="#" aria-label="Motion Index, home"><span class="ball"></span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#" aria-current="page">Motions</a>
+      <a href="#">Collections</a>
+      <a href="#">For agents</a>
+    </nav>
+    <label class="search"><input id="q" type="search" placeholder="Search motions" aria-label="Search motions" autocomplete="off"></label>
+  </header>
+
+  <section class="hero">
+    <h1 class="mark" aria-label="Motion Index" id="mark"></h1>
+    <p class="pitch">Browse interface motion. Every entry carries a spec your coding agent can read.
+      <small><span id="count">12</span> motions · placeholder previews</small></p>
+  </section>
+
+  <div class="filters" id="filters"></div>
+  <main class="bento" id="bento"></main>
+
+  <footer>
+    <span>Motion Index is a working title.</span>
+    <span>Tile loops stand in for the real previews.</span>
+  </footer>
+</div>
+
+<dialog id="detail" aria-labelledby="d-title">
+  <div class="panel">
+    <div class="scene" id="d-scene"></div>
+    <div class="info">
+      <div class="hd"><span class="tag" id="d-use"></span><button class="x" id="d-close">Close</button></div>
+      <h2 id="d-title"></h2>
+      <p class="src" id="d-src"></p>
+      <dl id="d-spec"></dl>
+      <div class="tabs" role="tablist" id="d-tabs">
+        <button role="tab" data-tab="prompt" aria-selected="true">Agent prompt</button>
+        <button role="tab" data-tab="spec" aria-selected="false">Motion spec</button>
+        <button role="tab" data-tab="css" aria-selected="false">CSS</button>
+      </div>
+      <pre id="d-code"></pre>
+      <button class="copy" id="d-copy">Copy</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ---------- placeholder data ---------- */
+const MOTIONS = [
+  { id: 'pull-cord-lamp', title: 'Pull cord lamp', use: 'Micro-interactions', stack: 'SVG', trigger: 'Drag', dur: 920, ease: 'spring(180, 10)', props: ['translateY', 'rotate'], src: '@guanmo_ai', scene: 'bounce', tone: 'lemon' },
+  { id: 'hold-to-confirm', title: 'Hold to confirm pill', use: 'Micro-interactions', stack: 'CSS', trigger: 'Press and hold', dur: 900, ease: 'linear', props: ['width', 'background'], src: '@guanmo_ai', scene: 'hold', tone: 'cloud' },
+  { id: 'segmented-stats', title: 'Spring segmented stats', use: 'Navigation and layout', stack: 'CSS', trigger: 'Tab switch', dur: 460, ease: 'spring(260, 20)', props: ['translateX'], src: '@desdivj', scene: 'seg', tone: 'pink' },
+  { id: 'inline-pill', title: 'Kinetic inline pill', use: 'Typography', stack: 'CSS', trigger: 'Loop', dur: 770, ease: 'spring(200, 12)', props: ['width', 'letter-spacing'], src: '@bitmapstudio', scene: 'part', tone: 'navy' },
+  { id: 'dot-matrix-ripple', title: 'Dot-matrix ripple', use: 'Generative', stack: 'Canvas 2D', trigger: 'Click', dur: 1150, ease: 'cubic-bezier(0.16, 1, 0.3, 1)', props: ['scale', 'rotate'], src: '@m4lkxx', scene: 'dots', tone: 'mint' },
+  { id: 'curl-flow-field', title: 'Curl flow field', use: 'Generative', stack: 'Canvas 2D', trigger: 'Cursor', dur: 1500, ease: 'cubic-bezier(0.65, 0, 0.35, 1)', props: ['position'], src: '@m4lkxx', scene: 'flow', tone: 'cloud' },
+  { id: 'liquid-mesh', title: 'Liquid mesh surface', use: 'Backgrounds', stack: 'WebGL', trigger: 'Ambient', dur: 2400, ease: 'cubic-bezier(0.45, 0, 0.55, 1)', props: ['uv warp'], src: '@adrien_ninet', scene: 'blob', tone: 'pink' },
+  { id: 'split-type-overprint', title: 'Split-type overprint', use: 'Typography', stack: 'CSS', trigger: 'Loop', dur: 950, ease: 'cubic-bezier(0.2, 0.8, 0.2, 1)', props: ['clip-path', 'rotate'], src: '@tobiadonadon_', scene: 'over', tone: 'lemon' },
+  { id: 'beam-text-sweep', title: 'Luminous beam sweep', use: 'Typography', stack: 'CSS', trigger: 'Hover', dur: 1800, ease: 'cubic-bezier(0.45, 0, 0.55, 1)', props: ['mask-position'], src: '@kasuncfdo', scene: 'beam', tone: 'navy' },
+  { id: 'counter-scroll-bento', title: 'Counter-scroll bento', use: 'Navigation and layout', stack: 'CSS', trigger: 'Hover', dur: 1400, ease: 'linear', props: ['translateY'], src: '@cnemalek', scene: 'cols', tone: 'navy' },
+  { id: 'magnetic-button', title: 'Magnetic button', use: 'Micro-interactions', stack: 'CSS', trigger: 'Cursor', dur: 1150, ease: 'spring(150, 8)', props: ['translate'], src: 'placeholder', scene: 'mag', tone: 'cloud' },
+  { id: 'card-to-page', title: 'Card to page expand', use: 'Navigation and layout', stack: 'CSS', trigger: 'Click', dur: 520, ease: 'cubic-bezier(0.2, 0.9, 0.3, 1)', props: ['width', 'height', 'border-radius'], src: 'placeholder', scene: 'grow', tone: 'pink' },
+];
+const SIZES = ['big', '', '', 'wide', '', 'tall', '', 'wide', '', '', 'wide', 'wide'];
+
+/* ---------- scenes ---------- */
+const rep = (n, f) => Array.from({ length: n }, (_, i) => f(i)).join('');
+const wave = y => `<path d="M-200 ${y} ${rep(8, i => `q50 ${i % 2 ? 26 : -26} 100 0`)}"/>`;
+const SCENES = {
+  /* cols: 9 squares per column so the 3-square loop never shows a gap */
+  bounce: '<u></u><i></i>',
+  hold: '<i></i>',
+  seg: '<i></i><u></u>',
+  part: '<i></i><u></u><i></i>',
+  dots: rep(25, i => `<i style="--d:${Math.hypot(i % 5 - 2, Math.floor(i / 5) - 2).toFixed(2)}"></i>`),
+  flow: `<svg viewBox="0 0 600 120" preserveAspectRatio="none">${wave(30)}${wave(62)}${wave(94)}</svg>`,
+  blob: '<i></i>',
+  over: '<i></i><u></u>',
+  beam: rep(7, i => `<i style="--d:${i}"></i>`),
+  cols: rep(3, () => `<u>${rep(9, () => '<i></i>')}</u>`),
+  mag: '<i></i><u></u>',
+  grow: '<i></i>',
+};
+const sceneHTML = m => `<div class="scene" aria-hidden="true"><div class="sc sc-${m.scene}">${SCENES[m.scene]}</div></div>`;
+
+/* ---------- headline ---------- */
+let n = 0;
+$mark = document.getElementById('mark');
+$mark.innerHTML = ['motion', 'index'].map(w => `<span class="w" aria-hidden="true">${[...w].map(ch =>
+  `<span class="l${ch === 'i' ? ' tittle' : ''}" style="--i:${n++}">${ch === 'i' ? 'ı' : ch}</span>`).join('')}</span>`).join('');
+
+/* ---------- filters and bento ---------- */
+const $ = id => document.getElementById(id);
+const state = { use: 'All', stack: 'Any stack', trigger: 'Any trigger', q: '' };
+const uniq = k => [...new Set(MOTIONS.map(m => m[k]))];
+$('filters').innerHTML = ['All', ...uniq('use')].map(u =>
+  `<button class="chip" aria-pressed="${u === 'All'}" data-use="${u}">${u}<b>${u === 'All' ? MOTIONS.length : MOTIONS.filter(m => m.use === u).length}</b></button>`).join('') +
+  `<span class="gap"></span>
+   <select class="chip" id="stack" aria-label="Stack">${['Any stack', ...uniq('stack')].map(s => `<option>${s}</option>`).join('')}</select>
+   <select class="chip" id="trigger" aria-label="Trigger">${['Any trigger', ...uniq('trigger')].map(s => `<option>${s}</option>`).join('')}</select>`;
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+  const list = MOTIONS.filter(m =>
+    (state.use === 'All' || m.use === state.use) && (state.stack === 'Any stack' || m.stack === state.stack) &&
+    (state.trigger === 'Any trigger' || m.trigger === state.trigger) &&
+    (!q || [m.title, m.use, m.stack, m.trigger, m.ease].join(' ').toLowerCase().includes(q)));
+  $('count').textContent = list.length;
+  const bento = $('bento');
+  bento.replaceChildren();
+  if (!list.length) {
+    bento.innerHTML = `<p class="empty">No motions match these filters. <button id="reset">Clear filters</button></p>`;
+    $('reset').onclick = () => {
+      Object.assign(state, { use: 'All', stack: 'Any stack', trigger: 'Any trigger', q: '' });
+      $('q').value = ''; $('stack').selectedIndex = $('trigger').selectedIndex = 0;
+      document.querySelectorAll('#filters button').forEach(b => b.setAttribute('aria-pressed', b.dataset.use === 'All'));
+      render();
+    };
+    return;
+  }
+  list.forEach((m, i) => {
+    const size = list.length === MOTIONS.length ? SIZES[i] : (i % 5 === 0 ? 'wide' : '');
+    const tile = document.createElement('button');
+    tile.className = `tile t-${m.tone}` + (size ? ` s-${size}` : '');
+    tile.innerHTML = `<div class="hd"><span class="tag">${m.use}</span><span class="ms">${m.dur} ms</span></div>${sceneHTML(m)}<h3>${m.title}</h3>`;
+    tile.addEventListener('click', () => openDetail(m));
+    bento.append(tile);
+  });
+}
+$('filters').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  state.use = b.dataset.use;
+  document.querySelectorAll('#filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  render();
+});
+$('stack').onchange = e => { state.stack = e.target.value; render(); };
+$('trigger').onchange = e => { state.trigger = e.target.value; render(); };
+$('q').oninput = e => { state.q = e.target.value; render(); };
+
+/* ---------- detail ---------- */
+let current, tab = 'prompt';
+const texts = m => ({
+  prompt: `Add the "${m.title}" motion to my project.\n\nSpec: https://motion-index.example/m/${m.id}.json\nTrigger: ${m.trigger.toLowerCase()}\nDuration: ${m.dur} ms\nEasing: ${m.ease}\nAnimate: ${m.props.join(', ')}\n\nApply it to my existing components and styles. Give it a prefers-reduced-motion fallback.`,
+  spec: JSON.stringify({ id: m.id, useCase: m.use, stack: m.stack, trigger: m.trigger, durationMs: m.dur, easing: m.ease, properties: m.props, reducedMotion: 'crossfade' }, null, 2),
+  css: `.target {\n  transition: ${m.props[0]} ${m.dur}ms ${m.ease.startsWith('spring') ? 'var(--spring)' : m.ease};\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .target { transition: opacity 150ms linear; }\n}`,
+});
+function showTab() {
+  $('d-code').textContent = texts(current)[tab];
+  document.querySelectorAll('#d-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
+  $('d-copy').textContent = { prompt: 'Copy prompt', spec: 'Copy spec', css: 'Copy CSS' }[tab];
+}
+function openDetail(m) {
+  current = m; tab = 'prompt';
+  const d = $('detail');
+  d.className = 't-' + m.tone;
+  $('d-scene').innerHTML = `<div class="sc sc-${m.scene}">${SCENES[m.scene]}</div>`;
+  $('d-use').textContent = m.use;
+  $('d-title').textContent = m.title;
+  $('d-src').textContent = m.src === 'placeholder' ? 'Placeholder entry' : `Placeholder preview · reference by ${m.src}`;
+  $('d-spec').innerHTML = [['Trigger', m.trigger], ['Duration', m.dur + ' ms'], ['Easing', m.ease], ['Stack', m.stack], ['Animates', m.props.join(', ')], ['Reduced motion', 'crossfade']]
+    .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  showTab();
+  d.showModal();
+  history.replaceState(null, '', '#' + m.id);
+}
+$('d-tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { tab = b.dataset.tab; showTab(); } });
+$('d-close').onclick = () => $('detail').close();
+$('detail').addEventListener('click', e => { if (e.target === $('detail')) $('detail').close(); });
+$('detail').addEventListener('close', () => { $('d-scene').innerHTML = ''; history.replaceState(null, '', location.pathname); });
+$('d-copy').onclick = async () => {
+  try { await navigator.clipboard.writeText(texts(current)[tab]); $('d-copy').textContent = 'Copied'; }
+  catch { $('d-copy').textContent = 'Copy failed. Select the text above instead.'; }
+  setTimeout(showTab, 1600);
+};
+
+render();
+const linked = MOTIONS.find(m => m.id === location.hash.slice(1));
+if (linked) openDetail(linked);
+</script>
+</body>
+</html>

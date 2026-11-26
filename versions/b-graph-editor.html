@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion Index — version B, Graph editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..800&family=Azeret+Mono:wght@300..600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #11131b;
+    --panel: #171a25;
+    --well: #131621;
+    --grid: #232838;
+    --line: #2e3447;
+    --text: #e8eaf2;
+    --mute: #8d93a9;
+    --dim: #5d6379;
+    --key: #ffb938;            /* keyframe amber */
+    --spring: #ff6f91;         /* curve colours name the easing family */
+    --bezier: #6fabff;
+    --linear: #5fd9a3;
+    --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Azeret Mono", ui-monospace, Menlo, monospace;
+    --bar: 52px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 400 13.5px/1.45 var(--sans); -webkit-font-smoothing: antialiased; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--key); outline-offset: 2px; }
+  .label { font: 500 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--dim); }
+
+  /* ---------- top bar ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 20; height: var(--bar);
+    display: flex; align-items: center; gap: 20px; padding: 0 16px;
+    background: var(--bg); border-bottom: 1px solid var(--grid);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 14.5px; letter-spacing: -.01em; color: inherit; text-decoration: none; width: 200px; flex: none; }
+  .brand i { width: 9px; height: 9px; background: var(--key); transform: rotate(45deg); border-radius: 1.5px; }
+  .search { flex: 1; max-width: 520px; position: relative; }
+  .search input {
+    width: 100%; height: 32px; padding: 0 36px 0 12px; border-radius: 6px;
+    background: var(--well); border: 1px solid var(--grid);
+  }
+  .search input::placeholder { color: var(--dim); }
+  .search input:focus { outline: none; border-color: var(--key); }
+  .search kbd { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font: 500 10.5px var(--mono); color: var(--dim); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+  .status { margin-left: auto; font: 400 11.5px var(--mono); color: var(--mute); white-space: nowrap; }
+  .status b { color: var(--text); font-weight: 500; }
+
+  /* ---------- shell ---------- */
+  .shell { display: grid; grid-template-columns: 216px minmax(0, 1fr) 404px; align-items: start; }
+  .side, .insp { position: sticky; top: var(--bar); height: calc(100vh - var(--bar)); overflow: auto; }
+  .side { border-right: 1px solid var(--grid); padding: 18px 10px 24px; }
+  .facet { margin-bottom: 22px; }
+  .facet .label { padding: 0 8px 8px; }
+  .facet button {
+    display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+    padding: 5px 8px; border: 0; border-radius: 5px; background: none; color: var(--mute);
+  }
+  .facet button:hover { color: var(--text); background: var(--panel); }
+  .facet button[aria-pressed="true"] { color: var(--text); background: var(--grid); }
+  .facet button span { margin-left: auto; font: 400 11px var(--mono); color: var(--dim); }
+  .facet button em { width: 14px; height: 2px; border-radius: 2px; flex: none; }
+  .clear { margin: 0 8px; padding: 0; border: 0; background: none; color: var(--key); font-size: 12.5px; }
+  .clear[hidden] { display: none; }
+
+  /* ---------- cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 12px; padding: 16px; align-content: start; }
+  .card {
+    display: block; width: 100%; padding: 0; text-align: left; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--grid); border-radius: 8px;
+    transition: border-color .12s;
+  }
+  .card:hover { border-color: var(--line); }
+  .card[aria-pressed="true"] { border-color: var(--key); }
+  .card svg, .insp svg { display: block; width: 100%; height: auto; background: var(--well); }
+  .card .meta { padding: 11px 12px 12px; border-top: 1px solid var(--grid); }
+  .card h3 { margin: 0 0 7px; font-size: 13.5px; font-weight: 600; letter-spacing: -.005em; }
+  .row { display: flex; justify-content: space-between; gap: 10px; font: 400 11px var(--mono); color: var(--mute); }
+  .row .e { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .row .e::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+  .tags { margin-top: 6px; font-size: 12px; color: var(--dim); }
+  .empty { grid-column: 1 / -1; padding: 80px 0; text-align: center; color: var(--mute); }
+
+  /* graph parts */
+  .g-grid { stroke: var(--grid); stroke-width: 1; }
+  .g-base { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 3; }
+  .g-curve { fill: none; stroke: var(--c); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .g-key { fill: var(--key); }
+  .g-ph { stroke: var(--key); stroke-width: 1; opacity: .55; }
+  .g-dot { fill: var(--c); stroke: var(--well); stroke-width: 2; }
+  .g-lane { fill: var(--text); }
+  .g-txt { font: 400 8px var(--mono); fill: var(--dim); }
+
+  /* ---------- inspector ---------- */
+  .insp { border-left: 1px solid var(--grid); background: var(--panel); }
+  .insp-head { display: flex; align-items: flex-start; gap: 12px; padding: 16px 16px 14px; }
+  .insp-head h2 { margin: 3px 0 2px; font-size: 19px; font-weight: 650; letter-spacing: -.02em; line-height: 1.2; }
+  .insp-head p { margin: 0; font-size: 12.5px; color: var(--mute); }
+  .x { display: none; margin-left: auto; border: 1px solid var(--line); background: none; border-radius: 5px; padding: 3px 10px; }
+  .sec { padding: 14px 16px; border-top: 1px solid var(--grid); }
+  .sec > .label { margin-bottom: 10px; }
+  .dope { position: relative; font: 400 10.5px var(--mono); }
+  .ruler, .track { display: grid; grid-template-columns: 104px 1fr; align-items: center; height: 24px; }
+  .ruler div, .track div { position: relative; height: 100%; }
+  .ruler span { position: absolute; top: 5px; color: var(--dim); transform: translateX(-50%); font-size: 9.5px; }
+  .ruler span:first-child { transform: none; }
+  .ruler span:last-child { transform: translateX(-100%); }
+  .track { border-top: 1px solid var(--grid); color: var(--mute); }
+  .track div::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: var(--grid); }
+  .track u { position: absolute; top: 50%; height: 4px; margin-top: -2px; background: var(--c); opacity: .55; border-radius: 2px; }
+  .track b { position: absolute; top: 50%; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; background: var(--key); transform: rotate(45deg); border-radius: 1px; }
+  .dope-ph { position: absolute; top: 22px; bottom: 0; width: 1px; background: var(--key); opacity: .7; pointer-events: none; }
+  .kv { margin: 0; display: grid; grid-template-columns: 104px 1fr; row-gap: 7px; font-size: 12.5px; }
+  .kv dt { color: var(--mute); }
+  .kv dd { margin: 0; font: 400 11.5px var(--mono); }
+  .tabs { display: flex; gap: 2px; margin-bottom: 8px; }
+  .tabs button { border: 0; background: none; padding: 4px 9px; border-radius: 5px; color: var(--mute); font-size: 12.5px; }
+  .tabs button[aria-selected="true"] { background: var(--grid); color: var(--text); }
+  pre { margin: 0; padding: 12px; min-height: 168px; background: var(--well); border: 1px solid var(--grid); border-radius: 6px; font: 400 11px/1.7 var(--mono); color: #c9cde0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .copy { margin-top: 10px; width: 100%; height: 38px; border: 0; border-radius: 6px; background: var(--key); color: #1b1400; font-weight: 650; }
+  .copy:hover { background: #ffc85c; }
+  .scrim { display: none; }
+
+  @media (max-width: 1180px) {
+    .shell { grid-template-columns: 216px minmax(0, 1fr); }
+    .insp { position: fixed; z-index: 40; top: 0; right: 0; height: 100dvh; width: min(420px, 100vw); transform: translateX(100%); transition: transform .28s cubic-bezier(.2, .8, .2, 1); }
+    .insp.open { transform: none; box-shadow: -24px 0 60px rgba(0,0,0,.45); }
+    .x { display: block; }
+    .scrim.open { display: block; position: fixed; inset: 0; z-index: 30; background: rgba(8,9,14,.6); }
+  }
+  @media (max-width: 760px) {
+    .shell { grid-template-columns: 1fr; }
+    .side { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--grid); padding: 12px 10px 4px; display: flex; gap: 6px 18px; flex-wrap: wrap; }
+    .facet { margin-bottom: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
+    .facet .label { padding: 0 6px 0 8px; }
+    .facet button { width: auto; }
+    .facet button span { margin-left: 2px; }
+    .brand { width: auto; }
+    .status, .search kbd { display: none; }
+    .cards { padding: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .insp { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a class="brand" href="#" aria-label="Motion Index, home"><i></i>Motion Index</a>
+  <label class="search">
+    <input id="q" type="search" placeholder="Search by name, easing, property or trigger" aria-label="Search motions" autocomplete="off">
+    <kbd>/</kbd>
+  </label>
+  <div class="status"><b id="count">12</b> of 12 motions · placeholder data</div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side" aria-label="Filters"></aside>
+  <main class="cards" id="cards"></main>
+  <aside class="insp" id="insp" aria-label="Inspector">
+    <div class="insp-head">
+      <div>
+        <div class="label" id="i-use"></div>
+        <h2 id="i-title"></h2>
+        <p id="i-src"></p>
+      </div>
+      <button class="x" id="i-close">Close</button>
+    </div>
+    <div id="i-graph"></div>
+    <div class="sec">
+      <div class="label">Tracks</div>
+      <div class="dope" id="i-dope"></div>
+    </div>
+    <div class="sec">
+      <div class="label">Spec</div>
+      <dl class="kv" id="i-kv"></dl>
+    </div>
+    <div class="sec">
+      <div class="tabs" role="tablist" id="i-tabs">
+        <button role="tab" data-tab="prompt" aria-selected="true">Agent prompt</button>
+        <button role="tab" data-tab="spec" aria-selected="false">Motion spec</button>
+        <button role="tab" data-tab="css" aria-selected="false">CSS</button>
+      </div>
+      <pre id="i-code"></pre>
+      <button class="copy" id="i-copy">Copy</button>
+    </div>
+  </aside>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<script>
+/* ---------- placeholder data ---------- */
+const spring = (k, c) => ({ t: 'spring', k, c });
+const bez = (...p) => ({ t: 'bezier', p });
+const LIN = { t: 'linear' };
+const MOTIONS = [
+  { id: 'pull-cord-lamp', title: 'Pull cord lamp', use: 'Micro-interactions', stack: 'SVG', trigger: 'Drag', ease: spring(180, 10), props: ['translateY', 'rotate'], src: '@guanmo_ai' },
+  { id: 'hold-to-confirm', title: 'Hold to confirm pill', use: 'Micro-interactions', stack: 'CSS', trigger: 'Press and hold', ease: LIN, dur: 900, props: ['width', 'background'], src: '@guanmo_ai' },
+  { id: 'segmented-stats', title: 'Spring segmented stats', use: 'Navigation and layout', stack: 'CSS', trigger: 'Tab switch', ease: spring(260, 20), props: ['translateX', 'height'], src: '@desdivj' },
+  { id: 'inline-pill', title: 'Kinetic inline pill', use: 'Typography', stack: 'CSS', trigger: 'Loop', ease: spring(200, 12), props: ['width', 'letter-spacing', 'scale'], src: '@bitmapstudio' },
+  { id: 'dot-matrix-ripple', title: 'Dot-matrix ripple', use: 'Generative', stack: 'Canvas 2D', trigger: 'Click', ease: bez(.16, 1, .3, 1), dur: 1150, props: ['scale', 'rotate', 'fill'], src: '@m4lkxx' },
+  { id: 'curl-flow-field', title: 'Curl flow field', use: 'Generative', stack: 'Canvas 2D', trigger: 'Cursor', ease: bez(.65, 0, .35, 1), dur: 1500, props: ['position', 'trail alpha'], src: '@m4lkxx' },
+  { id: 'liquid-mesh', title: 'Liquid mesh surface', use: 'Backgrounds', stack: 'WebGL', trigger: 'Ambient', ease: bez(.45, 0, .55, 1), dur: 2400, props: ['uv warp', 'hue'], src: '@adrien_ninet' },
+  { id: 'split-type-overprint', title: 'Split-type overprint', use: 'Typography', stack: 'CSS', trigger: 'Loop', ease: bez(.2, .8, .2, 1), dur: 950, props: ['clip-path', 'rotate', 'opacity'], src: '@tobiadonadon_' },
+  { id: 'beam-text-sweep', title: 'Luminous beam sweep', use: 'Typography', stack: 'CSS', trigger: 'Hover', ease: bez(.45, 0, .55, 1), dur: 1800, props: ['mask-position', 'filter'], src: '@kasuncfdo' },
+  { id: 'counter-scroll-bento', title: 'Counter-scroll bento', use: 'Navigation and layout', stack: 'CSS', trigger: 'Hover', ease: LIN, dur: 1400, props: ['translateY', 'scale'], src: '@cnemalek' },
+  { id: 'magnetic-button', title: 'Magnetic button', use: 'Micro-interactions', stack: 'CSS', trigger: 'Cursor', ease: spring(150, 8), props: ['translate'], src: 'placeholder' },
+  { id: 'card-to-page', title: 'Card to page expand', use: 'Navigation and layout', stack: 'CSS', trigger: 'Click', ease: bez(.2, .9, .3, 1), dur: 520, props: ['width', 'height', 'border-radius'], src: 'placeholder' },
+];
+const FAMILY = { spring: 'Spring', bezier: 'Cubic bezier', linear: 'Linear' };
+
+/* ---------- easing maths ---------- */
+function springInfo(e) {
+  const w0 = Math.sqrt(e.k), z = e.c / (2 * Math.sqrt(e.k)), wd = w0 * Math.sqrt(1 - z * z), T = 4.6 / (z * w0);
+  return { T, f: p => 1 - Math.exp(-z * w0 * p * T) * (Math.cos(wd * p * T) + (z * w0 / wd) * Math.sin(wd * p * T)) };
+}
+function bezierFn([x1, y1, x2, y2]) {
+  const cx = u => 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u;
+  const cy = u => 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
+  return p => { let lo = 0, hi = 1; for (let i = 0; i < 24; i++) { const m = (lo + hi) / 2; cx(m) < p ? lo = m : hi = m; } return cy((lo + hi) / 2); };
+}
+for (const m of MOTIONS) {
+  m.family = FAMILY[m.ease.t];
+  if (m.ease.t === 'spring') {
+    const s = springInfo(m.ease);
+    m.fn = s.f; m.dur = Math.round(s.T * 100) * 10;
+    m.easeLabel = `spring(${m.ease.k}, ${m.ease.c})`;
+    m.easeCss = 'linear(' + Array.from({ length: 9 }, (_, i) => +s.f(i / 32).toFixed(3)).join(', ') + ', …)';
+  } else if (m.ease.t === 'bezier') { m.fn = bezierFn(m.ease.p); m.easeLabel = m.easeCss = `cubic-bezier(${m.ease.p.join(', ')})`; }
+  else { m.fn = p => p; m.easeLabel = m.easeCss = 'linear'; }
+  m.easeShort = m.ease.t === 'bezier' ? 'bezier(' + m.ease.p.map(v => String(v).replace(/^0\./, '.')).join(' ') + ')' : m.easeLabel;
+  m.tracks = m.props.map((prop, i) => ({ prop, keys: [[0, 1], [.12, .7, 1], [.3, .86]][i % 3] }));
+}
+
+/* ---------- value-over-time graph ---------- */
+function makeGraph(m, W, H) {
+  const pad = { l: 12, r: 38, t: 14, b: 20 }, N = 90;
+  const pts = Array.from({ length: N + 1 }, (_, i) => m.fn(i / N));
+  const lo = Math.min(-.14, Math.min(...pts) - .06), hi = Math.max(1.14, Math.max(...pts) + .06);
+  const X = p => pad.l + p * (W - pad.l - pad.r), Y = v => H - pad.b - (v - lo) / (hi - lo) * (H - pad.t - pad.b);
+  const laneX = W - 17;
+  const d = pts.map((v, i) => (i ? 'L' : 'M') + X(i / N).toFixed(1) + ' ' + Y(v).toFixed(1)).join('');
+  const key = (x, y) => `<rect class="g-key" x="${x - 3.2}" y="${y - 3.2}" width="6.4" height="6.4" rx="1" transform="rotate(45 ${x} ${y})"/>`;
+  const el = document.createElement('div');
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="--c: var(--${m.ease.t})" role="img" aria-label="${m.easeLabel} over ${m.dur} milliseconds">
+    ${[0, .25, .5, .75, 1].map(p => `<line class="g-grid" x1="${X(p)}" x2="${X(p)}" y1="${pad.t - 6}" y2="${H - pad.b + 4}"/>`).join('')}
+    <line class="g-base" x1="${pad.l}" x2="${X(1)}" y1="${Y(0)}" y2="${Y(0)}"/><line class="g-base" x1="${pad.l}" x2="${X(1)}" y1="${Y(1)}" y2="${Y(1)}"/>
+    <line class="g-grid" x1="${laneX - 11}" x2="${laneX - 11}" y1="0" y2="${H}"/>
+    <path class="g-curve" d="${d}"/>
+    ${key(X(0), Y(0))}${key(X(1), Y(1))}
+    <line class="g-ph" y1="${pad.t - 6}" y2="${H - pad.b + 4}"/><circle class="g-dot" r="4"/>
+    <rect class="g-lane" x="${laneX - 5}" width="10" height="10" rx="2.5"/>
+    <text class="g-txt" x="${pad.l}" y="${H - 6}">0</text><text class="g-txt" x="${X(1)}" y="${H - 6}" text-anchor="end">${m.dur}ms</text>
+  </svg>`;
+  const ph = el.querySelector('.g-ph'), dot = el.querySelector('.g-dot'), lane = el.querySelector('.g-lane');
+  const set = p => {
+    const x = X(p), y = Y(m.fn(p));
+    ph.setAttribute('x1', x); ph.setAttribute('x2', x); dot.setAttribute('cx', x); dot.setAttribute('cy', y); lane.setAttribute('y', y - 5);
+  };
+  set(1);
+  return { el: el.firstElementChild, set };
+}
+
+/* one clock drives every playing graph */
+const playing = new Map();
+const still = matchMedia('(prefers-reduced-motion: reduce)');
+function play(key, m, set) { if (!still.matches) playing.set(key, { m, set, t0: performance.now() }); }
+function stop(key) { const p = playing.get(key); if (p) { p.set(1); playing.delete(key); } }
+(function tick(now) {
+  for (const { m, set, t0 } of playing.values()) {
+    const run = Math.max(m.dur, 700), el = (now - t0) % (run + 650);
+    set(Math.min(1, el / run));
+  }
+  requestAnimationFrame(tick);
+})(performance.now());
+
+/* ---------- filters ---------- */
+const $ = id => document.getElementById(id);
+const FACETS = [['use', 'Use case'], ['stack', 'Stack'], ['trigger', 'Trigger'], ['family', 'Easing']];
+const state = { use: null, stack: null, trigger: null, family: null, q: '' };
+let selected = null;
+const famKey = f => Object.keys(FAMILY).find(k => FAMILY[k] === f);
+
+$('side').innerHTML = FACETS.map(([k, name]) => `<div class="facet"><div class="label">${name}</div>${
+  [...new Set(MOTIONS.map(m => m[k]))].map(v =>
+    `<button aria-pressed="false" data-k="${k}" data-v="${v}">${k === 'family' ? `<em style="background: var(--${famKey(v)})"></em>` : ''}${v}<span>${MOTIONS.filter(m => m[k] === v).length}</span></button>`).join('')
+}</div>`).join('') + `<button class="clear" id="clear" hidden>Clear filters</button>`;
+
+function syncFacets() {
+  document.querySelectorAll('.facet button').forEach(b => b.setAttribute('aria-pressed', state[b.dataset.k] === b.dataset.v));
+  $('clear').hidden = !FACETS.some(([k]) => state[k]) && !state.q;
+}
+function resetFilters() { Object.assign(state, { use: null, stack: null, trigger: null, family: null, q: '' }); $('q').value = ''; syncFacets(); render(); }
+$('side').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.id === 'clear') return resetFilters();
+  state[b.dataset.k] = state[b.dataset.k] === b.dataset.v ? null : b.dataset.v;
+  syncFacets(); render();
+});
+$('q').oninput = e => { state.q = e.target.value; syncFacets(); render(); };
+addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); $('q').focus(); }
+  if (e.key === 'Escape') closeInspector();
+});
+
+/* ---------- cards ---------- */
+function render() {
+  const q = state.q.trim().toLowerCase();
+  const list = MOTIONS.filter(m => FACETS.every(([k]) => !state[k] || m[k] === state[k]) &&
+    (!q || [m.title, m.use, m.stack, m.trigger, m.easeLabel, ...m.props].join(' ').toLowerCase().includes(q)));
+  $('count').textContent = list.length;
+  for (const k of [...playing.keys()]) if (k !== 'insp') playing.delete(k);
+  const cards = $('cards');
+  cards.replaceChildren();
+  if (!list.length) { cards.innerHTML = `<p class="empty">No motions match these filters. Clear them from the sidebar, or try a broader search.</p>`; return; }
+  for (const m of list) {
+    const card = document.createElement('button');
+    card.className = 'card'; card.dataset.id = m.id;
+    card.setAttribute('aria-pressed', selected === m);
+    const g = makeGraph(m, 240, 150);
+    card.append(g.el);
+    card.insertAdjacentHTML('beforeend', `<div class="meta"><h3>${m.title}</h3>
+      <div class="row"><span>${m.dur}ms</span><span class="e" style="--c: var(--${m.ease.t})">${m.easeShort}</span></div>
+      <div class="tags">${m.use} · ${m.trigger}</div></div>`);
+    card.addEventListener('pointerenter', () => play(m.id, m, g.set));
+    card.addEventListener('pointerleave', () => stop(m.id));
+    card.addEventListener('focus', () => play(m.id, m, g.set));
+    card.addEventListener('blur', () => stop(m.id));
+    card.addEventListener('click', () => select(m, true));
+    cards.append(card);
+  }
+}
+
+/* ---------- inspector ---------- */
+let tab = 'prompt';
+const texts = m => ({
+  prompt: `Add the "${m.title}" motion to my project.\n\nSpec: https://motion-index.example/m/${m.id}.json\nTrigger: ${m.trigger.toLowerCase()}\nDuration: ${m.dur} ms\nEasing: ${m.easeLabel}\nAnimate: ${m.props.join(', ')}\n\nApply it to my existing components and styles. Give it a prefers-reduced-motion fallback.`,
+  spec: JSON.stringify({ id: m.id, useCase: m.use, stack: m.stack, trigger: m.trigger, durationMs: m.dur, easing: m.ease.t === 'spring' ? { type: 'spring', stiffness: m.ease.k, damping: m.ease.c, mass: 1 } : m.easeLabel, tracks: m.tracks.map(t => ({ property: t.prop, keyframes: t.keys })), reducedMotion: 'crossfade' }, null, 2),
+  css: `.target {\n  transition: ${m.props[0]} ${m.dur}ms ${m.easeCss};\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .target { transition: opacity 150ms linear; }\n}`,
+});
+function showTab() {
+  $('i-code').textContent = texts(selected)[tab];
+  document.querySelectorAll('#i-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
+  $('i-copy').textContent = { prompt: 'Copy prompt', spec: 'Copy spec', css: 'Copy CSS' }[tab];
+}
+function select(m, open) {
+  selected = m;
+  document.querySelectorAll('.card').forEach(c => c.setAttribute('aria-pressed', c.dataset.id === m.id));
+  $('i-use').textContent = m.use;
+  $('i-title').textContent = m.title;
+  $('i-src').textContent = m.src === 'placeholder' ? 'Placeholder entry' : `Placeholder curve · reference by ${m.src}`;
+  const g = makeGraph(m, 404, 232);
+  $('i-graph').replaceChildren(g.el);
+  $('i-dope').style.setProperty('--c', `var(--${m.ease.t})`);
+  $('i-dope').innerHTML = `<div class="ruler"><i></i><div>${[0, .25, .5, .75, 1].map(p => `<span style="left:${p * 100}%">${Math.round(p * m.dur)}</span>`).join('')}</div></div>` +
+    m.tracks.map(t => `<div class="track"><span>${t.prop}</span><div><u style="left:${t.keys[0] * 100}%; width:${(t.keys.at(-1) - t.keys[0]) * 100}%"></u>${t.keys.map(k => `<b style="left:${k * 100}%"></b>`).join('')}</div></div>`).join('') +
+    `<div class="dope-ph" id="dope-ph"></div>`;
+  const ph = $('dope-ph');
+  const set = p => { g.set(p); ph.style.left = `calc(104px + (100% - 104px) * ${p})`; };
+  set(1);
+  playing.delete('insp'); play('insp', m, set);
+  $('i-kv').innerHTML = [['Trigger', m.trigger], ['Duration', m.dur + ' ms'], ['Easing', m.easeLabel], ['Family', m.family], ['Stack', m.stack], ['Reduced motion', 'crossfade']].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+  tab = 'prompt'; showTab();
+  if (open) { $('insp').classList.add('open'); $('scrim').classList.add('open'); history.replaceState(null, '', '#' + m.id); }
+}
+function closeInspector() { $('insp').classList.remove('open'); $('scrim').classList.remove('open'); }
+$('i-close').onclick = $('scrim').onclick = closeInspector;
+$('i-tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { tab = b.dataset.tab; showTab(); } });
+$('i-copy').onclick = async () => {
+  try { await navigator.clipboard.writeText(texts(selected)[tab]); $('i-copy').textContent = 'Copied'; }
+  catch { $('i-copy').textContent = 'Copy failed. Select the text above instead.'; }
+  setTimeout(showTab, 1600);
+};
+
+const linked = MOTIONS.find(m => m.id === location.hash.slice(1));
+selected = linked || MOTIONS[0];
+render();
+select(selected, !!linked);
+</script>
+</body>
+</html>

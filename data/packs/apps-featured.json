@@ -1,0 +1,814 @@
+[
+  {
+    "id": "app-duolingo-progress-surge",
+    "title": "Duolingo: Lesson Progress Surge",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 290,
+      "c": 19
+    },
+    "easeLabel": "spring(290, 19)",
+    "props": [
+      "width (progress fill)",
+      "transform: translateX (gloss highlight)",
+      "transform: translate + scale (sparkle burst)",
+      "opacity"
+    ],
+    "src": "Duolingo",
+    "srcUrl": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Duolingo",
+      "slug": "duolingo",
+      "category": "Education",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#58CC02",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/de/b3/f2/deb3f2ac-20ea-3015-e957-79fef651a3c8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128?uo=4",
+      "bundleId": "com.duolingo.DuolingoMobile"
+    },
+    "summary": "Answering a lesson step springs the rounded green bar forward with ~7% overshoot, sweeps a top-edge specular gloss band, and pops radial gold sparkles at the leading cap.",
+    "hint": "Click button to advance lesson",
+    "choreography": [
+      "0-40ms: CTA button depresses 4px onto its bottom lip (box-shadow collapses from 0 4px to 0 0) for instant tactile feedback.",
+      "40-340ms: fill width springs toward the next step (k=290, c=19) with elastic overshoot while an inner top highlight bar maintains fixed 4px inset.",
+      "120-520ms: 6 radial sparkle dots erupt from the bar's right tip (scale 0->1.2->0, translate 14-26px) as combo badge pops."
+    ],
+    "agentPrompt": "Build a Duolingo-style lesson progress bar: a 16px-tall pill track (#e5e5e5) containing a rounded fill (#58cc02) with a lighter inner top specular strip (rgba(255,255,255,0.28), height 4px, top 3px, left/right 8px).\nAnimate the fill percentage via a damped spring (k=290, c=19, 4 substeps/frame) so each step overshoots slightly and settles crisply without sluggishness.\nOn every step advance, emit 6 tiny circular/diamond sparkles (#ffc800, #58cc02) anchored to the fill's leading edge, bursting radially 16-28px over 460ms cubic-bezier(0.16, 1, 0.3, 1) while scaling 0 -> 1.15 -> 0.\nPair with a 3D lipped button (#58cc02, border-bottom/shadow 4px #46a302) that translates down 4px on :active and pops a '+10 XP' floating pill upward 18px on click.",
+    "extractableCode": "<!-- Duolingo Lesson Progress Surge -->\n<div class=\"duo-wrap\">\n  <div class=\"duo-track\">\n    <div class=\"duo-fill\"><span class=\"duo-gloss\"></span></div>\n    <div class=\"duo-sparks\"></div>\n  </div>\n  <button class=\"duo-btn\" type=\"button\">Check answer</button>\n</div>\n<style>\n  .duo-track { position: relative; height: 16px; border-radius: 999px; background: #e5e5e5; overflow: visible; }\n  .duo-fill { position: relative; height: 100%; border-radius: 999px; background: #58cc02; min-width: 16px; }\n  .duo-gloss { position: absolute; left: 8px; right: 8px; top: 3px; height: 4px; border-radius: 999px; background: rgba(255,255,255,.32); }\n  .duo-btn { margin-top: 20px; padding: 11px 22px; border: 0; border-radius: 14px; background: #58cc02; color: #fff; font: 700 14px system-ui; box-shadow: 0 4px 0 #46a302; cursor: pointer; transition: transform .08s, box-shadow .08s; }\n  .duo-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #46a302; }\n</style>",
+    "html": "<div class=\"m-app-duo-prog\"><div class=\"m-app-duo-prog__card\"><div class=\"m-app-duo-prog__row\"><div class=\"m-app-duo-prog__track\"><div class=\"m-app-duo-prog__fill\"><span class=\"m-app-duo-prog__gloss\"></span></div><div class=\"m-app-duo-prog__sparks\"></div></div><span class=\"m-app-duo-prog__xp\">+10 XP</span></div><button type=\"button\" class=\"m-app-duo-prog__btn\">Check Answer</button></div></div>",
+    "css": ".m-app-duo-prog{position:absolute;inset:0;display:grid;place-items:center;background:#f7f8f5;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;user-select:none}.m-app-duo-prog__card{width:min(84%,300px);display:flex;flex-direction:column;align-items:center;gap:22px}.m-app-duo-prog__row{position:relative;width:100%;display:flex;align-items:center}.m-app-duo-prog__track{position:relative;width:100%;height:16px;border-radius:999px;background:#e5e5e5}.m-app-duo-prog__fill{position:relative;height:100%;width:20%;border-radius:999px;background:#58cc02;transition:background .2s}.m-app-duo-prog__fill.is-hot{background:#ffc800}.m-app-duo-prog__gloss{position:absolute;left:8px;right:8px;top:3px;height:4px;border-radius:999px;background:rgba(255,255,255,.35)}.m-app-duo-prog__sparks{position:absolute;inset:0;pointer-events:none}.m-app-duo-prog__spark{position:absolute;top:50%;width:7px;height:7px;border-radius:50%;margin:-3.5px 0 0 -3.5px;animation:m-duo-spark .48s cubic-bezier(.16,1,.3,1) forwards}@keyframes m-duo-spark{0%{transform:translate(0,0) scale(0);opacity:1}45%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}.m-app-duo-prog__xp{position:absolute;right:0;top:-24px;font:700 12px/1 'Geist Mono',monospace;color:#58cc02;opacity:0;transform:translateY(6px);transition:none;pointer-events:none}.m-app-duo-prog__xp.pop{animation:m-duo-xp .65s cubic-bezier(.2,.9,.2,1) forwards}@keyframes m-duo-xp{0%{opacity:0;transform:translateY(8px) scale(.85)}25%{opacity:1;transform:translateY(-2px) scale(1.06)}100%{opacity:0;transform:translateY(-14px) scale(.96)}}.m-app-duo-prog__btn{border:0;border-radius:14px;padding:10px 24px;background:#58cc02;color:#fff;font:700 13.5px/1 inherit;letter-spacing:.01em;box-shadow:0 4px 0 #46a302;cursor:pointer;transition:transform .08s,box-shadow .08s}.m-app-duo-prog__btn:active,.m-app-duo-prog__btn.is-down{transform:translateY(4px);box-shadow:0 0 0 #46a302}",
+    "js": "var el=root.querySelector('.m-app-duo-prog');if(!el)return;var fill=el.querySelector('.m-app-duo-prog__fill'),sparks=el.querySelector('.m-app-duo-prog__sparks'),xp=el.querySelector('.m-app-duo-prog__xp'),btn=el.querySelector('.m-app-duo-prog__btn');var step=1,steps=[18,38,58,78,100],x=18,v=0,target=18,last=performance.now(),raf=0,dead=false,touched=false;function burst(pct){sparks.innerHTML='';var colors=['#ffc800','#58cc02','#ff9600','#89e219'];for(var i=0;i<6;i++){var a=(i/6)*Math.PI*2-0.5,d=16+Math.random()*12;var s=document.createElement('span');s.className='m-app-duo-prog__spark';s.style.left=Math.min(98,pct)+'%';s.style.background=colors[i%colors.length];s.style.setProperty('--dx',(Math.cos(a)*d).toFixed(1)+'px');s.style.setProperty('--dy',(Math.sin(a)*d).toFixed(1)+'px');sparks.appendChild(s);}xp.classList.remove('pop');void xp.offsetWidth;xp.classList.add('pop');}function advance(){step=(step+1)%steps.length;target=steps[step];fill.classList.toggle('is-hot',target>=100);if(target>18)burst(target);btn.classList.add('is-down');setTimeout(function(){btn.classList.remove('is-down');},100);}function frame(now){if(dead)return;var dt=Math.min(0.032,(now-last)/1000);last=now;for(var i=0;i<4;i++){var h=dt/4;v+=(-290*(x-target)-19*v)*h;x+=v*h;}fill.style.width=Math.max(10,Math.min(100,x)).toFixed(2)+'%';raf=requestAnimationFrame(frame);}btn.addEventListener('click',function(){touched=true;advance();});var auto=setInterval(function(){if(!touched&&!document.hidden)advance();},2100);raf=requestAnimationFrame(frame);return function(){dead=true;clearInterval(auto);cancelAnimationFrame(raf);};"
+  },
+  {
+    "id": "app-duolingo-streak-ignition",
+    "title": "Duolingo: Streak Flame Ignition",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 680,
+    "ease": {
+      "t": "spring",
+      "k": 240,
+      "c": 14
+    },
+    "easeLabel": "spring(240, 14)",
+    "props": [
+      "transform: scaleX + scaleY (squash & stretch)",
+      "transform: translateY (digit odometer)",
+      "fill + filter: drop-shadow (glow)"
+    ],
+    "src": "Duolingo",
+    "srcUrl": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Duolingo",
+      "slug": "duolingo",
+      "category": "Education",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#58CC02",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/de/b3/f2/deb3f2ac-20ea-3015-e957-79fef651a3c8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128?uo=4",
+      "bundleId": "com.duolingo.DuolingoMobile"
+    },
+    "summary": "Completing a daily streak squashes the dormant gray flame before exploding it upward into an elastic orange-gold blaze while the streak counter flips up by one.",
+    "hint": "Tap flame to ignite streak",
+    "choreography": [
+      "0-110ms: anticipation squash to scale(1.16, 0.82) anchored at bottom center.",
+      "110-440ms: flame snaps from #52525b to #ff9600/#ffc800, stretches to scale(0.88, 1.24), then rings back on spring(240, 14) while a warm halo ring expands.",
+      "180-680ms: tabular counter translates upward (-100%) with slight overshoot to reveal the incremented day count."
+    ],
+    "agentPrompt": "Anchor a two-path SVG flame (outer #ff9600, inner core #ffc800) at transform-origin: 50% 90%.\nOn trigger, run an anticipation squash (110ms to scaleX 1.16, scaleY 0.82), then release into a spring(k=240, c=14) with an upward velocity kick so the flame stretches vertically (scaleX 0.88, scaleY 1.24) and settles with 2 playful oscillations.\nSimultaneously transition fill from muted #3f3f46 to vibrant orange, expand a 1.5px radial halo ring (scale 0.6 -> 1.85, opacity 0.7 -> 0 over 540ms), and roll the streak integer inside an overflow-hidden 1em viewport using translateY with cubic-bezier(0.22, 1.28, 0.36, 1).",
+    "extractableCode": "<!-- Duolingo Streak Flame Ignition -->\n<button class=\"streak\" type=\"button\">\n  <svg class=\"flame\" viewBox=\"0 0 64 76\"><path class=\"outer\" d=\"M33 4C46 19 56 31 56 46a24 24 0 1 1-48 0c0-11 6-20 13-27 0 8 4 12 8 13-2-10 1-20 4-28z\"/><path class=\"inner\" d=\"M33 34c7 8 11 14 11 21a12 12 0 1 1-24 0c0-6 4-11 7-15 1 4 3 6 5 6 0-4 0-8 1-12z\"/></svg>\n  <span class=\"num\">42</span>\n</button>",
+    "html": "<div class=\"m-app-duo-flame\"><button type=\"button\" class=\"m-app-duo-flame__stage\" aria-label=\"Ignite streak\"><span class=\"m-app-duo-flame__ring\"></span><svg class=\"m-app-duo-flame__svg\" viewBox=\"0 0 64 76\" aria-hidden=\"true\"><path class=\"m-app-duo-flame__outer\" d=\"M33 4C46 19 56 31 56 46a24 24 0 1 1-48 0c0-11 6-20 13-27 0 8 4 12 8 13-2-10 1-20 4-28z\"/><path class=\"m-app-duo-flame__inner\" d=\"M33 34c7 8 11 14 11 21a12 12 0 1 1-24 0c0-6 4-11 7-15 1 4 3 6 5 6 0-4 0-8 1-12z\"/></svg><div class=\"m-app-duo-flame__meta\"><div class=\"m-app-duo-flame__numwrap\"><div class=\"m-app-duo-flame__reel\"><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span></div></div><span class=\"m-app-duo-flame__lbl\">day streak</span></div></button></div>",
+    "css": ".m-app-duo-flame{position:absolute;inset:0;display:grid;place-items:center;background:#131f24;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-duo-flame__stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;border:0;background:none;color:#fff;cursor:pointer;padding:12px}.m-app-duo-flame__ring{position:absolute;top:16px;width:72px;height:72px;border-radius:50%;border:2px solid #ff9600;opacity:0;pointer-events:none}.m-app-duo-flame.is-lit .m-app-duo-flame__ring{animation:m-flame-ring .58s cubic-bezier(.16,1,.3,1)}.m-app-duo-flame__svg{width:62px;height:74px;transform-origin:50% 90%;overflow:visible}.m-app-duo-flame__outer{fill:#3c4a52;transition:fill .2s}.m-app-duo-flame__inner{fill:#52646e;transition:fill .2s}.m-app-duo-flame.is-lit .m-app-duo-flame__outer{fill:#ff9600;filter:drop-shadow(0 6px 18px rgba(255,150,0,.45))}.m-app-duo-flame.is-lit .m-app-duo-flame__inner{fill:#ffc800}.m-app-duo-flame.is-pop .m-app-duo-flame__svg{animation:m-flame-pop .64s cubic-bezier(.22,1.28,.36,1)}.m-app-duo-flame__meta{display:flex;flex-direction:column;align-items:center;gap:2px}.m-app-duo-flame__numwrap{height:30px;overflow:hidden;font:800 28px/30px 'Geist Mono',monospace;color:#ff9600}.m-app-duo-flame__reel{display:flex;flex-direction:column;transition:transform .52s cubic-bezier(.22,1.28,.36,1)}.m-app-duo-flame__lbl{font:600 12px/1 inherit;color:#93a5af;letter-spacing:.02em;text-transform:uppercase}@keyframes m-flame-pop{0%{transform:scale(1,1)}18%{transform:scale(1.18,.8)}44%{transform:scale(.86,1.24)}68%{transform:scale(1.06,.95)}84%{transform:scale(.98,1.03)}100%{transform:scale(1,1)}}@keyframes m-flame-ring{0%{transform:scale(.6);opacity:.85}100%{transform:scale(1.9);opacity:0}}",
+    "js": "var el=root.querySelector('.m-app-duo-flame');if(!el)return;var btn=el.querySelector('.m-app-duo-flame__stage'),reel=el.querySelector('.m-app-duo-flame__reel');var idx=0,touched=false,dead=false;function trigger(){idx=(idx+1)%5;el.classList.remove('is-pop','is-lit');void el.offsetWidth;el.classList.add('is-lit','is-pop');reel.style.transform='translateY(-'+(idx*30)+'px)';}btn.addEventListener('click',function(){touched=true;trigger();});var t0=setTimeout(function(){if(!touched&&!dead)trigger();},600);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)trigger();},2600);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-apple-wallet-card-fan",
+    "title": "Apple Wallet: Stacked Pass Spring Pull-Out",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 26
+    },
+    "easeLabel": "spring(310, 26)",
+    "props": [
+      "transform: translateY + scale",
+      "opacity (inactive passes)",
+      "box-shadow (elevation)"
+    ],
+    "src": "Apple Wallet",
+    "srcUrl": "https://apps.apple.com/us/app/apple-wallet/id1160481993",
+    "collection": "Apps",
+    "app": {
+      "name": "Apple Wallet",
+      "slug": "apple-wallet",
+      "category": "System UI",
+      "platform": [
+        "iOS"
+      ],
+      "accent": "#0A84FF",
+      "iconUrl": "",
+      "storeUrl": "https://apps.apple.com/us/app/apple-wallet/id1160481993",
+      "bundleId": "com.apple.Passbook"
+    },
+    "summary": "Tapping any stacked pass elevates it smoothly to the top focal slot while non-selected cards compress and tuck into a tight bottom fan on critically damped iOS springs.",
+    "hint": "Tap any pass to pull it forward",
+    "choreography": [
+      "0ms: selected card detaches from its stack offset (index * 28px) and glides to y=0, scale=1 with elevated ambient shadow.",
+      "0-460ms: remaining cards simultaneously collapse downward to y=132px + subIndex*9px at scale 0.94 - subIndex*0.02 and dim to 0.72 opacity.",
+      "Re-tapping the focused card returns the entire deck to its uniform 28px staggered cascade."
+    ],
+    "agentPrompt": "Stack 4 payment/boarding cards (border-radius 14px, aspect-ratio ~1.6:1) using absolute positioning and GPU-only transform: translateY() scale().\nIn stacked state, card i rests at translateY(i * 28px) scale(1 - (3-i)*0.015). When card k is tapped, animate card k to translateY(0px) scale(1) z-index 10, while every other card j collapses to a bottom peek dock at translateY(134px + rank*8px) scale(0.92 - rank*0.02) and opacity 0.65.\nDrive transitions with iOS-style damped spring cubic-bezier(0.22, 1, 0.36, 1) over 460ms (or physics spring k=310, c=26), and add a subtle specular top-edge 1px white highlight (rgba(255,255,255,0.22)) on each card.",
+    "extractableCode": "<!-- Apple Wallet Stacked Pass Fan -->\n<div class=\"wallet\" data-active=\"-1\">\n  <button class=\"pass p0\">Apple Card</button>\n  <button class=\"pass p1\">Boarding Pass · SFO</button>\n  <button class=\"pass p2\">Transit · Suica</button>\n</div>",
+    "html": "<div class=\"m-app-wallet\"><div class=\"m-app-wallet__deck\"><button type=\"button\" class=\"m-app-wallet__card\" data-i=\"0\" style=\"--bg:linear-gradient(135deg,#2c2c2e,#1c1c1e)\"><span>Apple Card</span><b>•••• 4092</b></button><button type=\"button\" class=\"m-app-wallet__card\" data-i=\"1\" style=\"--bg:linear-gradient(135deg,#0a84ff,#004bb5)\"><span>Flight · TP 237</span><b>LIS → SFO</b></button><button type=\"button\" class=\"m-app-wallet__card\" data-i=\"2\" style=\"--bg:linear-gradient(135deg,#30d158,#148035)\"><span>Transit</span><b>Suica · ¥3,420</b></button><button type=\"button\" class=\"m-app-wallet__card\" data-i=\"3\" style=\"--bg:linear-gradient(135deg,#ff9f0a,#c95c00)\"><span>Member Pass</span><b>Studio #084</b></button></div></div>",
+    "css": ".m-app-wallet{position:absolute;inset:0;display:grid;place-items:center;background:#0a0a0c;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif}.m-app-wallet__deck{position:relative;width:min(78%,236px);height:192px}.m-app-wallet__card{position:absolute;left:0;top:0;width:100%;height:112px;border:0;border-radius:14px;padding:13px 15px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;color:#fff;background:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 10px 26px rgba(0,0,0,.42);cursor:pointer;transition:transform .46s cubic-bezier(.22,1,.36,1),opacity .34s ease,filter .34s ease;will-change:transform}.m-app-wallet__card span{font:600 12px/1 inherit;opacity:.92}.m-app-wallet__card b{font:500 13px/1 'Geist Mono',monospace;opacity:.82}",
+    "js": "var el=root.querySelector('.m-app-wallet');if(!el)return;var cards=[].slice.call(el.querySelectorAll('.m-app-wallet__card'));var active=-1,touched=false,dead=false;function layout(){var rank=0;cards.forEach(function(c,i){if(active===-1){c.style.zIndex=String(i+1);c.style.transform='translateY('+(i*25)+'px) scale('+(0.955+i*0.015)+')';c.style.opacity='1';c.style.filter='brightness(1)';}else if(i===active){c.style.zIndex='20';c.style.transform='translateY(0px) scale(1)';c.style.opacity='1';c.style.filter='brightness(1)';}else{c.style.zIndex=String(rank+1);c.style.transform='translateY('+(134+rank*8)+'px) scale('+(0.92-rank*0.025)+')';c.style.opacity='0.62';c.style.filter='brightness(.78)';rank++;}});}cards.forEach(function(c,i){c.addEventListener('click',function(){touched=true;active=(active===i?-1:i);layout();});});var seq=[1,-1,2,-1],k=0;var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){active=seq[k++%seq.length];layout();}},2300);layout();return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-spotify-miniplayer-expand",
+    "title": "Spotify: Now-Playing Mini-Player Expand",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "height + border-radius (container morph)",
+      "transform: translate + scale (shared album cover)",
+      "transform: scaleY (live equalizer bars)"
+    ],
+    "src": "Spotify",
+    "srcUrl": "https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Spotify",
+      "slug": "spotify",
+      "category": "Music",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#1DB954",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ce/b5/1c/ceb51c33-0a63-56fb-db99-5d345728ae9e/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580?uo=4",
+      "bundleId": "com.spotify.client"
+    },
+    "summary": "Tapping the docked Now Playing pill morphs its container into a color-tinted full player while the album cover smoothly scales and centers via shared-element motion.",
+    "hint": "Tap mini-player to expand / collapse",
+    "choreography": [
+      "0-420ms: floating bar expands from 54px height to 198px card as background gradient deepens to the track's extracted accent hue.",
+      "0-420ms: square artwork morphs from 36px left-docked thumbnail to 88px centered hero via shared transform interpolation.",
+      "120-340ms: scrubber and playback controls fade and rise 10px into place; 3 audio bars oscillate continuously."
+    ],
+    "agentPrompt": "Build a Spotify shared-element mini-player transition: a floating container (border-radius 12px -> 18px) tinted with a subtle gradient derived from album art (#1e3a2f -> #121212).\nOn toggle, animate container height (54px <-> 200px) over 420ms cubic-bezier(0.22, 1, 0.36, 1), while positioning the album artwork with smooth translate/scale so it glides seamlessly from a 36px left thumbnail to an 86px top-centered cover.\nFade secondary controls (scrubber + prev/play/next) in with a 110ms delay and translateY(10px -> 0) on expand, and fade them out immediately (120ms) on collapse so they never clip. Include 3 green (#1db954) equalizer bars animating scaleY at staggered rhythms.",
+    "extractableCode": "<!-- Spotify Mini-Player Expand -->\n<div class=\"sp-player\" data-open=\"false\">...</div>",
+    "html": "<div class=\"m-app-spot\"><div class=\"m-app-spot__shell\" role=\"button\" tabindex=\"0\" aria-expanded=\"false\"><div class=\"m-app-spot__art\"><span class=\"m-app-spot__disc\"></span></div><div class=\"m-app-spot__info\"><b>Midnight City</b><span>M83 · Hurry Up, We're Dreaming</span></div><div class=\"m-app-spot__eq\" aria-hidden=\"true\"><i></i><i></i><i></i></div><div class=\"m-app-spot__ctrl\"><div class=\"m-app-spot__bar\"><span></span></div><div class=\"m-app-spot__btns\"><span>⏮</span><b>▶</b><span>⏭</span></div></div></div></div>",
+    "css": ".m-app-spot{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:18px;background:#0e0f11;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-spot__shell{position:relative;width:min(92%,260px);height:54px;border-radius:12px;background:linear-gradient(160deg,#1d4534,#14251e 58%,#121214);box-shadow:0 14px 34px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.12);overflow:hidden;cursor:pointer;transition:height .42s cubic-bezier(.22,1,.36,1),border-radius .42s cubic-bezier(.22,1,.36,1)}.m-app-spot__shell.is-open{height:202px;border-radius:18px}.m-app-spot__art{position:absolute;left:9px;top:9px;width:36px;height:36px;border-radius:7px;background:radial-gradient(circle at 30% 30%,#39e878,#147a3a 60%,#0c2c1b);box-shadow:0 6px 18px rgba(0,0,0,.4);transition:transform .42s cubic-bezier(.22,1,.36,1),border-radius .42s ease;transform-origin:0 0}.m-app-spot__shell.is-open .m-app-spot__art{transform:translate(82px,10px) scale(2.15);border-radius:5px}.m-app-spot__info{position:absolute;left:54px;top:12px;right:44px;display:flex;flex-direction:column;gap:2px;transition:transform .42s cubic-bezier(.22,1,.36,1),text-align .2s}.m-app-spot__info b{font:600 12.5px/1.15 inherit;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.m-app-spot__info span{font:400 10.5px/1.15 inherit;color:rgba(255,255,255,.64);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.m-app-spot__shell.is-open .m-app-spot__info{transform:translate(-38px,98px);right:16px}.m-app-spot__eq{position:absolute;right:14px;top:20px;display:flex;align-items:flex-end;gap:2.5px;height:14px;transition:opacity .2s}.m-app-spot__eq i{width:2.5px;border-radius:2px;background:#1db954;animation:m-spot-eq .75s ease-in-out infinite alternate}.m-app-spot__eq i:nth-child(2){animation-delay:.18s;animation-duration:.58s}.m-app-spot__eq i:nth-child(3){animation-delay:.34s;animation-duration:.68s}@keyframes m-spot-eq{0%{height:4px}100%{height:14px}}.m-app-spot__shell.is-open .m-app-spot__eq{opacity:0}.m-app-spot__ctrl{position:absolute;left:16px;right:16px;bottom:14px;opacity:0;transform:translateY(10px);transition:opacity .16s ease,transform .25s ease}.m-app-spot__shell.is-open .m-app-spot__ctrl{opacity:1;transform:translateY(0);transition:opacity .28s ease .14s,transform .36s cubic-bezier(.22,1,.36,1) .12s}.m-app-spot__bar{height:3px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;margin-bottom:10px}.m-app-spot__bar span{display:block;width:44%;height:100%;background:#fff;border-radius:99px}.m-app-spot__btns{display:flex;justify-content:center;align-items:center;gap:22px;color:#fff;font-size:12px}.m-app-spot__btns b{width:28px;height:28px;border-radius:50%;background:#fff;color:#121214;display:grid;place-items:center;font-size:11px;padding-left:2px}",
+    "js": "var el=root.querySelector('.m-app-spot__shell');if(!el)return;var open=false,touched=false,dead=false;function toggle(){open=!open;el.classList.toggle('is-open',open);el.setAttribute('aria-expanded',String(open));}el.addEventListener('click',function(){touched=true;toggle();});var t0=setTimeout(function(){if(!touched&&!dead)toggle();},900);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)toggle();},3100);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-linear-command-snap",
+    "title": "Linear: Command Menu Snap & Row Glide",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 190,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.16,
+        1,
+        0.3,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "props": [
+      "transform: translateY (selection bar)",
+      "transform: scale + opacity (dialog enter)",
+      "background-color"
+    ],
+    "src": "Linear",
+    "srcUrl": "https://apps.apple.com/us/app/linear-mobile/id1645587184?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Linear",
+      "slug": "linear",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#5E6AD2",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8c/09/eb/8c09eb3e-ae7b-cf49-673b-610b7b0c371f/Linear-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/linear-mobile/id1645587184?uo=4",
+      "bundleId": "com.linear.ios"
+    },
+    "summary": "A razor-sharp 190ms scale-in command palette paired with a single floating highlight pill that tracks hover or keyboard selection with zero visual lag.",
+    "hint": "Hover or click rows inside command menu",
+    "choreography": [
+      "0-190ms: palette enters from scale(0.96) translateY(-6px) opacity 0 to rest with fast expo-out cubic-bezier(0.16, 1, 0.3, 1) — zero bounce.",
+      "Selection highlight is a single absolutely positioned backing plate whose translateY slides between rows in 140ms.",
+      "Keyboard shortcut chips brighten cleanly as the highlight aligns."
+    ],
+    "agentPrompt": "Recreate Linear's tactile, zero-bounce command menu:\n1. Entrance: animate the modal from opacity 0, transform: scale(0.96) translateY(-6px) to identity over 190ms cubic-bezier(0.16, 1, 0.3, 1) with a 1px rgba(255,255,255,0.09) border and deep layered shadow.\n2. Gliding selection indicator: instead of per-row background flashes, render one absolute backing pill behind the list items (rgba(255,255,255,0.07), border-radius 7px) and animate its translateY to the active row's offsetTop over 130ms cubic-bezier(0.2, 0.9, 0.2, 1).\n3. Keep typography crisp (12.5px medium, muted #8a8f98 inactive -> #f7f8f8 active) and pair right-aligned mono keycaps.",
+    "extractableCode": "<!-- Linear Command Palette with Gliding Row Highlight -->\n<div class=\"cmd\">\n  <div class=\"cmd-list\"><span class=\"cmd-hi\"></span><button>Set Priority</button><button>Assign to me</button><button>Change Status</button></div>\n</div>",
+    "html": "<div class=\"m-app-lin\"><div class=\"m-app-lin__box\"><div class=\"m-app-lin__head\"><span>Type a command…</span><kbd>⌘K</kbd></div><div class=\"m-app-lin__list\"><span class=\"m-app-lin__hi\"></span><button type=\"button\" data-i=\"0\"><i>●</i><span>Set priority to Urgent</span><kbd>P</kbd></button><button type=\"button\" data-i=\"1\"><i>◐</i><span>Move to In Progress</span><kbd>S</kbd></button><button type=\"button\" data-i=\"2\"><i>◎</i><span>Assign to me</span><kbd>I</kbd></button><button type=\"button\" data-i=\"3\"><i>↗</i><span>Copy issue branch</span><kbd>⇧⌘.</kbd></button></div></div></div>",
+    "css": ".m-app-lin{position:absolute;inset:0;display:grid;place-items:center;background:#0c0d10;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-lin__box{width:min(88%,268px);border-radius:12px;background:#16171c;border:1px solid rgba(255,255,255,.09);box-shadow:0 20px 50px rgba(0,0,0,.6);overflow:hidden;animation:m-lin-in .22s cubic-bezier(.16,1,.3,1)}@keyframes m-lin-in{from{opacity:0;transform:scale(.96) translateY(-6px)}to{opacity:1;transform:none}}.m-app-lin__head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12px;color:#787d89}.m-app-lin__head kbd,.m-app-lin__list kbd{font:500 10px 'Geist Mono',monospace;padding:2px 5px;border-radius:4px;background:rgba(255,255,255,.06);color:#9aa0ad;border:1px solid rgba(255,255,255,.08)}.m-app-lin__list{position:relative;padding:5px;display:flex;flex-direction:column}.m-app-lin__hi{position:absolute;left:5px;right:5px;top:5px;height:31px;border-radius:7px;background:rgba(94,106,210,.22);border:1px solid rgba(94,106,210,.35);transition:transform .14s cubic-bezier(.2,.9,.2,1);pointer-events:none}.m-app-lin__list button{position:relative;z-index:1;height:31px;padding:0 9px;border:0;background:none;display:flex;align-items:center;gap:8px;color:#9ea4b0;font:500 12px/1 inherit;text-align:left;cursor:pointer;transition:color .12s}.m-app-lin__list button.is-on{color:#f7f8f8}.m-app-lin__list button i{font-style:normal;color:#5e6ad2;font-size:11px}.m-app-lin__list button span{flex:1}",
+    "js": "var el=root.querySelector('.m-app-lin');if(!el)return;var hi=el.querySelector('.m-app-lin__hi'),rows=[].slice.call(el.querySelectorAll('.m-app-lin__list button'));var idx=0,touched=false,dead=false;function setIdx(i){idx=i;hi.style.transform='translateY('+(i*31)+'px)';rows.forEach(function(r,j){r.classList.toggle('is-on',j===i);});}rows.forEach(function(r,i){r.addEventListener('pointerenter',function(){touched=true;setIdx(i);});r.addEventListener('click',function(){touched=true;setIdx(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)setIdx((idx+1)%rows.length);},1350);setIdx(0);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-family-numeric-morph",
+    "title": "Family: Fluid Numeric Amount Morph",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 340,
+    "ease": {
+      "t": "spring",
+      "k": 360,
+      "c": 28
+    },
+    "easeLabel": "spring(360, 28)",
+    "props": [
+      "transform: translateY + scale (entering digits)",
+      "font-size / scale (auto-fit width)",
+      "opacity + filter: blur"
+    ],
+    "src": "Family",
+    "srcUrl": "https://apps.apple.com/us/app/family-crypto-wallet/id1606779267?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Family",
+      "slug": "family",
+      "category": "Utilities",
+      "platform": [
+        "iOS"
+      ],
+      "accent": "#2891FF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d3/64/df/d364df73-7b93-ff6c-2412-8449f26888e0/AppIcon-Teal-0-0-1x_U007ephone-0-1-0-P3-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/family-crypto-wallet/id1606779267?uo=4",
+      "bundleId": "org.lfe.wallet"
+    },
+    "summary": "Typing digits into Family Wallet springs each new character up from below with subtle blur dissipation while the centered numeric row smoothly re-centers and scales to fit.",
+    "hint": "Tap keypad digits or backspace",
+    "choreography": [
+      "0-260ms: each newly appended digit rises from translateY(18px) scale(0.72) blur(4px) to rest on spring(360, 28).",
+      "Existing digits shift horizontally to keep the figure dead-center; beyond 4 digits the container scales smoothly down to 0.78.",
+      "Backspace fades and drops the trailing digit down 12px while the remaining characters glide back to center."
+    ],
+    "agentPrompt": "Build Family Wallet's fluid numeric input animation:\nRender the dollar sign and each character as individual inline-flex spans inside a centered flex row with tabular-nums.\nWhen a digit is added, mount its span with initial state opacity: 0, transform: translateY(18px) scale(0.7), filter: blur(4px) and transition to identity over 260ms cubic-bezier(0.22, 1.15, 0.36, 1).\nAuto-scale the entire figure container (scale = Math.min(1, 5 / Math.max(4, len))) via spring(k=360, c=28) so long numbers compress gracefully without wrapping.\nGive keypad buttons a 90ms press-down to scale(0.92) with a subtle radial tap wash.",
+    "extractableCode": "<!-- Family Wallet Fluid Numeric Input -->\n<div class=\"fam-amount\"><span class=\"fam-cur\">$</span><span class=\"fam-digits\"></span></div>",
+    "html": "<div class=\"m-app-fam\"><div class=\"m-app-fam__wrap\"><div class=\"m-app-fam__display\"><span class=\"m-app-fam__cur\">$</span><span class=\"m-app-fam__digits\"></span></div><div class=\"m-app-fam__pad\"><button type=\"button\" data-k=\"1\">1</button><button type=\"button\" data-k=\"2\">2</button><button type=\"button\" data-k=\"5\">5</button><button type=\"button\" data-k=\"0\">0</button><button type=\"button\" data-k=\"del\">⌫</button></div></div></div>",
+    "css": ".m-app-fam{position:absolute;inset:0;display:grid;place-items:center;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Rounded','Host Grotesk',sans-serif;user-select:none}.m-app-fam__wrap{display:flex;flex-direction:column;align-items:center;gap:22px}.m-app-fam__display{display:inline-flex;align-items:baseline;font:700 44px/1 inherit;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#111317;transition:transform .28s cubic-bezier(.22,1.15,.36,1)}.m-app-fam__cur{color:#9ca3af;margin-right:2px;font-size:32px}.m-app-fam__digits{display:inline-flex}.m-app-fam__ch{display:inline-block;animation:m-fam-in .28s cubic-bezier(.22,1.18,.36,1) both}@keyframes m-fam-in{from{opacity:0;transform:translateY(16px) scale(.72);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}.m-app-fam__pad{display:flex;gap:8px}.m-app-fam__pad button{width:38px;height:38px;border:0;border-radius:12px;background:#f2f4f7;color:#111317;font:600 15px/1 inherit;cursor:pointer;transition:transform .09s,background .15s}.m-app-fam__pad button:hover{background:#e5e9f0}.m-app-fam__pad button:active{transform:scale(.9);background:#dbeafe;color:#2891ff}",
+    "js": "var el=root.querySelector('.m-app-fam');if(!el)return;var disp=el.querySelector('.m-app-fam__display'),digs=el.querySelector('.m-app-fam__digits'),btns=[].slice.call(el.querySelectorAll('.m-app-fam__pad button'));var val='25',touched=false,dead=false;function render(added){if(!added){digs.innerHTML='';for(var i=0;i<val.length;i++){var s=document.createElement('span');s.className='m-app-fam__ch';s.textContent=val[i];digs.appendChild(s);}}else{var n=document.createElement('span');n.className='m-app-fam__ch';n.textContent=added;digs.appendChild(n);}var sc=val.length>4?Math.max(0.68,1-(val.length-4)*0.11):1;disp.style.transform='scale('+sc.toFixed(3)+')';}function press(k){if(k==='del'){val=val.length>1?val.slice(0,-1):'0';render(null);}else{if(val==='0')val=k,render(null);else if(val.length<7){val+=k;render(k);}}}btns.forEach(function(b){b.addEventListener('click',function(){touched=true;press(b.dataset.k);});});var seq=['0','5','del','del','2','5','0'],si=0;var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){if(si===0){val='1';render(null);}press(seq[si%seq.length]);si=(si+1)%seq.length;}},1100);render(null);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-flighty-live-arc",
+    "title": "Flighty: Live Flight Arc & Split-Flap Gate",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 620,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset (geodesic path)",
+      "transform: translate + rotate (aircraft marker)",
+      "transform: rotateX (split-flap gate pill)"
+    ],
+    "src": "Flighty",
+    "srcUrl": "https://apps.apple.com/us/app/flighty-live-flight-tracker/id1358823008?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Flighty",
+      "slug": "flighty",
+      "category": "Travel",
+      "platform": [
+        "iOS"
+      ],
+      "accent": "#34C759",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/ea/00/96ea0054-b8fa-e987-f61b-07ed19bbacff/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/flighty-live-flight-tracker/id1358823008?uo=4",
+      "bundleId": "com.flightyapp.flighty"
+    },
+    "summary": "A glowing emerald flight arc draws smoothly toward the live aircraft beacon while gate changes snap through a mechanical split-flap rotateX flip.",
+    "hint": "Click card to cycle flight status & gate",
+    "choreography": [
+      "0-620ms: active geodesic arc updates stroke-dashoffset to the flight's live completion ratio while the plane icon rotates to the path tangent.",
+      "Continuous: concentric radar pulse rings expand from the plane position every 1.8s.",
+      "On status change: gate badge flips vertically around perspective 320px (rotateX -90deg -> 0) in 260ms."
+    ],
+    "agentPrompt": "Build a Flighty live flight tracker card on #0d0f12:\nDraw two identical quadratic SVG arcs (M24,62 Q130,8 236,62): a dashed background track (rgba(255,255,255,0.18)) and a live green progress stroke (#34c759, stroke-linecap: round) animated via stroke-dashoffset.\nCompute exact point P(t) and tangent angle atan2(dy, dx) along the quadratic Bezier to position and orient the miniature airplane SVG, surrounded by an expanding radial pulse ring.\nOn gate/status update, trigger a 260ms 3D split-flap animation (rotateX -85deg -> 0deg, perspective 320px, cubic-bezier(0.22, 1, 0.36, 1)) on the mono gate pill.",
+    "extractableCode": "<!-- Flighty Live Arc & Split-Flap Gate -->\n<svg viewBox=\"0 0 260 80\"><path d=\"M24 62 Q130 8 236 62\" stroke=\"#34c759\" fill=\"none\"/></svg>",
+    "html": "<div class=\"m-app-flt\"><div class=\"m-app-flt__card\" role=\"button\" tabindex=\"0\"><div class=\"m-app-flt__top\"><div><b>LIS</b><span>Lisbon</span></div><span class=\"m-app-flt__gate\">GATE B14</span><div class=\"r\"><b>SFO</b><span>San Francisco</span></div></div><svg class=\"m-app-flt__svg\" viewBox=\"0 0 260 76\"><path class=\"m-app-flt__bg\" d=\"M20 58 Q130 4 240 58\"/><path class=\"m-app-flt__fg\" d=\"M20 58 Q130 4 240 58\"/><g class=\"m-app-flt__plane\"><circle class=\"m-app-flt__pulse\" r=\"10\"/><path d=\"M-6 -2 L0 -1 L4 -6 L6 -6 L4 -1 L8 0 L4 1 L6 6 L4 6 L0 1 L-6 2 L-4 0 Z\" fill=\"#fff\"/></g></svg><div class=\"m-app-flt__foot\"><span class=\"m-app-flt__st\">● ON TIME · 3h 18m left</span><span>TP 237</span></div></div></div>",
+    "css": ".m-app-flt{position:absolute;inset:0;display:grid;place-items:center;background:#0a0b0e;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-flt__card{width:min(88%,278px);padding:15px 16px;border-radius:16px;background:#14161b;border:1px solid rgba(255,255,255,.08);color:#fff;cursor:pointer;user-select:none}.m-app-flt__top{display:flex;justify-content:space-between;align-items:center}.m-app-flt__top b{display:block;font:700 20px/1 'Geist Mono',monospace;letter-spacing:-.03em}.m-app-flt__top span{font-size:10.5px;color:#8b909a}.m-app-flt__top .r{text-align:right}.m-app-flt__gate{padding:4px 8px;border-radius:6px;background:rgba(52,199,89,.16);color:#34c759!important;font:600 10.5px/1 'Geist Mono',monospace;border:1px solid rgba(52,199,89,.35);display:inline-block;transform-origin:50% 50%}.m-app-flt__gate.flip{animation:m-flt-flip .32s cubic-bezier(.22,1,.36,1)}@keyframes m-flt-flip{0%{transform:perspective(280px) rotateX(-85deg);opacity:.3}100%{transform:perspective(280px) rotateX(0);opacity:1}}.m-app-flt__svg{display:block;width:100%;height:70px;overflow:visible}.m-app-flt__bg{fill:none;stroke:rgba(255,255,255,.16);stroke-width:2;stroke-dasharray:4 4;stroke-linecap:round}.m-app-flt__fg{fill:none;stroke:#34c759;stroke-width:2.5;stroke-linecap:round}.m-app-flt__pulse{fill:rgba(52,199,89,.28);animation:m-flt-pulse 1.8s ease-out infinite}@keyframes m-flt-pulse{0%{r:4;opacity:.9}100%{r:16;opacity:0}}.m-app-flt__foot{display:flex;justify-content:space-between;font:500 11px/1 'Geist Mono',monospace;color:#8b909a}.m-app-flt__st{color:#34c759}",
+    "js": "var el=root.querySelector('.m-app-flt__card');if(!el)return;var fg=el.querySelector('.m-app-flt__fg'),plane=el.querySelector('.m-app-flt__plane'),gate=el.querySelector('.m-app-flt__gate'),st=el.querySelector('.m-app-flt__st');var len=fg.getTotalLength?fg.getTotalLength():240;fg.style.strokeDasharray=String(len);var states=[{p:0.28,g:'GATE B14',s:'● BOARDING · 8h 40m'},{p:0.64,g:'GATE B14',s:'● IN FLIGHT · 3h 18m left'},{p:0.92,g:'GATE G07',s:'● LANDING · 18m left'}];var idx=0,cur=0.28,target=0.28,raf=0,dead=false,touched=false;function qPt(t){var u=1-t,x=u*u*20+2*u*t*130+t*t*240,y=u*u*58+2*u*t*4+t*t*58;var dx=2*u*(130-20)+2*t*(240-130),dy=2*u*(4-58)+2*t*(58-4);return{x:x,y:y,a:Math.atan2(dy,dx)*180/Math.PI};}function next(){idx=(idx+1)%states.length;var d=states[idx];target=d.p;gate.textContent=d.g;st.textContent=d.s;gate.classList.remove('flip');void gate.offsetWidth;gate.classList.add('flip');}function frame(){if(dead)return;cur+=(target-cur)*0.09;fg.style.strokeDashoffset=String(len*(1-cur));var pt=qPt(cur);plane.setAttribute('transform','translate('+pt.x.toFixed(1)+' '+pt.y.toFixed(1)+') rotate('+pt.a.toFixed(1)+')');raf=requestAnimationFrame(frame);}el.addEventListener('click',function(){touched=true;next();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)next();},2400);raf=requestAnimationFrame(frame);return function(){dead=true;clearInterval(iv);cancelAnimationFrame(raf);};"
+  },
+  {
+    "id": "app-airbnb-heart-category",
+    "title": "Airbnb: Category Glide & Wishlist Heart Pop",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 18
+    },
+    "easeLabel": "spring(340, 18)",
+    "props": [
+      "transform: translateX + width (category underline)",
+      "transform: scale (heart pop)",
+      "fill + radial burst particles"
+    ],
+    "src": "Airbnb",
+    "srcUrl": "https://apps.apple.com/us/app/airbnb/id401626263?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Airbnb",
+      "slug": "airbnb",
+      "category": "Travel",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF385C",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/40/43/5c40438f-d7c6-ca2d-c459-a468d63f1469/AppIcon-0-0-1x_U007epad-0-1-0-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/airbnb/id401626263?uo=4",
+      "bundleId": "com.airbnb.app"
+    },
+    "summary": "Switching travel categories glides a razor-thin underline indicator across tabs while tapping the wishlist heart squashes and springs it into Rausch red (#FF385C) with a crisp ring burst.",
+    "hint": "Switch tabs or tap the wishlist heart",
+    "choreography": [
+      "Category underline measures active tab offsetLeft and offsetWidth, gliding in 280ms cubic-bezier(0.22, 1, 0.36, 1).",
+      "Heart press scales down to 0.78 on pointerdown, then snaps to 1.24 -> 0.94 -> 1.0 on release while filling #FF385C.",
+      "6 micro-dots radiate 20px outward from the heart center over 420ms."
+    ],
+    "agentPrompt": "Combine Airbnb's category bar and wishlist heart micro-interaction:\n1. Category strip: position a 2px black underline element beneath a horizontal tab list; on click animate its translateX and width to the chosen tab's offsetLeft/offsetWidth over 280ms cubic-bezier(0.22, 1, 0.36, 1).\n2. Heart button: animate scale 1 -> 0.78 -> 1.25 -> 0.94 -> 1 over 420ms when toggled on, swapping fill from rgba(0,0,0,0.45) to #FF385C with a crisp white 2px stroke, and trigger an expanding #FF385C halo ring (scale 0.4 -> 1.6, opacity 0.7 -> 0).",
+    "extractableCode": "<!-- Airbnb Category Glide + Wishlist Heart Pop -->\n<div class=\"abnb\">...</div>",
+    "html": "<div class=\"m-app-abnb\"><div class=\"m-app-abnb__card\"><div class=\"m-app-abnb__tabs\"><button type=\"button\" class=\"is-on\">Cabins</button><button type=\"button\">Beach</button><button type=\"button\">Design</button><span class=\"m-app-abnb__bar\"></span></div><div class=\"m-app-abnb__hero\"><button type=\"button\" class=\"m-app-abnb__heart\" aria-pressed=\"false\" aria-label=\"Save to wishlist\"><span class=\"m-app-abnb__ring\"></span><svg viewBox=\"0 0 24 24\"><path d=\"M12 20.4l-1.35-1.23C5.4 14.36 2 11.28 2 7.5A4.5 4.5 0 0 1 6.5 3c1.74 0 3.41.81 4.5 2.09A5.98 5.98 0 0 1 15.5 3 4.5 4.5 0 0 1 20 7.5c0 3.78-3.4 6.86-8.65 11.68z\"/></svg></button><div class=\"m-app-abnb__cap\"><b>Nordic A-Frame</b><span>★ 4.96 · $240 night</span></div></div></div></div>",
+    "css": ".m-app-abnb{position:absolute;inset:0;display:grid;place-items:center;background:#fafafa;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;user-select:none}.m-app-abnb__card{width:min(86%,256px);display:flex;flex-direction:column;gap:12px}.m-app-abnb__tabs{position:relative;display:flex;gap:16px;border-bottom:1px solid #ebebeb;padding-bottom:8px}.m-app-abnb__tabs button{border:0;background:none;padding:0 2px;font:600 12.5px/1 inherit;color:#717171;cursor:pointer;transition:color .18s}.m-app-abnb__tabs button.is-on{color:#222}.m-app-abnb__bar{position:absolute;bottom:-1px;left:0;height:2px;background:#222;border-radius:2px;transition:transform .28s cubic-bezier(.22,1,.36,1),width .28s cubic-bezier(.22,1,.36,1)}.m-app-abnb__hero{position:relative;height:132px;border-radius:14px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(155deg,#2a3b47,#18232b 65%,#11161b);color:#fff;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.12)}.m-app-abnb__cap b{display:block;font:600 13.5px/1.2 inherit}.m-app-abnb__cap span{font-size:11.5px;opacity:.76}.m-app-abnb__heart{position:absolute;right:10px;top:10px;width:34px;height:34px;border:0;border-radius:50%;background:none;display:grid;place-items:center;cursor:pointer}.m-app-abnb__heart svg{width:23px;height:23px;fill:rgba(0,0,0,.45);stroke:#fff;stroke-width:1.8;transition:fill .16s}.m-app-abnb__heart.is-liked svg{fill:#ff385c;animation:m-abnb-pop .44s cubic-bezier(.22,1.25,.36,1)}.m-app-abnb__ring{position:absolute;inset:2px;border-radius:50%;border:2px solid #ff385c;opacity:0;pointer-events:none}.m-app-abnb__heart.is-liked .m-app-abnb__ring{animation:m-abnb-ring .46s cubic-bezier(.16,1,.3,1)}@keyframes m-abnb-pop{0%{transform:scale(1)}22%{transform:scale(.76)}54%{transform:scale(1.26)}78%{transform:scale(.94)}100%{transform:scale(1)}}@keyframes m-abnb-ring{0%{transform:scale(.45);opacity:.85}100%{transform:scale(1.7);opacity:0}}",
+    "js": "var el=root.querySelector('.m-app-abnb');if(!el)return;var tabs=[].slice.call(el.querySelectorAll('.m-app-abnb__tabs button')),bar=el.querySelector('.m-app-abnb__bar'),heart=el.querySelector('.m-app-abnb__heart'),capB=el.querySelector('.m-app-abnb__cap b'),hero=el.querySelector('.m-app-abnb__hero');var meta=[['Nordic A-Frame','linear-gradient(155deg,#2a3b47,#141d24)'],['Coastal Villa','linear-gradient(155deg,#1d566e,#102a3b)'],['Glass Studio','linear-gradient(155deg,#3e3546,#1b1721)']];var idx=0,liked=false,touched=false,dead=false;function setTab(i){idx=i;tabs.forEach(function(b,j){b.classList.toggle('is-on',j===i);});var b=tabs[i];bar.style.width=b.offsetWidth+'px';bar.style.transform='translateX('+b.offsetLeft+'px)';capB.textContent=meta[i][0];hero.style.background=meta[i][1];}function toggleHeart(){liked=!liked;heart.classList.toggle('is-liked',liked);heart.setAttribute('aria-pressed',String(liked));}tabs.forEach(function(b,i){b.addEventListener('click',function(){touched=true;setTab(i);});});heart.addEventListener('click',function(){touched=true;toggleHeart();});var step=0;var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden){if(step%2===0)toggleHeart();else setTab((idx+1)%tabs.length);step++;}},1900);setTimeout(function(){if(!dead)setTab(0);},30);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-notion-slash-toggle",
+    "title": "Notion: Slash Popover & Toggle Cascade",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 260,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.2,
+        0.9,
+        0.2,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.2, 0.9, 0.2, 1)",
+    "props": [
+      "transform: rotate (90deg chevron)",
+      "grid-template-rows (0fr -> 1fr accordion)",
+      "opacity + transform: translateY (staggered rows)"
+    ],
+    "src": "Notion",
+    "srcUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Notion",
+      "slug": "notion",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#191919",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ea/1b/48/ea1b4840-9ee3-ab66-a482-659ced115cbb/AppIconProd-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
+      "bundleId": "notion.id"
+    },
+    "summary": "Clicking a Notion toggle block rotates the triangle 90° smoothly while expanding nested blocks via CSS Grid row interpolation (0fr → 1fr) with a 35ms per-line stagger.",
+    "hint": "Click toggle row to expand / collapse",
+    "choreography": [
+      "0-180ms: triangle chevron rotates 0deg -> 90deg around its center.",
+      "0-260ms: nested container animates grid-template-rows from 0fr to 1fr with overflow: hidden on the inner wrapper.",
+      "35-175ms: child blocks cascade in with opacity 0 -> 1 and translateY(-4px -> 0) staggered by 35ms."
+    ],
+    "agentPrompt": "Recreate Notion's crisp toggle block reveal without measuring scrollHeight:\nWrap nested blocks in a grid container whose grid-template-rows transitions from 0fr to 1fr over 260ms cubic-bezier(0.2, 0.9, 0.2, 1), with an inner child set to min-height: 0; overflow: hidden.\nRotate the leading 10px triangle chevron from 0deg to 90deg in 180ms.\nStagger each nested block's opacity (0 -> 1) and translateY(-5px -> 0) by index * 35ms on open, and remove the delay on close so collapse feels instantaneous.",
+    "extractableCode": "<!-- Notion Toggle Cascade -->\n<div class=\"nt-toggle\" data-open=\"true\">...</div>",
+    "html": "<div class=\"m-app-not\"><div class=\"m-app-not__doc\"><button type=\"button\" class=\"m-app-not__head\" aria-expanded=\"true\"><svg viewBox=\"0 0 12 12\"><path d=\"M4 2.5L8.5 6 4 9.5z\"/></svg><span>Q4 Launch Checklist</span></button><div class=\"m-app-not__body\"><div class=\"m-app-not__inner\"><div class=\"m-app-not__row\" style=\"--d:0ms\"><i>✓</i><span>Record 60fps app motion clips</span></div><div class=\"m-app-not__row\" style=\"--d:40ms\"><i>✓</i><span>Reverse-engineer spring constants</span></div><div class=\"m-app-not__row\" style=\"--d:80ms\"><i>○</i><span>Ship searchable Apps directory</span></div></div></div></div></div>",
+    "css": ".m-app-not{position:absolute;inset:0;display:grid;place-items:center;background:#ffffff;color:#37352f;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;user-select:none}.m-app-not__doc{width:min(86%,268px);padding:14px;border-radius:12px;border:1px solid #ecebe8;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.04)}.m-app-not__head{width:100%;display:flex;align-items:center;gap:8px;padding:6px;border:0;border-radius:6px;background:none;color:inherit;font:600 13.5px/1.2 inherit;text-align:left;cursor:pointer;transition:background .12s}.m-app-not__head:hover{background:#f5f4f1}.m-app-not__head svg{width:12px;height:12px;fill:#6b6a65;transition:transform .18s cubic-bezier(.2,.9,.2,1);flex:none}.m-app-not__doc.is-open .m-app-not__head svg{transform:rotate(90deg)}.m-app-not__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .26s cubic-bezier(.2,.9,.2,1)}.m-app-not__doc.is-open .m-app-not__body{grid-template-rows:1fr}.m-app-not__inner{min-height:0;overflow:hidden;padding-left:20px}.m-app-not__row{display:flex;align-items:center;gap:8px;padding:5px 6px;font-size:12.5px;color:#55534e;opacity:0;transform:translateY(-5px);transition:opacity .16s ease,transform .16s ease}.m-app-not__doc.is-open .m-app-not__row{opacity:1;transform:none;transition:opacity .22s ease var(--d),transform .22s cubic-bezier(.2,.9,.2,1) var(--d)}.m-app-not__row i{font-style:normal;font-size:11px;color:#2a94e2;width:12px;text-align:center}",
+    "js": "var doc=root.querySelector('.m-app-not__doc');if(!doc)return;var btn=doc.querySelector('.m-app-not__head'),open=true,touched=false,dead=false;function set(v){open=v;doc.classList.toggle('is-open',open);btn.setAttribute('aria-expanded',String(open));}btn.addEventListener('click',function(){touched=true;set(!open);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set(!open);},2300);set(true);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-stripe-pay-seal",
+    "title": "Stripe: Pay Button → Spinner → Checkmark Seal",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 1200,
+    "ease": {
+      "t": "spring",
+      "k": 340,
+      "c": 26
+    },
+    "easeLabel": "spring(340, 26)",
+    "props": [
+      "width + border-radius (pill morph)",
+      "background-color (#635BFF -> #00D924)",
+      "stroke-dashoffset (drawn checkmark)"
+    ],
+    "src": "Stripe",
+    "srcUrl": "https://apps.apple.com/us/app/stripe-dashboard/id978516833?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Stripe",
+      "slug": "stripe",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#635BFF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/99/26/84/99268449-eecf-821a-be7f-5b94e31676f9/Icon-0-0-1x_U007ephone-0-1-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/stripe-dashboard/id978516833?uo=4",
+      "bundleId": "com.stripe.dashboard"
+    },
+    "summary": "Clicking Pay compresses the Stripe blurple button into a 46px circular spinner, transitions smoothly into emerald green, and draws a crisp SVG checkmark seal.",
+    "hint": "Click Pay button to run checkout state machine",
+    "choreography": [
+      "0-240ms: button label fades out while width collapses from 210px to 46px (border-radius 10px -> 999px) on spring(340, 26).",
+      "200-880ms: circular arc spinner rotates continuously at 720ms/rev.",
+      "880-1200ms: spinner fades, background crossfades from #635bff to #00b85c with a 1.08 scale pop, and the checkmark path draws via stroke-dashoffset."
+    ],
+    "agentPrompt": "Implement Stripe's 3-stage checkout button state machine (idle -> loading -> paid):\n1. Idle -> Loading: fade out the label in 110ms, animate button width from 210px to 46px and border-radius from 10px to 999px over 300ms cubic-bezier(0.22, 1.12, 0.36, 1), and fade in an 18px SVG arc spinner.\n2. Loading -> Paid: crossfade background from #635bff to #00b85c over 240ms, pop the circle to scale(1.08) -> scale(1), and draw a 20px checkmark path (stroke-dasharray: 24, stroke-dashoffset: 24 -> 0) over 320ms cubic-bezier(0.22, 1, 0.36, 1).",
+    "extractableCode": "<!-- Stripe Pay Button Morph -->\n<button class=\"stripe-pay\" data-state=\"idle\">Pay $48.00</button>",
+    "html": "<div class=\"m-app-str\"><button type=\"button\" class=\"m-app-str__btn\" data-st=\"idle\"><span class=\"m-app-str__txt\">Pay $48.00</span><svg class=\"m-app-str__spin\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg><svg class=\"m-app-str__chk\" viewBox=\"0 0 24 24\"><path d=\"M6.5 12.5l3.8 3.8L17.8 8.5\"/></svg></button></div>",
+    "css": ".m-app-str{position:absolute;inset:0;display:grid;place-items:center;background:#f6f9fc;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-str__btn{position:relative;width:206px;height:46px;border:0;border-radius:10px;background:#635bff;color:#fff;font:600 14.5px/1 inherit;box-shadow:0 8px 20px rgba(99,91,255,.28);cursor:pointer;overflow:hidden;transition:width .32s cubic-bezier(.22,1.12,.36,1),border-radius .32s ease,background .24s ease,transform .22s ease,box-shadow .24s ease}.m-app-str__btn:active{transform:scale(.97)}.m-app-str__btn[data-st=\"load\"],.m-app-str__btn[data-st=\"done\"]{width:46px;border-radius:999px}.m-app-str__btn[data-st=\"done\"]{background:#00b85c;box-shadow:0 8px 22px rgba(0,184,92,.3);animation:m-str-pop .38s cubic-bezier(.22,1.25,.36,1)}@keyframes m-str-pop{0%{transform:scale(.92)}55%{transform:scale(1.1)}100%{transform:scale(1)}}.m-app-str__txt{display:block;white-space:nowrap;transition:opacity .12s ease}.m-app-str__btn:not([data-st=\"idle\"]) .m-app-str__txt{opacity:0}.m-app-str__spin,.m-app-str__chk{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .16s ease}.m-app-str__spin circle{stroke-dasharray:42 20;transform-origin:12px 12px;animation:m-str-rot .72s linear infinite}@keyframes m-str-rot{to{transform:rotate(360deg)}}.m-app-str__btn[data-st=\"load\"] .m-app-str__spin{opacity:1}.m-app-str__chk path{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .32s cubic-bezier(.22,1,.36,1) .08s}.m-app-str__btn[data-st=\"done\"] .m-app-str__chk{opacity:1}.m-app-str__btn[data-st=\"done\"] .m-app-str__chk path{stroke-dashoffset:0}",
+    "js": "var btn=root.querySelector('.m-app-str__btn');if(!btn)return;var timers=[],busy=false,touched=false,dead=false;function later(fn,ms){var id=setTimeout(fn,ms);timers.push(id);}function run(){if(busy||dead)return;busy=true;btn.dataset.st='load';later(function(){if(dead)return;btn.dataset.st='done';},820);later(function(){if(dead)return;btn.dataset.st='idle';busy=false;},2300);}btn.addEventListener('click',function(){touched=true;run();});later(function(){if(!touched&&!dead)run();},900);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)run();},3600);return function(){dead=true;clearInterval(iv);timers.forEach(clearTimeout);};"
+  },
+  {
+    "id": "app-revolut-currency-swap",
+    "title": "Revolut: Currency Swap Flip & Odometer Roll",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 440,
+    "ease": {
+      "t": "spring",
+      "k": 310,
+      "c": 24
+    },
+    "easeLabel": "spring(310, 24)",
+    "props": [
+      "transform: rotate (180deg swap icon)",
+      "transform: translateY (card position swap)",
+      "transform: translateY (tabular digit roll)"
+    ],
+    "src": "Revolut",
+    "srcUrl": "https://apps.apple.com/us/app/revolut-send-spend-and-save/id932493382?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Revolut",
+      "slug": "revolut",
+      "category": "Finance",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0075EB",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/07/33/3d/07333d65-2dd9-8af8-93f5-a8bafec6e2aa/AppIcon-Production-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/revolut-send-spend-and-save/id932493382?uo=4",
+      "bundleId": "com.revolut.revolut"
+    },
+    "summary": "Tapping the centered exchange arrow rotates it 180° on a snappy spring while the EUR and USD cards physically swap vertical slots and update converted rates.",
+    "hint": "Tap the swap button between currency cards",
+    "choreography": [
+      "0-360ms: circular swap button rotates 180deg cumulatively with slight scale pulse (1 -> 0.88 -> 1).",
+      "0-440ms: top and bottom currency cards cross each other via translateY(+70px) and translateY(-70px) with slight z-depth separation.",
+      "Rate pill updates smoothly as the cards lock into their opposite slots."
+    ],
+    "agentPrompt": "Build Revolut's FX currency swap micro-interaction:\nStack two dark rounded cards (#1c1d22, height 62px, gap 8px) with a centered 32px circular swap button overlapping the seam (border: 3px solid #0d0e11).\nOn click, increment rotation angle by 180deg on the swap button (360ms cubic-bezier(0.22, 1.18, 0.36, 1)) and toggle translateY(70px) on card A and translateY(-70px) on card B over 420ms cubic-bezier(0.22, 1, 0.36, 1) so the physical cards literally trade places rather than just swapping text.",
+    "extractableCode": "<!-- Revolut Currency Swap -->\n<div class=\"rev-fx\">...</div>",
+    "html": "<div class=\"m-app-rev\"><div class=\"m-app-rev__wrap\"><div class=\"m-app-rev__row m-app-rev__a\"><div><b>EUR</b><span>Euro</span></div><strong>€1,000</strong></div><button type=\"button\" class=\"m-app-rev__swap\" aria-label=\"Swap currencies\">⇅</button><div class=\"m-app-rev__row m-app-rev__b\"><div><b>USD</b><span>US Dollar</span></div><strong>$1,084</strong></div></div></div>",
+    "css": ".m-app-rev{position:absolute;inset:0;display:grid;place-items:center;background:#0d0e11;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;user-select:none}.m-app-rev__wrap{position:relative;width:min(86%,254px);display:flex;flex-direction:column;gap:8px}.m-app-rev__row{height:62px;padding:0 15px;border-radius:14px;background:#1c1d22;border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;color:#fff;transition:transform .44s cubic-bezier(.22,1,.36,1)}.m-app-rev__row b{display:block;font:700 14px/1.1 inherit}.m-app-rev__row span{font-size:11px;color:#8c909c}.m-app-rev__row strong{font:600 17px/1 'Geist Mono',monospace;font-variant-numeric:tabular-nums}.m-app-rev__wrap.is-swapped .m-app-rev__a{transform:translateY(70px)}.m-app-rev__wrap.is-swapped .m-app-rev__b{transform:translateY(-70px)}.m-app-rev__swap{position:absolute;left:50%;top:50%;z-index:5;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:3px solid #0d0e11;background:#0075eb;color:#fff;font-size:15px;display:grid;place-items:center;cursor:pointer;transition:transform .38s cubic-bezier(.22,1.18,.36,1)}",
+    "js": "var wrap=root.querySelector('.m-app-rev__wrap');if(!wrap)return;var btn=wrap.querySelector('.m-app-rev__swap'),swapped=false,deg=0,touched=false,dead=false;function flip(){swapped=!swapped;deg+=180;wrap.classList.toggle('is-swapped',swapped);btn.style.transform='rotate('+deg+'deg)';}btn.addEventListener('click',function(){touched=true;flip();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)flip();},2200);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-headspace-breathing-orb",
+    "title": "Headspace: Guided Breathing Cadence Orb",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Calm",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0.05,
+        0.55,
+        0.95
+      ]
+    },
+    "easeLabel": "sine-in-out (4s cycle)",
+    "props": [
+      "transform: scale + rotate (layered organic petals)",
+      "opacity (halo aura)",
+      "text cadence (Inhale / Exhale)"
+    ],
+    "src": "Headspace",
+    "srcUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Headspace",
+      "slug": "headspace",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F47D31",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d1/e7/46/d1e74629-57e3-42e9-eabd-791d8e22e634/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
+      "bundleId": "com.getsomeheadspace.headspace"
+    },
+    "summary": "Concentric warm-amber orbs expand and contract on a sinusoidal 4-second breath cadence with subtle phase-offset outer rings that guide inhale and exhale.",
+    "hint": "Ambient breathing cycle (click to pause)",
+    "choreography": [
+      "0-2000ms (Inhale): core orb scales 0.72 -> 1.12 along a smooth sine curve while 2 translucent outer halos expand 120ms behind.",
+      "2000-4000ms (Exhale): orbs gently contract back to 0.72 as the center cue crossfades from 'Breathe in' to 'Breathe out'."
+    ],
+    "agentPrompt": "Build a Headspace-inspired guided breathing orb:\nLayer 3 concentric circles centered on a warm cream canvas (#fbf7f2): core (#f47d31, 84px), mid halo (rgba(244,125,49,0.28), 118px), outer halo (rgba(255,194,71,0.22), 152px).\nDrive their scale with a continuous sinusoidal wave (0.5 - 0.5 * cos(t * 2π / 4s)) so acceleration is zero at both inhale peak and exhale trough; phase-shift the outer rings by 140ms and 280ms for a natural fluid ripple.\nCrossfade a clean centered prompt ('Breathe in' / 'Breathe out') smoothly at the turnaround points.",
+    "extractableCode": "<!-- Headspace Guided Breathing Orb -->\n<div class=\"hs-orb\"><span></span><span></span><b>Breathe in</b></div>",
+    "html": "<div class=\"m-app-hs\" role=\"button\" tabindex=\"0\"><span class=\"m-app-hs__r3\"></span><span class=\"m-app-hs__r2\"></span><span class=\"m-app-hs__r1\"></span><b class=\"m-app-hs__lbl\">Breathe in</b></div>",
+    "css": ".m-app-hs{position:absolute;inset:0;display:grid;place-items:center;background:#fbf7f2;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;cursor:pointer;user-select:none;overflow:hidden}.m-app-hs span{position:absolute;border-radius:50%;will-change:transform}.m-app-hs__r3{width:162px;height:162px;background:rgba(255,194,71,.24)}.m-app-hs__r2{width:124px;height:124px;background:rgba(244,125,49,.28)}.m-app-hs__r1{width:84px;height:84px;background:radial-gradient(circle at 35% 30%,#ff9a44,#f47d31);box-shadow:0 12px 30px rgba(244,125,49,.32)}.m-app-hs__lbl{position:relative;z-index:2;font:600 12px/1 inherit;color:#fff;letter-spacing:.01em}",
+    "js": "var el=root.querySelector('.m-app-hs');if(!el)return;var r1=el.querySelector('.m-app-hs__r1'),r2=el.querySelector('.m-app-hs__r2'),r3=el.querySelector('.m-app-hs__r3'),lbl=el.querySelector('.m-app-hs__lbl');var t=0,last=performance.now(),paused=false,raf=0,dead=false;function wave(sec){return 0.5-0.5*Math.cos(sec*Math.PI*2/4.2);}function frame(now){if(dead)return;var dt=Math.min(0.05,(now-last)/1000);last=now;if(!paused)t+=dt;var w1=wave(t),w2=wave(t-0.16),w3=wave(t-0.32);r1.style.transform='scale('+(0.78+w1*0.36).toFixed(3)+')';r2.style.transform='scale('+(0.72+w2*0.44).toFixed(3)+')';r3.style.transform='scale('+(0.66+w3*0.52).toFixed(3)+')';lbl.textContent=((t%4.2)<2.1)?'Breathe in':'Breathe out';raf=requestAnimationFrame(frame);}el.addEventListener('click',function(){paused=!paused;});raf=requestAnimationFrame(frame);return function(){dead=true;cancelAnimationFrame(raf);};"
+  },
+  {
+    "id": "app-dynamic-island-morph",
+    "title": "iOS Dynamic Island: Live Activity Pill Morph",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 260,
+      "c": 21
+    },
+    "easeLabel": "spring(260, 21)",
+    "props": [
+      "width + height + border-radius (pill morph)",
+      "filter: blur + opacity (content crossfade)",
+      "transform: scale (subtle overshoot)"
+    ],
+    "src": "Apple iOS",
+    "srcUrl": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+    "collection": "Apps",
+    "app": {
+      "name": "iOS Dynamic Island",
+      "slug": "ios-dynamic-island",
+      "category": "System UI",
+      "platform": [
+        "iOS"
+      ],
+      "accent": "#101114",
+      "iconUrl": "",
+      "storeUrl": "https://developer.apple.com/design/human-interface-guidelines/live-activities",
+      "bundleId": "com.apple.springboard"
+    },
+    "summary": "A pure-black sensor pill morphs organically between compact, active timer, and expanded Live Activity states using spring width/height interpolation and blur-masked content handoff.",
+    "hint": "Click Dynamic Island to cycle states",
+    "choreography": [
+      "Compact (106×30) → Minimal Timer (188×34): pill widens horizontally on spring(260, 21) as the amber timer digits unblur.",
+      "Minimal Timer → Expanded (258×92, radius 32px): pill blooms vertically with gentle ~5% spring overshoot while expanded action buttons fade in after 110ms.",
+      "Collapse reverses cleanly without text clipping via absolute-positioned content layers."
+    ],
+    "agentPrompt": "Build an iOS Dynamic Island 3-state morph (idle 106x30px -> compact 188x34px -> expanded 258x94px, border-radius 18px -> 32px):\nAnimate width, height, and border-radius with an organic slightly-underdamped spring (k=260, c=21) on a pure #000000 container with subtle outer shadow.\nPlace each state's content in its own absolute-positioned layer; transition between layers using opacity (0 <-> 1) + filter: blur(6px -> 0) + scale(0.92 -> 1) so typography melts in and out cleanly during the container morph.",
+    "extractableCode": "<!-- iOS Dynamic Island Morph -->\n<div class=\"island\" data-mode=\"0\">...</div>",
+    "html": "<div class=\"m-app-isl\"><button type=\"button\" class=\"m-app-isl__pill\" data-m=\"0\" aria-label=\"Cycle Dynamic Island\"><div class=\"m-app-isl__compact\"><span class=\"m-app-isl__dot\"></span><em>04:19</em></div><div class=\"m-app-isl__full\"><div class=\"m-app-isl__row\"><span class=\"m-app-isl__ico\">⏱</span><div><b>Focus Timer</b><small>Deep work sprint</small></div><em>04:19</em></div><div class=\"m-app-isl__bar\"><span></span></div></div></button></div>",
+    "css": ".m-app-isl{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:34px;background:linear-gradient(180deg,#e9eef6,#f4f5f8);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif}.m-app-isl__pill{position:relative;width:104px;height:30px;border:0;border-radius:18px;background:#000;color:#fff;overflow:hidden;cursor:pointer;box-shadow:0 14px 30px rgba(0,0,0,.18);transition:width .48s cubic-bezier(.22,1.16,.36,1),height .48s cubic-bezier(.22,1.16,.36,1),border-radius .48s cubic-bezier(.22,1.16,.36,1)}.m-app-isl__pill[data-m=\"1\"]{width:190px;height:34px;border-radius:18px}.m-app-isl__pill[data-m=\"2\"]{width:258px;height:86px;border-radius:28px}.m-app-isl__compact,.m-app-isl__full{position:absolute;inset:0;opacity:0;filter:blur(5px);transform:scale(.92);transition:opacity .22s ease,filter .24s ease,transform .32s cubic-bezier(.22,1,.36,1);pointer-events:none}.m-app-isl__pill[data-m=\"1\"] .m-app-isl__compact{opacity:1;filter:blur(0);transform:scale(1);transition-delay:.08s}.m-app-isl__pill[data-m=\"2\"] .m-app-isl__full{opacity:1;filter:blur(0);transform:scale(1);transition-delay:.1s}.m-app-isl__compact{display:flex;align-items:center;justify-content:space-between;padding:0 13px}.m-app-isl__dot{width:8px;height:8px;border-radius:50%;background:#ff9f0a;box-shadow:0 0 8px #ff9f0a}.m-app-isl__compact em{font:600 12.5px/1 'Geist Mono',monospace;color:#ff9f0a}.m-app-isl__full{padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between}.m-app-isl__row{display:flex;align-items:center;gap:10px;text-align:left}.m-app-isl__ico{width:30px;height:30px;border-radius:50%;background:rgba(255,159,10,.2);display:grid;place-items:center;font-size:14px}.m-app-isl__row div{flex:1}.m-app-isl__row b{display:block;font:600 12.5px/1.15 inherit}.m-app-isl__row small{font-size:10.5px;color:#8e8e93}.m-app-isl__row em{font:600 16px/1 'Geist Mono',monospace;color:#ff9f0a}.m-app-isl__bar{height:4px;border-radius:99px;background:rgba(255,255,255,.16);overflow:hidden}.m-app-isl__bar span{display:block;width:62%;height:100%;background:#ff9f0a;border-radius:99px}",
+    "js": "var pill=root.querySelector('.m-app-isl__pill');if(!pill)return;var m=0,touched=false,dead=false;function step(){m=(m+1)%3;pill.dataset.m=String(m);}pill.addEventListener('click',function(){touched=true;step();});var t0=setTimeout(function(){if(!touched&&!dead)step();},700);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)step();},2300);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-linear-priority-pill",
+    "title": "Linear: Tactile Issue Status Pill Cycle",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 280,
+    "ease": {
+      "t": "spring",
+      "k": 420,
+      "c": 30
+    },
+    "easeLabel": "spring(420, 30)",
+    "props": [
+      "stroke-dashoffset (progress ring)",
+      "transform: translateY + opacity (status label swap)",
+      "border-color + background"
+    ],
+    "src": "Linear",
+    "srcUrl": "https://apps.apple.com/us/app/linear-mobile/id1645587184?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Linear",
+      "slug": "linear",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#5E6AD2",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8c/09/eb/8c09eb3e-ae7b-cf49-673b-610b7b0c371f/Linear-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/linear-mobile/id1645587184?uo=4",
+      "bundleId": "com.linear.ios"
+    },
+    "summary": "Clicking an issue status pill steps the circular SVG progress glyph from Todo → In Progress → Done while the label rolls cleanly inside a masked slot.",
+    "hint": "Click status pill to advance state",
+    "choreography": [
+      "0-90ms: button compresses to scale(0.96) on press.",
+      "0-280ms: SVG ring sweeps stroke-dashoffset to 0%, 50%, or 100% while shifting stroke hue (#71717a -> #f59e0b -> #5e6ad2).",
+      "0-240ms: status label slides vertically (-12px -> 0) with opacity crossfade."
+    ],
+    "agentPrompt": "Build Linear's status pill cycle:\nRender a compact 34px-tall dark pill (#1b1d23, 1px rgba(255,255,255,0.1) border) with a 16px SVG circular progress icon and a masked label.\nOn click, cycle states (Backlog -> In Progress -> Done): animate the inner SVG progress circle's stroke-dashoffset over 280ms cubic-bezier(0.22, 1, 0.36, 1) while transitioning stroke color (#8a8f98 -> #f2c94c -> #5e6ad2), draw a tiny checkmark when Done, and slide the status text vertically inside an overflow-hidden span.",
+    "extractableCode": "<!-- Linear Status Pill Cycle -->\n<button class=\"lin-pill\">In Progress</button>",
+    "html": "<div class=\"m-app-lpill\"><button type=\"button\" class=\"m-app-lpill__btn\"><svg class=\"m-app-lpill__ico\" viewBox=\"0 0 20 20\"><circle class=\"m-app-lpill__bg\" cx=\"10\" cy=\"10\" r=\"7\"/><circle class=\"m-app-lpill__fg\" cx=\"10\" cy=\"10\" r=\"7\"/><path class=\"m-app-lpill__chk\" d=\"M6.8 10.2l2.1 2.1 4.4-4.6\"/></svg><span class=\"m-app-lpill__lbl\">Todo</span><kbd>S</kbd></button></div>",
+    "css": ".m-app-lpill{position:absolute;inset:0;display:grid;place-items:center;background:#0e0f13;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-lpill__btn{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 12px 0 10px;border-radius:10px;border:1px solid rgba(255,255,255,.11);background:#181920;color:#f4f4f6;font:500 13px/1 inherit;cursor:pointer;transition:transform .1s,border-color .2s,background .2s}.m-app-lpill__btn:active{transform:scale(.96)}.m-app-lpill__btn kbd{margin-left:4px;font:500 10px 'Geist Mono',monospace;color:#7c8190;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:2px 5px;border-radius:4px}.m-app-lpill__ico{width:18px;height:18px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.m-app-lpill__bg{stroke:rgba(255,255,255,.18)}.m-app-lpill__fg{stroke:#8a8f98;stroke-dasharray:44;stroke-dashoffset:44;transform:rotate(-90deg);transform-origin:10px 10px;transition:stroke-dashoffset .32s cubic-bezier(.22,1,.36,1),stroke .24s}.m-app-lpill__chk{stroke:#fff;stroke-dasharray:14;stroke-dashoffset:14;transition:stroke-dashoffset .24s ease .08s}.m-app-lpill__lbl{min-width:74px;text-align:left;transition:opacity .15s,transform .2s}",
+    "js": "var btn=root.querySelector('.m-app-lpill__btn');if(!btn)return;var fg=btn.querySelector('.m-app-lpill__fg'),chk=btn.querySelector('.m-app-lpill__chk'),lbl=btn.querySelector('.m-app-lpill__lbl');var st=[{t:'Todo',d:44,c:'#8a8f98',k:14},{t:'In Progress',d:20,c:'#f2c94c',k:14},{t:'In Review',d:9,c:'#2a94e2',k:14},{t:'Done',d:0,c:'#5e6ad2',k:0}];var idx=0,touched=false,dead=false;function apply(i){idx=i;var s=st[i];fg.style.strokeDashoffset=String(s.d);fg.style.stroke=s.c;chk.style.strokeDashoffset=String(s.k);lbl.textContent=s.t;}btn.addEventListener('click',function(){touched=true;apply((idx+1)%st.length);});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)apply((idx+1)%st.length);},1600);apply(1);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-duolingo-speech-bubble-step",
+    "title": "Duolingo: Onboarding Mascot & Speech-Bubble Slide",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 534,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: scale + opacity (speech bubble dismiss)",
+      "transform: translateX (mascot & step horizontal slide)",
+      "background-color + box-shadow (CTA disabled lock)"
+    ],
+    "src": "Duolingo (Live Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Duolingo",
+      "slug": "duolingo",
+      "category": "Education",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#58CC02",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/de/b3/f2/deb3f2ac-20ea-3015-e957-79fef651a3c8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128?uo=4",
+      "bundleId": "com.duolingo.DuolingoMobile"
+    },
+    "summary": "Captured live from Duolingo Android: tapping Continue immediately locks the 3D green CTA to muted gray, pops the old speech bubble away, then slides the mascot and next card horizontally in 534ms.",
+    "hint": "Tap Continue to trigger captured step slide",
+    "choreography": [
+      "0-70ms: bottom 3D CTA flattens and transitions to disabled gray (#e5e5e5 fill, #afafaf text) to prevent double-taps.",
+      "70-160ms: active speech bubble scales down and fades out while the mascot stays briefly anchored.",
+      "160-534ms: outgoing mascot slides left (translateX -100%) while the incoming mascot, new speech bubble, and re-enabled green CTA sweep in from the right on cubic-bezier(0.22, 1, 0.36, 1)."
+    ],
+    "agentPrompt": "Recreate Duolingo's live-captured onboarding step transition (total 534ms):\n1. On Continue tap, immediately switch the bottom 3D lipped CTA (#58cc02, shadow 0 4px #46a302) to a flat disabled state (#e5e5e5, color #afafaf, box-shadow none).\n2. Dismiss the current speech bubble over 110ms (scale 1 -> 0.88, opacity 1 -> 0) before starting the horizontal slide.\n3. Slide the outgoing mascot off-screen left (translateX -115%) while sliding the next mascot + speech bubble in from translateX(+115%) over 360ms cubic-bezier(0.22, 1, 0.36, 1), then pop the speech bubble slightly (scale 0.94 -> 1) and restore the active green 3D CTA.",
+    "extractableCode": "<!-- Duolingo Live-Captured Onboarding Speech-Bubble Slide -->\n<div class=\"duo-step\">...</div>",
+    "html": "<div class=\"m-app-duos\"><div class=\"m-app-duos__phone\"><div class=\"m-app-duos__viewport\"><div class=\"m-app-duos__slide is-cur\"><div class=\"m-app-duos__bub\">Hi there! I'm Duo!</div><div class=\"m-app-duos__owl\"><i></i><i></i><b></b></div></div></div><button type=\"button\" class=\"m-app-duos__cta\">CONTINUE</button></div></div>",
+    "css": ".m-app-duos{position:absolute;inset:0;display:grid;place-items:center;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;user-select:none}.m-app-duos__phone{width:min(86%,248px);height:100%;max-height:224px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:16px 10px 14px;overflow:hidden}.m-app-duos__viewport{position:relative;width:100%;flex:1;display:grid;place-items:center;overflow:hidden}.m-app-duos__slide{position:absolute;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .25s ease}.m-app-duos__slide.is-out{transform:translateX(-140%)}.m-app-duos__slide.is-pre{transform:translateX(140%);transition:none}.m-app-duos__bub{position:relative;padding:8px 13px;border-radius:12px;border:1.5px solid #e5e5e5;background:#fff;color:#3c3c3c;font:600 12px/1.3 inherit;text-align:center;max-width:190px;transition:transform .12s ease,opacity .12s ease}.m-app-duos__bub::after{content:'';position:absolute;left:50%;bottom:-6px;width:9px;height:9px;margin-left:-4.5px;background:#fff;border-right:1.5px solid #e5e5e5;border-bottom:1.5px solid #e5e5e5;transform:rotate(45deg)}.m-app-duos__slide.is-popout .m-app-duos__bub{transform:scale(.86);opacity:0}.m-app-duos__owl{position:relative;width:48px;height:44px;border-radius:20px 20px 18px 18px;background:#58cc02;box-shadow:inset 0 -5px 0 #46a302;display:flex;align-items:center;justify-content:center;gap:6px}.m-app-duos__owl i{width:13px;height:13px;border-radius:50%;background:#fff;position:relative}.m-app-duos__owl i::after{content:'';position:absolute;right:3px;top:4px;width:5px;height:5px;border-radius:50%;background:#2b2b2b}.m-app-duos__owl b{position:absolute;bottom:9px;width:9px;height:6px;border-radius:4px;background:#ff9600}.m-app-duos__cta{width:100%;height:38px;border:0;border-radius:12px;background:#58cc02;color:#fff;font:700 12px/1 inherit;letter-spacing:.04em;box-shadow:0 4px 0 #46a302;cursor:pointer;transition:background .12s,color .12s,box-shadow .12s,transform .08s}.m-app-duos__cta.is-lock{background:#e5e5e5;color:#afafaf;box-shadow:none;transform:translateY(3px)}",
+    "js": "var el=root.querySelector('.m-app-duos');if(!el)return;var vp=el.querySelector('.m-app-duos__viewport'),cta=el.querySelector('.m-app-duos__cta');var lines=[\"Hi there! I'm Duo!\",\"Just 9 quick questions before your first lesson!\",\"Let's pick your daily goal!\"];var idx=0,busy=false,touched=false,dead=false,timers=[];function later(fn,ms){timers.push(setTimeout(fn,ms));}function next(){if(busy||dead)return;busy=true;var cur=vp.querySelector('.m-app-duos__slide');cta.classList.add('is-lock');if(cur)cur.classList.add('is-popout');later(function(){if(dead)return;idx=(idx+1)%lines.length;var nxt=document.createElement('div');nxt.className='m-app-duos__slide is-pre';nxt.innerHTML='<div class=\"m-app-duos__bub\">'+lines[idx]+'</div><div class=\"m-app-duos__owl\"><i></i><i></i><b></b></div>';vp.appendChild(nxt);void nxt.offsetWidth;if(cur)cur.classList.add('is-out');nxt.classList.remove('is-pre');later(function(){if(dead)return;if(cur&&cur.parentNode)cur.parentNode.removeChild(cur);cta.classList.remove('is-lock');busy=false;},400);},140);}cta.addEventListener('click',function(){touched=true;next();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)next();},2500);return function(){dead=true;clearInterval(iv);timers.forEach(clearTimeout);};"
+  },
+  {
+    "id": "app-airbnb-search-pill-expand",
+    "title": "Airbnb: Search Pill → 3-Step Accordion Sheet",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Fluid",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "height + border-radius (search pill -> Where? card)",
+      "transform: translateY + opacity (When / Who summary pills)",
+      "transform: translateY (top category icons & bottom Search bar)"
+    ],
+    "src": "Airbnb (Live Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/airbnb/id401626263?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Airbnb",
+      "slug": "airbnb",
+      "category": "Travel",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FF385C",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/40/43/5c40438f-d7c6-ca2d-c459-a468d63f1469/AppIcon-0-0-1x_U007epad-0-1-0-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/airbnb/id401626263?uo=4",
+      "bundleId": "com.airbnb.app"
+    },
+    "summary": "Captured live from Airbnb Android: tapping the 'Start your search' pill expands it into an elevated Where? destination card while When/Who accordion pills drop below and the rose-red Search footer rises into view.",
+    "hint": "Tap search pill to expand / collapse sheet",
+    "choreography": [
+      "0-320ms: backdrop dims to soft neutral gray (#f1f1f1) while the 42px rounded search pill expands vertically into the 118px elevated 'Where?' card.",
+      "60-360ms: 'When · Add dates' and 'Who · Add guests' collapsed white pills cascade down below with a 45ms stagger.",
+      "80-420ms: top tab icons pop upward into place and the bottom action bar ('Clear all' + '#FF385C Search' CTA) rises from translateY(100%) to 0."
+    ],
+    "agentPrompt": "Recreate Airbnb's live-captured Search Pill -> 3-Step Accordion Sheet transition:\n1. Start with a floating white pill ('Start your search', height 40px, border-radius 999px, soft shadow) on a crisp white feed.\n2. On click, transition the backdrop to #efefef over 240ms while morphing the pill into an expanded white card (height 118px, border-radius 20px, shadow 0 12px 32px rgba(0,0,0,0.1)) over 380ms cubic-bezier(0.22, 1, 0.36, 1) revealing 'Where?' and suggested destinations.\n3. Simultaneously slide two compact white accordion rows ('When / Add dates', 'Who / Add guests') down from translateY(-10px) opacity 0 with 45ms and 90ms stagger, and slide a white bottom bar ('Clear all' + #FF385C 'Search' button) up from translateY(100%).",
+    "extractableCode": "<!-- Airbnb Search Pill -> Accordion Sheet -->\n<div class=\"abnb-search\" data-open=\"false\">...</div>",
+    "html": "<div class=\"m-app-asrc\"><div class=\"m-app-asrc__frame\"><div class=\"m-app-asrc__top\"><span>Homes</span><span>Hotels</span><span>Experiences</span><button type=\"button\" class=\"m-app-asrc__x\" aria-label=\"Close\">×</button></div><button type=\"button\" class=\"m-app-asrc__pill\"><span class=\"m-app-asrc__phead\">🔍 Start your search</span><div class=\"m-app-asrc__where\"><b>Where?</b><div class=\"m-app-asrc__in\">🔍 Search destinations</div><div class=\"m-app-asrc__sug\"><span>📍 Nearby</span><span>🏛 Porto</span><span>🌊 Lisbon</span></div></div></button><div class=\"m-app-asrc__acc\" style=\"--d:50ms\"><span>When</span><b>Add dates</b></div><div class=\"m-app-asrc__acc\" style=\"--d:100ms\"><span>Who</span><b>Add guests</b></div><div class=\"m-app-asrc__foot\"><span>Clear all</span><b>Search</b></div></div></div>",
+    "css": ".m-app-asrc{position:absolute;inset:0;display:grid;place-items:center;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;transition:background .28s ease;user-select:none;overflow:hidden}.m-app-asrc.is-open{background:#efefef}.m-app-asrc__frame{position:relative;width:min(88%,264px);height:100%;max-height:242px;padding:12px 8px 0;display:flex;flex-direction:column;gap:8px}.m-app-asrc__top{display:flex;align-items:center;justify-content:center;gap:12px;font:600 11px/1 inherit;color:#717171;height:18px;opacity:0;transform:translateY(-8px);transition:opacity .24s ease,transform .32s cubic-bezier(.22,1,.36,1)}.m-app-asrc.is-open .m-app-asrc__top{opacity:1;transform:none}.m-app-asrc__top span:first-child{color:#222;border-bottom:1.5px solid #222;padding-bottom:2px}.m-app-asrc__x{position:absolute;right:6px;top:8px;width:22px;height:22px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#222;font-size:13px;line-height:1;display:grid;place-items:center;cursor:pointer}.m-app-asrc__pill{position:relative;width:100%;height:38px;border:1px solid #e4e4e4;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.07);padding:0 14px;text-align:left;overflow:hidden;cursor:pointer;transition:height .38s cubic-bezier(.22,1,.36,1),border-radius .38s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,padding .32s ease}.m-app-asrc.is-open .m-app-asrc__pill{height:106px;border-radius:18px;padding:10px 13px;box-shadow:0 12px 28px rgba(0,0,0,.1);border-color:transparent}.m-app-asrc__phead{display:flex;align-items:center;justify-content:center;height:36px;font:600 12px/1 inherit;color:#222;transition:opacity .14s ease}.m-app-asrc.is-open .m-app-asrc__phead{opacity:0;height:0;overflow:hidden}.m-app-asrc__where{opacity:0;transform:translateY(6px);transition:opacity .22s ease .08s,transform .3s cubic-bezier(.22,1,.36,1) .06s}.m-app-asrc.is-open .m-app-asrc__where{opacity:1;transform:none}.m-app-asrc__where b{display:block;font:700 14px/1.1 inherit;color:#222;margin-bottom:6px}.m-app-asrc__in{padding:6px 9px;border-radius:9px;border:1px solid #d4d4d4;font-size:11px;color:#717171;margin-bottom:7px}.m-app-asrc__sug{display:flex;gap:5px}.m-app-asrc__sug span{font-size:10px;padding:3px 7px;border-radius:7px;background:#f4f4f5;color:#333}.m-app-asrc__acc{display:flex;justify-content:space-between;align-items:center;padding:8px 13px;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:11px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .22s ease var(--d),transform .32s cubic-bezier(.22,1,.36,1) var(--d)}.m-app-asrc.is-open .m-app-asrc__acc{opacity:1;transform:none;pointer-events:auto}.m-app-asrc__acc span{color:#717171}.m-app-asrc__acc b{color:#222;font-weight:600}.m-app-asrc__foot{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#fff;border-top:1px solid #e6e6e6;font-size:11px;transform:translateY(100%);transition:transform .34s cubic-bezier(.22,1,.36,1) .06s}.m-app-asrc.is-open .m-app-asrc__foot{transform:none}.m-app-asrc__foot span{text-decoration:underline;color:#222;font-weight:600}.m-app-asrc__foot b{padding:6px 13px;border-radius:8px;background:#ff385c;color:#fff;font-weight:600}",
+    "js": "var el=root.querySelector('.m-app-asrc');if(!el)return;var pill=el.querySelector('.m-app-asrc__pill'),x=el.querySelector('.m-app-asrc__x');var open=false,touched=false,dead=false;function set(v){open=v;el.classList.toggle('is-open',open);}pill.addEventListener('click',function(){touched=true;set(!open);});x.addEventListener('click',function(e){e.stopPropagation();touched=true;set(false);});var t0=setTimeout(function(){if(!touched&&!dead)set(true);},750);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set(!open);},2800);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  }
+]

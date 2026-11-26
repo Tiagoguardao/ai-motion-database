@@ -1,0 +1,434 @@
+[
+  {
+    "id": "magic-border-beam",
+    "title": "Border beam card",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 4200,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear (6s orbit)",
+    "props": [
+      "offset-distance",
+      "mask-composite",
+      "linear-gradient"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx",
+    "collection": "Magic UI",
+    "summary": "A luminous gradient comet glides seamlessly around a card's rounded perimeter using CSS offset-path and border-box masking.",
+    "hint": "Hover to accelerate",
+    "choreography": [
+      "0% → 100%: A soft radial/linear comet (#ffaa40 → #9c40ff) orbits the rounded-rect perimeter via CSS offset-distance.",
+      "Masking clips the beam strictly to the 1.5px hairline border using padding-box/border-box mask-composite.",
+      "Hover smoothly doubles orbit velocity while brightening the inner hairline rim."
+    ],
+    "agentPrompt": "Add the Magic UI \"Border beam\" effect around a card container.\n\nTrigger: continuous ambient loop (hover speeds up)\nDuration: 4200 ms linear\nTechnique: Absolute border mask (mask-clip: padding-box, border-box; mask-composite: intersect) with an inner gradient element animated along offset-path: rect(0 auto auto 0 round 16px) from offset-distance 0% to 100%.\nColors: #ffaa40 -> #9c40ff -> transparent. Pause under prefers-reduced-motion.",
+    "extractableCode": ".border-beam-card {\n  position: relative;\n  border-radius: 16px;\n  border: 1px solid rgba(255,255,255,0.1);\n  background: #141418;\n}\n.border-beam-ring {\n  position: absolute; inset: -1px; border-radius: inherit;\n  border: 1.5px solid transparent;\n  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);\n  -webkit-mask-composite: xor;\n  mask-composite: exclude;\n  pointer-events: none;\n}\n.border-beam-comet {\n  position: absolute; width: 72px; height: 72px;\n  background: linear-gradient(90deg, transparent, #9c40ff 55%, #ffaa40);\n  offset-path: rect(0 auto auto 0 round 16px);\n  animation: beam-orbit 4.2s linear infinite;\n}\n@keyframes beam-orbit {\n  from { offset-distance: 0%; }\n  to   { offset-distance: 100%; }\n}",
+    "html": "<div class=\"m-magic-border-beam\">\n  <div class=\"m-mbb-card\">\n    <div class=\"m-mbb-ring\"><div class=\"m-mbb-comet\"></div><div class=\"m-mbb-comet m-mbb-comet-2\"></div></div>\n    <div class=\"m-mbb-badge\">MIT · MAGIC UI</div>\n    <div class=\"m-mbb-title\">Border Beam</div>\n    <div class=\"m-mbb-desc\">offset-path perimeter trace</div>\n  </div>\n</div>",
+    "css": ".m-magic-border-beam {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: radial-gradient(circle at 50% 0%, #1d1b28, #0c0c10 72%);\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-border-beam .m-mbb-card {\n  position: relative; width: 68%; max-width: 240px; padding: 22px 20px;\n  border-radius: 14px; background: rgba(20, 20, 26, 0.92);\n  border: 1px solid rgba(255, 255, 255, 0.09);\n  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.8);\n  transition: transform 280ms cubic-bezier(.2,.8,.2,1);\n}\n.m-magic-border-beam:hover .m-mbb-card { transform: translateY(-2px); }\n.m-magic-border-beam .m-mbb-ring {\n  position: absolute; inset: -1px; border-radius: inherit;\n  border: 1.5px solid transparent; pointer-events: none; overflow: hidden;\n  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);\n  -webkit-mask-composite: xor;\n  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);\n  mask-composite: exclude;\n}\n.m-magic-border-beam .m-mbb-comet {\n  position: absolute; width: 78px; height: 78px;\n  background: linear-gradient(to left, #ffaa40, #9c40ff 55%, transparent);\n  offset-path: rect(0 auto auto 0 round 14px);\n  animation: m-mbb-orbit 4.2s linear infinite;\n}\n.m-magic-border-beam .m-mbb-comet-2 {\n  background: linear-gradient(to left, #38bdf8, #818cf8 55%, transparent);\n  animation-delay: -2.1s; opacity: 0.72;\n}\n.m-magic-border-beam:hover .m-mbb-comet { animation-duration: 2.1s; }\n@keyframes m-mbb-orbit {\n  from { offset-distance: 0%; }\n  to   { offset-distance: 100%; }\n}\n.m-magic-border-beam .m-mbb-badge {\n  font: 500 9.5px \"Geist Mono\", ui-monospace, monospace; letter-spacing: 0.08em;\n  color: #a78bfa; margin-bottom: 10px;\n}\n.m-magic-border-beam .m-mbb-title {\n  font-size: 16px; font-weight: 600; color: #f8fafc; letter-spacing: -0.02em;\n}\n.m-magic-border-beam .m-mbb-desc {\n  margin-top: 4px; font: 400 11px \"Geist Mono\", ui-monospace, monospace; color: #71717a;\n}",
+    "js": "return () => {};"
+  },
+  {
+    "id": "magic-shimmer-button",
+    "title": "Shimmer button",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 2800,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear (2.8s spin) + 280ms ease-out",
+    "props": [
+      "transform",
+      "conic-gradient",
+      "box-shadow"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx",
+    "collection": "Magic UI",
+    "summary": "A rotating conic light beam sweeps around a recessed pill CTA rim with an inner top-edge specular lift on hover.",
+    "hint": "Hover or press button",
+    "choreography": [
+      "Continuous 2.8s conic-gradient rotation sweeps a sharp 70° white arc through a 1.5px outer cut.",
+      "Hover lifts inner top-edge highlight box-shadow and warms core sheen in 260ms.",
+      "Pointerdown compresses button 1px vertically with crisp tactile feedback."
+    ],
+    "agentPrompt": "Add the Magic UI \"Shimmer button\" motion to a pill CTA.\n\nTrigger: continuous perimeter shimmer + hover highlight + press compress\nDuration: 2800 ms linear spin; 260 ms ease-out hover shadow\nTechnique: Overflow-hidden pill wrapping a spinning conic-gradient pseudo-layer inset behind a 1.5px solid inner mask.\nProvide static high-contrast border under prefers-reduced-motion.",
+    "extractableCode": ".shimmer-btn {\n  position: relative; overflow: hidden; border-radius: 999px;\n  padding: 12px 26px; color: #fff; background: #0b0b0f;\n  border: 1px solid rgba(255,255,255,0.12);\n}\n.shimmer-btn::before {\n  content: \"\"; position: absolute; inset: -140%;\n  background: conic-gradient(from 0deg, transparent 0 290deg, #fff 330deg, transparent 360deg);\n  animation: shimmer-spin 2.8s linear infinite;\n}\n.shimmer-btn::after {\n  content: \"\"; position: absolute; inset: 1.5px; border-radius: inherit;\n  background: #0d0d12;\n}\n.shimmer-btn span { position: relative; z-index: 1; }\n@keyframes shimmer-spin { to { transform: rotate(360deg); } }",
+    "html": "<div class=\"m-magic-shimmer-button\">\n  <button type=\"button\" class=\"m-msb-btn\">\n    <span class=\"m-msb-spin\"></span>\n    <span class=\"m-msb-bg\"></span>\n    <span class=\"m-msb-gloss\"></span>\n    <span class=\"m-msb-label\">Generate Spec ✦</span>\n  </button>\n</div>",
+    "css": ".m-magic-shimmer-button {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: radial-gradient(circle at 50% 45%, #191922, #0b0b0e 75%);\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-shimmer-button .m-msb-btn {\n  position: relative; overflow: hidden; border-radius: 999px;\n  padding: 12px 26px; border: 1px solid rgba(255,255,255,0.14);\n  background: #0c0c10; color: #ffffff; cursor: pointer;\n  font-size: 14px; font-weight: 500; letter-spacing: -0.01em;\n  transition: transform 180ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms ease;\n  box-shadow: 0 10px 28px -10px rgba(0,0,0,0.85);\n}\n.m-magic-shimmer-button .m-msb-btn:hover {\n  transform: translateY(-1px);\n  box-shadow: 0 14px 34px -10px rgba(255,255,255,0.16);\n}\n.m-magic-shimmer-button .m-msb-btn:active { transform: translateY(1px) scale(0.98); }\n.m-magic-shimmer-button .m-msb-spin {\n  position: absolute; inset: -160%;\n  background: conic-gradient(from 0deg, transparent 0deg 285deg, rgba(255,255,255,0.95) 332deg, transparent 360deg);\n  animation: m-msb-rot 2.8s linear infinite;\n}\n.m-magic-shimmer-button .m-msb-bg {\n  position: absolute; inset: 1.5px; border-radius: inherit; background: #0e0e14;\n}\n.m-magic-shimmer-button .m-msb-gloss {\n  position: absolute; inset: 1.5px; border-radius: inherit;\n  box-shadow: inset 0 -6px 12px rgba(255,255,255,0.12);\n  transition: box-shadow 260ms ease;\n}\n.m-magic-shimmer-button .m-msb-btn:hover .m-msb-gloss {\n  box-shadow: inset 0 -8px 16px rgba(255,255,255,0.28);\n}\n.m-magic-shimmer-button .m-msb-label { position: relative; z-index: 2; }\n@keyframes m-msb-rot { to { transform: rotate(360deg); } }",
+    "js": "const btn = root.querySelector('.m-msb-btn');\nconst lbl = root.querySelector('.m-msb-label');\nlet t = 0;\nconst onClick = () => {\n  lbl.textContent = 'Extracted ✓';\n  clearTimeout(t);\n  t = setTimeout(() => { lbl.textContent = 'Generate Spec ✦'; }, 1200);\n};\nbtn.addEventListener('click', onClick);\nreturn () => { clearTimeout(t); btn.removeEventListener('click', onClick); };"
+  },
+  {
+    "id": "magic-orbiting-circles",
+    "title": "Orbiting icon rings",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 12000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear (counter-rotating rings)",
+    "props": [
+      "transform (rotate)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/orbiting-circles.tsx",
+    "collection": "Magic UI",
+    "summary": "Concentric dashed tracks carry nodes in opposing circular orbits while counter-rotating each badge so icons stay upright.",
+    "hint": "Hover to pause rings",
+    "choreography": [
+      "Inner ring rotates 360° clockwise over 10s with 3 geometric nodes spaced 120° apart.",
+      "Outer ring counter-rotates 360° counterclockwise over 16s with 4 nodes spaced 90° apart.",
+      "Each icon applies an inverse rotation transform so symbols stay level throughout the orbit."
+    ],
+    "agentPrompt": "Build Magic UI \"Orbiting circles\" around a center focal node.\n\nTrigger: continuous loop (hover pauses via animation-play-state: paused)\nDuration: 10s inner CW, 16s outer CCW, linear\nTechnique: Rotate carrier wrapper (`rotate(angle) translateX(radius) rotate(-angle)`) so badges stay upright without JS.",
+    "extractableCode": "@keyframes orbit-cw {\n  from { transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a))); }\n  to   { transform: rotate(calc(var(--a) + 360deg)) translateX(var(--r)) rotate(calc(-1 * var(--a) - 360deg)); }\n}\n.orbit-node {\n  position: absolute; left: 50%; top: 50%;\n  animation: orbit-cw 12s linear infinite;\n}",
+    "html": "<div class=\"m-magic-orbiting-circles\">\n  <div class=\"m-moc-ring m-moc-r1\"></div>\n  <div class=\"m-moc-ring m-moc-r2\"></div>\n  <div class=\"m-moc-core\">UI</div>\n  <div class=\"m-moc-node m-moc-in\" style=\"--a:0deg\">◆</div>\n  <div class=\"m-moc-node m-moc-in\" style=\"--a:120deg\">▲</div>\n  <div class=\"m-moc-node m-moc-in\" style=\"--a:240deg\">●</div>\n  <div class=\"m-moc-node m-moc-out\" style=\"--a:45deg\">⌘</div>\n  <div class=\"m-moc-node m-moc-out\" style=\"--a:135deg\">✦</div>\n  <div class=\"m-moc-node m-moc-out\" style=\"--a:225deg\">◎</div>\n  <div class=\"m-moc-node m-moc-out\" style=\"--a:315deg\">❖</div>\n</div>",
+    "css": ".m-magic-orbiting-circles {\n  position: relative; width: 100%; height: 100%; overflow: hidden;\n  background: #fafafa; display: grid; place-items: center;\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-orbiting-circles .m-moc-ring {\n  position: absolute; border-radius: 50%; border: 1px dashed rgba(16,17,20,0.16);\n}\n.m-magic-orbiting-circles .m-moc-r1 { width: 104px; height: 104px; }\n.m-magic-orbiting-circles .m-moc-r2 { width: 176px; height: 176px; }\n.m-magic-orbiting-circles .m-moc-core {\n  width: 38px; height: 38px; border-radius: 50%; background: #101114; color: #fff;\n  display: grid; place-items: center; font: 600 12px \"Geist Mono\", monospace;\n  box-shadow: 0 8px 20px -6px rgba(16,17,20,0.35);\n}\n.m-magic-orbiting-circles .m-moc-node {\n  position: absolute; left: 50%; top: 50%; margin: -13px 0 0 -13px;\n  width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #101114;\n  border: 1px solid rgba(16,17,20,0.12); box-shadow: 0 3px 10px -4px rgba(16,17,20,0.16);\n  display: grid; place-items: center; font-size: 11px;\n}\n.m-magic-orbiting-circles .m-moc-in { --r: 52px; animation: m-moc-cw 10s linear infinite; }\n.m-magic-orbiting-circles .m-moc-out { --r: 88px; animation: m-moc-ccw 16s linear infinite; }\n.m-magic-orbiting-circles:hover .m-moc-node { animation-play-state: paused; }\n@keyframes m-moc-cw {\n  from { transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a))); }\n  to   { transform: rotate(calc(var(--a) + 360deg)) translateX(var(--r)) rotate(calc(-1 * var(--a) - 360deg)); }\n}\n@keyframes m-moc-ccw {\n  from { transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(-1 * var(--a))); }\n  to   { transform: rotate(calc(var(--a) - 360deg)) translateX(var(--r)) rotate(calc(-1 * var(--a) + 360deg)); }\n}",
+    "js": "return () => {};"
+  },
+  {
+    "id": "magic-meteors",
+    "title": "Meteor shower streaks",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Ambient",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 2400,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear staggered (1.6s–3.4s)",
+    "props": [
+      "transform (translateX)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/meteors.tsx",
+    "collection": "Magic UI",
+    "summary": "Angled 215-degree luminous streak heads with linear-gradient tails shoot across a deep midnight card with randomized phase offsets.",
+    "hint": "Ambient diagonal streaks",
+    "choreography": [
+      "16 meteor particles spawn along the top-right edge rotated to 215° with staggered negative delays.",
+      "Each meteor flashes to full opacity at 10% travel, then decays smoothly to zero by 100%.",
+      "Subtle radial glow behind the centered display word grounds depth."
+    ],
+    "agentPrompt": "Add Magic UI \"Meteors\" ambient background streaks.\n\nTrigger: ambient loop\nDuration: 1.6s to 3.4s linear per streak, staggered delays\nTechnique: Small 2px rounded heads rotated 215deg with a 55px ::after linear-gradient tail translated -380px along local X.",
+    "extractableCode": ".meteor {\n  position: absolute; width: 2px; height: 2px; border-radius: 50%;\n  background: #94a3b8; box-shadow: 0 0 0 1px rgba(255,255,255,0.1);\n  transform: rotate(215deg);\n  animation: meteor-fall var(--d) linear var(--delay) infinite;\n}\n.meteor::after {\n  content: \"\"; position: absolute; top: 50%; transform: translateY(-50%);\n  width: 54px; height: 1px;\n  background: linear-gradient(90deg, #94a3b8, transparent);\n}\n@keyframes meteor-fall {\n  0%   { transform: rotate(215deg) translateX(0); opacity: 0; }\n  12%  { opacity: 1; }\n  85%  { opacity: 0.7; }\n  100% { transform: rotate(215deg) translateX(-420px); opacity: 0; }\n}",
+    "html": "<div class=\"m-magic-meteors\"><div class=\"m-mm-sky\"></div><div class=\"m-mm-word\">Meteors</div></div>",
+    "css": ".m-magic-meteors {\n  position: relative; width: 100%; height: 100%; overflow: hidden;\n  background: radial-gradient(circle at 50% 100%, #1e293b 0%, #090b10 68%);\n  display: grid; place-items: center;\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-meteors .m-mm-sky { position: absolute; inset: 0; pointer-events: none; }\n.m-magic-meteors .m-mm-star {\n  position: absolute; width: 2px; height: 2px; border-radius: 50%;\n  background: #e2e8f0; box-shadow: 0 0 6px rgba(148,163,184,0.8);\n  opacity: 0; animation: m-mm-shoot var(--d) linear var(--delay) infinite;\n}\n.m-magic-meteors .m-mm-star::after {\n  content: \"\"; position: absolute; top: 50%; left: 1px; transform: translateY(-50%);\n  width: var(--len); height: 1px;\n  background: linear-gradient(90deg, rgba(226,232,240,0.85), transparent);\n}\n@keyframes m-mm-shoot {\n  0%   { transform: rotate(215deg) translateX(0); opacity: 0; }\n  10%  { opacity: 1; }\n  75%  { opacity: 0.85; }\n  100% { transform: rotate(215deg) translateX(-420px); opacity: 0; }\n}\n.m-magic-meteors .m-mm-word {\n  position: relative; z-index: 2; font-size: 34px; font-weight: 600;\n  letter-spacing: -0.04em;\n  background: linear-gradient(180deg, #ffffff 20%, rgba(148,163,184,0.45));\n  -webkit-background-clip: text; background-clip: text; color: transparent;\n}",
+    "js": "const sky = root.querySelector('.m-mm-sky');\nconst frag = document.createDocumentFragment();\nfor (let i = 0; i < 16; i++) {\n  const s = document.createElement('span');\n  s.className = 'm-mm-star';\n  s.style.left = (12 + ((i * 37) % 105)) + '%';\n  s.style.top = (-6 + ((i * 19) % 45)) + '%';\n  s.style.setProperty('--d', (1.7 + (i % 5) * 0.42).toFixed(2) + 's');\n  s.style.setProperty('--delay', (-((i * 0.53) % 3.2)).toFixed(2) + 's');\n  s.style.setProperty('--len', (44 + (i % 4) * 18) + 'px');\n  frag.appendChild(s);\n}\nsky.appendChild(frag);\nreturn () => {};"
+  },
+  {
+    "id": "magic-hyper-text",
+    "title": "Hyper-text scramble",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 800,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear left-to-right lock (800ms)",
+    "props": [
+      "textContent (character scramble)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/hyper-text.tsx",
+    "collection": "Magic UI",
+    "summary": "Monospace uppercase letters cycle rapidly through random glyphs while locking sequentially from left to right over 800ms.",
+    "hint": "Hover or click text",
+    "choreography": [
+      "0ms: All non-space characters switch to randomized uppercase glyphs at ~30fps.",
+      "0ms → 800ms: A progressive lock cursor advances across character indices, snapping each glyph into its target letter.",
+      "Hover or click retriggers with the next phrase cleanly."
+    ],
+    "agentPrompt": "Add Magic UI \"Hyper-text\" character scramble reveal.\n\nTrigger: hover, click, or mount\nDuration: 800 ms total across string length\nMechanics: On RAF, track progress p = elapsed/800; characters with index < p * len show final char, remaining characters pick random uppercase letters every ~35ms. Preserve spaces and monospace tabular width.",
+    "extractableCode": "function scramble(el, target, duration = 800) {\n  const ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\n  const start = performance.now();\n  function frame(now) {\n    const p = Math.min(1, (now - start) / duration);\n    const locked = Math.floor(p * target.length);\n    el.textContent = [...target].map((ch, i) =>\n      ch === ' ' ? ' ' : (i < locked ? ch : ABC[Math.floor(Math.random() * ABC.length)])\n    ).join('');\n    if (p < 1) requestAnimationFrame(frame);\n  }\n  requestAnimationFrame(frame);\n}",
+    "html": "<div class=\"m-magic-hyper-text\">\n  <div class=\"m-mht-box\">\n    <div class=\"m-mht-eyebrow\">DECODE / 800MS</div>\n    <div class=\"m-mht-word\">HYPER TEXT</div>\n  </div>\n</div>",
+    "css": ".m-magic-hyper-text {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: #f5f5f7; cursor: pointer; user-select: none;\n}\n.m-magic-hyper-text .m-mht-box { text-align: center; padding: 0 16px; }\n.m-magic-hyper-text .m-mht-eyebrow {\n  font: 500 10px \"Geist Mono\", ui-monospace, monospace; letter-spacing: 0.12em;\n  color: #2a94e2; margin-bottom: 8px;\n}\n.m-magic-hyper-text .m-mht-word {\n  font: 600 26px \"Geist Mono\", ui-monospace, monospace; letter-spacing: 0.04em;\n  color: #101114; white-space: pre;\n}",
+    "js": "const wordEl = root.querySelector('.m-mht-word');\nconst words = ['HYPER TEXT', 'MOTION SPEC', 'EASE CURVE'];\nconst ABC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';\nlet idx = 0, raf = 0, timer = 0, lastTick = 0;\n\nfunction run(target) {\n  cancelAnimationFrame(raf);\n  const start = performance.now();\n  lastTick = 0;\n  function step(now) {\n    if (!root.isConnected) return;\n    const p = Math.min(1, (now - start) / 800);\n    if (p >= 1 || now - lastTick >= 32) {\n      lastTick = now;\n      const locked = Math.floor(p * target.length);\n      let out = '';\n      for (let i = 0; i < target.length; i++) {\n        out += target[i] === ' ' ? ' ' : (i < locked ? target[i] : ABC[(Math.random() * ABC.length) | 0]);\n      }\n      wordEl.textContent = out;\n    }\n    if (p < 1) raf = requestAnimationFrame(step);\n  }\n  raf = requestAnimationFrame(step);\n}\n\nconst trigger = () => { idx = (idx + 1) % words.length; run(words[idx]); };\nroot.addEventListener('pointerenter', trigger);\nroot.addEventListener('click', trigger);\nrun(words[0]);\ntimer = setInterval(trigger, 3200);\nreturn () => {\n  cancelAnimationFrame(raf);\n  clearInterval(timer);\n  root.removeEventListener('pointerenter', trigger);\n  root.removeEventListener('click', trigger);\n};"
+  },
+  {
+    "id": "magic-morphing-text",
+    "title": "Gooey morphing text",
+    "use": "Typography",
+    "stack": "SVG",
+    "trigger": "Loop",
+    "feel": "Organic",
+    "surface": "light",
+    "dur": 1500,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "nonlinear blur-alpha threshold (1.5s)",
+    "props": [
+      "filter (blur)",
+      "opacity",
+      "feColorMatrix"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx",
+    "collection": "Magic UI",
+    "summary": "Two overlapping display words cross-blur inside an SVG alpha-threshold filter so strokes liquefy and coalesce into the next word.",
+    "hint": "Click to jump word",
+    "choreography": [
+      "Outgoing word blurs outward (`8/f - 8 px`) while opacity falls along `f^0.4`.",
+      "Incoming word sharpens simultaneously while SVG `feColorMatrix` (`alpha * 255 - 140`) snaps soft edges into viscous ink.",
+      "Cooldown dwell holds the crisp resolved word for 850ms before the next morph."
+    ],
+    "agentPrompt": "Build Magic UI \"Morphing text\" using an SVG threshold color matrix filter.\n\nTrigger: loop (1.5s morph + 0.85s hold)\nFilter: <feColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140' />\nMechanics: Apply blur(min(8/f - 8, 100)px) and opacity pow(f, 0.4) inversely to two stacked spans inside the filtered container.",
+    "extractableCode": "<svg style=\"position:absolute;width:0;height:0\">\n  <filter id=\"goo-threshold\">\n    <feColorMatrix in=\"SourceGraphic\" type=\"matrix\"\n      values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140\"/>\n  </filter>\n</svg>\n<!-- Inside container with filter: url(#goo-threshold):\n  text2.style.filter = `blur(${Math.min(8 / f - 8, 100)}px)`;\n  text2.style.opacity = `${Math.pow(f, 0.4)}`;\n  text1.style.filter = `blur(${Math.min(8 / (1 - f) - 8, 100)}px)`;\n  text1.style.opacity = `${Math.pow(1 - f, 0.4)}`; -->",
+    "html": "<div class=\"m-magic-morphing-text\">\n  <svg class=\"m-mmt-svg\" aria-hidden=\"true\"><defs><filter class=\"m-mmt-filter\"><feColorMatrix in=\"SourceGraphic\" type=\"matrix\" values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 255 -140\"/></filter></defs></svg>\n  <div class=\"m-mmt-stage\"><span class=\"m-mmt-a\"></span><span class=\"m-mmt-b\"></span></div>\n</div>",
+    "css": ".m-magic-morphing-text {\n  position: relative; width: 100%; height: 100%; display: grid; place-items: center;\n  background: #ffffff; cursor: pointer; user-select: none; overflow: hidden;\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-morphing-text .m-mmt-svg { position: absolute; width: 0; height: 0; }\n.m-magic-morphing-text .m-mmt-stage {\n  position: relative; width: 100%; height: 72px; display: grid; place-items: center;\n}\n.m-magic-morphing-text span {\n  position: absolute; font-size: 42px; font-weight: 700; letter-spacing: -0.04em;\n  color: #101114; line-height: 1; white-space: nowrap;\n}",
+    "js": "const uid = 'mmt-' + Math.random().toString(36).slice(2, 8);\nconst flt = root.querySelector('.m-mmt-filter');\nconst stg = root.querySelector('.m-mmt-stage');\nflt.id = uid;\nstg.style.filter = `url(#${uid}) blur(0.4px)`;\nconst a = root.querySelector('.m-mmt-a');\nconst b = root.querySelector('.m-mmt-b');\nconst words = ['Kinetic', 'Elastic', 'Tactile', 'Fluid'];\nlet idx = 0, morph = 0, cool = 0.75, last = performance.now(), raf = 0;\nconst MORPH_T = 1.45, COOL_T = 0.85;\n\nfunction setTexts() {\n  a.textContent = words[idx % words.length];\n  b.textContent = words[(idx + 1) % words.length];\n}\nsetTexts();\n\nfunction applyMorph(f) {\n  const c = Math.max(0.001, Math.min(0.999, f));\n  b.style.filter = `blur(${Math.min(8 / c - 8, 100).toFixed(2)}px)`;\n  b.style.opacity = Math.pow(c, 0.4).toFixed(3);\n  const inv = 1 - c;\n  a.style.filter = `blur(${Math.min(8 / inv - 8, 100).toFixed(2)}px)`;\n  a.style.opacity = Math.pow(inv, 0.4).toFixed(3);\n}\n\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const dt = Math.min(0.05, (now - last) / 1000);\n  last = now;\n  if (cool > 0) {\n    cool -= dt;\n    b.style.filter = ''; b.style.opacity = '1';\n    a.style.filter = ''; a.style.opacity = '0';\n    if (cool <= 0) { idx = (idx + 1) % words.length; setTexts(); morph = 0; }\n  } else {\n    morph += dt;\n    const f = morph / MORPH_T;\n    if (f >= 1) { cool = COOL_T; }\n    else applyMorph(f);\n  }\n  raf = requestAnimationFrame(tick);\n}\nconst onClick = () => { cool = 0; idx = (idx + 1) % words.length; setTexts(); morph = 0; };\nroot.addEventListener('click', onClick);\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('click', onClick); };"
+  },
+  {
+    "id": "magic-aurora-text",
+    "title": "Aurora gradient type",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Ambient",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 6000,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "ease-in-out (6s gradient drift)",
+    "props": [
+      "background-position",
+      "background-clip: text"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/aurora-text.tsx",
+    "collection": "Magic UI",
+    "summary": "A multi-stop coral, violet, and cyan aurora gradient drifts organically inside clipped display letterforms.",
+    "hint": "Ambient aurora drift",
+    "choreography": [
+      "A 200%-wide 135° five-stop gradient (#ff0080, #7928ca, #0070f3, #38bdf8) is clipped directly to the focal word.",
+      "Keyframes trace a smooth non-linear loop in background-position over 6s.",
+      "Surrounding headline copy remains crisp matte white so color motion stays concentrated."
+    ],
+    "agentPrompt": "Apply Magic UI \"Aurora text\" to an emphasized headline word.\n\nTrigger: ambient loop\nDuration: 6000 ms ease-in-out infinite\nCSS: background-image: linear-gradient(135deg, #FF0080, #7928CA, #0070F3, #38BDF8, #FF0080); background-size: 200% auto; background-clip: text; color: transparent; animate background-position from 0% 50% to 100% 50% and back.",
+    "extractableCode": ".aurora-text {\n  background: linear-gradient(135deg, #ff0080, #7928ca, #0070f3, #38bdf8, #ff0080);\n  background-size: 220% 220%;\n  -webkit-background-clip: text; background-clip: text; color: transparent;\n  animation: aurora-shift 6s ease-in-out infinite;\n}\n@keyframes aurora-shift {\n  0%, 100% { background-position: 0% 50%; }\n  50%      { background-position: 100% 50%; }\n}",
+    "html": "<div class=\"m-magic-aurora-text\">\n  <div class=\"m-mat-line\">Ship <span class=\"m-mat-grad\">beautiful</span></div>\n</div>",
+    "css": ".m-magic-aurora-text {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: #0b0b0f; padding: 16px;\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-aurora-text .m-mat-line {\n  font-size: 36px; font-weight: 700; letter-spacing: -0.04em; color: #f4f4f5;\n  text-align: center; line-height: 1.05;\n}\n.m-magic-aurora-text .m-mat-grad {\n  background: linear-gradient(135deg, #ff0080, #7928ca, #0070f3, #38bdf8, #ff0080);\n  background-size: 240% 240%;\n  -webkit-background-clip: text; background-clip: text; color: transparent;\n  animation: m-mat-drift 6s ease-in-out infinite;\n}\n@keyframes m-mat-drift {\n  0%   { background-position: 0% 50%; }\n  50%  { background-position: 100% 50%; }\n  100% { background-position: 0% 50%; }\n}",
+    "js": "return () => {};"
+  },
+  {
+    "id": "magic-macos-dock",
+    "title": "Magnification dock",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 320,
+    "ease": {
+      "t": "spring",
+      "k": 240,
+      "c": 18
+    },
+    "easeLabel": "spring(240, 18) + cosine falloff",
+    "props": [
+      "width",
+      "height",
+      "transform (translateY)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx",
+    "collection": "Magic UI",
+    "summary": "Dock icons smoothly swell with distance-weighted spring interpolation as the cursor sweeps horizontally across the bar.",
+    "hint": "Sweep cursor across dock",
+    "choreography": [
+      "Horizontal cursor distance to each icon center maps through a cosine bell falloff (radius 90px).",
+      "Each item interpolates size from 34px base to 54px peak via per-item damped spring physics.",
+      "When untouched, a gentle sinusoidal virtual cursor demonstrates the wave cleanly."
+    ],
+    "agentPrompt": "Build Magic UI macOS \"Dock\" magnification.\n\nTrigger: horizontal pointer move\nPhysics: spring(stiffness: 240, damping: 18) on each icon's width/height from 36px to 58px\nFalloff: d = abs(mouseX - itemCenterX); factor = d < 95 ? (1 + cos(PI * d / 95)) / 2 : 0.\nAlign items to flex-end so growth lifts upward cleanly.",
+    "extractableCode": "// Per-frame spring magnification for each dock icon:\nconst dist = Math.abs(mouseX - centerX);\nconst influence = dist < 95 ? 0.5 * (1 + Math.cos(Math.PI * dist / 95)) : 0;\nconst targetSize = 34 + influence * 22;\n// Integrate with spring(stiffness: 240, damping: 18)",
+    "html": "<div class=\"m-magic-macos-dock\">\n  <div class=\"m-mmd-bar\">\n    <div class=\"m-mmd-item\" title=\"Home\">⌂</div>\n    <div class=\"m-mmd-item\" title=\"Search\">⌕</div>\n    <div class=\"m-mmd-item\" title=\"Layers\">◫</div>\n    <div class=\"m-mmd-item\" title=\"Spark\">✦</div>\n    <div class=\"m-mmd-item\" title=\"Code\">{ }</div>\n    <div class=\"m-mmd-item\" title=\"Export\">↗</div>\n  </div>\n</div>",
+    "css": ".m-magic-macos-dock {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: linear-gradient(180deg, #f4f5f8, #e8ebf0);\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-macos-dock .m-mmd-bar {\n  display: flex; align-items: flex-end; gap: 8px; height: 54px;\n  padding: 8px 12px; border-radius: 18px;\n  background: rgba(255,255,255,0.78);\n  border: 1px solid rgba(16,17,20,0.09);\n  box-shadow: 0 12px 32px -12px rgba(16,17,20,0.18);\n  backdrop-filter: blur(12px);\n}\n.m-magic-macos-dock .m-mmd-item {\n  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;\n  background: #101114; color: #ffffff; display: grid; place-items: center;\n  font-size: 14px; font-weight: 500; user-select: none;\n  box-shadow: 0 4px 10px -4px rgba(16,17,20,0.35);\n}",
+    "js": "const bar = root.querySelector('.m-mmd-bar');\nconst items = [...root.querySelectorAll('.m-mmd-item')];\nconst st = items.map(() => ({ s: 34, v: 0 }));\nlet pointerX = null, raf = 0, last = performance.now();\n\nconst onMove = e => { pointerX = e.clientX; };\nconst onLeave = () => { pointerX = null; };\nroot.addEventListener('pointermove', onMove);\nroot.addEventListener('pointerleave', onLeave);\n\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const dt = Math.min(0.032, (now - last) / 1000);\n  last = now;\n  const rect = bar.getBoundingClientRect();\n  const autoX = rect.left + rect.width * (0.5 + 0.44 * Math.sin(now * 0.0014));\n  const mx = pointerX !== null ? pointerX : autoX;\n\n  items.forEach((el, i) => {\n    const r = el.getBoundingClientRect();\n    const cx = r.left + r.width * 0.5;\n    const dist = Math.abs(mx - cx);\n    const infl = dist < 84 ? 0.5 * (1 + Math.cos(Math.PI * dist / 84)) : 0;\n    const target = 34 + infl * 22;\n    const f = 240 * (target - st[i].s) - 18 * st[i].v;\n    st[i].v += f * dt;\n    st[i].s += st[i].v * dt;\n    const sz = st[i].s.toFixed(2) + 'px';\n    el.style.width = sz;\n    el.style.height = sz;\n    el.style.fontSize = (13 + infl * 6).toFixed(1) + 'px';\n  });\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => {\n  cancelAnimationFrame(raf);\n  root.removeEventListener('pointermove', onMove);\n  root.removeEventListener('pointerleave', onLeave);\n};"
+  },
+  {
+    "id": "magic-concentric-ripple",
+    "title": "Concentric pulse ripple",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Ambient",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 2400,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "ease-in-out (60ms ring stagger)",
+    "props": [
+      "transform (scale)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/ripple.tsx",
+    "collection": "Magic UI",
+    "summary": "Seven concentric rings expand and breathe in a staggered 60ms phase wave radiating outward from a quiet center mark.",
+    "hint": "Click to send wave",
+    "choreography": [
+      "Seven nested circles increment diameter by +44px each while stepping opacity down linearly.",
+      "Each ring breathes scale 1.0 → 0.92 → 1.0 with an i × 60ms phase delay.",
+      "Clicking fires an extra non-photo-blue shockwave ring from center to edge."
+    ],
+    "agentPrompt": "Add Magic UI \"Ripple\" concentric breathing rings behind a focal element.\n\nTrigger: ambient loop (2.4s ease-in-out, 60ms stagger per ring)\nTechnique: 7 centered circles with increasing size (80px + i*46px), decreasing opacity (0.28 - i*0.03), animating scale(1) -> scale(0.92) -> scale(1).",
+    "extractableCode": "@keyframes ripple-breathe {\n  0%, 100% { transform: translate(-50%,-50%) scale(1); }\n  50%      { transform: translate(-50%,-50%) scale(0.91); }\n}\n.ripple-ring {\n  position: absolute; left: 50%; top: 50%; border-radius: 50%;\n  border: 1px solid rgba(16,17,20,0.14);\n  background: rgba(16,17,20,0.03);\n  animation: ripple-breathe 2.4s ease-in-out calc(var(--i) * 60ms) infinite;\n}",
+    "html": "<div class=\"m-magic-concentric-ripple\"><div class=\"m-mcr-rings\"></div><div class=\"m-mcr-label\">Ripple</div></div>",
+    "css": ".m-magic-concentric-ripple {\n  position: relative; width: 100%; height: 100%; overflow: hidden;\n  background: #f8f9fb; display: grid; place-items: center; cursor: pointer;\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-concentric-ripple .m-mcr-rings { position: absolute; inset: 0; }\n.m-magic-concentric-ripple .m-mcr-ring {\n  position: absolute; left: 50%; top: 50%; border-radius: 50%;\n  border: 1px solid rgba(16,17,20,0.16); background: rgba(16,17,20,0.025);\n  animation: m-mcr-pulse 2.4s ease-in-out calc(var(--i) * 65ms) infinite;\n}\n@keyframes m-mcr-pulse {\n  0%, 100% { transform: translate(-50%,-50%) scale(1); }\n  50%      { transform: translate(-50%,-50%) scale(0.91); }\n}\n.m-magic-concentric-ripple .m-mcr-ping {\n  position: absolute; left: 50%; top: 50%; width: 64px; height: 64px;\n  border-radius: 50%; border: 1.5px solid #2a94e2; pointer-events: none;\n  animation: m-mcr-burst 900ms cubic-bezier(.16,1,.3,1) forwards;\n}\n@keyframes m-mcr-burst {\n  from { transform: translate(-50%,-50%) scale(0.5); opacity: 0.9; }\n  to   { transform: translate(-50%,-50%) scale(5.6); opacity: 0; }\n}\n.m-magic-concentric-ripple .m-mcr-label {\n  position: relative; z-index: 2; font-size: 16px; font-weight: 600;\n  letter-spacing: -0.02em; color: #101114;\n}",
+    "js": "const wrap = root.querySelector('.m-mcr-rings');\nfor (let i = 0; i < 7; i++) {\n  const r = document.createElement('div');\n  r.className = 'm-mcr-ring';\n  const sz = 74 + i * 44;\n  r.style.width = sz + 'px';\n  r.style.height = sz + 'px';\n  r.style.opacity = (0.85 - i * 0.1).toFixed(2);\n  r.style.setProperty('--i', i);\n  if (i === 6) r.style.borderStyle = 'dashed';\n  wrap.appendChild(r);\n}\nconst onClick = () => {\n  const p = document.createElement('div');\n  p.className = 'm-mcr-ping';\n  wrap.appendChild(p);\n  setTimeout(() => p.remove(), 920);\n};\nroot.addEventListener('click', onClick);\nreturn () => root.removeEventListener('click', onClick);"
+  },
+  {
+    "id": "magic-spotlight-card",
+    "title": "Radial spotlight card",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 240,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.2,
+        0.8,
+        0.2,
+        1
+      ]
+    },
+    "easeLabel": "pointer-tracked radial-gradient",
+    "props": [
+      "background (radial-gradient)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/magic-card.tsx",
+    "collection": "Magic UI",
+    "summary": "A cursor-tracked radial spotlight illuminates both a card's 1px gradient border and its subtle interior sheen.",
+    "hint": "Move pointer across cards",
+    "choreography": [
+      "Pointer coordinates update `--x` and `--y` CSS custom properties relative to each card.",
+      "Outer border layer reveals a tight 140px radial highlight (#9E7AFF → #FE8BBB) strictly near the pointer.",
+      "Interior matte dark surface adds a softer 180px radial glow; idle runs a quiet figure-8 sweep."
+    ],
+    "agentPrompt": "Implement Magic UI \"MagicCard\" cursor spotlight.\n\nTrigger: pointermove updating --mx/--my CSS vars\nLayers: Outer 1px padding wrapper with radial-gradient(140px circle at var(--mx) var(--my), #9E7AFF, #FE8BBB, rgba(255,255,255,0.08) 70%); inner surface with subtle white radial glow.",
+    "extractableCode": ".magic-card {\n  position: relative; padding: 1px; border-radius: 14px;\n  background: radial-gradient(150px circle at var(--mx) var(--my), #9e7aff, #fe8bbb 45%, rgba(255,255,255,0.08) 75%);\n}\n.magic-card-inner {\n  border-radius: 13px; background: #121217;\n  background-image: radial-gradient(180px circle at var(--mx) var(--my), rgba(158,122,255,0.14), transparent 70%);\n}",
+    "html": "<div class=\"m-magic-spotlight-card\">\n  <div class=\"m-msc-grid\">\n    <div class=\"m-msc-card\"><div class=\"m-msc-in\"><b>Border</b><span>radial rim</span></div></div>\n    <div class=\"m-msc-card\"><div class=\"m-msc-in\"><b>Surface</b><span>soft sheen</span></div></div>\n  </div>\n</div>",
+    "css": ".m-magic-spotlight-card {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: #0a0a0e; padding: 20px;\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-magic-spotlight-card .m-msc-grid {\n  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 88%; max-width: 280px;\n}\n.m-magic-spotlight-card .m-msc-card {\n  padding: 1px; border-radius: 12px;\n  background: radial-gradient(130px circle at var(--mx, 50%) var(--my, 50%), #9e7aff, #fe8bbb 45%, rgba(255,255,255,0.09) 76%);\n}\n.m-magic-spotlight-card .m-msc-in {\n  height: 112px; border-radius: 11px; padding: 14px;\n  display: flex; flex-direction: column; justify-content: flex-end; gap: 2px;\n  background:\n    radial-gradient(150px circle at var(--mx, 50%) var(--my, 50%), rgba(158,122,255,0.16), transparent 70%),\n    #111116;\n}\n.m-magic-spotlight-card b { font-size: 14px; font-weight: 600; color: #f4f4f5; }\n.m-magic-spotlight-card span { font: 400 11px \"Geist Mono\", monospace; color: #71717a; }",
+    "js": "const cards = [...root.querySelectorAll('.m-msc-card')];\nlet manual = false, raf = 0;\nfunction applyPoint(cx, cy) {\n  for (const c of cards) {\n    const r = c.getBoundingClientRect();\n    c.style.setProperty('--mx', (cx - r.left).toFixed(1) + 'px');\n    c.style.setProperty('--my', (cy - r.top).toFixed(1) + 'px');\n  }\n}\nconst onMove = e => { manual = true; applyPoint(e.clientX, e.clientY); };\nconst onLeave = () => { manual = false; };\nroot.addEventListener('pointermove', onMove);\nroot.addEventListener('pointerleave', onLeave);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  if (!manual) {\n    const r = root.getBoundingClientRect();\n    const t = now * 0.0014;\n    applyPoint(r.left + r.width * (0.5 + 0.3 * Math.cos(t)), r.top + r.height * (0.5 + 0.22 * Math.sin(t * 2)));\n  }\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); root.removeEventListener('pointerleave', onLeave); };"
+  },
+  {
+    "id": "reactbits-click-spark",
+    "title": "Click spark burst",
+    "use": "Micro-interactions",
+    "stack": "Canvas 2D",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 480,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.16,
+        1,
+        0.3,
+        1
+      ]
+    },
+    "easeLabel": "cubic ease-out (480ms)",
+    "props": [
+      "radial stroke",
+      "lineLength",
+      "opacity"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/blob/main/src/content/Animations/ClickSpark/ClickSpark.jsx",
+    "collection": "React Bits",
+    "summary": "Clicking anywhere fires 10 crisp radial needle sparks accelerating outward while shrinking to zero length over 480ms.",
+    "hint": "Click anywhere to spark",
+    "choreography": [
+      "0ms: 10 radial vectors spawn at pointer coordinates with slight angular jitter.",
+      "0ms → 480ms: Outer tip advances along cubic ease-out (`1 - (1-t)^3`) while line length shrinks linearly to 0.",
+      "An expanding thin shock ring echoes each burst; idle triggers periodic demo sparks."
+    ],
+    "agentPrompt": "Add React Bits \"ClickSpark\" radial canvas feedback on pointerdown.\n\nTrigger: click / pointerdown anywhere in container\nDuration: 480 ms cubic ease-out\nCanvas 2D: Spawn 10 sparks at angle i*2*PI/10; at progress e = 1-(1-t)^3 draw line from radius e*R to e*R + size*(1-e) with round lineCap.",
+    "extractableCode": "// React Bits ClickSpark core radial needle math:\nconst e = 1 - Math.pow(1 - t, 3);\nconst dist = e * radius;\nconst len = sparkSize * (1 - e);\nctx.beginPath();\nctx.moveTo(x + Math.cos(angle) * dist, y + Math.sin(angle) * dist);\nctx.lineTo(x + Math.cos(angle) * (dist + len), y + Math.sin(angle) * (dist + len));\nctx.stroke();",
+    "html": "<div class=\"m-reactbits-click-spark\"><canvas class=\"m-rcs-c\"></canvas><span class=\"m-rcs-cap\">Click anywhere</span></div>",
+    "css": ".m-reactbits-click-spark {\n  position: relative; width: 100%; height: 100%; background: #0e0e12;\n  cursor: crosshair; overflow: hidden; user-select: none;\n}\n.m-reactbits-click-spark .m-rcs-c { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }\n.m-reactbits-click-spark .m-rcs-cap {\n  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);\n  font: 500 12px \"Geist Mono\", ui-monospace, monospace; color: rgba(255,255,255,0.34);\n  pointer-events: none; letter-spacing: 0.04em;\n}",
+    "js": "const canvas = root.querySelector('.m-rcs-c');\nconst ctx = canvas.getContext('2d');\nconst palette = ['#ffffff', '#38bdf8', '#f472b6', '#fbbf24'];\nconst bursts = [];\nlet raf = 0, lastAuto = 0, userClicked = false;\n\nfunction spawn(x, y) {\n  const color = palette[bursts.length % palette.length];\n  const count = 10;\n  const rot = Math.random() * 0.4;\n  bursts.push({ x, y, t0: performance.now(), color, count, rot });\n  if (bursts.length > 24) bursts.shift();\n}\n\nconst onDown = e => {\n  userClicked = true;\n  const r = canvas.getBoundingClientRect();\n  spawn(e.clientX - r.left, e.clientY - r.top);\n};\nroot.addEventListener('pointerdown', onDown);\n\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const dpr = Math.min(2, window.devicePixelRatio || 1);\n  const w = canvas.clientWidth || 320, h = canvas.clientHeight || 240;\n  if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {\n    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);\n  }\n  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);\n  ctx.clearRect(0, 0, w, h);\n\n  if (!userClicked && now - lastAuto > 1250) {\n    lastAuto = now;\n    spawn(w * (0.25 + Math.random() * 0.5), h * (0.28 + Math.random() * 0.44));\n  }\n\n  for (let b = bursts.length - 1; b >= 0; b--) {\n    const item = bursts[b];\n    const t = (now - item.t0) / 480;\n    if (t < 0) continue;\n    if (t >= 1) { bursts.splice(b, 1); continue; }\n    const e = 1 - Math.pow(1 - t, 3);\n    const dist = e * 44;\n    const len = 16 * (1 - e);\n    ctx.strokeStyle = item.color;\n    ctx.globalAlpha = Math.max(0, 1 - t * 0.9);\n    ctx.lineWidth = 2;\n    ctx.lineCap = 'round';\n    for (let i = 0; i < item.count; i++) {\n      const a = item.rot + (i * Math.PI * 2) / item.count;\n      ctx.beginPath();\n      ctx.moveTo(item.x + Math.cos(a) * dist, item.y + Math.sin(a) * dist);\n      ctx.lineTo(item.x + Math.cos(a) * (dist + len), item.y + Math.sin(a) * (dist + len));\n      ctx.stroke();\n    }\n    ctx.beginPath();\n    ctx.globalAlpha = (1 - t) * 0.25;\n    ctx.lineWidth = 1;\n    ctx.arc(item.x, item.y, e * 32, 0, Math.PI * 2);\n    ctx.stroke();\n  }\n  ctx.globalAlpha = 1;\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointerdown', onDown); };"
+  },
+  {
+    "id": "reactbits-electric-border",
+    "title": "Electric turbulence border",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Loop",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 1600,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous turbulence displacement",
+    "props": [
+      "feTurbulence",
+      "feDisplacementMap",
+      "filter glow"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/blob/main/src/content/Animations/ElectricBorder/ElectricBorder.jsx",
+    "collection": "React Bits",
+    "summary": "Live animated SVG fractal turbulence displaces a glowing cyan plasma stroke around a rounded card with crisp electrical jitter.",
+    "hint": "Hover to surge voltage",
+    "choreography": [
+      "Dual orthogonal SVG feTurbulence noise fields shift phase smoothly along X and Y.",
+      "feDisplacementMap warps a 2px cyan core stroke + soft bloom halo around the card boundary.",
+      "Hover increases displacement amplitude and flicker intensity."
+    ],
+    "agentPrompt": "Add React Bits \"Electric border\" plasma outline around a card.\n\nTrigger: continuous loop + hover surge\nTechnique: SVG <filter> chaining <feTurbulence type='turbulence' numOctaves='3'> into <feDisplacementMap scale='9'> applied to a rounded <rect> stroke (#38bdf8) with layered drop-shadow bloom. Animate seed/offset smoothly via RAF.",
+    "extractableCode": "<svg viewBox=\"0 0 260 160\">\n  <defs>\n    <filter id=\"electric\">\n      <feTurbulence type=\"turbulence\" baseFrequency=\"0.025\" numOctaves=\"3\" seed=\"2\"/>\n      <feDisplacementMap in=\"SourceGraphic\" scale=\"8\"/>\n    </filter>\n  </defs>\n  <rect x=\"14\" y=\"14\" width=\"232\" height=\"132\" rx=\"16\"\n        fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"2\" filter=\"url(#electric)\"/>\n</svg>",
+    "html": "<div class=\"m-reactbits-electric-border\">\n  <div class=\"m-reb-wrap\">\n    <svg class=\"m-reb-svg\" viewBox=\"0 0 260 156\" preserveAspectRatio=\"none\" aria-hidden=\"true\">\n      <defs>\n        <filter class=\"m-reb-flt\" x=\"-25%\" y=\"-25%\" width=\"150%\" height=\"150%\">\n          <feTurbulence class=\"m-reb-turb\" type=\"turbulence\" baseFrequency=\"0.022 0.032\" numOctaves=\"3\" seed=\"3\" result=\"n\"/>\n          <feDisplacementMap class=\"m-reb-disp\" in=\"SourceGraphic\" in2=\"n\" scale=\"7\" xChannelSelector=\"R\" yChannelSelector=\"G\"/>\n        </filter>\n      </defs>\n      <rect class=\"m-reb-glow\" x=\"12\" y=\"12\" width=\"236\" height=\"132\" rx=\"16\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"4\" opacity=\"0.4\"/>\n      <rect class=\"m-reb-core\" x=\"12\" y=\"12\" width=\"236\" height=\"132\" rx=\"16\" fill=\"none\" stroke=\"#7dd3fc\" stroke-width=\"1.8\"/>\n    </svg>\n    <div class=\"m-reb-card\">\n      <div class=\"m-reb-tag\">REACT BITS · SVG</div>\n      <div class=\"m-reb-title\">Electric Border</div>\n      <div class=\"m-reb-sub\">feTurbulence + displacement</div>\n    </div>\n  </div>\n</div>",
+    "css": ".m-reactbits-electric-border {\n  width: 100%; height: 100%; display: grid; place-items: center;\n  background: radial-gradient(circle at 50% 50%, #0d1624, #080a0f 75%);\n  font-family: \"Host Grotesk\", -apple-system, sans-serif;\n}\n.m-reactbits-electric-border .m-reb-wrap {\n  position: relative; width: 74%; max-width: 248px; height: 146px;\n  display: grid; place-items: center;\n}\n.m-reactbits-electric-border .m-reb-svg {\n  position: absolute; inset: -10px; width: calc(100% + 20px); height: calc(100% + 20px);\n  pointer-events: none; overflow: visible;\n}\n.m-reactbits-electric-border .m-reb-glow { filter: blur(4px); }\n.m-reactbits-electric-border .m-reb-card {\n  position: relative; width: 100%; height: 100%; border-radius: 14px;\n  background: rgba(11, 15, 24, 0.9); padding: 20px;\n  display: flex; flex-direction: column; justify-content: center;\n  box-shadow: inset 0 0 24px rgba(56, 189, 248, 0.12);\n}\n.m-reactbits-electric-border .m-reb-tag {\n  font: 500 9.5px \"Geist Mono\", monospace; color: #38bdf8; letter-spacing: 0.08em; margin-bottom: 8px;\n}\n.m-reactbits-electric-border .m-reb-title {\n  font-size: 17px; font-weight: 600; color: #f8fafc; letter-spacing: -0.02em;\n}\n.m-reactbits-electric-border .m-reb-sub {\n  margin-top: 4px; font: 400 11px \"Geist Mono\", monospace; color: #64748b;\n}",
+    "js": "const uid = 'reb-' + Math.random().toString(36).slice(2, 8);\nconst flt = root.querySelector('.m-reb-flt');\nconst turb = root.querySelector('.m-reb-turb');\nconst disp = root.querySelector('.m-reb-disp');\nconst core = root.querySelector('.m-reb-core');\nconst glow = root.querySelector('.m-reb-glow');\nflt.id = uid;\ncore.setAttribute('filter', `url(#${uid})`);\nglow.setAttribute('filter', `url(#${uid})`);\nlet hovered = false, raf = 0, last = 0, step = 0;\nconst onEnter = () => { hovered = true; };\nconst onLeave = () => { hovered = false; };\nroot.addEventListener('pointerenter', onEnter);\nroot.addEventListener('pointerleave', onLeave);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  if (now - last > (hovered ? 42 : 68)) {\n    last = now; step++;\n    const f1 = (0.020 + 0.008 * Math.sin(step * 0.27)).toFixed(4);\n    const f2 = (0.028 + 0.010 * Math.cos(step * 0.19)).toFixed(4);\n    turb.setAttribute('baseFrequency', `${f1} ${f2}`);\n    turb.setAttribute('seed', String((step % 18) + 1));\n    disp.setAttribute('scale', hovered ? '12' : '7.5');\n  }\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointerenter', onEnter); root.removeEventListener('pointerleave', onLeave); };"
+  }
+]

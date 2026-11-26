@@ -1,0 +1,614 @@
+[
+  {
+    "id": "ps-color-panels",
+    "title": "Glass color panels",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/color-panels.ts",
+    "collection": "Paper Shaders",
+    "summary": "Translucent chromatic glass planes glide and overlap in smooth depth parallax across deep slate.",
+    "hint": "Ambient glass panels",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Glass color panels\" WebGL fragment shader adapted from paper-design/shaders (color-panels.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat panel(vec2 uv, vec2 c, vec2 s, float a){\n  vec2 p=uv-c; float ca=cos(a),sa=sin(a); p=mat2(ca,-sa,sa,ca)*p;\n  vec2 d=abs(p)-s; float dist=length(max(d,0.0))+min(max(d.x,d.y),0.0);\n  return smoothstep(0.06,-0.04,dist);\n}\nvoid main(){\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  float t=u_time*0.45;\n  vec3 col=vec3(0.05,0.06,0.09);\n  col+=vec3(0.95,0.34,0.42)*panel(uv,vec2(sin(t)*0.24,cos(t*0.7)*0.12),vec2(0.32,0.22),0.25+sin(t*0.4)*0.18)*0.65;\n  col+=vec3(0.24,0.58,0.98)*panel(uv,vec2(cos(t*0.8)*0.26,sin(t*0.9)*0.14),vec2(0.28,0.25),-0.3+cos(t*0.5)*0.15)*0.68;\n  col+=vec3(0.98,0.72,0.22)*panel(uv,vec2(sin(t*0.6+2.0)*0.20,cos(t*0.8+1.0)*0.16),vec2(0.24,0.18),0.5-sin(t*0.3)*0.2)*0.58;\n  col+=vec3(0.55,0.32,0.96)*panel(uv,(u_mouse-0.5)*0.4,vec2(0.22,0.22),t*0.2)*0.45;\n  gl_FragColor=vec4(1.0-exp(-col*1.15),1.0);\n}",
+    "html": "<div class=\"m-ps-color-panels\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat panel(vec2 uv, vec2 c, vec2 s, float a){\\n  vec2 p=uv-c; float ca=cos(a),sa=sin(a); p=mat2(ca,-sa,sa,ca)*p;\\n  vec2 d=abs(p)-s; float dist=length(max(d,0.0))+min(max(d.x,d.y),0.0);\\n  return smoothstep(0.06,-0.04,dist);\\n}\\nvoid main(){\\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  float t=u_time*0.45;\\n  vec3 col=vec3(0.05,0.06,0.09);\\n  col+=vec3(0.95,0.34,0.42)*panel(uv,vec2(sin(t)*0.24,cos(t*0.7)*0.12),vec2(0.32,0.22),0.25+sin(t*0.4)*0.18)*0.65;\\n  col+=vec3(0.24,0.58,0.98)*panel(uv,vec2(cos(t*0.8)*0.26,sin(t*0.9)*0.14),vec2(0.28,0.25),-0.3+cos(t*0.5)*0.15)*0.68;\\n  col+=vec3(0.98,0.72,0.22)*panel(uv,vec2(sin(t*0.6+2.0)*0.20,cos(t*0.8+1.0)*0.16),vec2(0.24,0.18),0.5-sin(t*0.3)*0.2)*0.58;\\n  col+=vec3(0.55,0.32,0.96)*panel(uv,(u_mouse-0.5)*0.4,vec2(0.22,0.22),t*0.2)*0.45;\\n  gl_FragColor=vec4(1.0-exp(-col*1.15),1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-dithering",
+    "title": "Bayer ordered dither",
+    "use": "Generative",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Rhythmic",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/dithering.ts",
+    "collection": "Paper Shaders",
+    "summary": "A 4×4 Bayer threshold matrix quantizes a flowing luminous gradient wave into crisp retro dither pixels.",
+    "hint": "Ordered dither matrix",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Bayer ordered dither\" WebGL fragment shader adapted from paper-design/shaders (dithering.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat bayer4(vec2 p){\n  vec2 c=mod(floor(p),4.0);\n  float x=c.x,y=c.y;\n  float idx=y*4.0+x;\n  float m=0.0;\n  if(idx<0.5)m=0.0;else if(idx<1.5)m=8.0;else if(idx<2.5)m=2.0;else if(idx<3.5)m=10.0;\n  else if(idx<4.5)m=12.0;else if(idx<5.5)m=4.0;else if(idx<6.5)m=14.0;else if(idx<7.5)m=6.0;\n  else if(idx<8.5)m=3.0;else if(idx<9.5)m=11.0;else if(idx<10.5)m=1.0;else if(idx<11.5)m=9.0;\n  else if(idx<12.5)m=15.0;else if(idx<13.5)m=7.0;else if(idx<14.5)m=13.0;else m=5.0;\n  return (m+0.5)/16.0;\n}\nvoid main(){\n  vec2 px=floor(gl_FragCoord.xy/3.0);\n  vec2 uv=v_uv;\n  float w=0.5+0.35*sin(uv.x*5.0+u_time*0.9+sin(uv.y*4.0-u_time*0.6))+0.18*cos(length(uv-u_mouse)*9.0-u_time*1.4);\n  float bit=step(bayer4(px),clamp(w,0.0,1.0));\n  vec3 col=mix(vec3(0.06,0.07,0.10),vec3(0.24,0.72,1.0),bit);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-dithering\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat bayer4(vec2 p){\\n  vec2 c=mod(floor(p),4.0);\\n  float x=c.x,y=c.y;\\n  float idx=y*4.0+x;\\n  float m=0.0;\\n  if(idx<0.5)m=0.0;else if(idx<1.5)m=8.0;else if(idx<2.5)m=2.0;else if(idx<3.5)m=10.0;\\n  else if(idx<4.5)m=12.0;else if(idx<5.5)m=4.0;else if(idx<6.5)m=14.0;else if(idx<7.5)m=6.0;\\n  else if(idx<8.5)m=3.0;else if(idx<9.5)m=11.0;else if(idx<10.5)m=1.0;else if(idx<11.5)m=9.0;\\n  else if(idx<12.5)m=15.0;else if(idx<13.5)m=7.0;else if(idx<14.5)m=13.0;else m=5.0;\\n  return (m+0.5)/16.0;\\n}\\nvoid main(){\\n  vec2 px=floor(gl_FragCoord.xy/3.0);\\n  vec2 uv=v_uv;\\n  float w=0.5+0.35*sin(uv.x*5.0+u_time*0.9+sin(uv.y*4.0-u_time*0.6))+0.18*cos(length(uv-u_mouse)*9.0-u_time*1.4);\\n  float bit=step(bayer4(px),clamp(w,0.0,1.0));\\n  vec3 col=mix(vec3(0.06,0.07,0.10),vec3(0.24,0.72,1.0),bit);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-dot-grid",
+    "title": "Ripple dot grid",
+    "use": "Generative",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Rhythmic",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/dot-grid.ts",
+    "collection": "Paper Shaders",
+    "summary": "An architectural dot matrix breathes in diagonal waves and swells elastically around the moving cursor.",
+    "hint": "Move cursor to bulge dots",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Ripple dot grid\" WebGL fragment shader adapted from paper-design/shaders (dot-grid.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 p=v_uv*asp;\n  float n=14.0;\n  vec2 id=floor(p*n)/n;\n  vec2 gv=fract(p*n)-0.5;\n  float wave=0.5+0.5*sin(id.x*8.0+id.y*6.0-u_time*2.0);\n  float md=length(id-u_mouse*asp);\n  float bulge=exp(-md*6.5)*0.22;\n  float r=0.12+wave*0.14+bulge;\n  float m=smoothstep(r+0.04,r-0.04,length(gv));\n  vec3 ink=mix(vec3(0.08,0.09,0.11),vec3(0.16,0.58,0.89),clamp(bulge*4.0,0.0,1.0));\n  gl_FragColor=vec4(mix(vec3(0.955,0.96,0.97),ink,m),1.0);\n}",
+    "html": "<div class=\"m-ps-dot-grid\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 p=v_uv*asp;\\n  float n=14.0;\\n  vec2 id=floor(p*n)/n;\\n  vec2 gv=fract(p*n)-0.5;\\n  float wave=0.5+0.5*sin(id.x*8.0+id.y*6.0-u_time*2.0);\\n  float md=length(id-u_mouse*asp);\\n  float bulge=exp(-md*6.5)*0.22;\\n  float r=0.12+wave*0.14+bulge;\\n  float m=smoothstep(r+0.04,r-0.04,length(gv));\\n  vec3 ink=mix(vec3(0.08,0.09,0.11),vec3(0.16,0.58,0.89),clamp(bulge*4.0,0.0,1.0));\\n  gl_FragColor=vec4(mix(vec3(0.955,0.96,0.97),ink,m),1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-fluted-glass",
+    "title": "Fluted glass refraction",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/fluted-glass.ts",
+    "collection": "Paper Shaders",
+    "summary": "Vertical fluted glass ribs refract a drifting amber, crimson, and indigo light field behind crisp specular ridges.",
+    "hint": "Move cursor across ribs",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Fluted glass refraction\" WebGL fragment shader adapted from paper-design/shaders (fluted-glass.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvoid main(){\n  float ribs=26.0;\n  float cell=fract(v_uv.x*ribs);\n  float refractX=(cell-0.5)*0.075;\n  vec2 uv=vec2(v_uv.x+refractX,v_uv.y);\n  float t=u_time*0.45;\n  vec2 c1=vec2(0.35+0.25*sin(t),0.55+0.2*cos(t*0.8));\n  vec2 c2=vec2(0.68+0.22*cos(t*0.7),0.45+0.22*sin(t*0.9));\n  vec2 cm=u_mouse;\n  float g1=exp(-dot(uv-c1,uv-c1)*6.5);\n  float g2=exp(-dot(uv-c2,uv-c2)*6.0);\n  float gm=exp(-dot(uv-cm,uv-cm)*10.0);\n  vec3 bg=vec3(0.05,0.05,0.08);\n  vec3 col=bg+vec3(1.0,0.54,0.22)*g1*1.1+vec3(0.36,0.42,1.0)*g2*1.1+vec3(0.98,0.34,0.62)*gm*0.85;\n  float edge=pow(abs(cell-0.5)*2.0,3.0);\n  col+=vec3(1.0)*edge*0.14;\n  col*=0.88+0.12*sin(cell*3.14159);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-fluted-glass\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvoid main(){\\n  float ribs=26.0;\\n  float cell=fract(v_uv.x*ribs);\\n  float refractX=(cell-0.5)*0.075;\\n  vec2 uv=vec2(v_uv.x+refractX,v_uv.y);\\n  float t=u_time*0.45;\\n  vec2 c1=vec2(0.35+0.25*sin(t),0.55+0.2*cos(t*0.8));\\n  vec2 c2=vec2(0.68+0.22*cos(t*0.7),0.45+0.22*sin(t*0.9));\\n  vec2 cm=u_mouse;\\n  float g1=exp(-dot(uv-c1,uv-c1)*6.5);\\n  float g2=exp(-dot(uv-c2,uv-c2)*6.0);\\n  float gm=exp(-dot(uv-cm,uv-cm)*10.0);\\n  vec3 bg=vec3(0.05,0.05,0.08);\\n  vec3 col=bg+vec3(1.0,0.54,0.22)*g1*1.1+vec3(0.36,0.42,1.0)*g2*1.1+vec3(0.98,0.34,0.62)*gm*0.85;\\n  float edge=pow(abs(cell-0.5)*2.0,3.0);\\n  col+=vec3(1.0)*edge*0.14;\\n  col*=0.88+0.12*sin(cell*3.14159);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-gem-smoke",
+    "title": "Faceted gem smoke",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/gem-smoke.ts",
+    "collection": "Paper Shaders",
+    "summary": "Crystalline amethyst and emerald smoke plumes drift smoothly behind angular prismatic refraction planes.",
+    "hint": "Ambient prismatic smoke",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Faceted gem smoke\" WebGL fragment shader adapted from paper-design/shaders (gem-smoke.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\nfloat fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.02;a*=0.5;}return v;}\nvoid main(){\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  float t=u_time*0.28;\n  float f1=fbm(uv*2.6+vec2(t,-t*0.6));\n  float f2=fbm(uv*3.8-vec2(f1*1.4,t*0.8));\n  float facet=abs(sin((uv.x*2.4+uv.y*1.9+f1)*3.14));\n  vec3 c1=vec3(0.04,0.06,0.09);\n  vec3 c2=vec3(0.08,0.68,0.56);\n  vec3 c3=vec3(0.58,0.24,0.92);\n  vec3 col=mix(c1,c2,smoothstep(0.25,0.85,f1));\n  col=mix(col,c3,smoothstep(0.3,0.85,f2)*0.75);\n  col+=vec3(0.85,0.95,1.0)*pow(1.0-facet,6.0)*0.28;\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-gem-smoke\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\\nfloat fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.02;a*=0.5;}return v;}\\nvoid main(){\\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  float t=u_time*0.28;\\n  float f1=fbm(uv*2.6+vec2(t,-t*0.6));\\n  float f2=fbm(uv*3.8-vec2(f1*1.4,t*0.8));\\n  float facet=abs(sin((uv.x*2.4+uv.y*1.9+f1)*3.14));\\n  vec3 c1=vec3(0.04,0.06,0.09);\\n  vec3 c2=vec3(0.08,0.68,0.56);\\n  vec3 c3=vec3(0.58,0.24,0.92);\\n  vec3 col=mix(c1,c2,smoothstep(0.25,0.85,f1));\\n  col=mix(col,c3,smoothstep(0.3,0.85,f2)*0.75);\\n  col+=vec3(0.85,0.95,1.0)*pow(1.0-facet,6.0)*0.28;\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-grain-gradient",
+    "title": "Tactile grain gradient",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Editorial",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/grain-gradient.ts",
+    "collection": "Paper Shaders",
+    "summary": "Editorial coral, indigo, and soft gold color fields drift organically under crisp monochrome film grain.",
+    "hint": "Ambient grain texture",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Tactile grain gradient\" WebGL fragment shader adapted from paper-design/shaders (grain-gradient.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}\nvoid main(){\n  vec2 uv=v_uv;\n  float t=u_time*0.38;\n  float a=smoothstep(0.0,1.0,uv.x+0.25*sin(uv.y*2.4+t));\n  float b=smoothstep(0.0,1.0,uv.y+0.25*cos(uv.x*2.2-t*0.8));\n  vec3 col=mix(vec3(0.11,0.12,0.24),vec3(0.95,0.42,0.34),a);\n  col=mix(col,vec3(0.98,0.84,0.62),b*0.65);\n  col=mix(col,vec3(0.18,0.22,0.48),smoothstep(0.7,0.0,length(uv-vec2(0.25+0.2*sin(t),0.75)))*0.7);\n  float grain=(hash(floor(gl_FragCoord.xy)+fract(u_time*0.5)*10.0)-0.5)*0.11;\n  gl_FragColor=vec4(col+grain,1.0);\n}",
+    "html": "<div class=\"m-ps-grain-gradient\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}\\nvoid main(){\\n  vec2 uv=v_uv;\\n  float t=u_time*0.38;\\n  float a=smoothstep(0.0,1.0,uv.x+0.25*sin(uv.y*2.4+t));\\n  float b=smoothstep(0.0,1.0,uv.y+0.25*cos(uv.x*2.2-t*0.8));\\n  vec3 col=mix(vec3(0.11,0.12,0.24),vec3(0.95,0.42,0.34),a);\\n  col=mix(col,vec3(0.98,0.84,0.62),b*0.65);\\n  col=mix(col,vec3(0.18,0.22,0.48),smoothstep(0.7,0.0,length(uv-vec2(0.25+0.2*sin(t),0.75)))*0.7);\\n  float grain=(hash(floor(gl_FragCoord.xy)+fract(u_time*0.5)*10.0)-0.5)*0.11;\\n  gl_FragColor=vec4(col+grain,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-halftone-cmyk",
+    "title": "CMYK offset halftone",
+    "use": "Generative",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/halftone-cmyk.ts",
+    "collection": "Paper Shaders",
+    "summary": "Rotated Cyan, Magenta, and Yellow print dot screens breathe over warm newsprint paper with subtractive ink overlap.",
+    "hint": "Ambient CMYK screens",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"CMYK offset halftone\" WebGL fragment shader adapted from paper-design/shaders (halftone-cmyk.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvec2 rot(vec2 p,float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c)*p;}\nfloat screen(vec2 uv,float ang,float val){\n  vec2 p=rot(uv,ang)*22.0;\n  float d=length(fract(p)-0.5);\n  return smoothstep(val*0.44+0.03,val*0.44-0.03,d);\n}\nvoid main(){\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  float t=u_time*0.65;\n  float cV=0.5+0.42*sin(uv.x*3.6+t+sin(uv.y*2.8));\n  float mV=0.5+0.42*cos(uv.y*3.4-t*0.9+uv.x*2.0);\n  float yV=0.5+0.42*sin((uv.x-uv.y)*3.0+t*0.7);\n  vec3 paper=vec3(0.97,0.955,0.925);\n  vec3 col=paper;\n  col*=mix(vec3(1.0),vec3(0.08,0.72,0.95),screen(uv,0.26,cV)*0.82);\n  col*=mix(vec3(1.0),vec3(0.95,0.16,0.58),screen(uv,1.31,mV)*0.82);\n  col*=mix(vec3(1.0),vec3(0.99,0.84,0.08),screen(uv,0.0,yV)*0.78);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-halftone-cmyk\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvec2 rot(vec2 p,float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c)*p;}\\nfloat screen(vec2 uv,float ang,float val){\\n  vec2 p=rot(uv,ang)*22.0;\\n  float d=length(fract(p)-0.5);\\n  return smoothstep(val*0.44+0.03,val*0.44-0.03,d);\\n}\\nvoid main(){\\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  float t=u_time*0.65;\\n  float cV=0.5+0.42*sin(uv.x*3.6+t+sin(uv.y*2.8));\\n  float mV=0.5+0.42*cos(uv.y*3.4-t*0.9+uv.x*2.0);\\n  float yV=0.5+0.42*sin((uv.x-uv.y)*3.0+t*0.7);\\n  vec3 paper=vec3(0.97,0.955,0.925);\\n  vec3 col=paper;\\n  col*=mix(vec3(1.0),vec3(0.08,0.72,0.95),screen(uv,0.26,cV)*0.82);\\n  col*=mix(vec3(1.0),vec3(0.95,0.16,0.58),screen(uv,1.31,mV)*0.82);\\n  col*=mix(vec3(1.0),vec3(0.99,0.84,0.08),screen(uv,0.0,yV)*0.78);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-halftone-dots",
+    "title": "Graphic halftone wave",
+    "use": "Generative",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Rhythmic",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/halftone-dots.ts",
+    "collection": "Paper Shaders",
+    "summary": "Bold monochrome halftone circles expand and contract across traveling sine contours and cursor ripples.",
+    "hint": "Move pointer to ripple",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Graphic halftone wave\" WebGL fragment shader adapted from paper-design/shaders (halftone-dots.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 p=v_uv*asp;\n  float n=18.0;\n  vec2 id=floor(p*n)/n;\n  vec2 gv=fract(p*n)-0.5;\n  float field=0.5+0.45*sin(id.x*7.0-u_time*1.4)*cos(id.y*6.0+u_time*1.1);\n  float md=length(id-u_mouse*asp);\n  field+=0.35*sin(md*18.0-u_time*4.5)*exp(-md*3.5);\n  float r=clamp(field,0.08,0.95)*0.46;\n  float dotM=smoothstep(r+0.04,r-0.04,length(gv));\n  gl_FragColor=vec4(mix(vec3(0.96,0.96,0.965),vec3(0.07,0.08,0.10),dotM),1.0);\n}",
+    "html": "<div class=\"m-ps-halftone-dots\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 p=v_uv*asp;\\n  float n=18.0;\\n  vec2 id=floor(p*n)/n;\\n  vec2 gv=fract(p*n)-0.5;\\n  float field=0.5+0.45*sin(id.x*7.0-u_time*1.4)*cos(id.y*6.0+u_time*1.1);\\n  float md=length(id-u_mouse*asp);\\n  field+=0.35*sin(md*18.0-u_time*4.5)*exp(-md*3.5);\\n  float r=clamp(field,0.08,0.95)*0.46;\\n  float dotM=smoothstep(r+0.04,r-0.04,length(gv));\\n  gl_FragColor=vec4(mix(vec3(0.96,0.96,0.965),vec3(0.07,0.08,0.10),dotM),1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-heatmap",
+    "title": "Infrared thermal map",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Organic",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/heatmap.ts",
+    "collection": "Paper Shaders",
+    "summary": "Thermal contour bands sweep from deep navy through magenta and amber to white-hot cores tracking moving heat sources.",
+    "hint": "Move pointer to add heat",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Infrared thermal map\" WebGL fragment shader adapted from paper-design/shaders (heatmap.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvec3 thermal(float t){\n  vec3 c0=vec3(0.05,0.05,0.18),c1=vec3(0.45,0.08,0.58),c2=vec3(0.96,0.28,0.22),c3=vec3(1.0,0.82,0.24),c4=vec3(1.0,0.98,0.94);\n  if(t<0.25)return mix(c0,c1,t/0.25);\n  if(t<0.55)return mix(c1,c2,(t-0.25)/0.3);\n  if(t<0.82)return mix(c2,c3,(t-0.55)/0.27);\n  return mix(c3,c4,(t-0.82)/0.18);\n}\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 uv=v_uv*asp; float t=u_time*0.65;\n  vec2 p1=vec2(0.45+0.25*sin(t),0.5+0.22*cos(t*0.8))*asp;\n  vec2 p2=vec2(0.6+0.22*cos(t*0.7),0.45+0.25*sin(t*1.1))*asp;\n  vec2 pm=u_mouse*asp;\n  float h=exp(-dot(uv-p1,uv-p1)*7.5)+exp(-dot(uv-p2,uv-p2)*8.5)+exp(-dot(uv-pm,uv-pm)*11.0)*0.95;\n  float bands=clamp(h*0.62,0.0,1.0);\n  float iso=smoothstep(0.06,0.0,abs(fract(bands*8.0)-0.5))*0.16;\n  gl_FragColor=vec4(thermal(bands)+iso,1.0);\n}",
+    "html": "<div class=\"m-ps-heatmap\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvec3 thermal(float t){\\n  vec3 c0=vec3(0.05,0.05,0.18),c1=vec3(0.45,0.08,0.58),c2=vec3(0.96,0.28,0.22),c3=vec3(1.0,0.82,0.24),c4=vec3(1.0,0.98,0.94);\\n  if(t<0.25)return mix(c0,c1,t/0.25);\\n  if(t<0.55)return mix(c1,c2,(t-0.25)/0.3);\\n  if(t<0.82)return mix(c2,c3,(t-0.55)/0.27);\\n  return mix(c3,c4,(t-0.82)/0.18);\\n}\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 uv=v_uv*asp; float t=u_time*0.65;\\n  vec2 p1=vec2(0.45+0.25*sin(t),0.5+0.22*cos(t*0.8))*asp;\\n  vec2 p2=vec2(0.6+0.22*cos(t*0.7),0.45+0.25*sin(t*1.1))*asp;\\n  vec2 pm=u_mouse*asp;\\n  float h=exp(-dot(uv-p1,uv-p1)*7.5)+exp(-dot(uv-p2,uv-p2)*8.5)+exp(-dot(uv-pm,uv-pm)*11.0)*0.95;\\n  float bands=clamp(h*0.62,0.0,1.0);\\n  float iso=smoothstep(0.06,0.0,abs(fract(bands*8.0)-0.5))*0.16;\\n  gl_FragColor=vec4(thermal(bands)+iso,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-lens-distortion",
+    "title": "Optical lens refraction",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/lens-distortion.ts",
+    "collection": "Paper Shaders",
+    "summary": "A floating optical glass lens magnifies an underlying geometric grid with subtle RGB chromatic dispersion near the rim.",
+    "hint": "Move lens over grid",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Optical lens refraction\" WebGL fragment shader adapted from paper-design/shaders (lens-distortion.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat grid(vec2 p){\n  vec2 g=abs(fract(p*10.0-0.5)-0.5)/0.06;\n  float l=1.0-min(min(g.x,g.y),1.0);\n  float dotM=smoothstep(0.18,0.12,length(fract(p*5.0)-0.5));\n  return max(l*0.45,dotM*0.9);\n}\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 uv=v_uv*asp;\n  vec2 c=mix(vec2(0.5+0.18*sin(u_time*0.8),0.5+0.12*cos(u_time*0.6)),u_mouse,0.65)*asp;\n  vec2 d=uv-c; float r=length(d); float R=0.30;\n  float inside=smoothstep(R+0.015,R-0.015,r);\n  float bend=inside*(1.0-r/R)*0.38;\n  vec2 uvR=uv-d*bend*1.08, uvG=uv-d*bend, uvB=uv-d*bend*0.92;\n  vec3 col=vec3(1.0)-vec3(grid(uvR),grid(uvG),grid(uvB))*vec3(0.88,0.88,0.92);\n  float rim=smoothstep(0.018,0.0,abs(r-R));\n  col=mix(col,vec3(0.16,0.58,0.89),rim*0.55);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-lens-distortion\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat grid(vec2 p){\\n  vec2 g=abs(fract(p*10.0-0.5)-0.5)/0.06;\\n  float l=1.0-min(min(g.x,g.y),1.0);\\n  float dotM=smoothstep(0.18,0.12,length(fract(p*5.0)-0.5));\\n  return max(l*0.45,dotM*0.9);\\n}\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 uv=v_uv*asp;\\n  vec2 c=mix(vec2(0.5+0.18*sin(u_time*0.8),0.5+0.12*cos(u_time*0.6)),u_mouse,0.65)*asp;\\n  vec2 d=uv-c; float r=length(d); float R=0.30;\\n  float inside=smoothstep(R+0.015,R-0.015,r);\\n  float bend=inside*(1.0-r/R)*0.38;\\n  vec2 uvR=uv-d*bend*1.08, uvG=uv-d*bend, uvB=uv-d*bend*0.92;\\n  vec3 col=vec3(1.0)-vec3(grid(uvR),grid(uvG),grid(uvB))*vec3(0.88,0.88,0.92);\\n  float rim=smoothstep(0.018,0.0,abs(r-R));\\n  col=mix(col,vec3(0.16,0.58,0.89),rim*0.55);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-paper-texture",
+    "title": "Woven paper gallery light",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/paper-texture.ts",
+    "collection": "Paper Shaders",
+    "summary": "Fine cotton paper fibers catch a slow sweeping gallery spotlight across warm archival white stock.",
+    "hint": "Ambient paper fiber sheen",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Woven paper gallery light\" WebGL fragment shader adapted from paper-design/shaders (paper-texture.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\nvoid main(){\n  vec2 px=v_uv*u_resolution;\n  float fiber=n(px*0.18)*0.5+n(px*vec2(0.05,0.45))*0.3+n(px*vec2(0.45,0.05))*0.2;\n  vec2 light=vec2(0.5+0.35*sin(u_time*0.5),0.5+0.2*cos(u_time*0.4));\n  float sheen=exp(-dot(v_uv-light,v_uv-light)*3.2);\n  vec3 base=vec3(0.955,0.945,0.925)-(fiber-0.5)*0.075;\n  vec3 col=base+vec3(0.05,0.04,0.02)*sheen-0.05*length(v_uv-0.5);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-paper-texture\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\\nvoid main(){\\n  vec2 px=v_uv*u_resolution;\\n  float fiber=n(px*0.18)*0.5+n(px*vec2(0.05,0.45))*0.3+n(px*vec2(0.45,0.05))*0.2;\\n  vec2 light=vec2(0.5+0.35*sin(u_time*0.5),0.5+0.2*cos(u_time*0.4));\\n  float sheen=exp(-dot(v_uv-light,v_uv-light)*3.2);\\n  vec3 base=vec3(0.955,0.945,0.925)-(fiber-0.5)*0.075;\\n  vec3 col=base+vec3(0.05,0.04,0.02)*sheen-0.05*length(v_uv-0.5);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-perlin-noise",
+    "title": "Topographic Perlin contours",
+    "use": "Generative",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Organic",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/perlin-noise.ts",
+    "collection": "Paper Shaders",
+    "summary": "Crisp glowing elevation iso-contours flow smoothly across a slowly morphing multi-octave Perlin heightfield.",
+    "hint": "Ambient contour terrain",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Topographic Perlin contours\" WebGL fragment shader adapted from paper-design/shaders (perlin-noise.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\nfloat fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.0;a*=0.5;}return v;}\nvoid main(){\n  vec2 uv=v_uv*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0)*2.4;\n  float hval=fbm(uv+vec2(u_time*0.14,-u_time*0.09));\n  float line=smoothstep(0.08,0.0,abs(fract(hval*11.0)-0.5));\n  vec3 bg=mix(vec3(0.05,0.06,0.09),vec3(0.11,0.16,0.26),hval);\n  vec3 ink=mix(vec3(0.28,0.68,0.96),vec3(0.95,0.98,1.0),hval);\n  gl_FragColor=vec4(mix(bg,ink,line*0.92),1.0);\n}",
+    "html": "<div class=\"m-ps-perlin-noise\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}\\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\\nfloat fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.0;a*=0.5;}return v;}\\nvoid main(){\\n  vec2 uv=v_uv*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0)*2.4;\\n  float hval=fbm(uv+vec2(u_time*0.14,-u_time*0.09));\\n  float line=smoothstep(0.08,0.0,abs(fract(hval*11.0)-0.5));\\n  vec3 bg=mix(vec3(0.05,0.06,0.09),vec3(0.11,0.16,0.26),hval);\\n  vec3 ink=mix(vec3(0.28,0.68,0.96),vec3(0.95,0.98,1.0),hval);\\n  gl_FragColor=vec4(mix(bg,ink,line*0.92),1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-pulsing-border",
+    "title": "Spectral pulsing border",
+    "use": "Micro-interactions",
+    "stack": "WebGL",
+    "trigger": "Loop",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/pulsing-border.ts",
+    "collection": "Paper Shaders",
+    "summary": "A vibrant spectral gradient glows and breathes smoothly around a dark glass rounded-rect perimeter.",
+    "hint": "Ambient spectral frame",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Spectral pulsing border\" WebGL fragment shader adapted from paper-design/shaders (pulsing-border.ts).\n\nTrigger: loop\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat sdBox(vec2 p,vec2 b,float r){vec2 q=abs(p)-b+r;return length(max(q,0.0))+min(max(q.x,q.y),0.0)-r;}\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 uv=(v_uv-0.5)*asp;\n  float d=abs(sdBox(uv,vec2(0.46,0.32),0.09));\n  float a=atan(uv.y,uv.x);\n  float pulse=0.8+0.35*sin(a*2.0-u_time*2.2);\n  float glow=exp(-d*26.0)*pulse+exp(-d*90.0)*1.1;\n  vec3 spec=0.55+0.45*cos(vec3(0.0,2.1,4.2)+a*1.5-u_time*1.1);\n  vec3 col=vec3(0.05,0.05,0.07)+spec*glow;\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-pulsing-border\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat sdBox(vec2 p,vec2 b,float r){vec2 q=abs(p)-b+r;return length(max(q,0.0))+min(max(q.x,q.y),0.0)-r;}\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 uv=(v_uv-0.5)*asp;\\n  float d=abs(sdBox(uv,vec2(0.46,0.32),0.09));\\n  float a=atan(uv.y,uv.x);\\n  float pulse=0.8+0.35*sin(a*2.0-u_time*2.2);\\n  float glow=exp(-d*26.0)*pulse+exp(-d*90.0)*1.1;\\n  vec3 spec=0.55+0.45*cos(vec3(0.0,2.1,4.2)+a*1.5-u_time*1.1);\\n  vec3 col=vec3(0.05,0.05,0.07)+spec*glow;\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-simplex-noise",
+    "title": "Simplex tonal clouds",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/simplex-noise.ts",
+    "collection": "Paper Shaders",
+    "summary": "Soft layered organic noise clouds drift effortlessly across deep violet, rose, and arctic teal color stops.",
+    "hint": "Ambient tonal clouds",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Simplex tonal clouds\" WebGL fragment shader adapted from paper-design/shaders (simplex-noise.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat h(vec2 p){return fract(sin(dot(p,vec2(41.1,289.7)))*43758.5453);}\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\nvoid main(){\n  vec2 uv=v_uv*2.8; float t=u_time*0.24;\n  float a=n(uv+vec2(t,t*0.5));\n  float b=n(uv*1.8-vec2(a*1.6,-t*0.7));\n  float c=n(uv*3.0+vec2(b*1.2,t*0.4));\n  vec3 col=mix(vec3(0.07,0.06,0.16),vec3(0.46,0.22,0.78),a);\n  col=mix(col,vec3(0.92,0.38,0.62),b*0.72);\n  col=mix(col,vec3(0.24,0.82,0.88),smoothstep(0.45,0.9,c)*0.68);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-simplex-noise\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat h(vec2 p){return fract(sin(dot(p,vec2(41.1,289.7)))*43758.5453);}\\nfloat n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}\\nvoid main(){\\n  vec2 uv=v_uv*2.8; float t=u_time*0.24;\\n  float a=n(uv+vec2(t,t*0.5));\\n  float b=n(uv*1.8-vec2(a*1.6,-t*0.7));\\n  float c=n(uv*3.0+vec2(b*1.2,t*0.4));\\n  vec3 col=mix(vec3(0.07,0.06,0.16),vec3(0.46,0.22,0.78),a);\\n  col=mix(col,vec3(0.92,0.38,0.62),b*0.72);\\n  col=mix(col,vec3(0.24,0.82,0.88),smoothstep(0.45,0.9,c)*0.68);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-spiral",
+    "title": "Logarithmic glow spiral",
+    "use": "Generative",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Rhythmic",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/spiral.ts",
+    "collection": "Paper Shaders",
+    "summary": "A crisp dual-arm logarithmic spiral rotates hypnotically with anti-aliased glowing cobalt and white ribbons.",
+    "hint": "Ambient logarithmic spiral",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Logarithmic glow spiral\" WebGL fragment shader adapted from paper-design/shaders (spiral.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvoid main(){\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  float r=length(uv)+0.001;\n  float a=atan(uv.y,uv.x);\n  float s=sin(a*3.0+log(r)*9.0-u_time*2.6);\n  float rib=smoothstep(0.15,0.75,s);\n  float center=exp(-r*3.5);\n  vec3 col=mix(vec3(0.04,0.05,0.08),vec3(0.22,0.62,0.98),rib*0.85);\n  col+=vec3(0.95,0.98,1.0)*pow(max(0.0,s),6.0)*0.6+vec3(0.4,0.8,1.0)*center*0.45;\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-spiral\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvoid main(){\\n  vec2 uv=(v_uv-0.5)*vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  float r=length(uv)+0.001;\\n  float a=atan(uv.y,uv.x);\\n  float s=sin(a*3.0+log(r)*9.0-u_time*2.6);\\n  float rib=smoothstep(0.15,0.75,s);\\n  float center=exp(-r*3.5);\\n  vec3 col=mix(vec3(0.04,0.05,0.08),vec3(0.22,0.62,0.98),rib*0.85);\\n  col+=vec3(0.95,0.98,1.0)*pow(max(0.0,s),6.0)*0.6+vec3(0.4,0.8,1.0)*center*0.45;\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-swirl",
+    "title": "Chromatic vortex swirl",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/swirl.ts",
+    "collection": "Paper Shaders",
+    "summary": "Vibrant cobalt, magenta, and warm peach bands twist around a pointer-steered vortex core with smooth radial falloff.",
+    "hint": "Move pointer to steer vortex",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Chromatic vortex swirl\" WebGL fragment shader adapted from paper-design/shaders (swirl.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 c=mix(vec2(0.5),u_mouse,0.55)*asp;\n  vec2 d=v_uv*asp-c;\n  float r=length(d);\n  float twist=exp(-r*2.4)*4.2+u_time*0.6;\n  float a=atan(d.y,d.x)+twist;\n  float w1=0.5+0.5*sin(a*3.0+r*6.0);\n  float w2=0.5+0.5*cos(a*2.0-r*4.0+u_time*0.5);\n  vec3 col=mix(vec3(0.10,0.16,0.48),vec3(0.92,0.28,0.64),w1);\n  col=mix(col,vec3(0.99,0.72,0.44),w2*0.65);\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-swirl\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 c=mix(vec2(0.5),u_mouse,0.55)*asp;\\n  vec2 d=v_uv*asp-c;\\n  float r=length(d);\\n  float twist=exp(-r*2.4)*4.2+u_time*0.6;\\n  float a=atan(d.y,d.x)+twist;\\n  float w1=0.5+0.5*sin(a*3.0+r*6.0);\\n  float w2=0.5+0.5*cos(a*2.0-r*4.0+u_time*0.5);\\n  vec3 col=mix(vec3(0.10,0.16,0.48),vec3(0.92,0.28,0.64),w1);\\n  col=mix(col,vec3(0.99,0.72,0.44),w2*0.65);\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-water",
+    "title": "Rippling water caustics",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Cursor",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/water.ts",
+    "collection": "Paper Shaders",
+    "summary": "Multi-directional surface waves and pointer-driven concentric rings cast bright specular ripples across deep water.",
+    "hint": "Move cursor to disturb water",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Rippling water caustics\" WebGL fragment shader adapted from paper-design/shaders (water.ts).\n\nTrigger: cursor\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nfloat wave(vec2 p,float t){\n  float w=sin(p.x*10.0+t*1.8)*0.25+cos(p.y*12.0-t*1.4)*0.25;\n  w+=sin((p.x+p.y)*14.0+t*2.1)*0.2+cos((p.x-p.y)*11.0-t*1.6)*0.2;\n  return w;\n}\nvoid main(){\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\n  vec2 p=v_uv*asp;\n  float md=length(p-u_mouse*asp);\n  float ring=sin(md*34.0-u_time*5.2)*exp(-md*4.5)*0.45;\n  float h0=wave(p,u_time)+ring;\n  float hx=wave(p+vec2(0.01,0.0),u_time)-h0;\n  float hy=wave(p+vec2(0.0,0.01),u_time)-h0;\n  vec3 n=normalize(vec3(-hx*6.0,-hy*6.0,1.0));\n  float spec=pow(max(0.0,dot(n,normalize(vec3(0.35,0.45,0.82)))),14.0);\n  vec3 col=mix(vec3(0.03,0.12,0.22),vec3(0.08,0.44,0.62),0.5+0.5*h0)+vec3(0.85,0.96,1.0)*spec*0.9;\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-water\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nfloat wave(vec2 p,float t){\\n  float w=sin(p.x*10.0+t*1.8)*0.25+cos(p.y*12.0-t*1.4)*0.25;\\n  w+=sin((p.x+p.y)*14.0+t*2.1)*0.2+cos((p.x-p.y)*11.0-t*1.6)*0.2;\\n  return w;\\n}\\nvoid main(){\\n  vec2 asp=vec2(u_resolution.x/max(u_resolution.y,1.0),1.0);\\n  vec2 p=v_uv*asp;\\n  float md=length(p-u_mouse*asp);\\n  float ring=sin(md*34.0-u_time*5.2)*exp(-md*4.5)*0.45;\\n  float h0=wave(p,u_time)+ring;\\n  float hx=wave(p+vec2(0.01,0.0),u_time)-h0;\\n  float hy=wave(p+vec2(0.0,0.01),u_time)-h0;\\n  vec3 n=normalize(vec3(-hx*6.0,-hy*6.0,1.0));\\n  float spec=pow(max(0.0,dot(n,normalize(vec3(0.35,0.45,0.82)))),14.0);\\n  vec3 col=mix(vec3(0.03,0.12,0.22),vec3(0.08,0.44,0.62),0.5+0.5*h0)+vec3(0.85,0.96,1.0)*spec*0.9;\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  },
+  {
+    "id": "ps-waves",
+    "title": "Architectural wave strata",
+    "use": "Backgrounds",
+    "stack": "WebGL",
+    "trigger": "Ambient",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 4000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous GLSL u_time",
+    "props": [
+      "fragment shader (GLSL)",
+      "u_time",
+      "u_mouse"
+    ],
+    "src": "paper-design/shaders",
+    "srcUrl": "https://github.com/paper-design/shaders/blob/main/packages/shaders/src/shaders/waves.ts",
+    "collection": "Paper Shaders",
+    "summary": "Layered Swiss-editorial wave horizons oscillate cleanly in cobalt, charcoal, and warm alabaster.",
+    "hint": "Ambient wave horizons",
+    "choreography": [
+      "Fragment shader evaluates procedural field continuously from u_time and aspect-corrected UVs.",
+      "Smooth anti-aliased distance/frequency shaping maintains razor clarity at any viewport scale.",
+      "Normalized u_mouse modulates spatial phase cleanly without layout reflow."
+    ],
+    "agentPrompt": "Add the \"Architectural wave strata\" WebGL fragment shader adapted from paper-design/shaders (waves.ts).\n\nTrigger: ambient\nUniforms: u_time, u_resolution, u_mouse\nRun inside a full-bleed quad fragment shader and freeze u_time under prefers-reduced-motion.",
+    "extractableCode": "precision mediump float;\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\nvoid main(){\n  vec2 uv=v_uv; float t=u_time*0.75;\n  vec3 col=vec3(0.955,0.96,0.97);\n  float w1=0.68+0.07*sin(uv.x*5.0+t)+0.03*cos(uv.x*9.0-t*0.7);\n  float w2=0.46+0.08*sin(uv.x*4.2-t*1.1+1.5);\n  float w3=0.25+0.06*sin(uv.x*6.0+t*0.9+3.0);\n  col=mix(col,vec3(0.82,0.88,0.96),smoothstep(w1+0.008,w1-0.008,uv.y));\n  col=mix(col,vec3(0.16,0.58,0.89),smoothstep(w2+0.008,w2-0.008,uv.y));\n  col=mix(col,vec3(0.08,0.09,0.12),smoothstep(w3+0.008,w3-0.008,uv.y));\n  gl_FragColor=vec4(col,1.0);\n}",
+    "html": "<div class=\"m-ps-waves\" style=\"width:100%;height:100%;position:relative;overflow:hidden;\"><canvas style=\"display:block;width:100%;height:100%;\"></canvas></div>",
+    "css": "",
+    "js": "const FRAG = \"precision mediump float;\\nvarying vec2 v_uv; uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;\\nvoid main(){\\n  vec2 uv=v_uv; float t=u_time*0.75;\\n  vec3 col=vec3(0.955,0.96,0.97);\\n  float w1=0.68+0.07*sin(uv.x*5.0+t)+0.03*cos(uv.x*9.0-t*0.7);\\n  float w2=0.46+0.08*sin(uv.x*4.2-t*1.1+1.5);\\n  float w3=0.25+0.06*sin(uv.x*6.0+t*0.9+3.0);\\n  col=mix(col,vec3(0.82,0.88,0.96),smoothstep(w1+0.008,w1-0.008,uv.y));\\n  col=mix(col,vec3(0.16,0.58,0.89),smoothstep(w2+0.008,w2-0.008,uv.y));\\n  col=mix(col,vec3(0.08,0.09,0.12),smoothstep(w3+0.008,w3-0.008,uv.y));\\n  gl_FragColor=vec4(col,1.0);\\n}\";\nconst canvas = root.querySelector('canvas');\nif (window.__MOTION_GL && window.__MOTION_GL.mountFragment) {\n  return window.__MOTION_GL.mountFragment(root, canvas, FRAG);\n}\nconst gl = canvas.getContext('webgl');\nif (!gl) return () => {};\nconst vs = gl.createShader(gl.VERTEX_SHADER);\ngl.shaderSource(vs, 'attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos*0.5+0.5; gl_Position = vec4(a_pos,0.0,1.0); }');\ngl.compileShader(vs);\nconst fs = gl.createShader(gl.FRAGMENT_SHADER);\ngl.shaderSource(fs, FRAG);\ngl.compileShader(fs);\nconst prog = gl.createProgram();\ngl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);\nconst buf = gl.createBuffer();\ngl.bindBuffer(gl.ARRAY_BUFFER, buf);\ngl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);\nlet mx = 0.5, my = 0.5, raf = 0, t0 = performance.now() * 0.001;\nconst onMove = e => {\n  const r = root.getBoundingClientRect();\n  if (!r.width || !r.height) return;\n  mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));\n  my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));\n};\nroot.addEventListener('pointermove', onMove);\nfunction tick(now) {\n  if (!root.isConnected) return;\n  const w = Math.max(240, Math.round(canvas.clientWidth || 360));\n  const h = Math.max(180, Math.round(canvas.clientHeight || 270));\n  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }\n  gl.viewport(0, 0, w, h);\n  gl.useProgram(prog);\n  const loc = gl.getAttribLocation(prog, 'a_pos');\n  gl.enableVertexAttribArray(loc);\n  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);\n  const uT = gl.getUniformLocation(prog, 'u_time');\n  const uR = gl.getUniformLocation(prog, 'u_resolution');\n  const uM = gl.getUniformLocation(prog, 'u_mouse');\n  if (uT) gl.uniform1f(uT, now * 0.001 - t0);\n  if (uR) gl.uniform2f(uR, w, h);\n  if (uM) gl.uniform2f(uM, mx, my);\n  gl.drawArrays(gl.TRIANGLES, 0, 6);\n  raf = requestAnimationFrame(tick);\n}\nraf = requestAnimationFrame(tick);\nreturn () => { cancelAnimationFrame(raf); root.removeEventListener('pointermove', onMove); };"
+  }
+]

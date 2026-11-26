@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion Index — UI &amp; Web Motion Database</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ffffff;
+    --stage: #f2f3f5;
+    --stage-hover: #eceef1;
+    --ink: #101114;
+    --mute: #6f727a;
+    --line: #e4e5e9;
+    --ghost: #2a94e2;          /* non-photo blue pencil */
+    --sans: "Host Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+    --ease-out: cubic-bezier(.2, .8, .2, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--ghost); outline-offset: 3px; border-radius: 4px; }
+  .app { display: grid; grid-template-columns: 252px minmax(0, 1fr); max-width: 1600px; margin: 0 auto; }
+  .main { padding: 0 36px; min-width: 0; }
+
+  /* ---------- sidebar ---------- */
+  .side {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 24px;
+    padding: 24px 16px 22px; border-right: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 0 10px; font-weight: 600; font-size: 16px; letter-spacing: -.01em; color: inherit; text-decoration: none; }
+  .brand svg { display: block; }
+  .search { position: relative; display: block; }
+  .search input {
+    width: 100%; height: 38px; padding: 0 38px 0 12px;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--paper);
+  }
+  .search input::placeholder { color: var(--mute); }
+  .search input:focus { outline: none; border-color: var(--ink); }
+  .search kbd {
+    position: absolute; right: 9px; top: 50%; transform: translateY(-50%);
+    font: 500 11px var(--mono); color: var(--mute);
+    border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px;
+    pointer-events: none;
+  }
+  .group h2 { margin: 0 0 6px; padding: 0 10px; font-size: 12.5px; font-weight: 400; color: var(--mute); }
+  .nav, .uses { display: flex; flex-direction: column; gap: 1px; }
+  .nav button, .uses button {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px; width: 100%;
+    padding: 7px 10px; border: 0; border-radius: 8px; background: none; text-align: left;
+    color: var(--mute); text-decoration: none; transition: color .15s, background .15s;
+  }
+  .nav button:hover, .uses button:hover { color: var(--ink); }
+  .nav button[aria-current="page"] { color: var(--ink); font-weight: 500; }
+  .uses button span { font: 400 11px var(--mono); }
+  .uses button[aria-pressed="true"] { background: var(--stage); color: var(--ink); font-weight: 500; }
+  .selects label { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 3px 10px; color: var(--mute); font-size: 14px; }
+  .selects select {
+    appearance: none; -webkit-appearance: none; border: 0; background: none; padding: 5px 18px 5px 0;
+    color: var(--ink); font-weight: 500; text-align: right; max-width: 140px; text-overflow: ellipsis;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23101114' stroke-width='1.4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right center; cursor: pointer;
+  }
+  .side-foot { margin: auto 0 0; padding: 0 10px; font-size: 12.5px; color: var(--mute); }
+  .side-foot a { color: var(--ink); text-decoration: none; }
+  .side-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- intro ---------- */
+  .intro { padding: 44px 0 36px; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .intro h1 {
+    margin: 0; max-width: 24ch;
+    font-size: clamp(30px, 3.5vw, 50px); line-height: 1.05; font-weight: 500; letter-spacing: -.036em;
+  }
+  .intro h1 span { display: block; color: var(--mute); }
+  .intro p { margin: 0 0 5px; font: 400 12.5px var(--mono); color: var(--mute); text-align: right; }
+  .active-chip {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+    padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--stage); font: 400 12px var(--mono); color: var(--ink);
+  }
+  .active-chip button { border: 0; background: none; padding: 0 2px; color: var(--mute); font-size: 13px; }
+  .active-chip button:hover { color: var(--ink); }
+
+  /* ---------- grid ---------- */
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 24px; padding: 0 0 40px; }
+  .tile { display: flex; flex-direction: column; min-width: 0; }
+  .stage {
+    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    background: var(--stage); border-radius: 14px; container-type: size;
+    border: 1px solid rgba(16, 17, 20, .05);
+    transition: border-color .2s;
+  }
+  .stage[data-surface="dark"] { background: #101114; border-color: rgba(16, 17, 20, .12); }
+  .tile:hover .stage { border-color: rgba(16, 17, 20, .18); }
+  .stage-mount { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .stage-open {
+    position: absolute; right: 10px; top: 10px; z-index: 20;
+    border: 1px solid rgba(16,17,20,.14); border-radius: 999px;
+    background: rgba(255,255,255,.88); color: var(--ink);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: 4px 10px; font: 500 11px var(--mono);
+    opacity: 0; transform: translateY(-2px);
+    transition: opacity .16s, transform .16s var(--ease-out), background .15s;
+  }
+  .stage[data-surface="dark"] .stage-open {
+    background: rgba(16,17,20,.76); color: #ffffff; border-color: rgba(255,255,255,.18);
+  }
+  .tile:hover .stage-open, .stage-open:focus-visible { opacity: 1; transform: translateY(0); }
+  .stage-open:hover { background: var(--ink); color: #ffffff; border-color: var(--ink); }
+  .stage[data-surface="dark"] .stage-open:hover { background: #ffffff; color: var(--ink); border-color: #ffffff; }
+
+  .tile-meta {
+    display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left;
+  }
+  .cap { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 13px; }
+  .cap b { font-weight: 500; font-size: 16px; letter-spacing: -.012em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tile-meta:hover .cap b { color: var(--ghost); }
+  .cap i { font: normal 400 12px var(--mono); color: var(--mute); white-space: nowrap; flex-shrink: 0; }
+  .sub { color: var(--mute); font-size: 13.5px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .load-more-wrap { padding: 8px 0 64px; text-align: center; }
+  .load-more-btn {
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 999px; padding: 10px 22px; font: 500 13px var(--mono);
+    transition: border-color .15s, background .15s;
+  }
+  .load-more-btn:hover { border-color: var(--ink); background: var(--stage); }
+
+  .empty { grid-column: 1 / -1; padding: 72px 0; text-align: center; color: var(--mute); }
+  .empty button { border: 0; background: none; padding: 0; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- collections & agents panels ---------- */
+  .view-panel { padding: 44px 0 88px; }
+  [hidden] { display: none !important; }
+  .coll-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .coll-card {
+    display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
+    padding: 22px; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--paper); text-align: left; transition: border-color .15s, background .15s;
+  }
+  .coll-card:hover { border-color: var(--ink); background: var(--stage); }
+  .coll-card h3 { margin: 0 0 6px; font-size: 18px; font-weight: 500; letter-spacing: -.02em; }
+  .coll-card p { margin: 0; font-size: 13.5px; color: var(--mute); }
+  .coll-foot { display: flex; justify-content: space-between; align-items: center; font: 400 12px var(--mono); color: var(--mute); }
+
+  /* ---------- apps directory ---------- */
+  .apps-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+  .apps-head h2 { margin: 0; font-size: clamp(26px, 3vw, 40px); font-weight: 500; letter-spacing: -.032em; line-height: 1.08; }
+  .apps-head p { margin: 8px 0 0; color: var(--mute); max-width: 56ch; font-size: 14.5px; }
+  .apps-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+  .apps-search {
+    flex: 1; min-width: 240px; max-width: 420px; height: 42px; padding: 0 14px;
+    border: 1px solid var(--line); border-radius: 11px; background: var(--paper); font-size: 14.5px;
+  }
+  .apps-search:focus { outline: none; border-color: var(--ink); }
+  .apps-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .apps-cats button {
+    border: 1px solid var(--line); background: var(--paper); color: var(--mute);
+    border-radius: 999px; padding: 6px 12px; font-size: 13px; transition: border-color .15s, background .15s, color .15s;
+  }
+  .apps-cats button:hover { color: var(--ink); border-color: var(--ink); }
+  .apps-cats button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .apps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .app-card {
+    display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+    padding: 20px; border: 1px solid var(--line); border-radius: 16px;
+    background: var(--paper); text-align: left; transition: border-color .15s, background .15s, transform .18s var(--ease-out);
+  }
+  .app-card:hover { border-color: var(--ink); background: var(--stage); transform: translateY(-2px); }
+  .app-card-top { display: flex; align-items: center; gap: 13px; }
+  .app-ico {
+    width: 46px; height: 46px; border-radius: 12px; flex: none; overflow: hidden;
+    display: grid; place-items: center; font: 700 18px/1 var(--sans); color: #fff;
+    border: 1px solid rgba(16,17,20,.08); background: var(--ink);
+  }
+  .app-ico img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .app-card-title h3 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -.018em; }
+  .app-card-title span { display: block; margin-top: 2px; font: 400 12px var(--mono); color: var(--mute); }
+  .app-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .app-pill {
+    padding: 4px 9px; border-radius: 7px; background: var(--stage); border: 1px solid var(--line);
+    font-size: 12px; color: var(--ink); max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .app-card:hover .app-pill { background: var(--paper); }
+  .app-foot { display: flex; justify-content: space-between; align-items: center; font: 400 12px var(--mono); color: var(--mute); }
+  .nav-pill { font: 400 11px var(--mono); color: var(--mute); }
+
+  .agent-doc { max-width: 780px; display: flex; flex-direction: column; gap: 24px; }
+  .agent-doc h2 { margin: 0 0 8px; font-size: 22px; font-weight: 500; letter-spacing: -.025em; }
+  .agent-doc p { margin: 0; color: var(--mute); }
+  .agent-doc pre {
+    margin: 0; padding: 18px; border-radius: 12px; background: var(--stage);
+    font: 400 12.5px/1.65 var(--mono); overflow-x: auto; color: var(--ink);
+  }
+
+  /* ---------- gl-transitions canvas stage ---------- */
+  .m-glt-wrap { position: relative; width: 100%; height: 100%; background: #101114; overflow: hidden; }
+  .m-glt-canvas { display: block; width: 100%; height: 100%; }
+  .m-glt-scrub {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: rgba(255,255,255,.12); pointer-events: none;
+  }
+  .m-glt-scrub i {
+    display: block; height: 100%; width: 0%; background: var(--ghost);
+  }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 20px 0 36px; color: var(--mute); font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* ---------- detail sheet ---------- */
+  dialog {
+    width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0;
+    background: var(--paper); color: var(--ink); overflow: auto;
+  }
+  dialog[open] { animation: rise .22s var(--ease-out); }
+  dialog::backdrop { background: rgba(16,17,20,.3); }
+  @keyframes rise { from { transform: translateY(3%); opacity: 0; } }
+  .sheet { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(350px, 1fr); min-height: 100%; }
+  .sheet-stage { position: sticky; top: 0; height: 100dvh; padding: 20px; display: flex; flex-direction: column; }
+  .sheet-stage .stage { flex: 1; height: 100%; aspect-ratio: auto; border-radius: 18px; }
+  .sheet-stage-frame { width: 100%; height: 100%; border: 0; display: block; }
+  .sheet-stage-tools {
+    position: absolute; left: 36px; bottom: 34px; z-index: 15; display: flex; gap: 8px;
+  }
+  .sheet-pill {
+    border: 1px solid rgba(16,17,20,.14); background: rgba(255,255,255,.88); color: var(--ink);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-radius: 999px; padding: 6px 13px; font: 500 12px var(--mono);
+  }
+  .sheet-pill:hover { background: var(--ink); color: #ffffff; border-color: var(--ink); }
+  .sheet-side { padding: 28px 36px 48px 20px; }
+  .close { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .close-nav { display: flex; gap: 6px; }
+  .close button { border: 1px solid var(--line); background: none; border-radius: 999px; padding: 6px 14px; font-size: 13.5px; }
+  .close button:hover { border-color: var(--ink); }
+  .eyebrow { color: var(--mute); margin: 26px 0 6px; font-size: 13.5px; }
+  .sheet h2 { margin: 0; font-size: clamp(28px, 2.8vw, 42px); font-weight: 500; letter-spacing: -.035em; line-height: 1.06; }
+  .src { margin: 10px 0 0; color: var(--mute); font-size: 13.5px; }
+  .src a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .summary-p { margin: 16px 0 0; color: var(--ink); font-size: 14.5px; line-height: 1.5; }
+  dl { margin: 26px 0 0; border-top: 1px solid var(--line); }
+  dl div { display: grid; grid-template-columns: 104px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  dt { color: var(--mute); font-size: 13.5px; }
+  dd { margin: 0; font: 400 12.5px var(--mono); overflow-wrap: anywhere; }
+  .spacing { position: relative; height: 18px; }
+  .spacing::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--line); }
+  .spacing span { position: absolute; top: 3px; bottom: 3px; width: 1.5px; background: var(--ghost); }
+  .beats { margin: 22px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .beats li { display: flex; gap: 10px; font-size: 13px; color: var(--mute); line-height: 1.45; }
+  .beats li b { font: 500 11px var(--mono); color: var(--ghost); padding-top: 2px; }
+  .tabs { display: flex; gap: 4px; margin: 28px 0 10px; }
+  .tabs button { border: 0; background: none; padding: 6px 12px; border-radius: 999px; color: var(--mute); font-size: 13.5px; }
+  .tabs button[aria-selected="true"] { background: var(--stage); color: var(--ink); font-weight: 500; }
+  .code { position: relative; background: var(--stage); border-radius: 12px; }
+  .code pre { margin: 0; padding: 18px; font: 400 12px/1.6 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 360px; overflow-y: auto; min-height: 180px; }
+  .copy { margin-top: 14px; width: 100%; height: 46px; border: 0; border-radius: 12px; background: var(--ink); color: var(--paper); font-weight: 500; }
+  .copy:hover { background: #2b2d33; }
+
+  @media (max-width: 1180px) {
+    .grid, .coll-grid, .apps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sheet { grid-template-columns: 1fr; }
+    .sheet-stage { position: static; height: 56vw; min-height: 300px; padding: 16px 16px 0; }
+    .sheet-stage-tools { left: 28px; bottom: 14px; }
+    .sheet-side { padding: 12px 20px 40px; }
+    .eyebrow { margin-top: 14px; }
+  }
+  @media (max-width: 820px) {
+    .app { display: block; }
+    .side { position: static; height: auto; overflow: visible; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px 14px; padding: 14px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
+    .brand { padding: 0; }
+    .search { flex: 1; min-width: 150px; }
+    .search kbd, .side-foot, .group h2 { display: none; }
+    .group.sections { flex: 1 0 100%; }
+    .group.sections .nav { flex-direction: row; gap: 4px; }
+    .group.sections .nav button { width: auto; padding: 5px 10px; }
+    .group { flex: 1 0 100%; min-width: 0; }
+    .uses { flex-direction: row; overflow-x: auto; gap: 2px; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
+    .uses button { width: auto; flex: none; border-radius: 999px; padding: 7px 12px; gap: 5px; }
+    .selects { display: flex; gap: 16px; flex-wrap: wrap; }
+    .selects label { padding: 0; justify-content: flex-start; }
+    .main { padding: 0 16px; }
+    .intro { padding: 30px 0 26px; }
+    .intro p { text-align: left; }
+  }
+  @media (max-width: 560px) { .grid, .coll-grid, .apps-grid { grid-template-columns: 1fr; gap: 30px; } }
+  @media (prefers-reduced-motion: reduce) { dialog[open] { animation: none; } }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="side">
+    <a class="brand" href="#" id="brandHome" aria-label="Motion Index, home">
+      <svg width="34" height="20" viewBox="0 0 34 20" aria-hidden="true">
+        <circle cx="8" cy="10" r="6.4" fill="none" stroke="#2a94e2" stroke-width="1.2" opacity=".45"/>
+        <circle cx="13" cy="10" r="6.4" fill="none" stroke="#2a94e2" stroke-width="1.2" opacity=".7"/>
+        <circle cx="19" cy="10" r="6.4" fill="none" stroke="#2a94e2" stroke-width="1.2"/>
+        <circle cx="26" cy="10" r="7" fill="#101114"/>
+      </svg>
+      Motion Index
+    </a>
+    <label class="search">
+      <input id="q" type="search" placeholder="Search motions or apps" aria-label="Search motions or apps" autocomplete="off">
+      <kbd>/</kbd>
+    </label>
+    <nav class="group sections" aria-label="Sections">
+      <div class="nav" id="sectionNav">
+        <button type="button" data-view="motions" aria-current="page">Motions</button>
+        <button type="button" data-view="apps">Apps <span class="nav-pill" id="appsNavCount"></span></button>
+        <button type="button" data-view="collections">Collections</button>
+        <button type="button" data-view="agents">For agents</button>
+      </div>
+    </nav>
+    <div class="group" id="usesGroup">
+      <h2 id="uses-label">Use case</h2>
+      <div class="uses" id="uses" role="group" aria-labelledby="uses-label"></div>
+    </div>
+    <div class="group" id="refineGroup">
+      <h2>Refine</h2>
+      <div class="selects">
+        <label>Stack <select id="stack" aria-label="Stack"></select></label>
+        <label>Trigger <select id="trigger" aria-label="Trigger"></select></label>
+        <label>Source <select id="collection" aria-label="Collection"></select></label>
+      </div>
+    </div>
+    <p class="side-foot">Live database from curated X posts &amp; open-source repos. <a href="data/motions.json" target="_blank">motions.json ↗</a></p>
+  </aside>
+
+  <div class="main">
+    <section class="intro" id="introSection">
+      <div>
+        <h1>A library of interface motion. <span>Find one you like, then hand its spec to your coding agent.</span></h1>
+        <div id="activeFilters"></div>
+      </div>
+      <p><span id="count">0</span> motions<br><span id="subCount">live interactive previews</span></p>
+    </section>
+
+    <main class="grid" id="grid"></main>
+    <div class="load-more-wrap" id="loadMoreWrap" hidden>
+      <button type="button" class="load-more-btn" id="loadMoreBtn">Load more</button>
+    </div>
+
+    <section class="view-panel" id="appsView" hidden>
+      <div class="apps-head">
+        <div>
+          <h2>App Motion Directory</h2>
+          <p>Search any app to explore its reverse-engineered UI motions, live interactive reconstructions, and copy-paste agent prompts.</p>
+        </div>
+      </div>
+      <div class="apps-bar">
+        <input id="appSearch" class="apps-search" type="search" placeholder="Search apps — Duolingo, Spotify, Linear, Apple Wallet…" aria-label="Search apps" autocomplete="off">
+        <div class="apps-cats" id="appCats" role="group" aria-label="App categories"></div>
+      </div>
+      <div class="apps-grid" id="appsGrid"></div>
+    </section>
+
+    <section class="view-panel" id="collectionsView" hidden>
+      <div class="coll-grid" id="collGrid"></div>
+    </section>
+
+    <section class="view-panel" id="agentsView" hidden>
+      <div class="agent-doc">
+        <div>
+          <h2>Structured catalog for coding agents</h2>
+          <p>Every motion on this site is compiled into a machine-readable JSON index at <code>data/motions.json</code> with timing curves, spring constants, animated properties, choreography beats, standalone code, and an adaptation prompt.</p>
+        </div>
+        <pre id="agentSchemaPreview"></pre>
+      </div>
+    </section>
+
+    <footer>
+      <span>Interact directly inside any stage, or click its title to open the spec &amp; code sheet.</span>
+      <span id="footCount"></span>
+    </footer>
+  </div>
+</div>
+
+<dialog id="sheet" aria-labelledby="d-title">
+  <div class="sheet">
+    <div class="sheet-stage">
+      <div class="stage" id="d-stage"></div>
+      <div class="sheet-stage-tools">
+        <button type="button" class="sheet-pill" id="d-replay">↻ Replay</button>
+      </div>
+    </div>
+    <div class="sheet-side">
+      <div class="close">
+        <div class="close-nav">
+          <button type="button" id="d-prev" title="Previous (←)">←</button>
+          <button type="button" id="d-next" title="Next (→)">→</button>
+        </div>
+        <button type="button" id="d-close">Close</button>
+      </div>
+      <p class="eyebrow" id="d-use"></p>
+      <h2 id="d-title"></h2>
+      <p class="src" id="d-src"></p>
+      <p class="summary-p" id="d-summary"></p>
+      <dl id="d-spec"></dl>
+      <ol class="beats" id="d-beats"></ol>
+      <div class="tabs" role="tablist" id="d-tabs">
+        <button type="button" role="tab" data-tab="prompt" aria-selected="true">Agent prompt</button>
+        <button type="button" role="tab" data-tab="spec" aria-selected="false">Motion spec</button>
+        <button type="button" role="tab" data-tab="code" aria-selected="false">Code</button>
+      </div>
+      <div class="code"><pre id="d-code"></pre></div>
+      <button type="button" class="copy" id="d-copy">Copy</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="data/motions-bundle.js"></script>
+<script>
+/* ---------- Shared single-context WebGL engine ---------- */
+window.__MOTION_GL = (function () {
+  const off = document.createElement('canvas');
+  off.width = 480;
+  off.height = 360;
+  const gl = off.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: true })
+          || off.getContext('experimental-webgl', { antialias: false, alpha: false, preserveDrawingBuffer: true });
+
+  const VS = `attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv = a_pos * 0.5 + 0.5; gl_Position = vec4(a_pos, 0.0, 1.0); }`;
+  const progCache = new Map();
+  const texCache = new Map();
+  const activeJobs = new Set();
+  let rafId = 0;
+
+  let quadBuf = null;
+  if (gl) {
+    quadBuf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+  }
+
+  function compile(fragSrc) {
+    if (!gl) return null;
+    if (progCache.has(fragSrc)) return progCache.get(fragSrc);
+    const vs = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vs, VS);
+    gl.compileShader(vs);
+    const fs = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fs, fragSrc);
+    gl.compileShader(fs);
+    if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) {
+      console.warn('GLSL compile error:', gl.getShaderInfoLog(fs));
+      progCache.set(fragSrc, null);
+      return null;
+    }
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.warn('GLSL link error:', gl.getProgramInfoLog(prog));
+      progCache.set(fragSrc, null);
+      return null;
+    }
+    progCache.set(fragSrc, prog);
+    return prog;
+  }
+
+  function makePlateTexture(bg, accent, label, variant) {
+    const key = bg + '|' + accent + '|' + label + '|' + variant;
+    if (texCache.has(key)) return texCache.get(key);
+    const c = document.createElement('canvas');
+    c.width = 480; c.height = 360;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, 480, 360);
+
+    const isDark = parseInt(bg.slice(1,3), 16) < 80;
+    ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(16,17,20,0.08)';
+    ctx.lineWidth = 1;
+    for (let x = 40; x < 480; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 360); ctx.stroke(); }
+    for (let y = 40; y < 360; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(480, y); ctx.stroke(); }
+
+    const grad = ctx.createRadialGradient(variant === 0 ? 180 : 310, 175, 20, 240, 180, 210);
+    grad.addColorStop(0, accent);
+    grad.addColorStop(1, isDark ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 480, 360);
+
+    ctx.fillStyle = accent;
+    if (variant === 0) {
+      ctx.beginPath(); ctx.arc(240, 180, 86, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.75)' : 'rgba(16,17,20,0.75)';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(240, 180, 118, -0.8, 2.3); ctx.stroke();
+    } else {
+      ctx.save();
+      ctx.translate(240, 180);
+      ctx.rotate(Math.PI / 4);
+      ctx.fillRect(-68, -68, 136, 136);
+      ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.85)' : 'rgba(16,17,20,0.85)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(-92, -92, 184, 184);
+      ctx.restore();
+    }
+
+    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.85)' : 'rgba(16,17,20,0.85)';
+    ctx.font = '600 15px ui-monospace, Menlo, monospace';
+    ctx.fillText(label, 24, 38);
+    ctx.font = '500 11px ui-monospace, Menlo, monospace';
+    ctx.fillStyle = isDark ? 'rgba(255,255,255,0.48)' : 'rgba(16,17,20,0.48)';
+    ctx.fillText(variant === 0 ? 'FRAME FROM' : 'FRAME TO', 24, 336);
+
+    const tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, c);
+    texCache.set(key, tex);
+    return tex;
+  }
+
+  function tick(now) {
+    if (!activeJobs.size) { rafId = 0; return; }
+    const t = now * 0.001;
+    for (const job of activeJobs) {
+      if (!job.canvas.isConnected) { activeJobs.delete(job); continue; }
+      job.render(t);
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function ensureLoop() {
+    if (!rafId && activeJobs.size) rafId = requestAnimationFrame(tick);
+  }
+
+  function mountFragment(root, canvas, fragSrc) {
+    const ctx2d = canvas.getContext('2d');
+    const prog = compile(fragSrc);
+    let mx = 0.5, my = 0.5;
+    const onMove = e => {
+      const r = root.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      my = Math.max(0, Math.min(1, 1 - (e.clientY - r.top) / r.height));
+    };
+    root.addEventListener('pointermove', onMove);
+
+    const t0 = performance.now() * 0.001;
+    const job = {
+      canvas,
+      render(now) {
+        const w = Math.max(240, Math.min(480, Math.round(canvas.clientWidth || 360)));
+        const h = Math.max(180, Math.min(360, Math.round(canvas.clientHeight || 270)));
+        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+        if (!prog || !gl) {
+          const g = ctx2d.createLinearGradient(0, 0, w, h);
+          g.addColorStop(0, '#18181b'); g.addColorStop(1, '#2a94e2');
+          ctx2d.fillStyle = g; ctx2d.fillRect(0, 0, w, h);
+          return;
+        }
+        if (off.width !== w || off.height !== h) { off.width = w; off.height = h; }
+        gl.viewport(0, 0, w, h);
+        gl.useProgram(prog);
+        gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+        const loc = gl.getAttribLocation(prog, 'a_pos');
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+        const uTime = gl.getUniformLocation(prog, 'u_time');
+        const uRes = gl.getUniformLocation(prog, 'u_resolution');
+        const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+        if (uTime) gl.uniform1f(uTime, now - t0);
+        if (uRes) gl.uniform2f(uRes, w, h);
+        if (uMouse) gl.uniform2f(uMouse, mx, my);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        ctx2d.drawImage(off, 0, 0, w, h);
+      }
+    };
+    activeJobs.add(job);
+    ensureLoop();
+    return () => {
+      activeJobs.delete(job);
+      root.removeEventListener('pointermove', onMove);
+    };
+  }
+
+  function wrapGlTransition(glslBody) {
+    return `precision mediump float;
+varying vec2 v_uv;
+uniform sampler2D from;
+uniform sampler2D to;
+uniform float progress;
+uniform float ratio;
+vec4 getFromColor(vec2 uv) { return texture2D(from, clamp(uv, 0.0, 1.0)); }
+vec4 getToColor(vec2 uv) { return texture2D(to, clamp(uv, 0.0, 1.0)); }
+${glslBody}
+void main() { gl_FragColor = transition(v_uv); }`;
+  }
+
+  function mountTransition(root, canvas, cfg) {
+    const ctx2d = canvas.getContext('2d');
+    const prog = compile(wrapGlTransition(cfg.glsl));
+    const [bgA, accA, bgB, accB] = cfg.palette;
+    const texFrom = gl ? makePlateTexture(bgA, accA, cfg.labelA, 0) : null;
+    const texTo = gl ? makePlateTexture(bgB, accB, cfg.labelB, 1) : null;
+
+    let scrub = null;
+    const bar = document.createElement('div');
+    bar.className = 'm-glt-scrub';
+    const fill = document.createElement('i');
+    bar.append(fill);
+    root.append(bar);
+
+    const onMove = e => {
+      const r = root.getBoundingClientRect();
+      if (!r.width) return;
+      scrub = Math.max(0.001, Math.min(0.999, (e.clientX - r.left) / r.width));
+    };
+    const onLeave = () => { scrub = null; };
+    root.addEventListener('pointermove', onMove);
+    root.addEventListener('pointerleave', onLeave);
+
+    const t0 = performance.now() * 0.001;
+    const job = {
+      canvas,
+      render(now) {
+        const w = Math.max(240, Math.min(480, Math.round(canvas.clientWidth || 360)));
+        const h = Math.max(180, Math.min(360, Math.round(canvas.clientHeight || 270)));
+        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+        let p;
+        if (scrub !== null) {
+          p = scrub;
+        } else {
+          const cyc = (((now - t0) + (cfg.phaseOffset || 0)) % 3.6) / 3.6;
+          if (cyc < 0.12) p = 0;
+          else if (cyc < 0.5) { const u = (cyc - 0.12) / 0.38; p = u * u * (3 - 2 * u); }
+          else if (cyc < 0.62) p = 1;
+          else { const u = 1 - (cyc - 0.62) / 0.38; p = u * u * (3 - 2 * u); }
+        }
+        fill.style.width = (p * 100).toFixed(1) + '%';
+
+        if (!prog || !gl) {
+          ctx2d.fillStyle = bgA; ctx2d.fillRect(0, 0, w, h);
+          ctx2d.globalAlpha = p; ctx2d.fillStyle = bgB; ctx2d.fillRect(0, 0, w, h);
+          ctx2d.globalAlpha = 1;
+          return;
+        }
+        if (off.width !== w || off.height !== h) { off.width = w; off.height = h; }
+        gl.viewport(0, 0, w, h);
+        gl.useProgram(prog);
+        gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+        const loc = gl.getAttribLocation(prog, 'a_pos');
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texFrom);
+        gl.uniform1i(gl.getUniformLocation(prog, 'from'), 0);
+        gl.activeTexture(gl.TEXTURE1);
+        gl.bindTexture(gl.TEXTURE_2D, texTo);
+        gl.uniform1i(gl.getUniformLocation(prog, 'to'), 1);
+
+        gl.uniform1f(gl.getUniformLocation(prog, 'progress'), p);
+        gl.uniform1f(gl.getUniformLocation(prog, 'ratio'), w / h);
+
+        for (const [k, u] of Object.entries(cfg.uniforms || {})) {
+          const uLoc = gl.getUniformLocation(prog, k);
+          if (!uLoc) continue;
+          if (u.type === 'float') gl.uniform1f(uLoc, u.value);
+          else if (u.type === 'int') gl.uniform1i(uLoc, u.value);
+          else if (u.type === 'bool') gl.uniform1i(uLoc, u.value ? 1 : 0);
+          else if (u.type === 'vec2') gl.uniform2fv(uLoc, u.value);
+          else if (u.type === 'vec3') gl.uniform3fv(uLoc, u.value);
+          else if (u.type === 'vec4') gl.uniform4fv(uLoc, u.value);
+          else if (u.type === 'ivec2') gl.uniform2iv(uLoc, u.value.map(Math.round));
+        }
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        ctx2d.drawImage(off, 0, 0, w, h);
+      }
+    };
+    activeJobs.add(job);
+    ensureLoop();
+    return () => {
+      activeJobs.delete(job);
+      root.removeEventListener('pointermove', onMove);
+      root.removeEventListener('pointerleave', onLeave);
+      bar.remove();
+    };
+  }
+
+  return { mountFragment, mountTransition };
+})();
+
+/* ---------- Motion Index app (Version A Onion Skin) ---------- */
+(function () {
+  const MOTIONS = window.__MOTION_DB || [];
+  const FRAMES = 7;
+  const PAGE_SIZE = 30;
+
+  /* ---------- lazy per-motion CSS injection ---------- */
+  const injectedCss = new Set();
+  const dynamicStyleEl = document.createElement('style');
+  dynamicStyleEl.id = 'motion-dynamic-styles';
+  document.head.appendChild(dynamicStyleEl);
+  function ensureCss(m) {
+    if (!m.css || injectedCss.has(m.id)) return;
+    injectedCss.add(m.id);
+    dynamicStyleEl.appendChild(document.createTextNode(`
+/* ${m.id} */
+${m.css}
+`));
+  }
+
+  /* ---------- easing maths for onion-skin spacing bar ---------- */
+  function springInfo(e) {
+    const k = e.k || 220, c = e.c || 16;
+    const w0 = Math.sqrt(k), z = Math.min(0.98, c / (2 * Math.sqrt(k))), wd = w0 * Math.sqrt(1 - z * z);
+    const T = 4.6 / (z * w0);
+    return { T, f: p => 1 - Math.exp(-z * w0 * p * T) * (Math.cos(wd * p * T) + (z * w0 / wd) * Math.sin(wd * p * T)) };
+  }
+  function bezierFn([x1, y1, x2, y2]) {
+    const cx = u => 3 * (1 - u) * (1 - u) * u * x1 + 3 * (1 - u) * u * u * x2 + u * u * u;
+    const cy = u => 3 * (1 - u) * (1 - u) * u * y1 + 3 * (1 - u) * u * u * y2 + u * u * u;
+    return p => { let lo = 0, hi = 1; for (let i = 0; i < 24; i++) { const m = (lo + hi) / 2; cx(m) < p ? lo = m : hi = m; } return cy((lo + hi) / 2); };
+  }
+  for (const m of MOTIONS) {
+    if (m.ease && m.ease.t === 'spring') {
+      m.fn = springInfo(m.ease).f;
+    } else if (m.ease && m.ease.t === 'bezier' && Array.isArray(m.ease.p)) {
+      m.fn = bezierFn(m.ease.p);
+    } else {
+      m.fn = p => p;
+    }
+  }
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  const state = { view: 'motions', use: 'All', stack: 'Any', trigger: 'Any', collection: 'Any', app: 'Any', appQ: '', appCat: 'All', q: '' };
+  let activeList = [], renderedCount = 0;
+  const uniq = k => [...new Set(MOTIONS.map(m => m[k]).filter(Boolean))];
+
+  function getAppGroups() {
+    const map = new Map();
+    for (const m of MOTIONS) {
+      if (!m.app || !m.app.slug) continue;
+      if (!map.has(m.app.slug)) {
+        map.set(m.app.slug, { ...m.app, motions: [] });
+      }
+      map.get(m.app.slug).motions.push(m);
+    }
+    return [...map.values()].sort((a, b) => b.motions.length - a.motions.length || a.name.localeCompare(b.name));
+  }
+  const ALL_APPS = getAppGroups();
+  if ($('appsNavCount')) $('appsNavCount').textContent = ALL_APPS.length ? String(ALL_APPS.length) : '';
+
+  const useOrder = ['All', 'Micro-interactions', 'Typography', 'Navigation and layout', 'Backgrounds', 'Generative', 'Transitions']
+    .filter(u => u === 'All' || MOTIONS.some(m => m.use === u));
+
+  $('uses').innerHTML = useOrder.map(u =>
+    `<button type="button" aria-pressed="${u === 'All'}" data-use="${esc(u)}">${esc(u)}<span>${u === 'All' ? MOTIONS.length : MOTIONS.filter(m => m.use === u).length}</span></button>`
+  ).join('');
+  $('stack').innerHTML = ['Any', ...uniq('stack')].map(s => `<option>${esc(s)}</option>`).join('');
+  $('trigger').innerHTML = ['Any', ...uniq('trigger')].map(s => `<option>${esc(s)}</option>`).join('');
+  $('collection').innerHTML = ['Any', ...uniq('collection')].map(s => `<option>${esc(s)}</option>`).join('');
+
+  $('footCount').textContent = `${MOTIONS.length} motions across ${uniq('collection').length} source collections`;
+
+  /* ---------- viewport-gated motion mounting ---------- */
+  const mountedDisposers = new WeakMap();
+  const stageToMotion = new WeakMap();
+
+  function mountStage(stageEl, m) {
+    if (mountedDisposers.has(stageEl)) return;
+    ensureCss(m);
+    stageEl.innerHTML = m.html || '';
+    let dispose = null;
+    try {
+      if (m.glTransition) {
+        const canvas = stageEl.querySelector('canvas');
+        dispose = window.__MOTION_GL.mountTransition(stageEl, canvas, m.glTransition);
+      } else if (m.js) {
+        const fn = new Function('root', m.js);
+        const res = fn(stageEl);
+        if (typeof res === 'function') dispose = res;
+      }
+    } catch (err) {
+      console.error('Motion mount failed:', m.id, err);
+    }
+    mountedDisposers.set(stageEl, dispose || (() => {}));
+  }
+
+  function unmountStage(stageEl) {
+    const dispose = mountedDisposers.get(stageEl);
+    if (dispose) {
+      try { dispose(); } catch {}
+      mountedDisposers.delete(stageEl);
+    }
+  }
+
+  const io = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      const stageEl = entry.target;
+      const m = stageToMotion.get(stageEl);
+      if (!m) continue;
+      if (entry.isIntersecting) mountStage(stageEl, m);
+      else unmountStage(stageEl);
+    }
+  }, { rootMargin: '260px 0px' });
+
+  /* ---------- auto-append sentinel for smooth progressive scrolling ---------- */
+  const moreIo = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting) && renderedCount < activeList.length && state.view === 'motions') {
+      appendBatch(PAGE_SIZE);
+    }
+  }, { rootMargin: '500px 0px' });
+  moreIo.observe($('loadMoreWrap'));
+
+  function filteredMotions() {
+    const q = state.q.trim().toLowerCase();
+    return MOTIONS.filter(m =>
+      (state.use === 'All' || m.use === state.use) &&
+      (state.stack === 'Any' || m.stack === state.stack) &&
+      (state.trigger === 'Any' || m.trigger === state.trigger) &&
+      (state.collection === 'Any' || m.collection === state.collection) &&
+      (state.app === 'Any' || (m.app && m.app.slug === state.app)) &&
+      (!q || [
+        m.title, m.id, m.use, m.stack, m.trigger, m.collection, m.src, m.summary, m.easeLabel,
+        (m.props || []).join(' '),
+        m.app ? [m.app.name, m.app.slug, m.app.category, m.app.bundleId, (m.app.platform || []).join(' ')].join(' ') : ''
+      ].join(' ').toLowerCase().includes(q))
+    );
+  }
+
+  function renderActiveChips() {
+    const chips = [];
+    if (state.app !== 'Any') {
+      const appObj = ALL_APPS.find(a => a.slug === state.app);
+      const label = appObj ? appObj.name : state.app;
+      chips.push(`<span class="active-chip">App: ${esc(label)} <button type="button" data-clear="app" aria-label="Clear app">×</button></span>`);
+      if (appObj && appObj.storeUrl) {
+        chips.push(`<a class="active-chip" style="text-decoration:none" href="${esc(appObj.storeUrl)}" target="_blank" rel="noopener noreferrer">App Store ↗</a>`);
+      }
+    }
+    if (state.collection !== 'Any') {
+      chips.push(`<span class="active-chip">Collection: ${esc(state.collection)} <button type="button" data-clear="collection" aria-label="Clear collection">×</button></span>`);
+    }
+    $('activeFilters').innerHTML = chips.join(' ');
+    $('activeFilters').querySelectorAll('[data-clear]').forEach(btn => {
+      btn.onclick = () => {
+        const key = btn.dataset.clear;
+        state[key] = 'Any';
+        if ($(key)) $(key).value = 'Any';
+        renderGrid();
+      };
+    });
+  }
+
+  function appendBatch(n) {
+    const grid = $('grid');
+    const slice = activeList.slice(renderedCount, renderedCount + n);
+    for (const m of slice) {
+      const tile = document.createElement('article');
+      tile.className = 'tile';
+      tile.innerHTML = `
+        <div class="stage" data-surface="${esc(m.surface || 'dark')}">
+          <div class="stage-mount"></div>
+          <button type="button" class="stage-open" aria-label="Inspect ${esc(m.title)}">Spec ↗</button>
+        </div>
+        <button type="button" class="tile-meta">
+          <div class="cap"><b>${esc(m.title)}</b><i>${m.dur} ms</i></div>
+          <div class="sub">${esc(m.use)} · ${esc(m.stack)} · ${esc(m.trigger)}</div>
+        </button>`;
+      grid.append(tile);
+
+      const mount = tile.querySelector('.stage-mount');
+      stageToMotion.set(mount, m);
+      io.observe(mount);
+
+      tile.querySelector('.stage-open').addEventListener('click', e => { e.stopPropagation(); openSheet(m); });
+      tile.querySelector('.tile-meta').addEventListener('click', () => openSheet(m));
+    }
+    renderedCount += slice.length;
+    const rem = activeList.length - renderedCount;
+    $('loadMoreWrap').hidden = rem <= 0;
+    if (rem > 0) $('loadMoreBtn').textContent = `Load more (${rem} remaining)`;
+  }
+
+  function renderGrid() {
+    const grid = $('grid');
+    grid.querySelectorAll('.stage-mount').forEach(el => {
+      io.unobserve(el);
+      unmountStage(el);
+    });
+    grid.replaceChildren();
+    renderedCount = 0;
+
+    activeList = filteredMotions();
+    $('count').textContent = activeList.length;
+    const activeAppObj = state.app !== 'Any' ? ALL_APPS.find(a => a.slug === state.app) : null;
+    $('subCount').textContent = activeAppObj ? `${activeAppObj.name} motions` : (state.collection !== 'Any' ? state.collection : 'live interactive previews');
+    renderActiveChips();
+
+    if (!activeList.length) {
+      $('loadMoreWrap').hidden = true;
+      grid.innerHTML = `<p class="empty">No motions match these filters. <button type="button" id="reset">Clear filters</button></p>`;
+      $('reset').onclick = resetAllFilters;
+      return;
+    }
+
+    appendBatch(PAGE_SIZE);
+  }
+
+  $('loadMoreBtn').addEventListener('click', () => appendBatch(PAGE_SIZE));
+
+  function resetAllFilters() {
+    Object.assign(state, { use: 'All', stack: 'Any', trigger: 'Any', collection: 'Any', app: 'Any', q: '' });
+    $('q').value = '';
+    $('stack').value = 'Any';
+    $('trigger').value = 'Any';
+    $('collection').value = 'Any';
+    document.querySelectorAll('#uses button').forEach(b => b.setAttribute('aria-pressed', b.dataset.use === 'All'));
+    renderGrid();
+  }
+
+  /* ---------- apps, collections & agents sections ---------- */
+  const collMeta = {
+    'Apps':           'Signature interactions reverse-engineered from real iOS & Android apps — search by app to copy the prompt.',
+    'UI Moments':     'Complete 36-piece monochrome micro-interaction set from @guanmo_ai plus Sonner & Vaul.',
+    'Magic UI':       'MIT-licensed React/CSS motion primitives distilled from magicuidesign/magicui.',
+    'React Bits':     'Interactive canvas, typography & SVG effects distilled from DavidHDev/react-bits.',
+    'Paper Shaders':  'Apache-2.0 GLSL fragment shaders adapted from paper-design/shaders.',
+    'GL Transitions': 'MIT-licensed GLSL scene transitions ingested directly from gl-transitions.',
+    'X Featured':     'Bespoke motions reverse-engineered from @desdivj, @bitmapstudio, @m4lkxx, @tobiadonadon_, @kasuncfdo, and @cnemalek.',
+  };
+
+  function renderApps() {
+    const cats = ['All', ...new Set(ALL_APPS.map(a => a.category).filter(Boolean))];
+    $('appCats').innerHTML = cats.map(c =>
+      `<button type="button" data-cat="${esc(c)}" aria-pressed="${state.appCat === c}">${esc(c)}</button>`
+    ).join('');
+    $('appCats').querySelectorAll('button').forEach(b => {
+      b.onclick = () => { state.appCat = b.dataset.cat; renderApps(); };
+    });
+
+    const aq = state.appQ.trim().toLowerCase();
+    const list = ALL_APPS.filter(a =>
+      (state.appCat === 'All' || a.category === state.appCat) &&
+      (!aq || [a.name, a.category, a.bundleId, a.motions.map(m => m.title).join(' ')].join(' ').toLowerCase().includes(aq))
+    );
+
+    if (!list.length) {
+      $('appsGrid').innerHTML = `<p class="empty">No apps match “${esc(state.appQ)}”. <button type="button" id="resetApps">Show all apps</button></p>`;
+      $('resetApps').onclick = () => { state.appQ = ''; state.appCat = 'All'; $('appSearch').value = ''; renderApps(); };
+      return;
+    }
+
+    $('appsGrid').innerHTML = list.map(a => {
+      const ico = a.iconUrl
+        ? `<img src="${esc(a.iconUrl)}" alt="${esc(a.name)} icon" loading="lazy">`
+        : esc(a.name.slice(0, 1).toUpperCase());
+      const pills = a.motions.slice(0, 3).map(m => {
+        const shortT = m.title.replace(new RegExp('^' + a.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ':\\s*', 'i'), '');
+        return `<span class="app-pill">${esc(shortT)}</span>`;
+      }).join('');
+      return `<button type="button" class="app-card" data-slug="${esc(a.slug)}">
+        <div class="app-card-top">
+          <div class="app-ico" style="background:${esc(a.accent || '#101114')}">${ico}</div>
+          <div class="app-card-title">
+            <h3>${esc(a.name)}</h3>
+            <span>${esc(a.category || 'App')} · ${esc((a.platform || ['iOS']).join(' · '))}</span>
+          </div>
+        </div>
+        <div class="app-pills">${pills}</div>
+        <div class="app-foot"><span>${a.motions.length} motion${a.motions.length === 1 ? '' : 's'}</span><span>Explore prompts →</span></div>
+      </button>`;
+    }).join('');
+
+    $('appsGrid').querySelectorAll('.app-card').forEach(card => {
+      card.onclick = () => {
+        state.app = card.dataset.slug;
+        state.collection = 'Any';
+        state.use = 'All';
+        state.stack = 'Any';
+        state.trigger = 'Any';
+        state.q = '';
+        $('q').value = '';
+        $('collection').value = 'Any';
+        $('stack').value = 'Any';
+        $('trigger').value = 'Any';
+        document.querySelectorAll('#uses button').forEach(b => b.setAttribute('aria-pressed', b.dataset.use === 'All'));
+        setView('motions');
+      };
+    });
+  }
+  $('appSearch').oninput = e => { state.appQ = e.target.value; renderApps(); };
+
+  function renderCollections() {
+    const names = uniq('collection');
+    $('collGrid').innerHTML = names.map(name => {
+      const items = MOTIONS.filter(m => m.collection === name);
+      const stacks = [...new Set(items.map(m => m.stack))].join(' · ');
+      return `<button type="button" class="coll-card" data-coll="${esc(name)}">
+        <div>
+          <h3>${esc(name)}</h3>
+          <p>${esc(collMeta[name] || 'Curated motion pack.')}</p>
+        </div>
+        <div class="coll-foot"><span>${items.length} motions</span><span>${esc(stacks)}</span></div>
+      </button>`;
+    }).join('');
+    $('collGrid').querySelectorAll('.coll-card').forEach(card => {
+      card.onclick = () => {
+        state.collection = card.dataset.coll;
+        $('collection').value = state.collection;
+        setView('motions');
+      };
+    });
+  }
+
+  function renderAgentDoc() {
+    const sample = MOTIONS[0] || {};
+    $('agentSchemaPreview').textContent = JSON.stringify({
+      endpoint: 'GET /data/motions.json',
+      totalMotions: MOTIONS.length,
+      appsCount: ALL_APPS.length,
+      apps: ALL_APPS.map(a => a.name),
+      collections: uniq('collection'),
+      sampleRecord: {
+        id: sample.id,
+        title: sample.title,
+        app: sample.app || null,
+        use: sample.use,
+        stack: sample.stack,
+        trigger: sample.trigger,
+        durationMs: sample.dur,
+        easing: sample.ease,
+        properties: sample.props,
+        source: sample.src,
+        sourceUrl: sample.srcUrl,
+        choreography: sample.choreography,
+        agentPrompt: (sample.agentPrompt || '').slice(0, 140) + '…'
+      }
+    }, null, 2);
+  }
+
+  function setView(view) {
+    state.view = view;
+    document.querySelectorAll('#sectionNav button').forEach(b => {
+      if (b.dataset.view === view) b.setAttribute('aria-current', 'page');
+      else b.removeAttribute('aria-current');
+    });
+    $('grid').hidden = view !== 'motions';
+    $('loadMoreWrap').hidden = view !== 'motions' || renderedCount >= activeList.length;
+    $('appsView').hidden = view !== 'apps';
+    $('collectionsView').hidden = view !== 'collections';
+    $('agentsView').hidden = view !== 'agents';
+    $('introSection').hidden = view !== 'motions';
+    if (view === 'motions') renderGrid();
+    if (view === 'apps') renderApps();
+    if (view === 'collections') renderCollections();
+    if (view === 'agents') renderAgentDoc();
+  }
+
+  $('sectionNav').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    setView(b.dataset.view);
+  });
+  $('brandHome').addEventListener('click', e => {
+    e.preventDefault();
+    resetAllFilters();
+    setView('motions');
+  });
+
+  $('uses').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    state.use = b.dataset.use;
+    document.querySelectorAll('#uses button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    setView('motions');
+  });
+  $('stack').onchange = e => { state.stack = e.target.value; setView('motions'); };
+  $('trigger').onchange = e => { state.trigger = e.target.value; setView('motions'); };
+  $('collection').onchange = e => { state.collection = e.target.value; setView('motions'); };
+  $('q').oninput = e => { state.q = e.target.value; if (state.view !== 'motions') setView('motions'); else renderGrid(); };
+
+  addEventListener('keydown', e => {
+    if (e.key === '/' && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName) && !$('sheet').open) {
+      e.preventDefault(); $('q').focus();
+    }
+    if ($('sheet').open) {
+      if (e.key === 'ArrowRight') stepSheet(1);
+      if (e.key === 'ArrowLeft') stepSheet(-1);
+    }
+  });
+
+  /* ---------- detail sheet ---------- */
+  let current = null, tab = 'prompt', sheetDispose = null;
+
+  function buildIsolatedSrcdoc(m) {
+    const safeJs = (m.js || '').replace(/<\/script/gi, '<\\/script');
+    return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><style>
+      *,*::before,*::after{box-sizing:border-box}
+      html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:${m.surface === 'dark' ? '#101114' : '#f2f3f5'};font-family:"Host Grotesk",-apple-system,sans-serif}
+      #stage{position:relative;width:100%;height:100%;overflow:hidden}
+      ${m.css || ''}
+    </style></head><body><div id="stage">${m.html || ''}</div><script>
+      (function(){ var root = document.getElementById('stage'); ${safeJs} })();
+    <\/script></body></html>`;
+  }
+
+  function mountSheetStage(m) {
+    if (sheetDispose) { try { sheetDispose(); } catch {} sheetDispose = null; }
+    const dStage = $('d-stage');
+    dStage.dataset.surface = m.surface || 'dark';
+    dStage.replaceChildren();
+    ensureCss(m);
+    if (m.glTransition) {
+      dStage.innerHTML = m.html;
+      sheetDispose = window.__MOTION_GL.mountTransition(dStage, dStage.querySelector('canvas'), m.glTransition);
+    } else if (m.stack === 'WebGL' && m.js && m.js.includes('__MOTION_GL')) {
+      dStage.innerHTML = m.html;
+      try {
+        const fn = new Function('root', m.js);
+        const res = fn(dStage);
+        if (typeof res === 'function') sheetDispose = res;
+      } catch (e) { console.error(e); }
+    } else {
+      const iframe = document.createElement('iframe');
+      iframe.className = 'sheet-stage-frame';
+      iframe.title = m.title;
+      iframe.srcdoc = buildIsolatedSrcdoc(m);
+      dStage.append(iframe);
+      sheetDispose = () => { iframe.srcdoc = ''; };
+    }
+  }
+
+  const texts = m => ({
+    prompt: m.agentPrompt,
+    spec: JSON.stringify({
+      id: m.id,
+      title: m.title,
+      app: m.app || undefined,
+      useCase: m.use,
+      collection: m.collection,
+      stack: m.stack,
+      trigger: m.trigger,
+      feel: m.feel,
+      durationMs: m.dur,
+      easing: m.ease,
+      easingLabel: m.easeLabel,
+      properties: m.props,
+      choreography: m.choreography,
+      source: m.src,
+      sourceUrl: m.srcUrl
+    }, null, 2),
+    code: m.extractableCode || ''
+  });
+
+  function showTab() {
+    $('d-code').textContent = texts(current)[tab];
+    document.querySelectorAll('#d-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab));
+    $('d-copy').textContent = { prompt: 'Copy agent prompt', spec: 'Copy motion spec', code: 'Copy code' }[tab];
+  }
+
+  function openSheet(m) {
+    current = m; tab = 'prompt';
+    $('d-use').textContent = `${m.use} · ${m.collection}`;
+    $('d-title').textContent = m.title;
+    $('d-src').innerHTML = m.srcUrl
+      ? `Source: <a href="${esc(m.srcUrl)}" target="_blank" rel="noopener noreferrer">${esc(m.src)} ↗</a>`
+      : `Source: ${esc(m.src)}`;
+    $('d-summary').textContent = m.summary || '';
+
+    const ticks = Array.from({ length: FRAMES + 1 }, (_, i) =>
+      `<span style="left:${Math.min(98, Math.max(2, m.fn(i / FRAMES) * 84 + 6))}%"></span>`
+    ).join('');
+    $('d-spec').innerHTML = [
+      ['Trigger', esc(m.trigger)],
+      ['Duration', `${m.dur} ms`],
+      ['Easing', esc(m.easeLabel)],
+      ['Spacing', `<div class="spacing" title="Frame spacing at equal time steps">${ticks}</div>`],
+      ['Animates', esc((m.props || []).join(', '))],
+      ['Stack', esc(m.stack)]
+    ].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+
+    $('d-beats').innerHTML = (m.choreography || []).map((b, i) =>
+      `<li><b>0${i + 1}</b><span>${esc(b)}</span></li>`
+    ).join('');
+
+    showTab();
+    if (!$('sheet').open) $('sheet').showModal();
+    mountSheetStage(m);
+    history.replaceState(null, '', '#' + m.id);
+  }
+
+  function stepSheet(delta) {
+    if (!current) return;
+    const pool = activeList.length ? activeList : MOTIONS;
+    const idx = pool.findIndex(x => x.id === current.id);
+    openSheet(pool[(idx + delta + pool.length) % pool.length]);
+  }
+
+  $('d-tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { tab = b.dataset.tab; showTab(); } });
+  $('d-close').onclick = () => $('sheet').close();
+  $('d-prev').onclick = () => stepSheet(-1);
+  $('d-next').onclick = () => stepSheet(1);
+  $('d-replay').onclick = () => { if (current) mountSheetStage(current); };
+  $('sheet').addEventListener('close', () => {
+    if (sheetDispose) { try { sheetDispose(); } catch {} sheetDispose = null; }
+    $('d-stage').replaceChildren();
+    history.replaceState(null, '', location.pathname);
+  });
+  $('d-copy').onclick = async () => {
+    try { await navigator.clipboard.writeText(texts(current)[tab]); $('d-copy').textContent = 'Copied ✓'; }
+    catch { $('d-copy').textContent = 'Copy failed — select text above.'; }
+    setTimeout(showTab, 1500);
+  };
+
+  renderGrid();
+  const linked = MOTIONS.find(m => m.id === location.hash.slice(1));
+  if (linked) openSheet(linked);
+})();
+</script>
+</body>
+</html>

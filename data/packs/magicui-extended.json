@@ -1,0 +1,913 @@
+[
+  {
+    "id": "mu-animated-beam",
+    "title": "Animated signal beam",
+    "use": "Navigation and layout",
+    "stack": "SVG",
+    "trigger": "Loop",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 2200,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear SVG gradient sweep",
+    "props": [
+      "linearGradient",
+      "stroke-dashoffset"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-beam.tsx",
+    "collection": "Magic UI",
+    "summary": "Luminous gradient energy beams travel along smooth quadratic Bezier wires connecting source nodes into a central hub.",
+    "hint": "Continuous wire pulse",
+    "choreography": [
+      "Static hairline paths map source-to-hub topology.",
+      "Animated cyan-violet linearGradient streaks glide along each Bezier wire.",
+      "Staggered delays create directional data-flow rhythm."
+    ],
+    "agentPrompt": "Add Magic UI \"Animated signal beam\" (animated-beam.tsx).\n\nTrigger: loop\nDuration: 2200 ms\nEasing: linear SVG gradient sweep\nAnimates: linearGradient, stroke-dashoffset\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "/* SVG path overlay with animated linearGradient + stroke-dashoffset */",
+    "html": "<div class=\"m-mu-animated-beam\"><svg viewBox=\"0 0 320 220\" width=\"100%\" height=\"100%\"><defs><linearGradient class=\"m-mab-g\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\"><stop offset=\"0%\" stop-color=\"#38bdf8\" stop-opacity=\"0\"/><stop offset=\"50%\" stop-color=\"#2a94e2\"/><stop offset=\"100%\" stop-color=\"#a855f7\" stop-opacity=\"0\"/></linearGradient></defs><g fill=\"none\" stroke=\"rgba(16,17,20,0.1)\" stroke-width=\"1.5\"><path d=\"M56 54 Q115 54 160 110\"/><path d=\"M56 110 L160 110\"/><path d=\"M56 166 Q115 166 160 110\"/><path d=\"M160 110 Q210 70 264 70\"/><path d=\"M160 110 Q210 150 264 150\"/></g><g class=\"m-mab-beams\" fill=\"none\" stroke-width=\"2.2\" stroke-linecap=\"round\"><path d=\"M56 54 Q115 54 160 110\"/><path d=\"M56 110 L160 110\"/><path d=\"M56 166 Q115 166 160 110\"/><path d=\"M160 110 Q210 70 264 70\"/><path d=\"M160 110 Q210 150 264 150\"/></g><g><circle cx=\"56\" cy=\"54\" r=\"14\" fill=\"#fff\" stroke=\"#e4e5e9\"/><circle cx=\"56\" cy=\"110\" r=\"14\" fill=\"#fff\" stroke=\"#e4e5e9\"/><circle cx=\"56\" cy=\"166\" r=\"14\" fill=\"#fff\" stroke=\"#e4e5e9\"/><circle cx=\"160\" cy=\"110\" r=\"20\" fill=\"#101114\"/><circle cx=\"264\" cy=\"70\" r=\"14\" fill=\"#fff\" stroke=\"#e4e5e9\"/><circle cx=\"264\" cy=\"150\" r=\"14\" fill=\"#fff\" stroke=\"#e4e5e9\"/></g></svg></div>",
+    "css": ".m-mu-animated-beam{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fafafa}.m-mu-animated-beam .m-mab-beams path{stroke-dasharray:34 190;animation:m-mab-f 2.1s linear infinite}.m-mu-animated-beam .m-mab-beams path:nth-child(2){animation-delay:-0.5s}.m-mu-animated-beam .m-mab-beams path:nth-child(3){animation-delay:-1.1s}.m-mu-animated-beam .m-mab-beams path:nth-child(4){animation-delay:-0.8s}.m-mu-animated-beam .m-mab-beams path:nth-child(5){animation-delay:-1.4s}@keyframes m-mab-f{from{stroke-dashoffset:224}to{stroke-dashoffset:0}}",
+    "js": "const uid='mab-'+Math.random().toString(36).slice(2,7);const g=root.querySelector('.m-mab-g');g.id=uid;root.querySelectorAll('.m-mab-beams path').forEach(p=>p.setAttribute('stroke',`url(#${uid})`));return()=>{};"
+  },
+  {
+    "id": "mu-circular-progress",
+    "title": "Circular progress ring",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 720,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset",
+      "textContent"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-circular-progress-bar.tsx",
+    "collection": "Magic UI",
+    "summary": "A clean SVG donut gauge smoothly sweeps stroke-dashoffset and counts its tabular percentage between milestones.",
+    "hint": "Click gauge to step %",
+    "choreography": [
+      "Circular arc eases stroke-dashoffset over 680ms with rounded caps.",
+      "Center monospace percentage interpolates smoothly in lockstep.",
+      "Click steps through 24% -> 62% -> 88% -> 100%."
+    ],
+    "agentPrompt": "Add Magic UI \"Circular progress ring\" (animated-circular-progress-bar.tsx).\n\nTrigger: click\nDuration: 720 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: stroke-dashoffset, textContent\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "circle.style.strokeDashoffset = C * (1 - pct / 100);",
+    "html": "<div class=\"m-mu-circular-progress\"><div class=\"m-mcp-box\"><svg viewBox=\"0 0 120 120\" width=\"114\" height=\"114\"><circle cx=\"60\" cy=\"60\" r=\"46\" fill=\"none\" stroke=\"#e4e5e9\" stroke-width=\"8\"/><circle class=\"m-mcp-arc\" cx=\"60\" cy=\"60\" r=\"46\" fill=\"none\" stroke=\"#2a94e2\" stroke-width=\"8\" stroke-linecap=\"round\" transform=\"rotate(-90 60 60)\"/></svg><span class=\"m-mcp-val\">78%</span></div></div>",
+    "css": ".m-mu-circular-progress{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff;cursor:pointer}.m-mu-circular-progress .m-mcp-box{position:relative;display:grid;place-items:center}.m-mu-circular-progress .m-mcp-arc{stroke-dasharray:289.03;stroke-dashoffset:289.03;transition:stroke-dashoffset 680ms cubic-bezier(.22,1,.36,1),stroke 300ms}.m-mu-circular-progress .m-mcp-val{position:absolute;font:600 22px 'Geist Mono',monospace;color:#101114;font-variant-numeric:tabular-nums}",
+    "js": "const arc=root.querySelector('.m-mcp-arc'),val=root.querySelector('.m-mcp-val');const C=289.03,steps=[24,62,88,100];let idx=1,cur=0,raf=0,tm=0;function go(t){arc.style.strokeDashoffset=(C*(1-t/100)).toFixed(2);arc.style.stroke=t===100?'#10b981':'#2a94e2';const s=cur,t0=performance.now();cancelAnimationFrame(raf);function f(now){if(!root.isConnected)return;const p=Math.min(1,(now-t0)/650);const e=1-Math.pow(1-p,3);cur=s+(t-s)*e;val.textContent=Math.round(cur)+'%';if(p<1)raf=requestAnimationFrame(f);}raf=requestAnimationFrame(f);}setTimeout(()=>go(steps[idx]),200);const step=()=>{idx=(idx+1)%steps.length;go(steps[idx]);};tm=setInterval(step,2200);const onC=()=>{clearInterval(tm);step();tm=setInterval(step,2200);};root.addEventListener('click',onC);return()=>{cancelAnimationFrame(raf);clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-gradient-text",
+    "title": "Gradient shimmer pill",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 3600,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear background-position sweep",
+    "props": [
+      "background-position",
+      "background-clip"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-gradient-text.tsx",
+    "collection": "Magic UI",
+    "summary": "A refined announcement pill runs a synchronized amber-to-violet gradient wave across both its border and clipped label.",
+    "hint": "Ambient gradient pill",
+    "choreography": [
+      "300% wide gradient cycles smoothly across both the hairline border and text.",
+      "Subtle arrow shifts +3px right on hover for affordance.",
+      "Warm off-white pill keeps contrast crisp on light surfaces."
+    ],
+    "agentPrompt": "Add Magic UI \"Gradient shimmer pill\" (animated-gradient-text.tsx).\n\nTrigger: loop\nDuration: 3600 ms\nEasing: linear background-position sweep\nAnimates: background-position, background-clip\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".grad-text { background: linear-gradient(90deg,#ffaa40,#9c40ff,#ffaa40); background-size:300%; -webkit-background-clip:text; color:transparent; animation: gshift 4s linear infinite; }",
+    "html": "<div class=\"m-mu-gradient-text\"><div class=\"m-mgt-pill\"><span class=\"m-mgt-spark\">✦</span><span class=\"m-mgt-txt\">Introducing Motion Spec</span><span class=\"m-mgt-arr\">→</span></div></div>",
+    "css": ".m-mu-gradient-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fafafa}.m-mu-gradient-text .m-mgt-pill{position:relative;padding:9px 18px;border-radius:999px;background:#fff;border:1px solid rgba(156,64,255,0.22);box-shadow:0 8px 24px -14px rgba(156,64,255,0.35);display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600}.m-mu-gradient-text .m-mgt-txt{background:linear-gradient(90deg,#f59e0b,#9333ea,#2a94e2,#f59e0b);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:m-mgt-s 3.6s linear infinite}.m-mu-gradient-text .m-mgt-spark{color:#f59e0b}.m-mu-gradient-text .m-mgt-arr{color:#6f727a;transition:transform 220ms}.m-mu-gradient-text:hover .m-mgt-arr{transform:translateX(3px)}@keyframes m-mgt-s{to{background-position:300% 0}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-grid-pattern",
+    "title": "Animated grid squares",
+    "use": "Backgrounds",
+    "stack": "SVG",
+    "trigger": "Ambient",
+    "feel": "Organic",
+    "surface": "light",
+    "dur": 2400,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "staggered ease-in-out cell pulses",
+    "props": [
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-grid-pattern.tsx",
+    "collection": "Magic UI",
+    "summary": "Random cells across a hairline architectural grid softly fade in and out in calm staggered intervals.",
+    "hint": "Ambient grid pulses",
+    "choreography": [
+      "Crisp 24px SVG grid forms the quiet architectural canvas.",
+      "22 active squares cycle opacity 0 -> 0.16 -> 0 with staggered offsets.",
+      "Soft radial mask fades the pattern cleanly toward the edges."
+    ],
+    "agentPrompt": "Add Magic UI \"Animated grid squares\" (animated-grid-pattern.tsx).\n\nTrigger: ambient\nDuration: 2400 ms\nEasing: staggered ease-in-out cell pulses\nAnimates: opacity\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "/* SVG <rect> cells pulsing opacity 0 -> 0.18 -> 0 with staggered CSS delays */",
+    "html": "<div class=\"m-mu-grid-pattern\"><svg class=\"m-mgp-s\" viewBox=\"0 0 320 240\" preserveAspectRatio=\"xMidYMid slice\"></svg></div>",
+    "css": ".m-mu-grid-pattern{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fafafa}.m-mu-grid-pattern .m-mgp-s{width:100%;height:100%}.m-mu-grid-pattern .m-mgp-c{fill:#101114;opacity:0;animation:m-mgp-f 2.6s ease-in-out infinite}@keyframes m-mgp-f{0%,100%{opacity:0}50%{opacity:.16}}",
+    "js": "const s=root.querySelector('.m-mgp-s');const ns='http://www.w3.org/2000/svg';for(let x=0;x<=320;x+=24){const l=document.createElementNS(ns,'line');l.setAttribute('x1',x);l.setAttribute('y1',0);l.setAttribute('x2',x);l.setAttribute('y2',240);l.setAttribute('stroke','rgba(16,17,20,0.06)');s.appendChild(l);}for(let y=0;y<=240;y+=24){const l=document.createElementNS(ns,'line');l.setAttribute('x1',0);l.setAttribute('y1',y);l.setAttribute('x2',320);l.setAttribute('y2',y);l.setAttribute('stroke','rgba(16,17,20,0.06)');s.appendChild(l);}for(let i=0;i<22;i++){const r=document.createElementNS(ns,'rect');r.setAttribute('class','m-mgp-c');r.setAttribute('x',((i*5)%13)*24);r.setAttribute('y',((i*3)%10)*24);r.setAttribute('width',24);r.setAttribute('height',24);r.style.animationDelay=(-i*0.37)+'s';s.appendChild(r);}return()=>{};"
+  },
+  {
+    "id": "mu-animated-list",
+    "title": "Spring notification feed",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 26
+    },
+    "easeLabel": "spring(320, 26) stack insert",
+    "props": [
+      "transform (scale, translateY)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx",
+    "collection": "Magic UI",
+    "summary": "Live notification cards spring in cleanly at the top of a feed while older items glide smoothly downward.",
+    "hint": "Click to push item",
+    "choreography": [
+      "Incoming card enters at top from scale(0.84) + translateY(-10px) -> 1.",
+      "Existing cards shift smoothly down without jarring reflow.",
+      "Bottom card trims cleanly once the visible window fills."
+    ],
+    "agentPrompt": "Add Magic UI \"Spring notification feed\" (animated-list.tsx).\n\nTrigger: loop\nDuration: 420 ms\nEasing: spring(320, 26) stack insert\nAnimates: transform (scale, translateY), opacity\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "@keyframes feed-in { from { opacity:0; transform:scale(.84) translateY(-10px); } to { opacity:1; transform:none; } }",
+    "html": "<div class=\"m-mu-animated-list\"><div class=\"m-mal-feed\"></div></div>",
+    "css": ".m-mu-animated-list{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f5f6f8;cursor:pointer}.m-mu-animated-list .m-mal-feed{width:82%;max-width:248px;height:164px;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:6px 0}.m-mu-animated-list .m-mal-item{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;background:#fff;border:1px solid rgba(16,17,20,0.07);box-shadow:0 4px 14px -8px rgba(16,17,20,0.12);animation:m-mal-in 380ms cubic-bezier(.22,1.25,.36,1) both}.m-mu-animated-list .m-mal-ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:12px;color:#fff;flex-shrink:0}.m-mu-animated-list b{display:block;font-size:12px;font-weight:600;color:#101114;line-height:1.2}.m-mu-animated-list span{font:400 10.5px 'Geist Mono',monospace;color:#6f727a}@keyframes m-mal-in{from{opacity:0;transform:scale(.84) translateY(-12px)}to{opacity:1;transform:none}}",
+    "js": "const feed=root.querySelector('.m-mal-feed');const ev=[['Payment received','$240 · just now','#10b981','✓'],['New spec extracted','spring(260, 20)','#2a94e2','✦'],['Build deployed','main · 1.2s','#101114','▲'],['User joined','Pro plan','#8b5cf6','●']];let k=0,tm=0;function push(){const[t,s,c,ic]=ev[k++%ev.length];const d=document.createElement('div');d.className='m-mal-item';d.innerHTML=`<div class=\"m-mal-ic\" style=\"background:${c}\">${ic}</div><div><b>${t}</b><span>${s}</span></div>`;feed.prepend(d);while(feed.children.length>3)feed.lastChild.remove();}push();push();push();tm=setInterval(push,1600);const onC=()=>{clearInterval(tm);push();tm=setInterval(push,1600);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-shiny-text",
+    "title": "Specular shiny text",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 2400,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "linear specular highlight sweep",
+    "props": [
+      "background-position"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-shiny-text.tsx",
+    "collection": "Magic UI",
+    "summary": "A razor-thin white specular highlight glides across muted silver typography inside a recessed dark pill.",
+    "hint": "Ambient text sheen",
+    "choreography": [
+      "Base text sits at calm 55% silver contrast.",
+      "A tight 18% white gradient band sweeps left-to-right across background-clip: text.",
+      "Brief pause between sweeps keeps it understated and refined."
+    ],
+    "agentPrompt": "Add Magic UI \"Specular shiny text\" (animated-shiny-text.tsx).\n\nTrigger: loop\nDuration: 2400 ms\nEasing: linear specular highlight sweep\nAnimates: background-position\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".shiny { background: linear-gradient(110deg, #71717a 38%, #fff 50%, #71717a 62%); background-size: 250% 100%; -webkit-background-clip: text; color: transparent; animation: shine 2.4s linear infinite; }",
+    "html": "<div class=\"m-mu-shiny-text\"><div class=\"m-mst-pill\">✦ Introducing Motion Index →</div></div>",
+    "css": ".m-mu-shiny-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0e0e12}.m-mu-shiny-text .m-mst-pill{padding:9px 18px;border-radius:999px;border:1px solid rgba(255,255,255,0.1);background:#16161c;font-size:13.5px;font-weight:500;background-image:linear-gradient(110deg,#71717a 36%,#ffffff 50%,#71717a 64%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:m-mst-s 2.4s linear infinite}@keyframes m-mst-s{from{background-position:130% 0}to{background-position:-130% 0}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-subscribe-button",
+    "title": "Vertical swap CTA",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 380,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 24
+    },
+    "easeLabel": "spring(320, 24) vertical swap",
+    "props": [
+      "transform (translateY)",
+      "opacity",
+      "background-color"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx",
+    "collection": "Magic UI",
+    "summary": "Clicking the primary CTA slides the resting label upward out of frame while the confirmed checkmark state snaps in from below.",
+    "hint": "Click CTA to toggle",
+    "choreography": [
+      "Resting label exits upward -110% with rapid opacity falloff.",
+      "Confirmed label enters from +110% with slight spring settle.",
+      "Arrow nudges right on hover before activation."
+    ],
+    "agentPrompt": "Add Magic UI \"Vertical swap CTA\" (animated-subscribe-button.tsx).\n\nTrigger: click\nDuration: 380 ms\nEasing: spring(320, 24) vertical swap\nAnimates: transform (translateY), opacity, background-color\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".swap-btn.done .state-a { transform:translateY(-110%); opacity:0; }\n.swap-btn.done .state-b { transform:translateY(0); opacity:1; }",
+    "html": "<div class=\"m-mu-subscribe-button\"><button type=\"button\" class=\"m-msb2-btn\"><span class=\"m-msb2-a\">Follow feed →</span><span class=\"m-msb2-b\">✓ Following</span></button></div>",
+    "css": ".m-mu-subscribe-button{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f6f7f9}.m-mu-subscribe-button .m-msb2-btn{position:relative;overflow:hidden;width:158px;height:42px;border-radius:10px;border:0;background:#101114;color:#fff;font-size:13.5px;font-weight:500;cursor:pointer;transition:background 240ms}.m-mu-subscribe-button .m-msb2-btn.done{background:#16a34a}.m-mu-subscribe-button span{position:absolute;inset:0;display:grid;place-items:center;transition:transform 360ms cubic-bezier(.22,1.15,.36,1),opacity 220ms}.m-mu-subscribe-button .m-msb2-b{transform:translateY(110%);opacity:0}.m-mu-subscribe-button .m-msb2-btn.done .m-msb2-a{transform:translateY(-110%);opacity:0}.m-mu-subscribe-button .m-msb2-btn.done .m-msb2-b{transform:translateY(0);opacity:1}",
+    "js": "const b=root.querySelector('.m-msb2-btn');let tm=0;const tog=()=>b.classList.toggle('done');const onC=()=>{clearInterval(tm);tog();tm=setInterval(tog,2200);};b.addEventListener('click',onC);tm=setInterval(tog,2200);return()=>{clearInterval(tm);b.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-theme-toggler",
+    "title": "Radial clip theme wipe",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 600,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "clip-path (circle)",
+      "transform (rotate)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-theme-toggler.tsx",
+    "collection": "Magic UI",
+    "summary": "Toggling the sun/moon icon expands a circular clip-path wipe directly from the button center to invert light and dark surfaces.",
+    "hint": "Click icon to wipe theme",
+    "choreography": [
+      "Clip-path circle originates at the exact button center (50% 50%).",
+      "Radius expands from 0% to 130% in 580ms ease-out cleanly over the outgoing layer.",
+      "Icon rotates 180° in sync with the radial wave."
+    ],
+    "agentPrompt": "Add Magic UI \"Radial clip theme wipe\" (animated-theme-toggler.tsx).\n\nTrigger: click\nDuration: 600 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: clip-path (circle), transform (rotate)\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".dark-layer { clip-path: circle(0% at 50% 50%); transition: clip-path 560ms cubic-bezier(.22,1,.36,1); }\n.dark-layer.on { clip-path: circle(130% at 50% 50%); }",
+    "html": "<div class=\"m-mu-theme-toggler\"><div class=\"m-mtt-l\"><span>Light surface</span></div><div class=\"m-mtt-d\"><span>Dark surface</span></div><button type=\"button\" class=\"m-mtt-btn\" aria-label=\"Toggle theme\">◐</button></div>",
+    "css": ".m-mu-theme-toggler{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;}.m-mu-theme-toggler .m-mtt-l,.m-mu-theme-toggler .m-mtt-d{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px 16px;font:500 11px 'Geist Mono',monospace}.m-mu-theme-toggler .m-mtt-l{background:#f7f8fa;color:#6f727a}.m-mu-theme-toggler .m-mtt-d{background:#101114;color:#a1a1aa;clip-path:circle(0% at 50% 50%);transition:clip-path 580ms cubic-bezier(.22,1,.36,1)}.m-mu-theme-toggler.dark .m-mtt-d{clip-path:circle(125% at 50% 50%)}.m-mu-theme-toggler .m-mtt-btn{position:relative;z-index:3;width:52px;height:52px;border-radius:50%;border:1px solid rgba(16,17,20,0.12);background:#fff;color:#101114;font-size:22px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,0.22);transition:transform 420ms cubic-bezier(.22,1.2,.36,1)}.m-mu-theme-toggler.dark .m-mtt-btn{transform:rotate(180deg);background:#1c1c21;color:#fff;border-color:rgba(255,255,255,0.16)}",
+    "js": "const wrap=root.querySelector('.m-mu-theme-toggler'),btn=root.querySelector('.m-mtt-btn');let tm=0;const tog=()=>wrap.classList.toggle('dark');const onC=()=>{clearInterval(tm);tog();tm=setInterval(tog,2300);};btn.addEventListener('click',onC);tm=setInterval(tog,2300);return()=>{clearInterval(tm);btn.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-blur-fade",
+    "title": "Staggered blur fade",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 680,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "filter (blur)",
+      "transform (translateY)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx",
+    "collection": "Magic UI",
+    "summary": "Stacked editorial copy lifts 10px out of a 7px Gaussian blur into crisp focus with 110ms line stagger.",
+    "hint": "Click to replay reveal",
+    "choreography": [
+      "Eyebrow, headline, and subtitle start invisible at +10px offset with blur(7px).",
+      "Each line resolves cleanly over 500ms staggered by 110ms.",
+      "Clicking replays the sequence on demand."
+    ],
+    "agentPrompt": "Add Magic UI \"Staggered blur fade\" (blur-fade.tsx).\n\nTrigger: click\nDuration: 680 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: filter (blur), transform (translateY), opacity\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "@keyframes blur-fade { from { opacity:0; transform:translateY(10px); filter:blur(7px); } to { opacity:1; transform:none; filter:blur(0); } }",
+    "html": "<div class=\"m-mu-blur-fade\"><div class=\"m-mbf-box\"></div></div>",
+    "css": ".m-mu-blur-fade{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff;cursor:pointer;padding:24px}.m-mu-blur-fade .m-mbf-box{text-align:center;display:flex;flex-direction:column;gap:6px}.m-mu-blur-fade .m-mbf-l{animation:m-mbf-a 500ms cubic-bezier(.22,1,.36,1) calc(var(--i)*110ms) both}.m-mu-blur-fade .m-mbf-e{font:500 10.5px 'Geist Mono',monospace;color:#2a94e2;letter-spacing:.08em}.m-mu-blur-fade .m-mbf-h{font-size:26px;font-weight:600;letter-spacing:-0.03em;color:#101114;line-height:1.05}.m-mu-blur-fade .m-mbf-s{font-size:13px;color:#6f727a}@keyframes m-mbf-a{from{opacity:0;transform:translateY(10px);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}",
+    "js": "const box=root.querySelector('.m-mbf-box');let tm=0;function play(){box.innerHTML='<div class=\"m-mbf-l m-mbf-e\" style=\"--i:0\">BLUR FADE · 110MS</div><div class=\"m-mbf-l m-mbf-h\" style=\"--i:1\">Hello, Motion.</div><div class=\"m-mbf-l m-mbf-s\" style=\"--i:2\">Soft focus resolves to sharp ink.</div>';}play();tm=setInterval(play,2700);const onC=()=>{clearInterval(tm);play();tm=setInterval(play,2700);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-confetti-cannon",
+    "title": "Physics confetti burst",
+    "use": "Micro-interactions",
+    "stack": "Canvas 2D",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 1400,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.16,
+        1,
+        0.3,
+        1
+      ]
+    },
+    "easeLabel": "ballistic gravity + air drag",
+    "props": [
+      "position (vx, vy)",
+      "rotation",
+      "tilt"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/confetti.tsx",
+    "collection": "Magic UI",
+    "summary": "Clicking fires 42 colorful paper confetti pieces with upward impulse, air drag, gravity, and fluttering 3D tumble.",
+    "hint": "Click to fire confetti",
+    "choreography": [
+      "Particles launch in a 70° upward cone from center with randomized velocity.",
+      "Air drag rapidly decelerates horizontal burst while gravity pulls down.",
+      "Sinusoidal tilt modulates strip height to simulate spinning paper."
+    ],
+    "agentPrompt": "Add Magic UI \"Physics confetti burst\" (confetti.tsx).\n\nTrigger: click\nDuration: 1400 ms\nEasing: ballistic gravity + air drag\nAnimates: position (vx, vy), rotation, tilt\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "// Per particle: vx *= 0.975; vy = vy * 0.975 + 0.21; x += vx; y += vy;",
+    "html": "<div class=\"m-mu-confetti-cannon\"><canvas class=\"m-mcc-c\"></canvas><button type=\"button\" class=\"m-mcc-b\">Celebrate ✦</button></div>",
+    "css": ".m-mu-confetti-cannon{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fafafa}.m-mu-confetti-cannon .m-mcc-c{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.m-mu-confetti-cannon .m-mcc-b{position:relative;z-index:2;padding:10px 20px;border-radius:999px;border:0;background:#101114;color:#fff;font-size:13.5px;font-weight:500;cursor:pointer;transition:transform 140ms}.m-mu-confetti-cannon .m-mcc-b:active{transform:scale(.94)}",
+    "js": "const c=root.querySelector('.m-mcc-c'),ctx=c.getContext('2d'),btn=root.querySelector('.m-mcc-b');const cols=['#2a94e2','#f43f5e','#f59e0b','#10b981','#8b5cf6'];const pts=[];let raf=0,tm=0;function fire(){const w=c.clientWidth||320,h=c.clientHeight||240;for(let i=0;i<42;i++){const a=-Math.PI/2+(Math.random()-0.5)*1.3,sp=4+Math.random()*6.5;pts.push({x:w/2,y:h/2,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-1.5,w:5+Math.random()*4,h:3+Math.random()*3,col:cols[i%cols.length],rot:Math.random()*6.28,vr:(Math.random()-0.5)*0.24,life:1});}}const onC=()=>{clearInterval(tm);fire();tm=setInterval(fire,2800);};btn.addEventListener('click',onC);function tick(){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);for(let i=pts.length-1;i>=0;i--){const p=pts[i];p.vx*=0.975;p.vy=p.vy*0.975+0.21;p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;p.life-=0.014;if(p.life<=0||p.y>h+20){pts.splice(i,1);continue;}ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=Math.min(1,p.life*2);ctx.fillStyle=p.col;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(p.rot*1.5)));ctx.restore();}raf=requestAnimationFrame(tick);}setTimeout(fire,300);tm=setInterval(fire,2800);raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);clearInterval(tm);btn.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-flickering-grid",
+    "title": "Flickering telemetry grid",
+    "use": "Backgrounds",
+    "stack": "Canvas 2D",
+    "trigger": "Ambient",
+    "feel": "Rhythmic",
+    "surface": "dark",
+    "dur": 2000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "stochastic cell opacity update",
+    "props": [
+      "fillStyle alpha"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/flickering-grid.tsx",
+    "collection": "Magic UI",
+    "summary": "A fine matrix of micro-squares flickers softly in independent stochastic steps like a calm hardware status display.",
+    "hint": "Ambient stochastic grid",
+    "choreography": [
+      "Uniform 5px squares tile cleanly across the canvas with 10px pitch.",
+      "Each tick randomly updates ~7% of cells to new soft cobalt opacities.",
+      "Low maximum opacity keeps the texture calm behind foreground UI."
+    ],
+    "agentPrompt": "Add Magic UI \"Flickering telemetry grid\" (flickering-grid.tsx).\n\nTrigger: ambient\nDuration: 2000 ms\nEasing: stochastic cell opacity update\nAnimates: fillStyle alpha\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "// On each tick, update random subset of grid cell alphas in [0.05, 0.52]",
+    "html": "<div class=\"m-mu-flickering-grid\"><canvas class=\"m-mfg-c\"></canvas></div>",
+    "css": ".m-mu-flickering-grid{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0b0d12}.m-mu-flickering-grid .m-mfg-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-mfg-c'),ctx=c.getContext('2d');let cols=0,rows=0,grid=new Float32Array(0),raf=0,last=0;function resize(){const w=c.clientWidth||320,h=c.clientHeight||240;c.width=w;c.height=h;cols=Math.ceil(w/10);rows=Math.ceil(h/10);grid=new Float32Array(cols*rows);for(let i=0;i<grid.length;i++)grid[i]=Math.random()*0.38;}resize();function tick(now){if(!root.isConnected)return;if(c.width!==(c.clientWidth||320))resize();if(now-last>55){last=now;for(let i=0;i<grid.length;i++)if(Math.random()<0.07)grid[i]=Math.random()*0.48;ctx.clearRect(0,0,c.width,c.height);for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const a=grid[y*cols+x];ctx.fillStyle=`rgba(96,165,250,${(0.05+a).toFixed(2)})`;ctx.fillRect(x*10+2,y*10+2,5,5);}}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>cancelAnimationFrame(raf);"
+  },
+  {
+    "id": "mu-glare-hover",
+    "title": "Diagonal glare hover",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 650,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform",
+      "border-color"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/glare-hover.tsx",
+    "collection": "Magic UI",
+    "summary": "A crisp 45-degree specular light streak flashes cleanly across an obsidian showcase card on hover.",
+    "hint": "Hover card for glare",
+    "choreography": [
+      "Rotated specular gradient waits off-screen at -85%.",
+      "Hover sweeps the diagonal reflection smoothly across the glass.",
+      "Card lifts 2px subtly with border illumination."
+    ],
+    "agentPrompt": "Add Magic UI \"Diagonal glare hover\" (glare-hover.tsx).\n\nTrigger: hover\nDuration: 650 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: transform, border-color\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".glare::after { background: linear-gradient(-45deg, transparent 42%, rgba(255,255,255,.32) 50%, transparent 58%); }",
+    "html": "<div class=\"m-mu-glare-hover\"><div class=\"m-mgh-card\"><b>Specular</b><span>45° glare sweep</span></div></div>",
+    "css": ".m-mu-glare-hover{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0c0c10}.m-mu-glare-hover .m-mgh-card{position:relative;overflow:hidden;width:68%;max-width:224px;height:132px;border-radius:14px;background:linear-gradient(145deg,#1d1e26,#121218);border:1px solid rgba(255,255,255,0.11);padding:18px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform 260ms,border-color 260ms}.m-mu-glare-hover .m-mgh-card::after{content:'';position:absolute;inset:-60%;background:linear-gradient(-45deg,transparent 44%,rgba(255,255,255,0.34) 50%,transparent 56%);transform:translateX(-85%);animation:m-mgh-g 3.2s cubic-bezier(.22,1,.36,1) infinite}.m-mu-glare-hover:hover .m-mgh-card{transform:translateY(-2px);border-color:rgba(255,255,255,0.25)}.m-mu-glare-hover:hover .m-mgh-card::after{animation-duration:1.1s}.m-mu-glare-hover b{font-size:15px;font-weight:600;color:#fff}.m-mu-glare-hover span{font:400 11px 'Geist Mono',monospace;color:#71717a}@keyframes m-mgh-g{0%,20%{transform:translateX(-85%)}65%,100%{transform:translateX(85%)}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-glyph-matrix",
+    "title": "Interactive glyph matrix",
+    "use": "Generative",
+    "stack": "Canvas 2D",
+    "trigger": "Cursor",
+    "feel": "Rhythmic",
+    "surface": "dark",
+    "dur": 1200,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.2,
+        0.8,
+        0.2,
+        1
+      ]
+    },
+    "easeLabel": "radial proximity illumination",
+    "props": [
+      "glyph selection",
+      "fillStyle"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/glyph-matrix.tsx",
+    "collection": "Magic UI",
+    "summary": "A monospace grid of technical punctuation glyphs brightens and mutates smoothly inside a glowing radius around the cursor.",
+    "hint": "Move cursor over glyphs",
+    "choreography": [
+      "20×15 grid renders crisp muted dots at rest.",
+      "Cells inside an 88px cursor radius step up in density and cyan brightness.",
+      "Autonomous orbital cursor keeps the field alive when idle."
+    ],
+    "agentPrompt": "Add Magic UI \"Interactive glyph matrix\" (glyph-matrix.tsx).\n\nTrigger: cursor\nDuration: 1200 ms\nEasing: radial proximity illumination\nAnimates: glyph selection, fillStyle\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "// Map cell energy [0..1] to ramp '·:+-=x*#' and cyan luminance",
+    "html": "<div class=\"m-mu-glyph-matrix\"><canvas class=\"m-mgm-c\"></canvas></div>",
+    "css": ".m-mu-glyph-matrix{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#090b10}.m-mu-glyph-matrix .m-mgm-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-mgm-c'),ctx=c.getContext('2d');const ramp='·:+-=x*#';let mx=-999,my=-999,manual=false,raf=0;const onM=e=>{manual=true;const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);ctx.font='500 11px ui-monospace,Menlo,monospace';ctx.textAlign='center';ctx.textBaseline='middle';const px=manual?mx:w*(0.5+0.32*Math.cos(now*0.0014));const py=manual?my:h*(0.5+0.26*Math.sin(now*0.002));for(let y=12;y<h;y+=16)for(let x=12;x<w;x+=16){const d=Math.hypot(x-px,y-py);const e=Math.max(0,1-d/88);const ch=ramp[Math.min(ramp.length-1,Math.floor(e*ramp.length))];ctx.fillStyle=e>0.08?`rgba(96,185,255,${(0.25+e*0.75).toFixed(2)})`:'rgba(255,255,255,0.16)';ctx.fillText(ch,x,y);}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "mu-text-highlighter",
+    "title": "Editorial pen highlight",
+    "use": "Typography",
+    "stack": "SVG",
+    "trigger": "Loop",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 880,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "stroke-dashoffset",
+      "scaleX"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/highlighter.tsx",
+    "collection": "Magic UI",
+    "summary": "Warm yellow marker paint sweeps behind a focal phrase followed by a crisp hand-drawn coral underline stroke.",
+    "hint": "Click to redraw marks",
+    "choreography": [
+      "0ms -> 440ms: Marker highlight scales left-to-right behind the first key term.",
+      "360ms -> 880ms: Hand-drawn SVG bezier underline traces cleanly beneath the second phrase.",
+      "Clicking replays both annotations in sequence."
+    ],
+    "agentPrompt": "Add Magic UI \"Editorial pen highlight\" (highlighter.tsx).\n\nTrigger: loop\nDuration: 880 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: stroke-dashoffset, scaleX\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".hl-bg { transform-origin:left; animation: hl 450ms cubic-bezier(.22,1,.36,1) forwards; }",
+    "html": "<div class=\"m-mu-text-highlighter\"><p class=\"m-mth-p\">Design with <span class=\"m-mth-mk\">intentional</span> motion and <span class=\"m-mth-ul\">crisp timing<svg viewBox=\"0 0 120 12\" preserveAspectRatio=\"none\"><path d=\"M2 8 Q40 2 78 7 T118 5\" fill=\"none\" stroke=\"#f43f5e\" stroke-width=\"2.6\" stroke-linecap=\"round\"/></svg></span>.</p></div>",
+    "css": ".m-mu-text-highlighter{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff;padding:24px;cursor:pointer}.m-mu-text-highlighter .m-mth-p{margin:0;max-width:250px;text-align:center;font-size:21px;font-weight:500;letter-spacing:-0.025em;line-height:1.4;color:#101114}.m-mu-text-highlighter .m-mth-mk{position:relative;display:inline-block;padding:0 5px;z-index:1}.m-mu-text-highlighter .m-mth-mk::before{content:'';position:absolute;inset:2px 0;z-index:-1;border-radius:5px;background:#fef08a;transform-origin:left;transform:scaleX(0)}.m-mu-text-highlighter.on .m-mth-mk::before{animation:m-mth-k 440ms cubic-bezier(.22,1,.36,1) forwards}.m-mu-text-highlighter .m-mth-ul{position:relative;display:inline-block}.m-mu-text-highlighter svg{position:absolute;left:0;bottom:-4px;width:100%;height:10px}.m-mu-text-highlighter path{stroke-dasharray:140;stroke-dashoffset:140}.m-mu-text-highlighter.on path{animation:m-mth-u 520ms cubic-bezier(.22,1,.36,1) 360ms forwards}@keyframes m-mth-k{to{transform:scaleX(1)}}@keyframes m-mth-u{to{stroke-dashoffset:0}}",
+    "js": "const wrap=root.querySelector('.m-mu-text-highlighter');let tm=0;function play(){wrap.classList.remove('on');void wrap.offsetWidth;wrap.classList.add('on');}play();tm=setInterval(play,2900);const onC=()=>{clearInterval(tm);play();tm=setInterval(play,2900);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-hover-button",
+    "title": "Dot-fill hover button",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 360,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform (scale, translateX)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/interactive-hover-button.tsx",
+    "collection": "Magic UI",
+    "summary": "Hovering expands a tiny status dot inside a white pill into a full black fill while sliding the label cleanly to reveal an arrow.",
+    "hint": "Hover button to morph",
+    "choreography": [
+      "Leading 7px black dot expands radially (`scale(44)`) to flood the entire button.",
+      "Resting label shifts +16px right and fades out in 260ms.",
+      "Inverted white label + arrow slides in from the left cleanly."
+    ],
+    "agentPrompt": "Add Magic UI \"Dot-fill hover button\" (interactive-hover-button.tsx).\n\nTrigger: hover\nDuration: 360 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: transform (scale, translateX), opacity\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".dot { transition: transform 360ms cubic-bezier(.22,1,.36,1); }\n.btn:hover .dot { transform: scale(44); }",
+    "html": "<div class=\"m-mu-hover-button\"><button type=\"button\" class=\"m-mhb-b\"><span class=\"m-mhb-dot\"></span><span class=\"m-mhb-a\">Explore specs</span><span class=\"m-mhb-c\">Explore specs →</span></button></div>",
+    "css": ".m-mu-hover-button{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f4f5f7}.m-mu-hover-button .m-mhb-b{position:relative;overflow:hidden;padding:11px 22px 11px 28px;border-radius:999px;border:1px solid #d4d7de;background:#fff;color:#101114;font-size:13.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center}.m-mu-hover-button .m-mhb-dot{position:absolute;left:14px;width:7px;height:7px;border-radius:50%;background:#101114;transition:transform 420ms cubic-bezier(.22,1,.36,1)}.m-mu-hover-button .m-mhb-a{position:relative;z-index:2;transition:transform 300ms,opacity 220ms}.m-mu-hover-button .m-mhb-c{position:absolute;inset:0;z-index:2;display:grid;place-items:center;color:#fff;transform:translateX(-18px);opacity:0;transition:transform 320ms cubic-bezier(.22,1,.36,1),opacity 240ms}.m-mu-hover-button .m-mhb-b:hover .m-mhb-dot,.m-mu-hover-button .m-mhb-b.demo .m-mhb-dot{transform:scale(44)}.m-mu-hover-button .m-mhb-b:hover .m-mhb-a,.m-mu-hover-button .m-mhb-b.demo .m-mhb-a{transform:translateX(16px);opacity:0}.m-mu-hover-button .m-mhb-b:hover .m-mhb-c,.m-mu-hover-button .m-mhb-b.demo .m-mhb-c{transform:translateX(0);opacity:1}",
+    "js": "const b=root.querySelector('.m-mhb-b');let tm=0;root.addEventListener('pointerenter',()=>clearInterval(tm),{once:true});tm=setInterval(()=>b.classList.toggle('demo'),1900);return()=>clearInterval(tm);"
+  },
+  {
+    "id": "mu-magnifier-lens",
+    "title": "Optical magnifier lens",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 220,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.2,
+        0.8,
+        0.2,
+        1
+      ]
+    },
+    "easeLabel": "pointer-tracked clip-path circle",
+    "props": [
+      "clip-path",
+      "transform (scale)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx",
+    "collection": "Magic UI",
+    "summary": "A crisp circular optical loupe tracks the cursor over a technical specimen card, magnifying details 1.65× inside its rim.",
+    "hint": "Move loupe over card",
+    "choreography": [
+      "Duplicate foreground layer scales 1.65× around the active pointer origin.",
+      "CSS clip-path: circle(30px at X Y) isolates the magnified optics cleanly.",
+      "Glass rim circle follows pointer with crisp specular border."
+    ],
+    "agentPrompt": "Add Magic UI \"Optical magnifier lens\" (lens.tsx).\n\nTrigger: cursor\nDuration: 220 ms\nEasing: pointer-tracked clip-path circle\nAnimates: clip-path, transform (scale)\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".zoom-layer { transform: scale(1.65); transform-origin: var(--x) var(--y); clip-path: circle(30px at var(--x) var(--y)); }",
+    "html": "<div class=\"m-mu-magnifier-lens\"><div class=\"m-mml-base\"><div class=\"m-mml-art\"><span>SPEC 04</span><b>EASING CURVE</b><svg viewBox=\"0 0 180 60\" width=\"160\" height=\"54\"><path d=\"M8 52 C44 52 58 8 172 8\" fill=\"none\" stroke=\"#2a94e2\" stroke-width=\"2.5\"/></svg></div></div><div class=\"m-mml-zoom\"><div class=\"m-mml-art\"><span>SPEC 04</span><b>EASING CURVE</b><svg viewBox=\"0 0 180 60\" width=\"160\" height=\"54\"><path d=\"M8 52 C44 52 58 8 172 8\" fill=\"none\" stroke=\"#38bdf8\" stroke-width=\"2.5\"/></svg></div></div><div class=\"m-mml-rim\"></div></div>",
+    "css": ".m-mu-magnifier-lens{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0f1116;cursor:none}.m-mu-magnifier-lens .m-mml-base,.m-mu-magnifier-lens .m-mml-zoom{position:absolute;inset:0;display:grid;place-items:center}.m-mu-magnifier-lens .m-mml-art{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 24px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:#161922}.m-mu-magnifier-lens span{font:500 9.5px 'Geist Mono',monospace;color:#64748b;letter-spacing:.08em}.m-mu-magnifier-lens b{font-size:15px;color:#f8fafc;letter-spacing:-0.02em}.m-mu-magnifier-lens .m-mml-zoom{pointer-events:none;transform:scale(1.65);transform-origin:var(--x,50%) var(--y,50%);clip-path:circle(30px at var(--x,50%) var(--y,50%))}.m-mu-magnifier-lens .m-mml-rim{position:absolute;width:96px;height:96px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.45);box-shadow:0 8px 26px rgba(0,0,0,0.6),inset 0 0 12px rgba(255,255,255,0.12);transform:translate(-50%,-50%);left:var(--x,50%);top:var(--y,50%);pointer-events:none}",
+    "js": "const wrap=root.querySelector('.m-mu-magnifier-lens');let manual=false,raf=0;const setP=(x,y)=>{wrap.style.setProperty('--x',x.toFixed(1)+'%');wrap.style.setProperty('--y',y.toFixed(1)+'%');};const onM=e=>{manual=true;const r=wrap.getBoundingClientRect();setP(((e.clientX-r.left)/r.width)*100,((e.clientY-r.top)/r.height)*100);};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;if(!manual){const t=now*0.0014;setP(50+26*Math.cos(t),50+16*Math.sin(t*1.6));}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "mu-light-rays",
+    "title": "Atmospheric light rays",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Ambient",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 5000,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "slow sinusoidal sway (5s)",
+    "props": [
+      "transform (rotate)",
+      "opacity"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/light-rays.tsx",
+    "collection": "Magic UI",
+    "summary": "Soft blurred volumetric shafts fan downward from the upper ceiling, gently swaying and breathing opacity.",
+    "hint": "Ambient ceiling shafts",
+    "choreography": [
+      "Three feathered gradient cones anchor at top-center (transform-origin: top).",
+      "Each shaft sways ±8° at prime-ratio periods so beams never lock into repetition.",
+      "Screen blending layers luminous intensity without harsh edges."
+    ],
+    "agentPrompt": "Add Magic UI \"Atmospheric light rays\" (light-rays.tsx).\n\nTrigger: ambient\nDuration: 5000 ms\nEasing: slow sinusoidal sway (5s)\nAnimates: transform (rotate), opacity\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".ray { transform-origin: top center; filter: blur(18px); mix-blend-mode: screen; animation: sway 5s ease-in-out infinite alternate; }",
+    "html": "<div class=\"m-mu-light-rays\"><i class=\"m-mlr-1\"></i><i class=\"m-mlr-2\"></i><i class=\"m-mlr-3\"></i><b>Light Rays</b></div>",
+    "css": ".m-mu-light-rays{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#080a10}.m-mu-light-rays i{position:absolute;top:-20%;left:50%;width:90px;height:150%;transform-origin:top center;background:linear-gradient(180deg,rgba(147,197,253,0.45),rgba(56,189,248,0.08) 65%,transparent);filter:blur(18px);mix-blend-mode:screen;pointer-events:none}.m-mu-light-rays .m-mlr-1{animation:m-mlr-a 4.8s ease-in-out infinite alternate}.m-mu-light-rays .m-mlr-2{width:120px;background:linear-gradient(180deg,rgba(192,132,252,0.36),transparent 78%);animation:m-mlr-b 5.6s ease-in-out infinite alternate}.m-mu-light-rays .m-mlr-3{width:72px;animation:m-mlr-c 4.1s ease-in-out infinite alternate}.m-mu-light-rays b{position:relative;z-index:2;font-size:24px;font-weight:500;letter-spacing:-0.03em;color:rgba(255,255,255,0.88)}@keyframes m-mlr-a{from{transform:translateX(-50%) rotate(-24deg)}to{transform:translateX(-50%) rotate(-8deg)}}@keyframes m-mlr-b{from{transform:translateX(-50%) rotate(4deg)}to{transform:translateX(-50%) rotate(22deg)}}@keyframes m-mlr-c{from{transform:translateX(-50%) rotate(-4deg);opacity:.5}to{transform:translateX(-50%) rotate(12deg);opacity:1}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-line-shadow-text",
+    "title": "Hatched line-shadow type",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 1600,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear 45° diagonal hatch scroll",
+    "props": [
+      "background-position"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/line-shadow-text.tsx",
+    "collection": "Magic UI",
+    "summary": "Heavy italic display lettering casts an offset 45-degree diagonal pinstripe shadow that marches smoothly in an endless loop.",
+    "hint": "Ambient hatched shadow",
+    "choreography": [
+      "Pseudo-element duplicates text offset (+5px, +5px) behind crisp ink.",
+      "45° repeating-linear-gradient clips into the offset glyph copy.",
+      "Continuous background-position translation drives smooth barber-pole hatch motion."
+    ],
+    "agentPrompt": "Add Magic UI \"Hatched line-shadow type\" (line-shadow-text.tsx).\n\nTrigger: loop\nDuration: 1600 ms\nEasing: linear 45° diagonal hatch scroll\nAnimates: background-position\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".line-shadow::after { content:attr(data-text); position:absolute; left:5px; top:5px; z-index:-1; background:repeating-linear-gradient(45deg,transparent 0 2.5px,#2a94e2 2.5px 4.5px); -webkit-background-clip:text; color:transparent; animation: hatch 1.4s linear infinite; }",
+    "html": "<div class=\"m-mu-line-shadow-text\"><span class=\"m-mlst-w\" data-text=\"Fast\">Fast</span></div>",
+    "css": ".m-mu-line-shadow-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff}.m-mu-line-shadow-text .m-mlst-w{position:relative;font-size:66px;font-weight:800;font-style:italic;letter-spacing:-0.04em;color:#101114;z-index:1}.m-mu-line-shadow-text .m-mlst-w::after{content:attr(data-text);position:absolute;left:5px;top:5px;z-index:-1;background:repeating-linear-gradient(45deg,transparent 0 2.5px,#2a94e2 2.5px 4.5px);background-size:20px 20px;-webkit-background-clip:text;background-clip:text;color:transparent;animation:m-mlst-m 1.4s linear infinite}@keyframes m-mlst-m{to{background-position:20px 20px}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-marquee-strip",
+    "title": "Dual-row card marquee",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 10000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear seamless marquee + hover pause",
+    "props": [
+      "transform (translateX)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx",
+    "collection": "Magic UI",
+    "summary": "Two opposing horizontal card tracks glide endlessly between soft gradient edge masks and pause smoothly on hover.",
+    "hint": "Hover row to pause",
+    "choreography": [
+      "Duplicated flex tracks translate -50% seamlessly with zero jump.",
+      "Second row runs in reverse direction for balanced visual flow.",
+      "Hovering any row pauses its animation-play-state immediately."
+    ],
+    "agentPrompt": "Add Magic UI \"Dual-row card marquee\" (marquee.tsx).\n\nTrigger: hover\nDuration: 10000 ms\nEasing: linear seamless marquee + hover pause\nAnimates: transform (translateX)\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "@keyframes mq { from { transform:translateX(0); } to { transform:translateX(-50%); } }\n.row:hover .track { animation-play-state: paused; }",
+    "html": "<div class=\"m-mu-marquee-strip\"><div class=\"m-mms-row\"><div class=\"m-mms-t\"><span>Spring</span><span>Bezier</span><span>Shader</span><span>Canvas</span><span>SVG</span><span>Spring</span><span>Bezier</span><span>Shader</span><span>Canvas</span><span>SVG</span></div></div><div class=\"m-mms-row rev\"><div class=\"m-mms-t\"><span>60 fps</span><span>Tactile</span><span>Kinetic</span><span>Fluid</span><span>Crisp</span><span>60 fps</span><span>Tactile</span><span>Kinetic</span><span>Fluid</span><span>Crisp</span></div></div></div>",
+    "css": ".m-mu-marquee-strip{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f6f7f9;display:flex;flex-direction:column;justify-content:center;gap:12px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}.m-mu-marquee-strip .m-mms-row{overflow:hidden;width:100%}.m-mu-marquee-strip .m-mms-t{display:flex;gap:10px;width:max-content;animation:m-mms-l 11s linear infinite}.m-mu-marquee-strip .m-mms-row.rev .m-mms-t{animation-direction:reverse;animation-duration:13s}.m-mu-marquee-strip .m-mms-row:hover .m-mms-t{animation-play-state:paused}.m-mu-marquee-strip span{padding:10px 16px;border-radius:10px;background:#fff;border:1px solid #e4e5e9;font-size:13px;font-weight:500;color:#101114;white-space:nowrap}@keyframes m-mms-l{to{transform:translateX(-50%)}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-neon-gradient-card",
+    "title": "Neon gradient frame",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 3400,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous vertical gradient flow",
+    "props": [
+      "background-position"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/neon-gradient-card.tsx",
+    "collection": "Magic UI",
+    "summary": "A matte dark card glows with a flowing magenta-to-cyan neon border and synchronized soft outer diffusion halo.",
+    "hint": "Ambient neon border",
+    "choreography": [
+      "2px outer frame and blurred ::before halo animate the same 220% gradient.",
+      "Smooth vertical gradient oscillation creates living neon reflection.",
+      "Inner dark surface preserves legible contrast for foreground text."
+    ],
+    "agentPrompt": "Add Magic UI \"Neon gradient frame\" (neon-gradient-card.tsx).\n\nTrigger: loop\nDuration: 3400 ms\nEasing: continuous vertical gradient flow\nAnimates: background-position\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".neon-frame { padding:2px; border-radius:14px; background:linear-gradient(180deg,#ff2975,#00fff1,#ff2975); background-size:100% 220%; animation: neon 3.2s linear infinite; }",
+    "html": "<div class=\"m-mu-neon-gradient-card\"><div class=\"m-mng-f\"><div class=\"m-mng-in\">Neon<br>Card</div></div></div>",
+    "css": ".m-mu-neon-gradient-card{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#09090d}.m-mu-neon-gradient-card .m-mng-f{position:relative;padding:2px;border-radius:14px;width:62%;max-width:200px;background:linear-gradient(180deg,#ff2975,#00fff1,#ff2975);background-size:100% 220%;animation:m-mng-g 3.2s linear infinite}.m-mu-neon-gradient-card .m-mng-f::before{content:'';position:absolute;inset:-4px;border-radius:inherit;background:inherit;filter:blur(16px);opacity:.48;z-index:0}.m-mu-neon-gradient-card .m-mng-in{position:relative;z-index:1;height:112px;border-radius:12px;background:#0e0f14;display:grid;place-items:center;text-align:center;font-size:22px;font-weight:700;letter-spacing:-0.03em;line-height:1.05;background-image:linear-gradient(135deg,#ff2975,#00fff1);-webkit-background-clip:text;color:transparent}@keyframes m-mng-g{to{background-position:0 220%}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-number-ticker",
+    "title": "Spring number ticker",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 1200,
+    "ease": {
+      "t": "spring",
+      "k": 110,
+      "c": 22
+    },
+    "easeLabel": "spring(110, 22) tabular roll",
+    "props": [
+      "textContent (tabular-nums)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx",
+    "collection": "Magic UI",
+    "summary": "A large tabular-nums KPI metric accelerates cleanly from zero and brakes smoothly into its target figure with spring damping.",
+    "hint": "Click to re-roll metric",
+    "choreography": [
+      "Spring integrator drives numeric value from 0 to target with zero jitter.",
+      "font-variant-numeric: tabular-nums prevents horizontal layout jitter.",
+      "Click switches smoothly to a fresh milestone figure."
+    ],
+    "agentPrompt": "Add Magic UI \"Spring number ticker\" (number-ticker.tsx).\n\nTrigger: click\nDuration: 1200 ms\nEasing: spring(110, 22) tabular roll\nAnimates: textContent (tabular-nums)\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "// Integrate spring(stiffness: 90, damping: 19) and format with toLocaleString()",
+    "html": "<div class=\"m-mu-number-ticker\"><div class=\"m-mnt-w\"><span class=\"m-mnt-l\">EXTRACTED SPECS</span><b class=\"m-mnt-n\">0</b></div></div>",
+    "css": ".m-mu-number-ticker{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff;cursor:pointer}.m-mu-number-ticker .m-mnt-w{text-align:center}.m-mu-number-ticker .m-mnt-l{display:block;font:500 10.5px 'Geist Mono',monospace;color:#6f727a;letter-spacing:.1em;margin-bottom:4px}.m-mu-number-ticker .m-mnt-n{font:600 44px 'Geist Mono',monospace;letter-spacing:-0.04em;color:#101114;font-variant-numeric:tabular-nums}",
+    "js": "const el=root.querySelector('.m-mnt-n');const goals=[14820,42950,8640,99120];let gi=0,val=0,vel=0,target=goals[0],raf=0,tm=0,last=performance.now();function tick(now){if(!root.isConnected)return;const dt=Math.min(0.032,(now-last)/1000);last=now;vel+=(90*(target-val)-19*vel)*dt;val+=vel*dt;el.textContent=Math.round(val).toLocaleString();raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);const next=()=>{gi=(gi+1)%goals.length;val=0;vel=0;target=goals[gi];};tm=setInterval(next,3200);const onC=()=>{clearInterval(tm);next();tm=setInterval(next,3200);};root.addEventListener('click',onC);return()=>{cancelAnimationFrame(raf);clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "mu-particles-field",
+    "title": "Magnetic particle field",
+    "use": "Backgrounds",
+    "stack": "Canvas 2D",
+    "trigger": "Cursor",
+    "feel": "Organic",
+    "surface": "dark",
+    "dur": 3000,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "drift velocity + cursor magnetism",
+    "props": [
+      "x",
+      "y",
+      "alpha"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/particles.tsx",
+    "collection": "Magic UI",
+    "summary": "Sixty delicate luminous particles drift slowly across obsidian and lean softly toward the moving cursor.",
+    "hint": "Move cursor to attract",
+    "choreography": [
+      "64 particles spawn with varied radii (1-2.8px) and soft individual alphas.",
+      "Pointer proximity applies gentle spring offset proportional to inverse distance.",
+      "Edge wrapping keeps density uniform seamlessly."
+    ],
+    "agentPrompt": "Add Magic UI \"Magnetic particle field\" (particles.tsx).\n\nTrigger: cursor\nDuration: 3000 ms\nEasing: drift velocity + cursor magnetism\nAnimates: x, y, alpha\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "// Each particle eases offset toward pointer proportional to depth magnetism",
+    "html": "<div class=\"m-mu-particles-field\"><canvas class=\"m-mpf-c\"></canvas></div>",
+    "css": ".m-mu-particles-field{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#090b10}.m-mu-particles-field .m-mpf-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-mpf-c'),ctx=c.getContext('2d');const pts=Array.from({length:64},()=>({x:Math.random(),y:Math.random(),vx:(Math.random()-0.5)*0.0007,vy:(Math.random()-0.5)*0.0007,r:1+Math.random()*1.8,a:0.25+Math.random()*0.65,ox:0,oy:0}));let mx=0.5,my=0.5,raf=0;const onM=e=>{const r=c.getBoundingClientRect();if(r.width){mx=(e.clientX-r.left)/r.width;my=(e.clientY-r.top)/r.height;}};root.addEventListener('pointermove',onM);function tick(){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);for(const p of pts){p.x=(p.x+p.vx+1)%1;p.y=(p.y+p.vy+1)%1;const px=p.x*w,py=p.y*h,dx=mx*w-px,dy=my*h-py,d=Math.hypot(dx,dy);const pull=d<90?(1-d/90)*18:0;p.ox+=(dx/(d+1)*pull-p.ox)*0.08;p.oy+=(dy/(d+1)*pull-p.oy)*0.08;ctx.beginPath();ctx.fillStyle=`rgba(226,232,240,${p.a.toFixed(2)})`;ctx.arc(px+p.ox,py+p.oy,p.r,0,Math.PI*2);ctx.fill();}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);};"
+  },
+  {
+    "id": "mu-pulsating-button",
+    "title": "Pulsating halo button",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 1600,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "ease-out halo expansion (1.7s)",
+    "props": [
+      "box-shadow",
+      "transform (scale)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/pulsating-button.tsx",
+    "collection": "Magic UI",
+    "summary": "A crisp cobalt action button emits a smooth breathing halo pulse ring around its silhouette.",
+    "hint": "Ambient CTA beacon",
+    "choreography": [
+      "Box-shadow expands smoothly from 0 to 14px around the pill silhouette.",
+      "Opacity decays softly to zero so the pulse feels calm, not frantic.",
+      "Hover lifts button 1px cleanly."
+    ],
+    "agentPrompt": "Add Magic UI \"Pulsating halo button\" (pulsating-button.tsx).\n\nTrigger: loop\nDuration: 1600 ms\nEasing: ease-out halo expansion (1.7s)\nAnimates: box-shadow, transform (scale)\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": "@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(42,148,226,.65); } 75%,100% { box-shadow: 0 0 0 14px rgba(42,148,226,0); } }",
+    "html": "<div class=\"m-mu-pulsating-button\"><button type=\"button\" class=\"m-mpb-b\">Start Recording</button></div>",
+    "css": ".m-mu-pulsating-button{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0e1015}.m-mu-pulsating-button .m-mpb-b{padding:11px 24px;border-radius:10px;border:0;background:#2a94e2;color:#fff;font-size:14px;font-weight:600;cursor:pointer;animation:m-mpb-p 1.7s ease-out infinite;transition:transform 160ms}.m-mu-pulsating-button .m-mpb-b:hover{transform:translateY(-1px)}@keyframes m-mpb-p{0%{box-shadow:0 0 0 0 rgba(42,148,226,0.65)}75%,100%{box-shadow:0 0 0 14px rgba(42,148,226,0)}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-rainbow-button",
+    "title": "Rainbow spectrum button",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 2200,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "linear spectral background flow",
+    "props": [
+      "background-position",
+      "transform"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/rainbow-button.tsx",
+    "collection": "Magic UI",
+    "summary": "A high-contrast dark pill CTA rides atop a flowing multi-spectrum rainbow edge and soft bottom floor glow.",
+    "hint": "Hover to brighten glow",
+    "choreography": [
+      "Double-background gradient paints crisp 1.5px spectral border around matte dark fill.",
+      "Blurred ::after reflection casts matching rainbow glow beneath the pill.",
+      "Hover lifts the button 2px smoothly."
+    ],
+    "agentPrompt": "Add Magic UI \"Rainbow spectrum button\" (rainbow-button.tsx).\n\nTrigger: hover\nDuration: 2200 ms\nEasing: linear spectral background flow\nAnimates: background-position, transform\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".rb-btn { border:1.5px solid transparent; background: linear-gradient(#121216,#121216) padding-box, linear-gradient(90deg,#f43f5e,#f59e0b,#10b981,#38bdf8,#a855f7,#f43f5e) border-box; background-size: 240%; animation: rb 2.4s linear infinite; }",
+    "html": "<div class=\"m-mu-rainbow-button\"><button type=\"button\" class=\"m-mrb-b\">Get Unlimited Access</button></div>",
+    "css": ".m-mu-rainbow-button{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0b0b0f}.m-mu-rainbow-button .m-mrb-b{position:relative;padding:11px 22px;border-radius:12px;border:1.5px solid transparent;color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;background:linear-gradient(#121217,#121217) padding-box,linear-gradient(90deg,#f43f5e,#f59e0b,#10b981,#38bdf8,#a855f7,#f43f5e) border-box;background-size:240% 100%;animation:m-mrb-f 2.4s linear infinite;transition:transform 180ms}.m-mu-rainbow-button .m-mrb-b::after{content:'';position:absolute;left:12%;right:12%;bottom:-8px;height:14px;border-radius:99px;background:linear-gradient(90deg,#f43f5e,#f59e0b,#10b981,#38bdf8,#a855f7,#f43f5e);background-size:240% 100%;filter:blur(12px);opacity:.65;z-index:-1;animation:m-mrb-f 2.4s linear infinite}.m-mu-rainbow-button .m-mrb-b:hover{transform:translateY(-2px)}@keyframes m-mrb-f{to{background-position:240% 0}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "mu-retro-grid",
+    "title": "Perspective retro grid",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Ambient",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 6000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "infinite 3D perspective floor scroll",
+    "props": [
+      "transform (translateY)"
+    ],
+    "src": "magicuidesign/magicui",
+    "srcUrl": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx",
+    "collection": "Magic UI",
+    "summary": "An endless 3D tilted wireframe perspective floor scrolls smoothly toward a glowing horizon line.",
+    "hint": "Ambient 3D horizon",
+    "choreography": [
+      "Grid plane tilts 65° in CSS 3D perspective (perspective: 210px).",
+      "Repeating CSS linear-gradient gridlines translate seamlessly along local Y.",
+      "Top horizon gradient fades distant lines cleanly into obsidian."
+    ],
+    "agentPrompt": "Add Magic UI \"Perspective retro grid\" (retro-grid.tsx).\n\nTrigger: ambient\nDuration: 6000 ms\nEasing: infinite 3D perspective floor scroll\nAnimates: transform (translateY)\n\nKeep zero external dependencies and add a prefers-reduced-motion fallback.",
+    "extractableCode": ".retro-plane { transform: rotateX(65deg); background-size: 32px 32px; animation: grid-scroll 3.6s linear infinite; }",
+    "html": "<div class=\"m-mu-retro-grid\"><div class=\"m-mrg-p\"><div class=\"m-mrg-lines\"></div></div><div class=\"m-mrg-fade\"></div><b>RETRO GRID</b></div>",
+    "css": ".m-mu-retro-grid{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#090910}.m-mu-retro-grid .m-mrg-p{position:absolute;inset:0;perspective:210px;overflow:hidden}.m-mu-retro-grid .m-mrg-lines{position:absolute;inset:-40% -50% 0;transform:rotateX(65deg);background-image:linear-gradient(to right,rgba(148,163,184,0.28) 1px,transparent 1px),linear-gradient(to bottom,rgba(148,163,184,0.28) 1px,transparent 1px);background-size:32px 32px;animation:m-mrg-s 3.6s linear infinite}.m-mu-retro-grid .m-mrg-fade{position:absolute;inset:0;background:linear-gradient(180deg,#090910 22%,rgba(9,9,16,0.2) 60%,transparent)}.m-mu-retro-grid b{position:relative;z-index:2;font-size:28px;font-weight:700;letter-spacing:-0.03em;background:linear-gradient(180deg,#fff,#94a3b8);-webkit-background-clip:text;color:transparent;transform:translateY(-14px)}@keyframes m-mrg-s{from{transform:rotateX(65deg) translateY(0)}to{transform:rotateX(65deg) translateY(32px)}}",
+    "js": "return()=>{};"
+  }
+]

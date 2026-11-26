@@ -1,0 +1,887 @@
+[
+  {
+    "id": "rb-split-text",
+    "title": "Split character rise",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Editorial",
+    "surface": "light",
+    "dur": 760,
+    "ease": {
+      "t": "spring",
+      "k": 260,
+      "c": 20
+    },
+    "easeLabel": "spring(260, 20) 35ms stagger",
+    "props": [
+      "transform (translateY)",
+      "opacity"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/SplitText",
+    "collection": "React Bits",
+    "summary": "Display letters emerge one by one from an invisible baseline mask with crisp 35ms stagger and soft spring overshoot.",
+    "hint": "Click to replay rise",
+    "choreography": [
+      "Characters start clipped at translateY(115%) inside inline overflow masks.",
+      "35ms per-character stagger creates a kinetic typographic wave.",
+      "Subtle spring settle lands every letter onto a tight baseline."
+    ],
+    "agentPrompt": "Add \"Split character rise\" (DavidHDev/react-bits).\n\nTrigger: loop\nDuration: 760 ms\nEasing: spring(260, 20) 35ms stagger\nAnimates: transform (translateY), opacity\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".ch { display:inline-block; animation: rise 560ms cubic-bezier(.22,1.25,.36,1) calc(var(--i)*35ms) both; }",
+    "html": "<div class=\"m-rb-split-text\"><div class=\"m-rst-w\"></div></div>",
+    "css": ".m-rb-split-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff;cursor:pointer}.m-rb-split-text .m-rst-w{display:flex;font-size:34px;font-weight:700;letter-spacing:-0.035em;color:#101114;line-height:1.15}.m-rb-split-text .m-rst-m{overflow:hidden;display:inline-block}.m-rb-split-text .m-rst-c{display:inline-block;animation:m-rst-r 560ms cubic-bezier(.22,1.25,.36,1) calc(var(--i)*35ms) both}@keyframes m-rst-r{from{transform:translateY(115%);opacity:0}to{transform:none;opacity:1}}",
+    "js": "const w=root.querySelector('.m-rst-w');let tm=0;function play(){w.innerHTML='';[...'Motion Craft'].forEach((ch,i)=>{const m=document.createElement('span');m.className='m-rst-m';m.innerHTML=`<span class=\"m-rst-c\" style=\"--i:${i}\">${ch===' '?'&nbsp;':ch}</span>`;w.appendChild(m);});}play();tm=setInterval(play,2800);const onC=()=>{clearInterval(tm);play();tm=setInterval(play,2800);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "rb-blur-text",
+    "title": "Word blur entrance",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 900,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "filter (blur)",
+      "transform (translateY)",
+      "opacity"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/BlurText",
+    "collection": "React Bits",
+    "summary": "Words materialize sequentially out of a soft 12px cinematic defocus into crisp white display lettering.",
+    "hint": "Click to replay blur",
+    "choreography": [
+      "Each word starts blurred 12px and shifted +14px vertically.",
+      "120ms word-by-word stagger draws the eye smoothly left to right.",
+      "Soft mid-keyframe resolves sharp clarity cleanly."
+    ],
+    "agentPrompt": "Add \"Word blur entrance\" (DavidHDev/react-bits).\n\nTrigger: loop\nDuration: 900 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: filter (blur), transform (translateY), opacity\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".word { animation: word-in 640ms cubic-bezier(.22,1,.36,1) calc(var(--i)*120ms) both; }",
+    "html": "<div class=\"m-rb-blur-text\"><div class=\"m-rbt-w\"></div></div>",
+    "css": ".m-rb-blur-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0c0c10;cursor:pointer;padding:24px}.m-rb-blur-text .m-rbt-w{display:flex;flex-wrap:wrap;justify-content:center;gap:0 8px;font-size:28px;font-weight:600;letter-spacing:-0.03em;color:#fff}.m-rb-blur-text span{display:inline-block;animation:m-rbt-a 640ms cubic-bezier(.22,1,.36,1) calc(var(--i)*120ms) both}@keyframes m-rbt-a{from{opacity:0;filter:blur(12px);transform:translateY(14px)}to{opacity:1;filter:none;transform:none}}",
+    "js": "const w=root.querySelector('.m-rbt-w');let tm=0;function play(){w.innerHTML='';'Crafted for fluid interfaces.'.split(' ').forEach((wd,i)=>{const s=document.createElement('span');s.style.setProperty('--i',i);s.textContent=wd;w.appendChild(s);});}play();tm=setInterval(play,3000);const onC=()=>{clearInterval(tm);play();tm=setInterval(play,3000);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "rb-circular-text",
+    "title": "Spinning circular text",
+    "use": "Typography",
+    "stack": "SVG",
+    "trigger": "Hover",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 12000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous circular SVG textPath",
+    "props": [
+      "transform (rotate)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/CircularText",
+    "collection": "React Bits",
+    "summary": "Tracked uppercase typography orbits continuously around a circular SVG path, smoothly accelerating and scaling slightly on hover.",
+    "hint": "Hover ring to speed up",
+    "choreography": [
+      "SVG textPath maps evenly tracked lettering along a r=46 circle.",
+      "Continuous 12s linear spin keeps rhythm calm at rest.",
+      "Hover accelerates spin to 4.5s and scales up 7% smoothly."
+    ],
+    "agentPrompt": "Add \"Spinning circular text\" (DavidHDev/react-bits).\n\nTrigger: hover\nDuration: 12000 ms\nEasing: continuous circular SVG textPath\nAnimates: transform (rotate)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "<text><textPath href='#circlePath'>MOTION INDEX · SPEC & CODE ·</textPath></text>",
+    "html": "<div class=\"m-rb-circular-text\"><svg class=\"m-rct-s\" viewBox=\"0 0 140 140\" width=\"132\" height=\"132\"><defs><path class=\"m-rct-p\" d=\"M70,70 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0\"/></defs><text fill=\"#f4f4f5\" font-size=\"10.2\" font-weight=\"600\" letter-spacing=\"2.8\"><textPath class=\"m-rct-tp\">MOTION INDEX • SPEC &amp; CODE • </textPath></text></svg></div>",
+    "css": ".m-rb-circular-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0e0f13}.m-rb-circular-text .m-rct-s{animation:m-rct-r 12s linear infinite;transition:transform 320ms cubic-bezier(.22,1,.36,1)}.m-rb-circular-text:hover .m-rct-s{animation-duration:4.5s;transform:scale(1.07)}@keyframes m-rct-r{to{transform:rotate(360deg)}}",
+    "js": "const uid='rct-'+Math.random().toString(36).slice(2,7);root.querySelector('.m-rct-p').id=uid;root.querySelector('.m-rct-tp').setAttribute('href','#'+uid);return()=>{};"
+  },
+  {
+    "id": "rb-decrypted-text",
+    "title": "Center-out cipher decrypt",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 900,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "center-out glyph lock (900ms)",
+    "props": [
+      "textContent (cipher)",
+      "color"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/DecryptedText",
+    "collection": "React Bits",
+    "summary": "Encrypted monospace symbols resolve outward symmetrically from the center character into sharp white text.",
+    "hint": "Hover or click to decrypt",
+    "choreography": [
+      "Middle characters lock first while outer edges continue scrambling.",
+      "Unresolved glyphs glow emerald-green before snapping to crisp white.",
+      "Hovering or clicking immediately re-encrypts and decodes."
+    ],
+    "agentPrompt": "Add \"Center-out cipher decrypt\" (DavidHDev/react-bits).\n\nTrigger: hover\nDuration: 900 ms\nEasing: center-out glyph lock (900ms)\nAnimates: textContent (cipher), color\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Lock characters where Math.abs(i - mid) <= step",
+    "html": "<div class=\"m-rb-decrypted-text\"><div class=\"m-rdt-w\"></div></div>",
+    "css": ".m-rb-decrypted-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#090b0f;cursor:pointer}.m-rb-decrypted-text .m-rdt-w{font:600 22px 'Geist Mono',monospace;letter-spacing:.06em;color:#fff;white-space:pre}.m-rb-decrypted-text .m-rdt-s{color:#34d399;opacity:.85}",
+    "js": "const el=root.querySelector('.m-rdt-w');const target='DECRYPTED SPEC';const sym='!@#$%^&*01<>?/';let raf=0,tm=0;function run(){cancelAnimationFrame(raf);const t0=performance.now(),mid=target.length/2;function f(now){if(!root.isConnected)return;const p=Math.min(1,(now-t0)/900),rad=p*(mid+1);let html='';for(let i=0;i<target.length;i++){if(target[i]===' ')html+=' ';else if(Math.abs(i-mid)<rad)html+=target[i];else html+=`<span class=\"m-rdt-s\">${sym[(Math.random()*sym.length)|0]}</span>`;}el.innerHTML=html;if(p<1)raf=requestAnimationFrame(f);}raf=requestAnimationFrame(f);}run();tm=setInterval(run,3100);const onT=()=>{clearInterval(tm);run();tm=setInterval(run,3100);};root.addEventListener('pointerenter',onT);root.addEventListener('click',onT);return()=>{cancelAnimationFrame(raf);clearInterval(tm);root.removeEventListener('pointerenter',onT);root.removeEventListener('click',onT);};"
+  },
+  {
+    "id": "rb-glitch-text",
+    "title": "Chromatic clip glitch",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 1800,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "stepped clip-path RGB split",
+    "props": [
+      "clip-path (inset)",
+      "transform (translateX)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/GlitchText",
+    "collection": "React Bits",
+    "summary": "Twin cyan and crimson pseudo-layers slice across heavy white display type via stepped clip-path jitter.",
+    "hint": "Hover for intense glitch",
+    "choreography": [
+      "Cyan and red duplicate channels sit offset ±3px horizontally.",
+      "Stepped inset() slices rapidly jump vertical bands across the glyph height.",
+      "Hover doubles slice frequency for electric feedback."
+    ],
+    "agentPrompt": "Add \"Chromatic clip glitch\" (DavidHDev/react-bits).\n\nTrigger: loop\nDuration: 1800 ms\nEasing: stepped clip-path RGB split\nAnimates: clip-path (inset), transform (translateX)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".glitch::before { color:#0ff; clip-path:inset(20% 0 55% 0); transform:translate(-3px,0); animation: g1 1.6s steps(2) infinite; }",
+    "html": "<div class=\"m-rb-glitch-text\"><span class=\"m-rgt-w\" data-t=\"GLITCH\">GLITCH</span></div>",
+    "css": ".m-rb-glitch-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#09090c}.m-rb-glitch-text .m-rgt-w{position:relative;font-size:48px;font-weight:800;letter-spacing:-0.02em;color:#fff}.m-rb-glitch-text .m-rgt-w::before,.m-rb-glitch-text .m-rgt-w::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none}.m-rb-glitch-text .m-rgt-w::before{color:#22d3ee;transform:translateX(-3px);animation:m-rgt-a 1.6s steps(2,end) infinite}.m-rb-glitch-text .m-rgt-w::after{color:#f43f5e;transform:translateX(3px);animation:m-rgt-b 1.4s steps(2,end) infinite}.m-rb-glitch-text:hover .m-rgt-w::before,.m-rb-glitch-text:hover .m-rgt-w::after{animation-duration:.45s}@keyframes m-rgt-a{0%,100%{clip-path:inset(10% 0 72% 0)}25%{clip-path:inset(48% 0 28% 0)}50%{clip-path:inset(76% 0 8% 0)}75%{clip-path:inset(22% 0 54% 0)}}@keyframes m-rgt-b{0%,100%{clip-path:inset(62% 0 14% 0)}30%{clip-path:inset(12% 0 68% 0)}60%{clip-path:inset(38% 0 38% 0)}85%{clip-path:inset(82% 0 4% 0)}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "rb-rotating-text",
+    "title": "Spring rotating badge",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 520,
+    "ease": {
+      "t": "spring",
+      "k": 280,
+      "c": 22
+    },
+    "easeLabel": "spring(280, 22) vertical rotate",
+    "props": [
+      "transform (translateY)",
+      "width",
+      "opacity"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/RotatingText",
+    "collection": "React Bits",
+    "summary": "An inline cobalt highlight pill smoothly resizes its width as new words roll vertically into the sentence.",
+    "hint": "Click to swap word",
+    "choreography": [
+      "Outgoing word exits upward -110% while fading out cleanly.",
+      "Pill width transitions smoothly to hug the incoming word's exact measure.",
+      "Incoming word springs up from +110% with slight overshoot."
+    ],
+    "agentPrompt": "Add \"Spring rotating badge\" (DavidHDev/react-bits).\n\nTrigger: loop\nDuration: 520 ms\nEasing: spring(280, 22) vertical rotate\nAnimates: transform (translateY), width, opacity\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".pill-track { transition: width 360ms cubic-bezier(.22,1.15,.36,1); }",
+    "html": "<div class=\"m-rb-rotating-text\"><div class=\"m-rrt-line\">Build <span class=\"m-rrt-pill\"><span class=\"m-rrt-cur\">snappy</span></span> UI</div></div>",
+    "css": ".m-rb-rotating-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fff;cursor:pointer}.m-rb-rotating-text .m-rrt-line{display:flex;align-items:center;gap:8px;font-size:26px;font-weight:600;letter-spacing:-0.03em;color:#101114}.m-rb-rotating-text .m-rrt-pill{display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 12px;border-radius:10px;background:#2a94e2;color:#fff;overflow:hidden;position:relative;transition:width 360ms cubic-bezier(.22,1.15,.36,1)}.m-rb-rotating-text .m-rrt-cur{display:inline-block;animation:m-rrt-in 420ms cubic-bezier(.22,1.25,.36,1) both}@keyframes m-rrt-in{from{transform:translateY(110%);opacity:0}to{transform:none;opacity:1}}",
+    "js": "const pill=root.querySelector('.m-rrt-pill');const words=['snappy','tactile','fluid','kinetic'];let idx=0,tm=0;function set(i){idx=i;pill.innerHTML=`<span class=\"m-rrt-cur\">${words[i]}</span>`;const s=pill.firstChild;pill.style.width=(s.offsetWidth+24)+'px';}set(0);const next=()=>set((idx+1)%words.length);tm=setInterval(next,1750);const onC=()=>{clearInterval(tm);next();tm=setInterval(next,1750);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "rb-true-focus",
+    "title": "True focus corner reticle",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Crisp",
+    "surface": "dark",
+    "dur": 460,
+    "ease": {
+      "t": "spring",
+      "k": 260,
+      "c": 22
+    },
+    "easeLabel": "spring(260, 22) layout reticle",
+    "props": [
+      "transform (translate)",
+      "width",
+      "height",
+      "filter (blur)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/TrueFocus",
+    "collection": "React Bits",
+    "summary": "A glowing cobalt corner-bracket viewfinder springs smoothly between words while unfocused words recede into soft blur.",
+    "hint": "Hover word to focus",
+    "choreography": [
+      "Unfocused words hold 4px Gaussian blur and 48% contrast.",
+      "Viewfinder reticle measures target word bounds and springs cleanly into place.",
+      "Focused word sharpens to 0px blur in 320ms."
+    ],
+    "agentPrompt": "Add \"True focus corner reticle\" (DavidHDev/react-bits).\n\nTrigger: loop\nDuration: 460 ms\nEasing: spring(260, 22) layout reticle\nAnimates: transform (translate), width, height, filter (blur)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Measure word offsetLeft/offsetWidth and animate reticle transform + width",
+    "html": "<div class=\"m-rb-true-focus\"><div class=\"m-rtf-row\"><div class=\"m-rtf-box\"><i></i><i></i><i></i><i></i></div><span class=\"m-rtf-w\">True</span><span class=\"m-rtf-w\">Motion</span><span class=\"m-rtf-w\">Focus</span></div></div>",
+    "css": ".m-rb-true-focus{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0c0d11}.m-rb-true-focus .m-rtf-row{position:relative;display:flex;gap:14px;padding:8px}.m-rb-true-focus .m-rtf-w{font-size:24px;font-weight:700;letter-spacing:-0.03em;color:#fff;filter:blur(4px);opacity:.48;cursor:pointer;padding:4px 6px;transition:filter 320ms,opacity 320ms}.m-rb-true-focus .m-rtf-w.on{filter:none;opacity:1}.m-rb-true-focus .m-rtf-box{position:absolute;top:0;left:0;pointer-events:none;transition:transform 420ms cubic-bezier(.22,1.15,.36,1),width 420ms cubic-bezier(.22,1.15,.36,1),height 420ms cubic-bezier(.22,1.15,.36,1)}.m-rb-true-focus .m-rtf-box i{position:absolute;width:10px;height:10px;border:2px solid #2a94e2}.m-rb-true-focus .m-rtf-box i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}.m-rb-true-focus .m-rtf-box i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}.m-rb-true-focus .m-rtf-box i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}.m-rb-true-focus .m-rtf-box i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}",
+    "js": "const ws=[...root.querySelectorAll('.m-rtf-w')],box=root.querySelector('.m-rtf-box');let cur=1,tm=0;function focus(i){cur=i;ws.forEach((w,j)=>w.classList.toggle('on',j===i));const t=ws[i];box.style.transform=`translate(${t.offsetLeft-2}px,${t.offsetTop-2}px)`;box.style.width=(t.offsetWidth+4)+'px';box.style.height=(t.offsetHeight+4)+'px';}setTimeout(()=>focus(1),60);ws.forEach((w,i)=>w.addEventListener('pointerenter',()=>{clearInterval(tm);focus(i);}));tm=setInterval(()=>focus((cur+1)%ws.length),1700);return()=>clearInterval(tm);"
+  },
+  {
+    "id": "rb-text-pressure",
+    "title": "Proximity text pressure",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Tactile",
+    "surface": "light",
+    "dur": 240,
+    "ease": {
+      "t": "spring",
+      "k": 220,
+      "c": 20
+    },
+    "easeLabel": "cursor proximity stretch",
+    "props": [
+      "transform (scaleX, scaleY, translateY)",
+      "color"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/TextPressure",
+    "collection": "React Bits",
+    "summary": "Each bold letter stretches vertically and gains optical weight in proportion to its horizontal distance from the cursor.",
+    "hint": "Sweep cursor across type",
+    "choreography": [
+      "Pointer distance computes a smooth cosine falloff per glyph.",
+      "Nearest letters expand vertically 1.42× while lifting -5px cleanly.",
+      "Gentle autonomous wave sweeps across letters when idle."
+    ],
+    "agentPrompt": "Add \"Proximity text pressure\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 240 ms\nEasing: cursor proximity stretch\nAnimates: transform (scaleX, scaleY, translateY), color\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Per letter: infl = max(0, 1 - dist/90); scaleY(1 + infl*0.42) translateY(-infl*5px)",
+    "html": "<div class=\"m-rb-text-pressure\"><div class=\"m-rtp-row\"></div></div>",
+    "css": ".m-rb-text-pressure{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f6f7f9}.m-rb-text-pressure .m-rtp-row{display:flex;align-items:baseline;font-size:38px;font-weight:700;letter-spacing:-0.02em;color:#101114}.m-rb-text-pressure span{display:inline-block;transform-origin:bottom center;will-change:transform}",
+    "js": "const row=root.querySelector('.m-rtp-row');const spans=[...'PRESSURE'].map(ch=>{const s=document.createElement('span');s.textContent=ch;row.appendChild(s);return s;});let px=null,raf=0;const onM=e=>{px=e.clientX;};const onL=()=>{px=null;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;const r=row.getBoundingClientRect();const mx=px!==null?px:r.left+r.width*(0.5+0.45*Math.sin(now*0.0018));spans.forEach(s=>{const sr=s.getBoundingClientRect();const d=Math.abs(mx-(sr.left+sr.width/2));const inf=d<90?0.5*(1+Math.cos(Math.PI*d/90)):0;s.style.transform=`translateY(${(-inf*5).toFixed(1)}px) scale(${(1+inf*0.14).toFixed(3)},${(1+inf*0.42).toFixed(3)})`;s.style.color=inf>0.45?'#2a94e2':'#101114';});raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-blob-cursor",
+    "title": "Gooey trailing cursor",
+    "use": "Micro-interactions",
+    "stack": "SVG",
+    "trigger": "Cursor",
+    "feel": "Organic",
+    "surface": "light",
+    "dur": 400,
+    "ease": {
+      "t": "spring",
+      "k": 180,
+      "c": 16
+    },
+    "easeLabel": "chained spring(180, 16) + goo",
+    "props": [
+      "cx",
+      "cy",
+      "feGaussianBlur"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/BlobCursor",
+    "collection": "React Bits",
+    "summary": "Three graduated cobalt ink droplets chain behind the cursor inside an SVG goo filter, stretching and snapping together smoothly.",
+    "hint": "Move cursor to drag ink",
+    "choreography": [
+      "Lead droplet tracks pointer with snappy follow factor (0.22).",
+      "Two trailing droplets follow their predecessor at stepped stiffness.",
+      "SVG goo threshold fuses trailing droplets into a viscous comet."
+    ],
+    "agentPrompt": "Add \"Gooey trailing cursor\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 400 ms\nEasing: chained spring(180, 16) + goo\nAnimates: cx, cy, feGaussianBlur\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Chained follow: b[i] += (b[i-1] - b[i]) * stiffness[i] inside SVG goo filter",
+    "html": "<div class=\"m-rb-blob-cursor\"><svg class=\"m-rbc-s\" viewBox=\"0 0 320 240\"><defs><filter class=\"m-rbc-f\"><feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"10\" result=\"b\"/><feColorMatrix in=\"b\" values=\"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 22 -9\"/></filter></defs><g class=\"m-rbc-g\" fill=\"#2a94e2\"><circle r=\"26\"/><circle r=\"18\"/><circle r=\"12\"/></g></svg></div>",
+    "css": ".m-rb-blob-cursor{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f6f7f9}.m-rb-blob-cursor .m-rbc-s{width:100%;height:100%}",
+    "js": "const uid='rbc-'+Math.random().toString(36).slice(2,7);root.querySelector('.m-rbc-f').id=uid;root.querySelector('.m-rbc-g').setAttribute('filter',`url(#${uid})`);const svg=root.querySelector('.m-rbc-s'),cs=[...root.querySelectorAll('circle')];const p=[[160,120],[160,120],[160,120]];let tx=160,ty=120,manual=false,raf=0;const onM=e=>{manual=true;const r=svg.getBoundingClientRect();tx=((e.clientX-r.left)/r.width)*320;ty=((e.clientY-r.top)/r.height)*240;};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;if(!manual){const t=now*0.0018;tx=160+86*Math.cos(t);ty=120+48*Math.sin(t*2);}p[0][0]+=(tx-p[0][0])*0.22;p[0][1]+=(ty-p[0][1])*0.22;p[1][0]+=(p[0][0]-p[1][0])*0.14;p[1][1]+=(p[0][1]-p[1][1])*0.14;p[2][0]+=(p[1][0]-p[2][0])*0.10;p[2][1]+=(p[1][1]-p[2][1])*0.10;cs.forEach((c,i)=>{c.setAttribute('cx',p[i][0].toFixed(1));c.setAttribute('cy',p[i][1].toFixed(1));});raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-pixel-trail",
+    "title": "Luminous pixel trail",
+    "use": "Generative",
+    "stack": "Canvas 2D",
+    "trigger": "Cursor",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 700,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.2,
+        0.8,
+        0.2,
+        1
+      ]
+    },
+    "easeLabel": "exponential tile fade",
+    "props": [
+      "fillStyle alpha",
+      "grid quantization"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/PixelTrail",
+    "collection": "React Bits",
+    "summary": "Quantized neon pixels ignite immediately under the cursor path and cool down through stepped violet-to-cobalt fade trails.",
+    "hint": "Move cursor to paint",
+    "choreography": [
+      "Pointer quantizes onto a crisp 16px square grid.",
+      "Active cell flashes bright violet-cyan (1.0) and decays by 0.925 per frame.",
+      "Autonomous figure-8 brush keeps the trail alive when idle."
+    ],
+    "agentPrompt": "Add \"Luminous pixel trail\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 700 ms\nEasing: exponential tile fade\nAnimates: fillStyle alpha, grid quantization\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Quantize (mx,my) to cell (cx,cy), set energy[cell]=1, decay *= 0.925 per frame",
+    "html": "<div class=\"m-rb-pixel-trail\"><canvas class=\"m-rpt-c\"></canvas></div>",
+    "css": ".m-rb-pixel-trail{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0c0c12}.m-rb-pixel-trail .m-rpt-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-rpt-c'),ctx=c.getContext('2d');const S=16;let cols=0,rows=0,en=new Float32Array(0),mx=0,my=0,manual=false,raf=0;function resize(){const w=c.clientWidth||320,h=c.clientHeight||240;c.width=w;c.height=h;cols=Math.ceil(w/S);rows=Math.ceil(h/S);en=new Float32Array(cols*rows);}resize();const onM=e=>{manual=true;const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;if(c.width!==(c.clientWidth||320))resize();const px=manual?mx:c.width*(0.5+0.35*Math.cos(now*0.002));const py=manual?my:c.height*(0.5+0.28*Math.sin(now*0.0034));const gx=Math.floor(px/S),gy=Math.floor(py/S);for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const x=gx+dx,y=gy+dy;if(x>=0&&x<cols&&y>=0&&y<rows)en[y*cols+x]=Math.max(en[y*cols+x],dx===0&&dy===0?1:0.55);}ctx.fillStyle='#0c0c12';ctx.fillRect(0,0,c.width,c.height);for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){const idx=y*cols+x;const v=en[idx];if(v>0.02){ctx.fillStyle=v>0.65?`rgba(167,139,250,${v.toFixed(2)})`:`rgba(56,189,248,${(v*0.85).toFixed(2)})`;ctx.fillRect(x*S+1,y*S+1,S-2,S-2);en[idx]*=0.925;}}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-pixel-transition",
+    "title": "Staggered pixel wipe",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Rhythmic",
+    "surface": "dark",
+    "dur": 680,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.2,
+        0.8,
+        0.2,
+        1
+      ]
+    },
+    "easeLabel": "randomized cell stagger (680ms)",
+    "props": [
+      "opacity",
+      "transform (scale)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/PixelTransition",
+    "collection": "React Bits",
+    "summary": "A 7×5 checkerboard of matte tiles pops in randomized order to curtain-wipe between two contrasting visual states.",
+    "hint": "Hover or click to wipe",
+    "choreography": [
+      "35 pixel tiles cover the frame in shuffled staggered delays (0-280ms).",
+      "Midpoint swaps the underlying dark/cobalt plate cleanly.",
+      "Tiles pop back out in reverse order to reveal the incoming frame."
+    ],
+    "agentPrompt": "Add \"Staggered pixel wipe\" (DavidHDev/react-bits).\n\nTrigger: hover\nDuration: 680 ms\nEasing: randomized cell stagger (680ms)\nAnimates: opacity, transform (scale)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Shuffle 35 tiles, step opacity 0->1 over 320ms, swap scene, step 1->0",
+    "html": "<div class=\"m-rb-pixel-transition\"><div class=\"m-rpx-s m-rpx-a\">STATE A</div><div class=\"m-rpx-s m-rpx-b\">STATE B</div><div class=\"m-rpx-g\"></div></div>",
+    "css": ".m-rb-pixel-transition{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#101114;cursor:pointer}.m-rb-pixel-transition .m-rpx-s{position:absolute;inset:0;display:grid;place-items:center;font:700 26px 'Host Grotesk',sans-serif;letter-spacing:-0.03em}.m-rb-pixel-transition .m-rpx-a{background:#14151a;color:#fff}.m-rb-pixel-transition .m-rpx-b{background:#2a94e2;color:#fff;opacity:0}.m-rb-pixel-transition.alt .m-rpx-b{opacity:1}.m-rb-pixel-transition .m-rpx-g{position:absolute;inset:0;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(5,1fr);pointer-events:none}.m-rb-pixel-transition i{display:block;background:#f8fafc;opacity:0;transform:scale(.6);transition:opacity 140ms,transform 160ms}.m-rb-pixel-transition i.on{opacity:1;transform:scale(1)}",
+    "js": "const wrap=root.querySelector('.m-rb-pixel-transition'),g=root.querySelector('.m-rpx-g');const cells=[];for(let i=0;i<35;i++){const el=document.createElement('i');g.appendChild(el);cells.push(el);}let tm=0,busy=false;function wipe(){if(busy)return;busy=true;const ord=cells.map((_,i)=>i).sort(()=>Math.random()-0.5);ord.forEach((ci,k)=>setTimeout(()=>cells[ci].classList.add('on'),k*8));setTimeout(()=>{wrap.classList.toggle('alt');ord.forEach((ci,k)=>setTimeout(()=>cells[ci].classList.remove('on'),k*8));setTimeout(()=>{busy=false;},420);},380);}tm=setInterval(wipe,2600);const onT=()=>{clearInterval(tm);wipe();tm=setInterval(wipe,2600);};root.addEventListener('pointerenter',onT);root.addEventListener('click',onT);return()=>{clearInterval(tm);root.removeEventListener('pointerenter',onT);root.removeEventListener('click',onT);};"
+  },
+  {
+    "id": "rb-ribbons",
+    "title": "Kinetic silk ribbon",
+    "use": "Generative",
+    "stack": "Canvas 2D",
+    "trigger": "Cursor",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 900,
+    "ease": {
+      "t": "spring",
+      "k": 160,
+      "c": 14
+    },
+    "easeLabel": "spring polyline trail",
+    "props": [
+      "polyline path",
+      "lineWidth taper"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/Ribbons",
+    "collection": "React Bits",
+    "summary": "A tapered luminous cobalt-to-violet silk ribbon whips smoothly behind the pointer with spring inertia.",
+    "hint": "Swirl pointer for ribbon",
+    "choreography": [
+      "26 control points form a damped spring chain trailing the pointer.",
+      "Canvas strokes segments with tapered width and smooth hue progression.",
+      "Idle Lissajous path keeps the ribbon gracefully sculpting space."
+    ],
+    "agentPrompt": "Add \"Kinetic silk ribbon\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 900 ms\nEasing: spring polyline trail\nAnimates: polyline path, lineWidth taper\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Chained spring points rendered with tapered strokeWidth and HSL gradient",
+    "html": "<div class=\"m-rb-ribbons\"><canvas class=\"m-rrb-c\"></canvas></div>",
+    "css": ".m-rb-ribbons{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#09090f}.m-rb-ribbons .m-rrb-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-rrb-c'),ctx=c.getContext('2d');const N=26;const pts=Array.from({length:N},()=>({x:160,y:120,vx:0,vy:0}));let tx=160,ty=120,manual=false,raf=0;const onM=e=>{manual=true;const r=c.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);if(!manual){const t=now*0.0021;tx=w*(0.5+0.34*Math.sin(t));ty=h*(0.5+0.28*Math.sin(t*1.5+0.6));}pts[0].vx+=(tx-pts[0].x)*0.22;pts[0].vy+=(ty-pts[0].y)*0.22;pts[0].vx*=0.68;pts[0].vy*=0.68;pts[0].x+=pts[0].vx;pts[0].y+=pts[0].vy;for(let i=1;i<N;i++){pts[i].x+=(pts[i-1].x-pts[i].x)*0.42;pts[i].y+=(pts[i-1].y-pts[i].y)*0.42;}ctx.lineCap='round';for(let i=1;i<N-1;i++){const u=1-i/N;ctx.beginPath();ctx.moveTo(pts[i-1].x,pts[i-1].y);ctx.lineTo(pts[i].x,pts[i].y);ctx.strokeStyle=`hsla(${205+i*5},92%,65%,${(u*0.95).toFixed(2)})`;ctx.lineWidth=Math.max(1,u*18);ctx.stroke();}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-cubes-grid",
+    "title": "3D reactive tile field",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 360,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "distance-weighted 3D tilt",
+    "props": [
+      "transform (rotateX, rotateY, scale)",
+      "border-color"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/Cubes",
+    "collection": "React Bits",
+    "summary": "A 6×4 matrix of recessed dark obsidian tiles tilts and elevates toward the pointer with crisp cyan rim reflections.",
+    "hint": "Hover across tile field",
+    "choreography": [
+      "Each tile computes vector delta to the cursor within a 110px radius.",
+      "Nearby tiles pitch toward the pointer and highlight their hairline border.",
+      "Calm sweeping wave animates across the grid when idle."
+    ],
+    "agentPrompt": "Add \"3D reactive tile field\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 360 ms\nEasing: distance-weighted 3D tilt\nAnimates: transform (rotateX, rotateY, scale), border-color\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// tile.style.transform = `perspective(360px) rotateX(${rx}deg) rotateY(${ry}deg) scale(${s})`",
+    "html": "<div class=\"m-rb-cubes-grid\"><div class=\"m-rcg-g\"></div></div>",
+    "css": ".m-rb-cubes-grid{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0a0b10;padding:18px}.m-rb-cubes-grid .m-rcg-g{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;width:86%;max-width:258px}.m-rb-cubes-grid i{display:block;aspect-ratio:1;border-radius:6px;background:#161822;border:1px solid rgba(255,255,255,0.08);transition:border-color 180ms;will-change:transform}",
+    "js": "const g=root.querySelector('.m-rcg-g');const cells=[];for(let i=0;i<24;i++){const d=document.createElement('i');g.appendChild(d);cells.push(d);}let mx=null,my=null,raf=0;const onM=e=>{mx=e.clientX;my=e.clientY;};const onL=()=>{mx=my=null;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;const gr=g.getBoundingClientRect();const px=mx!==null?mx:gr.left+gr.width*(0.5+0.4*Math.cos(now*0.0016));const py=my!==null?my:gr.top+gr.height*(0.5+0.35*Math.sin(now*0.0021));cells.forEach(c=>{const r=c.getBoundingClientRect();const dx=px-(r.left+r.width/2),dy=py-(r.top+r.height/2);const d=Math.hypot(dx,dy),inf=Math.max(0,1-d/110);c.style.transform=`perspective(360px) rotateX(${(-dy*0.24*inf).toFixed(1)}deg) rotateY(${(dx*0.24*inf).toFixed(1)}deg) scale(${(1+inf*0.14).toFixed(3)})`;c.style.borderColor=inf>0.15?`rgba(56,189,248,${(0.2+inf*0.75).toFixed(2)})`:'rgba(255,255,255,0.08)';});raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-crosshair",
+    "title": "Damped precision crosshair",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 260,
+    "ease": {
+      "t": "spring",
+      "k": 220,
+      "c": 22
+    },
+    "easeLabel": "damped spring hairline follow",
+    "props": [
+      "transform (translateX, translateY)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/Crosshair",
+    "collection": "React Bits",
+    "summary": "Architectural vertical and horizontal hairlines glide smoothly behind the cursor with live monospace X/Y coordinates.",
+    "hint": "Move pointer inside frame",
+    "choreography": [
+      "Hairlines lag behind raw pointer via smooth 0.16 linear damping.",
+      "Intersection badge displays real-time pixel coordinates in tabular mono.",
+      "Idle gentle sweep demonstrates precision tracking."
+    ],
+    "agentPrompt": "Add \"Damped precision crosshair\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 260 ms\nEasing: damped spring hairline follow\nAnimates: transform (translateX, translateY)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// x += (tx - x) * 0.16; hLine.style.transform = `translateY(${y}px)`;",
+    "html": "<div class=\"m-rb-crosshair\"><div class=\"m-rch-h\"></div><div class=\"m-rch-v\"></div><div class=\"m-rch-dot\"></div><span class=\"m-rch-xy\">160, 120</span></div>",
+    "css": ".m-rb-crosshair{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f7f8fa;cursor:crosshair}.m-rb-crosshair .m-rch-h{position:absolute;left:0;right:0;height:1px;background:rgba(42,148,226,0.55);top:0;pointer-events:none}.m-rb-crosshair .m-rch-v{position:absolute;top:0;bottom:0;width:1px;background:rgba(42,148,226,0.55);left:0;pointer-events:none}.m-rb-crosshair .m-rch-dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;border:1.5px solid #101114;background:#fff;top:0;left:0;pointer-events:none}.m-rb-crosshair .m-rch-xy{position:absolute;left:12px;bottom:10px;font:500 10.5px 'Geist Mono',monospace;color:#6f727a;pointer-events:none}",
+    "js": "const h=root.querySelector('.m-rch-h'),v=root.querySelector('.m-rch-v'),dot=root.querySelector('.m-rch-dot'),xy=root.querySelector('.m-rch-xy');let tx=160,ty=120,x=160,y=120,manual=false,raf=0;const onM=e=>{manual=true;const r=root.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;const w=root.clientWidth||320,ht=root.clientHeight||240;if(!manual){const t=now*0.0014;tx=w*(0.5+0.32*Math.cos(t));ty=ht*(0.5+0.26*Math.sin(t*1.3));}x+=(tx-x)*0.16;y+=(ty-y)*0.16;h.style.transform=`translateY(${y.toFixed(1)}px)`;v.style.transform=`translateX(${x.toFixed(1)}px)`;dot.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`;xy.textContent=`X ${Math.round(x)}  Y ${Math.round(y)}`;raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-falling-text",
+    "title": "Gravity falling words",
+    "use": "Typography",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 1100,
+    "ease": {
+      "t": "spring",
+      "k": 200,
+      "c": 14
+    },
+    "easeLabel": "2D gravity + floor bounce",
+    "props": [
+      "transform (translateY, rotate)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/TextAnimations/FallingText",
+    "collection": "React Bits",
+    "summary": "Headline pills break free under simulated 2D gravity, tumble to the floor with realistic bounce restitution, then snap back.",
+    "hint": "Click to drop words",
+    "choreography": [
+      "Click releases 5 words with slight random angular spin and staggered impulse.",
+      "Gravity pulls words to the floor where 0.46 restitution creates crisp bounces.",
+      "After 1.8s dwell, words spring cleanly back to their sentence baseline."
+    ],
+    "agentPrompt": "Add \"Gravity falling words\" (DavidHDev/react-bits).\n\nTrigger: click\nDuration: 1100 ms\nEasing: 2D gravity + floor bounce\nAnimates: transform (translateY, rotate)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Simple rigid drop: vy += 0.48; y += vy; if (y > floor) { y = floor; vy *= -0.46; }",
+    "html": "<div class=\"m-rb-falling-text\"><div class=\"m-rft-s\"><span>Motion</span><span>breaks</span><span>free</span><span>with</span><span>gravity</span></div></div>",
+    "css": ".m-rb-falling-text{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f6f7f9;cursor:pointer}.m-rb-falling-text .m-rft-s{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;max-width:260px}.m-rb-falling-text span{padding:6px 11px;border-radius:8px;background:#fff;border:1px solid #d4d7de;font-size:13.5px;font-weight:600;color:#101114;will-change:transform}",
+    "js": "const ws=[...root.querySelectorAll('span')];const st=ws.map(()=>({y:0,vy:0,r:0,vr:0}));let falling=false,raf=0,tm=0,tReset=0;function drop(){falling=true;ws.forEach((w,i)=>{w.style.transition='none';st[i]={y:0,vy:-1.5-Math.random()*2.5,r:0,vr:(Math.random()-0.5)*7};});clearTimeout(tReset);tReset=setTimeout(()=>{falling=false;ws.forEach(w=>{w.style.transition='transform 540ms cubic-bezier(.22,1.2,.36,1)';w.style.transform='none';});},1800);}function tick(){if(!root.isConnected)return;if(falling){const floor=68;ws.forEach((w,i)=>{const s=st[i];s.vy+=0.48;s.y+=s.vy;s.r+=s.vr;if(s.y>floor){s.y=floor;s.vy*=-0.46;s.vr*=0.62;}w.style.transform=`translateY(${s.y.toFixed(1)}px) rotate(${s.r.toFixed(1)}deg)`;});}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);setTimeout(drop,600);tm=setInterval(drop,3400);const onC=()=>{clearInterval(tm);drop();tm=setInterval(drop,3400);};root.addEventListener('click',onC);return()=>{cancelAnimationFrame(raf);clearInterval(tm);clearTimeout(tReset);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "rb-waves-grid",
+    "title": "Interactive contour waves",
+    "use": "Backgrounds",
+    "stack": "Canvas 2D",
+    "trigger": "Cursor",
+    "feel": "Organic",
+    "surface": "light",
+    "dur": 2400,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "harmonic wave + cursor wake",
+    "props": [
+      "canvas polyline y-displacement"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Backgrounds/Waves",
+    "collection": "React Bits",
+    "summary": "Fine charcoal topographic wave lines undulate gently across off-white stock and bend away from the moving pointer.",
+    "hint": "Move cursor across waves",
+    "choreography": [
+      "12 horizontal lines sample coupled sine octaves across smooth vertices.",
+      "Pointer distance imparts a smooth radial Gaussian ripple deflection.",
+      "High-DPI crisp 1.1px strokes keep the motion minimal and graphic."
+    ],
+    "agentPrompt": "Add \"Interactive contour waves\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 2400 ms\nEasing: harmonic wave + cursor wake\nAnimates: canvas polyline y-displacement\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// y = baseY + sin(x*0.025 + t)*7 + radialPointerRipple",
+    "html": "<div class=\"m-rb-waves-grid\"><canvas class=\"m-rwg-c\"></canvas></div>",
+    "css": ".m-rb-waves-grid{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#f6f5f1}.m-rb-waves-grid .m-rwg-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-rwg-c'),ctx=c.getContext('2d');let mx=-999,my=-999,raf=0;const onM=e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;};const onL=()=>{mx=my=-999;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);const t=now*0.0018;ctx.strokeStyle='rgba(16,17,20,0.34)';ctx.lineWidth=1.1;for(let r=1;r<=12;r++){const by=(r/13)*h;ctx.beginPath();for(let x=0;x<=w;x+=8){let dy=Math.sin(x*0.025+t+r*0.55)*7+Math.cos(x*0.014-t*0.7+r)*4;const d=Math.hypot(x-mx,by-my);if(d<85)dy+=((by-my)/(d+1))*Math.pow(1-d/85,2)*24;if(x===0)ctx.moveTo(x,by+dy);else ctx.lineTo(x,by+dy);}ctx.stroke();}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-star-border",
+    "title": "Dual star-glint border",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Silky",
+    "surface": "dark",
+    "dur": 3200,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "counter-gliding radial glints",
+    "props": [
+      "transform (translateX)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Animations/StarBorder",
+    "collection": "React Bits",
+    "summary": "Two counter-gliding luminous starlight flares skate along the top and bottom borders of a dark matte pill button.",
+    "hint": "Hover to brighten flares",
+    "choreography": [
+      "Top radial starlight sweeps left-to-right while bottom flare sweeps right-to-left.",
+      "1.5px padding clip masks the glow strictly to the outer pill rim.",
+      "Hover boosts brightness and tightens press responsiveness."
+    ],
+    "agentPrompt": "Add \"Dual star-glint border\" (DavidHDev/react-bits).\n\nTrigger: loop\nDuration: 3200 ms\nEasing: counter-gliding radial glints\nAnimates: transform (translateX)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "@keyframes star-top { from{transform:translateX(-40px)} to{transform:translateX(120px)} }",
+    "html": "<div class=\"m-rb-star-border\"><button type=\"button\" class=\"m-rsb-b\"><i class=\"m-rsb-t\"></i><i class=\"m-rsb-bt\"></i><span>Launch Agent</span></button></div>",
+    "css": ".m-rb-star-border{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#090a0e}.m-rb-star-border .m-rsb-b{position:relative;overflow:hidden;padding:1.5px;border-radius:999px;border:0;background:#1e2028;cursor:pointer}.m-rb-star-border .m-rsb-b span{position:relative;z-index:2;display:block;padding:10px 24px;border-radius:inherit;background:#0e1016;color:#f8fafc;font-size:13.5px;font-weight:500}.m-rb-star-border i{position:absolute;width:120px;height:44px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#38bdf8,transparent 65%)}.m-rb-star-border .m-rsb-t{top:-20px;left:0;animation:m-rsb-a 3s linear infinite alternate}.m-rb-star-border .m-rsb-bt{bottom:-20px;right:0;background:radial-gradient(circle,#c084fc,transparent 65%);animation:m-rsb-b 3s linear infinite alternate}@keyframes m-rsb-a{from{transform:translateX(-40px)}to{transform:translateX(120px)}}@keyframes m-rsb-b{from{transform:translateX(40px)}to{transform:translateX(-120px)}}",
+    "js": "return()=>{};"
+  },
+  {
+    "id": "rb-spotlight-tilted",
+    "title": "Parallax floating card",
+    "use": "Micro-interactions",
+    "stack": "CSS",
+    "trigger": "Cursor",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 360,
+    "ease": {
+      "t": "spring",
+      "k": 220,
+      "c": 20
+    },
+    "easeLabel": "spring 3D rotateX/Y + Z-lift",
+    "props": [
+      "transform (rotateX, rotateY, translateZ)"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Components/TiltedCard",
+    "collection": "React Bits",
+    "summary": "A glossy dark specimen card tilts smoothly in 3D perspective while its elevated badge floats 30px above the card plane.",
+    "hint": "Tilt card with cursor",
+    "choreography": [
+      "Pointer position interpolates card rotateX/rotateY smoothly via spring.",
+      "Child badge sits at translateZ(30px) inside transform-style: preserve-3d.",
+      "Idle gentle orbital tilt shows depth immediately."
+    ],
+    "agentPrompt": "Add \"Parallax floating card\" (DavidHDev/react-bits).\n\nTrigger: cursor\nDuration: 360 ms\nEasing: spring 3D rotateX/Y + Z-lift\nAnimates: transform (rotateX, rotateY, translateZ)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".card { transform-style:preserve-3d; }\n.badge { transform: translateZ(30px); }",
+    "html": "<div class=\"m-rb-spotlight-tilted\"><div class=\"m-rstc-c\"><div class=\"m-rstc-bg\"></div><div class=\"m-rstc-badge\">3D · Z+30px</div></div></div>",
+    "css": ".m-rb-spotlight-tilted{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0c0d12;perspective:700px}.m-rb-spotlight-tilted .m-rstc-c{position:relative;width:154px;height:154px;border-radius:16px;transform-style:preserve-3d;background:linear-gradient(145deg,#1f2937,#0f172a);border:1px solid rgba(255,255,255,0.14);box-shadow:0 22px 44px -18px rgba(0,0,0,0.9);display:grid;place-items:center}.m-rb-spotlight-tilted .m-rstc-bg{position:absolute;inset:12px;border-radius:10px;background:radial-gradient(circle at 30% 30%,#38bdf8,transparent 55%),radial-gradient(circle at 75% 75%,#a855f7,transparent 55%);opacity:.48}.m-rb-spotlight-tilted .m-rstc-badge{transform:translateZ(30px);padding:6px 12px;border-radius:999px;background:rgba(16,17,20,0.85);border:1px solid rgba(255,255,255,0.22);color:#fff;font:500 11px 'Geist Mono',monospace;box-shadow:0 12px 24px rgba(0,0,0,0.5)}",
+    "js": "const card=root.querySelector('.m-rstc-c');let rx=0,ry=0,tx=0,ty=0,manual=false,raf=0;const onM=e=>{manual=true;const r=root.getBoundingClientRect();ty=((e.clientX-r.left)/r.width-0.5)*30;tx=-((e.clientY-r.top)/r.height-0.5)*30;};const onL=()=>{manual=false;};root.addEventListener('pointermove',onM);root.addEventListener('pointerleave',onL);function tick(now){if(!root.isConnected)return;if(!manual){const t=now*0.0015;tx=Math.sin(t)*14;ty=Math.cos(t*0.8)*18;}rx+=(tx-rx)*0.12;ry+=(ty-ry)*0.12;card.style.transform=`rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointermove',onM);root.removeEventListener('pointerleave',onL);};"
+  },
+  {
+    "id": "rb-hyperspeed-trails",
+    "title": "Hyperspeed light trails",
+    "use": "Backgrounds",
+    "stack": "Canvas 2D",
+    "trigger": "Ambient",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 2000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "perspective Z-projection warp",
+    "props": [
+      "3D projected splines",
+      "strokeStyle glow"
+    ],
+    "src": "DavidHDev/react-bits",
+    "srcUrl": "https://github.com/DavidHDev/react-bits/tree/main/src/content/Backgrounds/Hyperspeed",
+    "collection": "React Bits",
+    "summary": "Inspired by @adrien_ninet's showcase: glowing cyan and magenta light ribbons race toward the viewer along a curving night highway.",
+    "hint": "Hold click to boost warp",
+    "choreography": [
+      "Two lanes of light streaks project from vanishing horizon z=1 to z=0.04.",
+      "Horizontal highway curve bends smoothly via sinusoidal phase.",
+      "Holding pointer doubles warp velocity cleanly."
+    ],
+    "agentPrompt": "Add \"Hyperspeed light trails\" (DavidHDev/react-bits).\n\nTrigger: ambient\nDuration: 2000 ms\nEasing: perspective Z-projection warp\nAnimates: 3D projected splines, strokeStyle glow\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Project 3D lane streaks: sx = cx + (laneX + curve(z)) / z; sy = horizon + camY / z;",
+    "html": "<div class=\"m-rb-hyperspeed-trails\"><canvas class=\"m-rht-c\"></canvas></div>",
+    "css": ".m-rb-hyperspeed-trails{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#07070c;cursor:pointer}.m-rb-hyperspeed-trails .m-rht-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-rht-c'),ctx=c.getContext('2d');const streaks=Array.from({length:36},(_,i)=>({lane:i%2===0?-1:1,off:(Math.random()*0.65+0.25),z:Math.random(),spd:0.009+Math.random()*0.012,len:0.09+Math.random()*0.12,col:i%2===0?'#f43f5e':'#22d3ee'}));let boost=false,raf=0;const onD=()=>{boost=true;},onU=()=>{boost=false;};root.addEventListener('pointerdown',onD);window.addEventListener('pointerup',onU);function tick(now){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='rgba(7,7,12,0.34)';ctx.fillRect(0,0,w,h);const bend=Math.sin(now*0.0008)*0.65;const hy=h*0.44;for(const s of streaks){s.z-=s.spd*(boost?2.3:1);if(s.z<0.04)s.z=1;const z1=s.z,z2=Math.min(1,s.z+s.len);const proj=z=>[w*0.5+(s.lane*s.off+bend*z*z)*w*0.18/z,hy+h*0.08/z];const[x1,y1]=proj(z1),[x2,y2]=proj(z2);ctx.beginPath();ctx.moveTo(x2,y2);ctx.lineTo(x1,y1);ctx.strokeStyle=s.col;ctx.lineWidth=Math.max(1,0.55/z1);ctx.stroke();}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointerdown',onD);window.removeEventListener('pointerup',onU);};"
+  },
+  {
+    "id": "tobi-metallic-asterisk",
+    "title": "Chrome orbital asterisk",
+    "use": "Typography",
+    "stack": "SVG",
+    "trigger": "Loop",
+    "feel": "Editorial",
+    "surface": "dark",
+    "dur": 4600,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "continuous 3D emblem spin",
+    "props": [
+      "transform (rotate, translate)"
+    ],
+    "src": "@tobiadonadon_",
+    "srcUrl": "https://x.com/tobiadonadon_/status/2125319156929347608",
+    "collection": "X Featured",
+    "summary": "Swiss brutalist vermilion-orange typography overlaid by a spinning metallic chrome 6-spoke asterisk emblem.",
+    "hint": "Hover to orbit emblem",
+    "choreography": [
+      "Bold condensed black display typography anchors the orange Swiss poster.",
+      "Specular silver 6-spoke star spins smoothly with subtle orbital drift.",
+      "Drop shadow grounds the floating chrome emblem above the lettering."
+    ],
+    "agentPrompt": "Add \"Chrome orbital asterisk\" (@tobiadonadon_).\n\nTrigger: loop\nDuration: 4600 ms\nEasing: continuous 3D emblem spin\nAnimates: transform (rotate, translate)\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "/* Brutalist poster + rotating metallic SVG asterisk with linearGradient specular shading */",
+    "html": "<div class=\"m-tobi-metallic-asterisk\"><div class=\"m-tma-txt\"><span>IDA &nbsp; KRON</span><span>IDENTITY</span><span>&amp; MOTION</span><span>DIRECTION</span></div><svg class=\"m-tma-star\" viewBox=\"0 0 120 120\" width=\"94\" height=\"94\"><defs><linearGradient class=\"m-tma-g\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#ffffff\"/><stop offset=\"45%\" stop-color=\"#94a3b8\"/><stop offset=\"65%\" stop-color=\"#1e293b\"/><stop offset=\"100%\" stop-color=\"#e2e8f0\"/></linearGradient></defs><g class=\"m-tma-sp\" transform=\"translate(60 60)\"><rect x=\"-8\" y=\"-44\" width=\"16\" height=\"88\" rx=\"8\"/><rect x=\"-8\" y=\"-44\" width=\"16\" height=\"88\" rx=\"8\" transform=\"rotate(60)\"/><rect x=\"-8\" y=\"-44\" width=\"16\" height=\"88\" rx=\"8\" transform=\"rotate(120)\"/></g></svg></div>",
+    "css": ".m-tobi-metallic-asterisk{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#ea580c;padding:12px}.m-tobi-metallic-asterisk .m-tma-txt{width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;font-family:Impact,'Host Grotesk',sans-serif;font-weight:900;font-size:38px;line-height:.88;letter-spacing:-0.03em;color:#111113}.m-tobi-metallic-asterisk .m-tma-star{position:absolute;filter:drop-shadow(0 12px 16px rgba(0,0,0,0.42));animation:m-tma-o 5.5s ease-in-out infinite alternate}.m-tobi-metallic-asterisk .m-tma-sp{animation:m-tma-r 4.6s linear infinite;transform-origin:0 0}@keyframes m-tma-r{to{transform:translate(60px,60px) rotate(360deg)}}@keyframes m-tma-o{from{transform:translate(-34px,-16px)}to{transform:translate(38px,18px)}}",
+    "js": "const uid='tma-'+Math.random().toString(36).slice(2,7);root.querySelector('.m-tma-g').id=uid;root.querySelectorAll('.m-tma-sp rect').forEach(r=>r.setAttribute('fill',`url(#${uid})`));return()=>{};"
+  },
+  {
+    "id": "tobi-scramble-atmosphere",
+    "title": "Mood-shift hero glow",
+    "use": "Backgrounds",
+    "stack": "CSS",
+    "trigger": "Loop",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 2600,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0,
+        0.55,
+        1
+      ]
+    },
+    "easeLabel": "900ms mood palette crossfade",
+    "props": [
+      "background",
+      "transform (rotate)",
+      "textContent"
+    ],
+    "src": "@tobiadonadon_",
+    "srcUrl": "https://x.com/tobiadonadon_/status/2125319156929347608",
+    "collection": "X Featured",
+    "summary": "An atmospheric product hero transitions smoothly between amber, cobalt, and sage moods while a floating cylinder tilts gently.",
+    "hint": "Click to cycle mood",
+    "choreography": [
+      "Background radial atmosphere crossfades cleanly across 3 color themes.",
+      "Minimalist cylindrical product silhouette tilts subtly with soft shadow.",
+      "Bottom-left uppercase label cycles MENTAL FOCUS / INNER BALANCE / STAMINA."
+    ],
+    "agentPrompt": "Add \"Mood-shift hero glow\" (@tobiadonadon_).\n\nTrigger: loop\nDuration: 2600 ms\nEasing: 900ms mood palette crossfade\nAnimates: background, transform (rotate), textContent\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".mood-stage { transition: background 900ms cubic-bezier(.45,0,.55,1); }",
+    "html": "<div class=\"m-tobi-scramble-atmosphere\"><div class=\"m-tsa-rod\"></div><div class=\"m-tsa-lbl\">MENTAL FOCUS</div></div>",
+    "css": ".m-tobi-scramble-atmosphere{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;cursor:pointer;transition:background 900ms ease}.m-tobi-scramble-atmosphere .m-tsa-rod{width:26px;height:104px;border-radius:13px;background:linear-gradient(90deg,#e4e4e7,#ffffff 45%,#a1a1aa);box-shadow:0 20px 36px rgba(0,0,0,0.35);transform:rotate(14deg);animation:m-tsa-f 3.6s ease-in-out infinite alternate}.m-tobi-scramble-atmosphere .m-tsa-lbl{position:absolute;left:16px;bottom:14px;font:600 12px 'Geist Mono',monospace;letter-spacing:.08em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.3)}@keyframes m-tsa-f{from{transform:rotate(12deg) translateY(-5px)}to{transform:rotate(18deg) translateY(5px)}}",
+    "js": "const wrap=root.querySelector('.m-tobi-scramble-atmosphere'),lbl=root.querySelector('.m-tsa-lbl');const moods=[['radial-gradient(circle at 50% 45%,#fb923c,#c2410c 68%,#431407)','MENTAL FOCUS'],['radial-gradient(circle at 50% 45%,#60a5fa,#1d4ed8 68%,#172554)','INNER BALANCE'],['radial-gradient(circle at 50% 45%,#86efac,#15803d 68%,#052e16)','STAMINA STRENGTH']];let idx=0,tm=0;function set(i){idx=i;wrap.style.background=moods[i][0];lbl.textContent=moods[i][1];}set(0);const next=()=>set((idx+1)%moods.length);tm=setInterval(next,2400);const onC=()=>{clearInterval(tm);next();tm=setInterval(next,2400);};root.addEventListener('click',onC);return()=>{clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "m4lkxx-physics-drop",
+    "title": "2D rigid-body physics",
+    "use": "Generative",
+    "stack": "Canvas 2D",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "light",
+    "dur": 1600,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "Verlet gravity + circle collisions",
+    "props": [
+      "x, y, vx, vy",
+      "collision impulse"
+    ],
+    "src": "@m4lkxx (Matter.js)",
+    "srcUrl": "https://x.com/m4lkxx/status/2119124947821883511",
+    "collection": "X Featured",
+    "summary": "Inspired by @m4lkxx's Matter.js showcase: colorful geometric balls drop under gravity, collide elastically, and stack on the floor.",
+    "hint": "Click to drop shapes",
+    "choreography": [
+      "Colorful spheres spawn from the top edge with gentle horizontal drift.",
+      "Pairwise elastic circle-circle collision resolution prevents overlap.",
+      "Clicking injects a fresh cluster of bouncy geometric bodies."
+    ],
+    "agentPrompt": "Add \"2D rigid-body physics\" (@m4lkxx (Matter.js)).\n\nTrigger: click\nDuration: 1600 ms\nEasing: Verlet gravity + circle collisions\nAnimates: x, y, vx, vy, collision impulse\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Pairwise collision: overlap = r1+r2-dist; push apart + exchange normal impulse",
+    "html": "<div class=\"m-m4lkxx-physics-drop\"><canvas class=\"m-mpd-c\"></canvas></div>",
+    "css": ".m-m4lkxx-physics-drop{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fef3c7;cursor:pointer}.m-m4lkxx-physics-drop .m-mpd-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-mpd-c'),ctx=c.getContext('2d');const cols=['#ef4444','#3b82f6','#10b981','#f59e0b','#8b5cf6','#ec4899'];let balls=[],raf=0;function seed(){const w=c.clientWidth||320;balls=[];for(let i=0;i<18;i++)balls.push({x:40+Math.random()*(w-80),y:-20-i*18,vx:(Math.random()-0.5)*2,vy:0,r:10+Math.random()*9,col:cols[i%cols.length]});}seed();const onC=e=>{const r=c.getBoundingClientRect();for(let i=0;i<5;i++)balls.push({x:e.clientX-r.left+(Math.random()-0.5)*24,y:e.clientY-r.top-10,vx:(Math.random()-0.5)*4,vy:-2,r:10+Math.random()*8,col:cols[balls.length%cols.length]});if(balls.length>32)balls.splice(0,5);};root.addEventListener('click',onC);function tick(){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);for(const b of balls){b.vy+=0.34;b.x+=b.vx;b.y+=b.vy;b.vx*=0.992;if(b.y+b.r>h-8){b.y=h-8-b.r;b.vy*=-0.52;b.vx*=0.92;}if(b.x-b.r<8){b.x=8+b.r;b.vx*=-0.6;}if(b.x+b.r>w-8){b.x=w-8-b.r;b.vx*=-0.6;}}for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){const a=balls[i],b=balls[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||0.01,min=a.r+b.r;if(d<min){const nx=dx/d,ny=dy/d,ov=(min-d)*0.5;a.x-=nx*ov;a.y-=ny*ov;b.x+=nx*ov;b.y+=ny*ov;const dv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;if(dv<0){const imp=dv*0.7;a.vx+=nx*imp;a.vy+=ny*imp;b.vx-=nx*imp;b.vy-=ny*imp;}}}for(const b of balls){ctx.beginPath();ctx.fillStyle=b.col;ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();}raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "m4lkxx-data-globe",
+    "title": "3D orbital arc globe",
+    "use": "Generative",
+    "stack": "Canvas 2D",
+    "trigger": "Drag",
+    "feel": "Cinematic",
+    "surface": "dark",
+    "dur": 6000,
+    "ease": {
+      "t": "linear"
+    },
+    "easeLabel": "orthographic 3D sphere rotation",
+    "props": [
+      "3D spherical projection",
+      "arc dash"
+    ],
+    "src": "@m4lkxx (three-globe)",
+    "srcUrl": "https://x.com/m4lkxx/status/2119124947821883511",
+    "collection": "X Featured",
+    "summary": "Inspired by @m4lkxx's three-globe showcase: a dotted 3D sphere rotates in deep space with glowing animated flight arcs connecting hubs.",
+    "hint": "Drag globe to spin",
+    "choreography": [
+      "Fibonacci lattice plots 220 evenly distributed surface dots on a 3D sphere.",
+      "Back-face culling dims far-side dots while front dots glow bright sky-blue.",
+      "Three elevated Bezier arcs pulse golden telemetry signals between hubs."
+    ],
+    "agentPrompt": "Add \"3D orbital arc globe\" (@m4lkxx (three-globe)).\n\nTrigger: drag\nDuration: 6000 ms\nEasing: orthographic 3D sphere rotation\nAnimates: 3D spherical projection, arc dash\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Rotate Fibonacci sphere points by yaw and project orthographically",
+    "html": "<div class=\"m-m4lkxx-data-globe\"><canvas class=\"m-mdg-c\"></canvas></div>",
+    "css": ".m-m4lkxx-data-globe{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:radial-gradient(circle at 50% 50%,#10192e,#060913 78%);cursor:grab}.m-m4lkxx-data-globe .m-mdg-c{width:100%;height:100%;display:block}",
+    "js": "const c=root.querySelector('.m-mdg-c'),ctx=c.getContext('2d');const pts=[];const N=220,ga=Math.PI*(3-Math.sqrt(5));for(let i=0;i<N;i++){const y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),th=ga*i;pts.push([Math.cos(th)*r,y,Math.sin(th)*r]);}let yaw=0,down=false,lx=0,raf=0;const onD=e=>{down=true;lx=e.clientX;};const onM=e=>{if(!down)return;yaw+=(e.clientX-lx)*0.01;lx=e.clientX;};const onU=()=>{down=false;};root.addEventListener('pointerdown',onD);window.addEventListener('pointermove',onM);window.addEventListener('pointerup',onU);function proj(p,R,cx,cy){const x=p[0]*Math.cos(yaw)-p[2]*Math.sin(yaw),z=p[0]*Math.sin(yaw)+p[2]*Math.cos(yaw),y=p[1];return[cx+x*R,cy+y*R,z];}function tick(now){if(!root.isConnected)return;const dpr=Math.min(2,window.devicePixelRatio||1),w=c.clientWidth||320,h=c.clientHeight||240;if(c.width!==Math.round(w*dpr)||c.height!==Math.round(h*dpr)){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr);}ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);if(!down)yaw+=0.008;const R=Math.min(w,h)*0.36,cx=w/2,cy=h/2;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='rgba(56,189,248,0.18)';ctx.lineWidth=1;ctx.stroke();for(const p of pts){const[x,y,z]=proj(p,R,cx,cy);ctx.fillStyle=z>0?`rgba(125,211,252,${(0.25+z*0.75).toFixed(2)})`:'rgba(51,65,85,0.22)';ctx.beginPath();ctx.arc(x,y,z>0?1.6:1,0,Math.PI*2);ctx.fill();}const pairs=[[15,95],[45,165],[110,195]];pairs.forEach(([a,b],k)=>{const p1=proj(pts[a],R,cx,cy),p2=proj(pts[b],R,cx,cy);const mx=(p1[0]+p2[0])/2,my=(p1[1]+p2[1])/2-R*0.42;ctx.beginPath();ctx.moveTo(p1[0],p1[1]);ctx.quadraticCurveTo(mx,my,p2[0],p2[1]);ctx.strokeStyle=k===1?'rgba(251,191,36,0.75)':'rgba(56,189,248,0.75)';ctx.lineWidth=1.5;ctx.setLineDash([28,120]);ctx.lineDashOffset=-(now*0.06+k*45);ctx.stroke();});ctx.setLineDash([]);raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);return()=>{cancelAnimationFrame(raf);root.removeEventListener('pointerdown',onD);window.removeEventListener('pointermove',onM);window.removeEventListener('pointerup',onU);};"
+  },
+  {
+    "id": "m4lkxx-d3-stream",
+    "title": "Animated spline stream",
+    "use": "Navigation and layout",
+    "stack": "SVG",
+    "trigger": "Click",
+    "feel": "Silky",
+    "surface": "light",
+    "dur": 900,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "SVG path d interpolation"
+    ],
+    "src": "@m4lkxx (D3)",
+    "srcUrl": "https://x.com/m4lkxx/status/2119124947821883511",
+    "collection": "X Featured",
+    "summary": "Inspired by @m4lkxx's D3 data-viz showcase: three layered smooth spline ribbons morph cleanly between live datasets.",
+    "hint": "Click to morph dataset",
+    "choreography": [
+      "Three stacked data curves interpolate control points smoothly over 860ms.",
+      "Translucent cobalt, coral, and slate fills create clean editorial depth.",
+      "Click immediately generates and morphs into a new dataset."
+    ],
+    "agentPrompt": "Add \"Animated spline stream\" (@m4lkxx (D3)).\n\nTrigger: click\nDuration: 900 ms\nEasing: cubic-bezier(0.22, 1, 0.36, 1)\nAnimates: SVG path d interpolation\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": "// Interpolate control points with cubic ease-out and rebuild SVG path d",
+    "html": "<div class=\"m-m4lkxx-d3-stream\"><svg class=\"m-md3-s\" viewBox=\"0 0 320 220\" width=\"100%\" height=\"100%\"><path class=\"m-md3-p1\" fill=\"rgba(42,148,226,0.28)\" stroke=\"#2a94e2\" stroke-width=\"2\"/><path class=\"m-md3-p2\" fill=\"rgba(244,63,94,0.22)\" stroke=\"#f43f5e\" stroke-width=\"2\"/><path class=\"m-md3-p3\" fill=\"rgba(16,17,20,0.14)\" stroke=\"#101114\" stroke-width=\"2\"/></svg></div>",
+    "css": ".m-m4lkxx-d3-stream{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#fafafa;cursor:pointer}",
+    "js": "const ps=[root.querySelector('.m-md3-p1'),root.querySelector('.m-md3-p2'),root.querySelector('.m-md3-p3')];const mk=b=>Array.from({length:7},()=>b+(Math.random()-0.5)*56);let cur=[mk(90),mk(130),mk(165)],dst=[mk(90),mk(130),mk(165)],t0=performance.now(),raf=0,tm=0;function pathOf(ys){let d=`M 0 ${ys[0].toFixed(1)}`;for(let i=0;i<ys.length-1;i++){const x0=(i/6)*320,x1=((i+1)/6)*320,xm=(x0+x1)/2;d+=` C ${xm.toFixed(1)} ${ys[i].toFixed(1)}, ${xm.toFixed(1)} ${ys[i+1].toFixed(1)}, ${x1.toFixed(1)} ${ys[i+1].toFixed(1)}`;}return d+' L 320 220 L 0 220 Z';}function morph(){cur=dst;dst=[mk(82),mk(124),mk(162)];t0=performance.now();}function tick(now){if(!root.isConnected)return;const p=Math.min(1,(now-t0)/860),e=1-Math.pow(1-p,3);ps.forEach((el,k)=>{const ys=cur[k].map((v,i)=>v+(dst[k][i]-v)*e);el.setAttribute('d',pathOf(ys));});raf=requestAnimationFrame(tick);}raf=requestAnimationFrame(tick);tm=setInterval(morph,2200);const onC=()=>{clearInterval(tm);morph();tm=setInterval(morph,2200);};root.addEventListener('click',onC);return()=>{cancelAnimationFrame(raf);clearInterval(tm);root.removeEventListener('click',onC);};"
+  },
+  {
+    "id": "kasun-depth-fan",
+    "title": "3D depth tile fan",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Hover",
+    "feel": "Tactile",
+    "surface": "dark",
+    "dur": 420,
+    "ease": {
+      "t": "spring",
+      "k": 260,
+      "c": 22
+    },
+    "easeLabel": "spring(260, 22) hover spread",
+    "props": [
+      "transform (translate, rotate, scale)",
+      "z-index"
+    ],
+    "src": "@kasuncfdo (Sona UI)",
+    "srcUrl": "https://x.com/kasuncfdo/status/2125343324278251603",
+    "collection": "X Featured",
+    "summary": "Inspired by Sona UI in @kasuncfdo's post: five sleek tilted visual cards fan open cleanly when hovered and lift the active tile.",
+    "hint": "Hover cards to fan open",
+    "choreography": [
+      "At rest, 5 cards overlap tightly in an arc from -14° to +14°.",
+      "Hovering spreads the deck wider while elevating the hovered card -18px upward.",
+      "Crisp inner gradients give each card tactile depth on dark obsidian."
+    ],
+    "agentPrompt": "Add \"3D depth tile fan\" (@kasuncfdo (Sona UI)).\n\nTrigger: hover\nDuration: 420 ms\nEasing: spring(260, 22) hover spread\nAnimates: transform (translate, rotate, scale), z-index\n\nKeep zero external dependencies and provide a prefers-reduced-motion fallback.",
+    "extractableCode": ".fan:hover .card { transform: translateX(calc(var(--d)*36px)) rotate(calc(var(--d)*9deg)); }\n.card:hover { transform: translateY(-18px) scale(1.12); }",
+    "html": "<div class=\"m-kasun-depth-fan\"><div class=\"m-kdf-deck\"><div class=\"m-kdf-c\" style=\"--d:-2;--g:linear-gradient(135deg,#f43f5e,#9f1239)\">01</div><div class=\"m-kdf-c\" style=\"--d:-1;--g:linear-gradient(135deg,#f59e0b,#b45309)\">02</div><div class=\"m-kdf-c\" style=\"--d:0;--g:linear-gradient(135deg,#2a94e2,#1e3a8a)\">03</div><div class=\"m-kdf-c\" style=\"--d:1;--g:linear-gradient(135deg,#10b981,#065f46)\">04</div><div class=\"m-kdf-c\" style=\"--d:2;--g:linear-gradient(135deg,#8b5cf6,#4c1d95)\">05</div></div></div>",
+    "css": ".m-kasun-depth-fan{width:100%;height:100%;display:grid;place-items:center;overflow:hidden;position:relative;font-family:'Host Grotesk',-apple-system,sans-serif;user-select:none;background:#0c0c10}.m-kasun-depth-fan .m-kdf-deck{position:relative;width:240px;height:120px;display:grid;place-items:center}.m-kasun-depth-fan .m-kdf-c{position:absolute;width:66px;height:90px;border-radius:11px;background:var(--g);border:1px solid rgba(255,255,255,0.22);box-shadow:0 12px 28px -8px rgba(0,0,0,0.75);display:grid;place-items:center;font:600 13px 'Geist Mono',monospace;color:#fff;cursor:pointer;transform:translateX(calc(var(--d)*22px)) translateY(calc(var(--d)*var(--d)*3px)) rotate(calc(var(--d)*7deg));transition:transform 400ms cubic-bezier(.22,1.2,.36,1),z-index 0s}.m-kasun-depth-fan:hover .m-kdf-c,.m-kasun-depth-fan.demo .m-kdf-c{transform:translateX(calc(var(--d)*36px)) translateY(calc(var(--d)*var(--d)*2px)) rotate(calc(var(--d)*9deg))}.m-kasun-depth-fan .m-kdf-c:hover{z-index:20;transform:translateX(calc(var(--d)*36px)) translateY(-18px) rotate(0deg) scale(1.12)}",
+    "js": "const wrap=root.querySelector('.m-kasun-depth-fan');let tm=0;root.addEventListener('pointerenter',()=>clearInterval(tm),{once:true});tm=setInterval(()=>wrap.classList.toggle('demo'),2200);return()=>clearInterval(tm);"
+  }
+]
