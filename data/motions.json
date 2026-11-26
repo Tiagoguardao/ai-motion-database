@@ -1,6 +1,6 @@
 {
-  "count": 527,
-  "appsCount": 12,
+  "count": 531,
+  "appsCount": 14,
   "apps": [
     {
       "name": "Duolingo",
@@ -130,7 +130,8 @@
       "storeUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
       "bundleId": "notion.id",
       "motionIds": [
-        "app-notion-slash-toggle"
+        "app-notion-slash-toggle",
+        "app-notion-cube-handoff"
       ]
     },
     {
@@ -179,7 +180,8 @@
       "storeUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
       "bundleId": "com.getsomeheadspace.headspace",
       "motionIds": [
-        "app-headspace-breathing-orb"
+        "app-headspace-breathing-orb",
+        "app-headspace-horizon-dome"
       ]
     },
     {
@@ -195,6 +197,39 @@
       "bundleId": "com.apple.springboard",
       "motionIds": [
         "app-dynamic-island-morph"
+      ]
+    },
+    {
+      "name": "Strava",
+      "slug": "strava",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FC4C02",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/8b/e3/968be356-9081-dd0a-d8e2-160b678e2d29/AppIcon-Primary-0-0-1x_U007ephone-0-1-0-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/strava-run-bike-walk/id426826309?uo=4",
+      "bundleId": "com.strava.stravaride",
+      "motionIds": [
+        "app-strava-sport-carousel"
+      ]
+    },
+    {
+      "name": "Slack",
+      "slug": "slack",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#4A154B",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ad/19/d2/ad19d29c-62c5-eadc-158c-2dc96f2228b2/slack_icon_prod-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/slack/id618783545?uo=4",
+      "bundleId": "com.tinyspeck.chatlyio",
+      "motionIds": [
+        "app-slack-onboarding-collage"
       ]
     }
   ],
@@ -945,6 +980,201 @@
         "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/40/43/5c40438f-d7c6-ca2d-c459-a468d63f1469/AppIcon-0-0-1x_U007epad-0-1-0-0-0-85-220.png/100x100bb.jpg",
         "storeUrl": "https://apps.apple.com/us/app/airbnb/id401626263?uo=4",
         "bundleId": "com.airbnb.app"
+      }
+    },
+    {
+      "id": "app-strava-sport-carousel",
+      "title": "Strava: Sport Picker & Elastic Dot Carousel",
+      "use": "Navigation and layout",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 460,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "width + background-color (elastic orange pagination pill)",
+        "transform: translateY + opacity (headline & sport card crossfade)",
+        "transform: scale (sport icon selection pop)"
+      ],
+      "source": "Strava (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/strava-run-bike-walk/id426826309?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Strava Android: switching sport modes pops the circular icon into Strava orange (#FC4C02), updates the GPS route preview card, and stretches the active pagination dot into an elongated capsule.",
+      "choreography": [
+        "0-260ms: tapped sport badge pops scale(0.9 -> 1.08 -> 1) as its fill tints to rgba(252,76,2,0.14) and label locks to #FC4C02.",
+        "0-380ms: active pagination indicator stretches width 6px -> 18px in #FC4C02 while the previous indicator shrinks back to 6px.",
+        "40-460ms: route map SVG trace redraws via stroke-dashoffset and the caption crossfades cleanly."
+      ],
+      "agentPrompt": "Recreate Strava's live-captured onboarding sport card & elastic dot carousel:\n1. Render a clean GPS route preview card on #ffffff with an orange SVG polyline (#fc4c02, stroke-width 3, stroke-linecap round) whose stroke-dashoffset animates over 480ms cubic-bezier(0.22, 1, 0.36, 1) whenever a sport changes.\n2. Below the map, render a 4-icon sport row (Ride, Run, Hike, Ski); selecting one pops its circular badge (scale 0.88 -> 1.08 -> 1) and shifts border/icon color to #fc4c02.\n3. Render a 4-dot pager where the active dot transitions width from 6px to 18px and background from #d4d4d8 to #fc4c02 over 300ms cubic-bezier(0.22, 1, 0.36, 1), paired with a full-width #fc4c02 rounded pill CTA.",
+      "code": "<!-- Strava Sport Picker & Elastic Dot Carousel -->\n<div class=\"strava-card\">...</div>",
+      "app": {
+        "name": "Strava",
+        "slug": "strava",
+        "category": "Health & Fitness",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#FC4C02",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/8b/e3/968be356-9081-dd0a-d8e2-160b678e2d29/AppIcon-Primary-0-0-1x_U007ephone-0-1-0-0-sRGB-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/strava-run-bike-walk/id426826309?uo=4",
+        "bundleId": "com.strava.stravaride"
+      }
+    },
+    {
+      "id": "app-headspace-horizon-dome",
+      "title": "Headspace: Launch Horizon Breathing Dome",
+      "use": "Backgrounds",
+      "stack": "SVG",
+      "trigger": "Loop",
+      "feel": "Calm",
+      "surface": "light",
+      "durationMs": 4400,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.45,
+          0.05,
+          0.55,
+          0.95
+        ]
+      },
+      "easingLabel": "sine-in-out (4.4s breath)",
+      "properties": [
+        "transform: translateY + scale (bottom horizon dome)",
+        "transform: translateY (serene closed-eye face)",
+        "opacity (Breathe in / Breathe out crossfade)"
+      ],
+      "source": "Headspace (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Headspace Android launch: a giant warm-orange smiling dome rises smoothly from the bottom edge during 'Breathe in', crossfades the top caption at peak crest, and subsides gently on 'Breathe out'.",
+      "choreography": [
+        "0-2200ms (Breathe in): oversized circular orange dome (#F47D31) anchored below the viewport lifts smoothly by 26% height along a zero-jerk sine wave.",
+        "2000-2400ms (Crest turnaround): top caption 'Breathe in' fades cleanly to opacity 0 and re-emerges as 'Breathe out' while the dome hovers briefly.",
+        "2200-4400ms (Breathe out): dome and closed-eye smile sink peacefully back toward the bottom baseline."
+      ],
+      "agentPrompt": "Recreate Headspace's live-captured launch breathing dome on #ffffff:\n1. Position an oversized circle (width 155%, aspect-ratio 1, border-radius 50%, background #f47d31) peeking from the bottom edge of the container.\n2. Place a minimal SVG smiling closed-eye face (#2b2826, stroke-width 2.6, stroke-linecap round) near the top arc of the dome.\n3. Drive vertical lift with a pure cosine ease (w = 0.5 - 0.5 * cos(t * 2π / 4.4s)) translating the dome up 34px and scaling 1 -> 1.06.\n4. At the top of the frame, crossfade 'Breathe in' <-> 'Breathe out' smoothly using opacity derived from sin(phase) near the crest and trough so the word swap never snaps harshly.",
+      "code": "<!-- Headspace Launch Horizon Breathing Dome -->\n<div class=\"hs-dome\">...</div>",
+      "app": {
+        "name": "Headspace",
+        "slug": "headspace",
+        "category": "Health & Fitness",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#F47D31",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d1/e7/46/d1e74629-57e3-42e9-eabd-791d8e22e634/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
+        "bundleId": "com.getsomeheadspace.headspace"
+      }
+    },
+    {
+      "id": "app-slack-onboarding-collage",
+      "title": "Slack: Plum Curtain & Staggered Avatar Collage",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Playful",
+      "surface": "dark",
+      "durationMs": 1150,
+      "easing": {
+        "t": "spring",
+        "k": 320,
+        "c": 22
+      },
+      "easingLabel": "spring(320, 22)",
+      "properties": [
+        "clip-path / transform: translateY (plum curtain wipe)",
+        "transform: scale + translateY (staggered teammate cards)",
+        "transform: scale (emoji reaction pill pop)"
+      ],
+      "source": "Slack (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/slack/id618783545?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Slack Android launch: an aubergine curtain sweeps into view, teammate cards pop in diagonally with staggered springs, message pills + a green ✓ 3 reaction bounce in, and the CTA rises from below.",
+      "choreography": [
+        "0-260ms: deep aubergine (#4A154B) backdrop sweeps smoothly up into full frame.",
+        "240-620ms: 3 colorful rounded teammate tiles (teal, amber, coral) spring in with 95ms diagonal stagger (scale 0.65 -> 1.05 -> 1).",
+        "600-880ms: white message bars and the emerald '✓ 3' reaction chip pop beside the avatars.",
+        "820-1150ms: headline with gold highlight (#ECB22E) fades in as the white 'Go on...' button glides up 16px."
+      ],
+      "agentPrompt": "Build Slack's live-captured onboarding collage choreography on #4a154b (total 1150ms):\n1. Stagger 3 rounded square avatar tiles (border-radius 10px, backgrounds #e6f4f1, #f5a623, #f27c7c) at 120ms, 220ms, and 320ms using scale(0.6) translateY(12px) -> scale(1) with spring overshoot cubic-bezier(0.22, 1.28, 0.36, 1).\n2. At 460ms and 560ms, spring in two white rounded message bars plus a compact reaction pill ('✓ 3', #2bac76 badge) from scale(0.5).\n3. At 680ms, fade in the bold headline ('Picture this: a messaging app, but built for work.' with 'built for' in #ecb22e) and slide the full-width white rounded CTA pill up 16px over 340ms.",
+      "code": "<!-- Slack Onboarding Staggered Avatar Collage -->\n<div class=\"slack-ob\">...</div>",
+      "app": {
+        "name": "Slack",
+        "slug": "slack",
+        "category": "Business",
+        "platform": [
+          "iOS",
+          "Android",
+          "Web"
+        ],
+        "accent": "#4A154B",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ad/19/d2/ad19d29c-62c5-eadc-158c-2dc96f2228b2/slack_icon_prod-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/slack/id618783545?uo=4",
+        "bundleId": "com.tinyspeck.chatlyio"
+      }
+    },
+    {
+      "id": "app-notion-cube-handoff",
+      "title": "Notion: Splash Cube Lift & Editorial Welcome",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Crisp",
+      "surface": "light",
+      "durationMs": 480,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "transform: translateY + scale (logo cube handoff)",
+        "opacity + transform: translateY (title & subtitle)",
+        "opacity + transform: translateY (Get started CTA)"
+      ],
+      "source": "Notion (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Notion Android launch: the centered monochrome cube scales down cleanly and glides upward while the welcome headline and black 'Get started' pill crossfade into place.",
+      "choreography": [
+        "0-420ms: monochrome N cube scales from 1.28 to 1.0 and translates upward -26px on cubic-bezier(0.22, 1, 0.36, 1).",
+        "110-420ms: 'Welcome to Notion' and subtitle fade in with a subtle 8px upward drift.",
+        "180-480ms: bottom pill CTA ('Get started', #191919) rises 12px from opacity 0 to rest."
+      ],
+      "agentPrompt": "Build Notion's live-captured splash-to-welcome handoff on pure #ffffff:\n1. Start with the monochrome cube mark centered at scale(1.28) translateY(24px).\n2. Transition it to scale(1) translateY(0) over 420ms cubic-bezier(0.22, 1, 0.36, 1) with zero bounce.\n3. Stagger the editorial title ('Welcome to Notion', 17px semibold, #191919) at +100ms and subtitle (#787774) at +140ms with translateY(8px -> 0) and opacity 0 -> 1.\n4. Bring in the dark rounded CTA pill (#191919, border-radius 999px) at +180ms with translateY(12px -> 0) over 300ms.",
+      "code": "<!-- Notion Splash Cube Lift & Welcome Handoff -->\n<div class=\"nt-splash\">...</div>",
+      "app": {
+        "name": "Notion",
+        "slug": "notion",
+        "category": "Productivity",
+        "platform": [
+          "iOS",
+          "Android",
+          "Web"
+        ],
+        "accent": "#191919",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ea/1b/48/ea1b4840-9ee3-ab66-a482-659ced115cbb/AppIconProd-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
+        "bundleId": "notion.id"
       }
     },
     {

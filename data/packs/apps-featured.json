@@ -810,5 +810,216 @@
     "html": "<div class=\"m-app-asrc\"><div class=\"m-app-asrc__frame\"><div class=\"m-app-asrc__top\"><span>Homes</span><span>Hotels</span><span>Experiences</span><button type=\"button\" class=\"m-app-asrc__x\" aria-label=\"Close\">×</button></div><button type=\"button\" class=\"m-app-asrc__pill\"><span class=\"m-app-asrc__phead\">🔍 Start your search</span><div class=\"m-app-asrc__where\"><b>Where?</b><div class=\"m-app-asrc__in\">🔍 Search destinations</div><div class=\"m-app-asrc__sug\"><span>📍 Nearby</span><span>🏛 Porto</span><span>🌊 Lisbon</span></div></div></button><div class=\"m-app-asrc__acc\" style=\"--d:50ms\"><span>When</span><b>Add dates</b></div><div class=\"m-app-asrc__acc\" style=\"--d:100ms\"><span>Who</span><b>Add guests</b></div><div class=\"m-app-asrc__foot\"><span>Clear all</span><b>Search</b></div></div></div>",
     "css": ".m-app-asrc{position:absolute;inset:0;display:grid;place-items:center;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;transition:background .28s ease;user-select:none;overflow:hidden}.m-app-asrc.is-open{background:#efefef}.m-app-asrc__frame{position:relative;width:min(88%,264px);height:100%;max-height:242px;padding:12px 8px 0;display:flex;flex-direction:column;gap:8px}.m-app-asrc__top{display:flex;align-items:center;justify-content:center;gap:12px;font:600 11px/1 inherit;color:#717171;height:18px;opacity:0;transform:translateY(-8px);transition:opacity .24s ease,transform .32s cubic-bezier(.22,1,.36,1)}.m-app-asrc.is-open .m-app-asrc__top{opacity:1;transform:none}.m-app-asrc__top span:first-child{color:#222;border-bottom:1.5px solid #222;padding-bottom:2px}.m-app-asrc__x{position:absolute;right:6px;top:8px;width:22px;height:22px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#222;font-size:13px;line-height:1;display:grid;place-items:center;cursor:pointer}.m-app-asrc__pill{position:relative;width:100%;height:38px;border:1px solid #e4e4e4;border-radius:999px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.07);padding:0 14px;text-align:left;overflow:hidden;cursor:pointer;transition:height .38s cubic-bezier(.22,1,.36,1),border-radius .38s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,padding .32s ease}.m-app-asrc.is-open .m-app-asrc__pill{height:106px;border-radius:18px;padding:10px 13px;box-shadow:0 12px 28px rgba(0,0,0,.1);border-color:transparent}.m-app-asrc__phead{display:flex;align-items:center;justify-content:center;height:36px;font:600 12px/1 inherit;color:#222;transition:opacity .14s ease}.m-app-asrc.is-open .m-app-asrc__phead{opacity:0;height:0;overflow:hidden}.m-app-asrc__where{opacity:0;transform:translateY(6px);transition:opacity .22s ease .08s,transform .3s cubic-bezier(.22,1,.36,1) .06s}.m-app-asrc.is-open .m-app-asrc__where{opacity:1;transform:none}.m-app-asrc__where b{display:block;font:700 14px/1.1 inherit;color:#222;margin-bottom:6px}.m-app-asrc__in{padding:6px 9px;border-radius:9px;border:1px solid #d4d4d4;font-size:11px;color:#717171;margin-bottom:7px}.m-app-asrc__sug{display:flex;gap:5px}.m-app-asrc__sug span{font-size:10px;padding:3px 7px;border-radius:7px;background:#f4f4f5;color:#333}.m-app-asrc__acc{display:flex;justify-content:space-between;align-items:center;padding:8px 13px;border-radius:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:11px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .22s ease var(--d),transform .32s cubic-bezier(.22,1,.36,1) var(--d)}.m-app-asrc.is-open .m-app-asrc__acc{opacity:1;transform:none;pointer-events:auto}.m-app-asrc__acc span{color:#717171}.m-app-asrc__acc b{color:#222;font-weight:600}.m-app-asrc__foot{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#fff;border-top:1px solid #e6e6e6;font-size:11px;transform:translateY(100%);transition:transform .34s cubic-bezier(.22,1,.36,1) .06s}.m-app-asrc.is-open .m-app-asrc__foot{transform:none}.m-app-asrc__foot span{text-decoration:underline;color:#222;font-weight:600}.m-app-asrc__foot b{padding:6px 13px;border-radius:8px;background:#ff385c;color:#fff;font-weight:600}",
     "js": "var el=root.querySelector('.m-app-asrc');if(!el)return;var pill=el.querySelector('.m-app-asrc__pill'),x=el.querySelector('.m-app-asrc__x');var open=false,touched=false,dead=false;function set(v){open=v;el.classList.toggle('is-open',open);}pill.addEventListener('click',function(){touched=true;set(!open);});x.addEventListener('click',function(e){e.stopPropagation();touched=true;set(false);});var t0=setTimeout(function(){if(!touched&&!dead)set(true);},750);var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)set(!open);},2800);return function(){dead=true;clearTimeout(t0);clearInterval(iv);};"
+  },
+  {
+    "id": "app-strava-sport-carousel",
+    "title": "Strava: Sport Picker & Elastic Dot Carousel",
+    "use": "Navigation and layout",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 460,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "width + background-color (elastic orange pagination pill)",
+      "transform: translateY + opacity (headline & sport card crossfade)",
+      "transform: scale (sport icon selection pop)"
+    ],
+    "src": "Strava (Live Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/strava-run-bike-walk/id426826309?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Strava",
+      "slug": "strava",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#FC4C02",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/96/8b/e3/968be356-9081-dd0a-d8e2-160b678e2d29/AppIcon-Primary-0-0-1x_U007ephone-0-1-0-0-sRGB-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/strava-run-bike-walk/id426826309?uo=4",
+      "bundleId": "com.strava.stravaride"
+    },
+    "summary": "Captured live from Strava Android: switching sport modes pops the circular icon into Strava orange (#FC4C02), updates the GPS route preview card, and stretches the active pagination dot into an elongated capsule.",
+    "hint": "Tap a sport icon or pagination dot",
+    "choreography": [
+      "0-260ms: tapped sport badge pops scale(0.9 -> 1.08 -> 1) as its fill tints to rgba(252,76,2,0.14) and label locks to #FC4C02.",
+      "0-380ms: active pagination indicator stretches width 6px -> 18px in #FC4C02 while the previous indicator shrinks back to 6px.",
+      "40-460ms: route map SVG trace redraws via stroke-dashoffset and the caption crossfades cleanly."
+    ],
+    "agentPrompt": "Recreate Strava's live-captured onboarding sport card & elastic dot carousel:\n1. Render a clean GPS route preview card on #ffffff with an orange SVG polyline (#fc4c02, stroke-width 3, stroke-linecap round) whose stroke-dashoffset animates over 480ms cubic-bezier(0.22, 1, 0.36, 1) whenever a sport changes.\n2. Below the map, render a 4-icon sport row (Ride, Run, Hike, Ski); selecting one pops its circular badge (scale 0.88 -> 1.08 -> 1) and shifts border/icon color to #fc4c02.\n3. Render a 4-dot pager where the active dot transitions width from 6px to 18px and background from #d4d4d8 to #fc4c02 over 300ms cubic-bezier(0.22, 1, 0.36, 1), paired with a full-width #fc4c02 rounded pill CTA.",
+    "extractableCode": "<!-- Strava Sport Picker & Elastic Dot Carousel -->\n<div class=\"strava-card\">...</div>",
+    "html": "<div class=\"m-app-stv\"><div class=\"m-app-stv__card\"><div class=\"m-app-stv__map\"><svg viewBox=\"0 0 220 74\"><path class=\"m-app-stv__grid\" d=\"M0 24h220M0 50h220M55 0v74M110 0v74M165 0v74\"/><path class=\"m-app-stv__route\" d=\"M18 56 C48 18, 86 62, 118 30 S178 16, 202 44\"/></svg><span class=\"m-app-stv__stat\">8.4 km · 4:42 /km</span></div><div class=\"m-app-stv__sports\"><button type=\"button\" data-i=\"0\">🚴<span>Ride</span></button><button type=\"button\" data-i=\"1\" class=\"is-on\">🏃<span>Run</span></button><button type=\"button\" data-i=\"2\">🥾<span>Hike</span></button><button type=\"button\" data-i=\"3\">⛷<span>Ski</span></button></div><div class=\"m-app-stv__dots\"><i data-i=\"0\"></i><i data-i=\"1\" class=\"is-on\"></i><i data-i=\"2\"></i><i data-i=\"3\"></i></div></div></div>",
+    "css": ".m-app-stv{position:absolute;inset:0;display:grid;place-items:center;background:#faf9f7;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif;user-select:none}.m-app-stv__card{width:min(86%,252px);padding:12px;border-radius:16px;background:#fff;border:1px solid #eceae6;box-shadow:0 12px 28px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:11px}.m-app-stv__map{position:relative;height:78px;border-radius:11px;background:#eef6ee;overflow:hidden}.m-app-stv__map svg{width:100%;height:100%;display:block}.m-app-stv__grid{stroke:rgba(16,80,32,.08);stroke-width:1;fill:none}.m-app-stv__route{fill:none;stroke:#fc4c02;stroke-width:3;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:0;transition:stroke-dashoffset .52s cubic-bezier(.22,1,.36,1)}.m-app-stv__stat{position:absolute;left:8px;bottom:7px;padding:3px 7px;border-radius:6px;background:rgba(255,255,255,.92);font:600 10.5px/1 'Geist Mono',monospace;color:#18181b}.m-app-stv__sports{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.m-app-stv__sports button{border:1px solid transparent;border-radius:11px;padding:7px 2px;background:#f5f5f4;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:15px;cursor:pointer;transition:transform .22s cubic-bezier(.22,1.25,.36,1),background .2s,border-color .2s}.m-app-stv__sports button span{font:600 10px/1 inherit;color:#71717a}.m-app-stv__sports button.is-on{background:rgba(252,76,2,.12);border-color:rgba(252,76,2,.35);transform:scale(1.06)}.m-app-stv__sports button.is-on span{color:#fc4c02}.m-app-stv__dots{display:flex;justify-content:center;gap:5px;padding-top:2px}.m-app-stv__dots i{display:block;height:6px;width:6px;border-radius:99px;background:#d4d4d8;transition:width .3s cubic-bezier(.22,1,.36,1),background .25s}.m-app-stv__dots i.is-on{width:18px;background:#fc4c02}",
+    "js": "var el=root.querySelector('.m-app-stv');if(!el)return;var route=el.querySelector('.m-app-stv__route'),stat=el.querySelector('.m-app-stv__stat'),btns=[].slice.call(el.querySelectorAll('.m-app-stv__sports button')),dots=[].slice.call(el.querySelectorAll('.m-app-stv__dots i'));var data=[{d:'M16 58 C56 10, 114 66, 152 24 S192 14, 206 38',s:'42.6 km · 29.4 km/h'},{d:'M18 56 C48 18, 86 62, 118 30 S178 16, 202 44',s:'8.4 km · 4:42 /km'},{d:'M20 62 C52 42, 92 22, 128 34 S172 12, 204 26',s:'11.2 km · +640m'},{d:'M22 18 C64 26, 98 48, 138 38 S178 58, 202 62',s:'18.9 km · -1,120m'}];var idx=1,touched=false,dead=false;function pick(i){idx=i;btns.forEach(function(b,j){b.classList.toggle('is-on',j===i);});dots.forEach(function(d,j){d.classList.toggle('is-on',j===i);});stat.textContent=data[i].s;route.setAttribute('d',data[i].d);route.style.transition='none';route.style.strokeDashoffset='260';void route.getBoundingClientRect();route.style.transition='stroke-dashoffset .52s cubic-bezier(.22,1,.36,1)';route.style.strokeDashoffset='0';}btns.forEach(function(b,i){b.addEventListener('click',function(){touched=true;pick(i);});});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)pick((idx+1)%data.length);},2100);pick(1);return function(){dead=true;clearInterval(iv);};"
+  },
+  {
+    "id": "app-headspace-horizon-dome",
+    "title": "Headspace: Launch Horizon Breathing Dome",
+    "use": "Backgrounds",
+    "stack": "SVG",
+    "trigger": "Loop",
+    "feel": "Calm",
+    "surface": "light",
+    "dur": 4400,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.45,
+        0.05,
+        0.55,
+        0.95
+      ]
+    },
+    "easeLabel": "sine-in-out (4.4s breath)",
+    "props": [
+      "transform: translateY + scale (bottom horizon dome)",
+      "transform: translateY (serene closed-eye face)",
+      "opacity (Breathe in / Breathe out crossfade)"
+    ],
+    "src": "Headspace (Live Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Headspace",
+      "slug": "headspace",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#F47D31",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d1/e7/46/d1e74629-57e3-42e9-eabd-791d8e22e634/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/headspace-sleep-meditation/id493145008?uo=4",
+      "bundleId": "com.getsomeheadspace.headspace"
+    },
+    "summary": "Captured live from Headspace Android launch: a giant warm-orange smiling dome rises smoothly from the bottom edge during 'Breathe in', crossfades the top caption at peak crest, and subsides gently on 'Breathe out'.",
+    "hint": "Click anywhere to pause / resume breath",
+    "choreography": [
+      "0-2200ms (Breathe in): oversized circular orange dome (#F47D31) anchored below the viewport lifts smoothly by 26% height along a zero-jerk sine wave.",
+      "2000-2400ms (Crest turnaround): top caption 'Breathe in' fades cleanly to opacity 0 and re-emerges as 'Breathe out' while the dome hovers briefly.",
+      "2200-4400ms (Breathe out): dome and closed-eye smile sink peacefully back toward the bottom baseline."
+    ],
+    "agentPrompt": "Recreate Headspace's live-captured launch breathing dome on #ffffff:\n1. Position an oversized circle (width 155%, aspect-ratio 1, border-radius 50%, background #f47d31) peeking from the bottom edge of the container.\n2. Place a minimal SVG smiling closed-eye face (#2b2826, stroke-width 2.6, stroke-linecap round) near the top arc of the dome.\n3. Drive vertical lift with a pure cosine ease (w = 0.5 - 0.5 * cos(t * 2π / 4.4s)) translating the dome up 34px and scaling 1 -> 1.06.\n4. At the top of the frame, crossfade 'Breathe in' <-> 'Breathe out' smoothly using opacity derived from sin(phase) near the crest and trough so the word swap never snaps harshly.",
+    "extractableCode": "<!-- Headspace Launch Horizon Breathing Dome -->\n<div class=\"hs-dome\">...</div>",
+    "html": "<div class=\"m-app-hsd\" role=\"button\" tabindex=\"0\"><span class=\"m-app-hsd__txt\">Breathe in</span><div class=\"m-app-hsd__dome\"><svg class=\"m-app-hsd__face\" viewBox=\"0 0 80 44\"><path d=\"M18 16 Q24 23 30 16\"/><path d=\"M50 16 Q56 23 62 16\"/><path d=\"M24 28 Q40 40 56 28\"/></svg></div></div>",
+    "css": ".m-app-hsd{position:absolute;inset:0;background:#ffffff;overflow:hidden;display:flex;flex-direction:column;align-items:center;cursor:pointer;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-hsd__txt{margin-top:26px;font:600 15px/1 inherit;color:#2b2826;letter-spacing:-.01em;will-change:opacity}.m-app-hsd__dome{position:absolute;left:50%;bottom:-175px;width:360px;height:280px;margin-left:-180px;border-radius:50%;background:#f47d31;display:flex;justify-content:center;padding-top:26px;will-change:transform}.m-app-hsd__face{width:62px;height:34px;fill:none;stroke:#2b2826;stroke-width:2.8;stroke-linecap:round}",
+    "js": "var el=root.querySelector('.m-app-hsd');if(!el)return;var dome=el.querySelector('.m-app-hsd__dome'),txt=el.querySelector('.m-app-hsd__txt');var t=0,last=performance.now(),paused=false,raf=0,dead=false,P=4.4;function frame(now){if(dead)return;var dt=Math.min(0.05,(now-last)/1000);last=now;if(!paused)t+=dt;var ph=(t%P)/P;var w=0.5-0.5*Math.cos(ph*Math.PI*2);dome.style.transform='translateY('+(-w*38).toFixed(2)+'px) scale('+(1+w*0.05).toFixed(3)+')';var inhaling=ph<0.5;txt.textContent=inhaling?'Breathe in':'Breathe out';var edge=Math.min(ph,Math.abs(ph-0.5),1-ph);txt.style.opacity=Math.min(1,edge/0.09).toFixed(2);raf=requestAnimationFrame(frame);}el.addEventListener('click',function(){paused=!paused;});raf=requestAnimationFrame(frame);return function(){dead=true;cancelAnimationFrame(raf);};"
+  },
+  {
+    "id": "app-slack-onboarding-collage",
+    "title": "Slack: Plum Curtain & Staggered Avatar Collage",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Playful",
+    "surface": "dark",
+    "dur": 1150,
+    "ease": {
+      "t": "spring",
+      "k": 320,
+      "c": 22
+    },
+    "easeLabel": "spring(320, 22)",
+    "props": [
+      "clip-path / transform: translateY (plum curtain wipe)",
+      "transform: scale + translateY (staggered teammate cards)",
+      "transform: scale (emoji reaction pill pop)"
+    ],
+    "src": "Slack (Live Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/slack/id618783545?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Slack",
+      "slug": "slack",
+      "category": "Business",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#4A154B",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ad/19/d2/ad19d29c-62c5-eadc-158c-2dc96f2228b2/slack_icon_prod-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/slack/id618783545?uo=4",
+      "bundleId": "com.tinyspeck.chatlyio"
+    },
+    "summary": "Captured live from Slack Android launch: an aubergine curtain sweeps into view, teammate cards pop in diagonally with staggered springs, message pills + a green ✓ 3 reaction bounce in, and the CTA rises from below.",
+    "hint": "Click anywhere to replay choreography",
+    "choreography": [
+      "0-260ms: deep aubergine (#4A154B) backdrop sweeps smoothly up into full frame.",
+      "240-620ms: 3 colorful rounded teammate tiles (teal, amber, coral) spring in with 95ms diagonal stagger (scale 0.65 -> 1.05 -> 1).",
+      "600-880ms: white message bars and the emerald '✓ 3' reaction chip pop beside the avatars.",
+      "820-1150ms: headline with gold highlight (#ECB22E) fades in as the white 'Go on...' button glides up 16px."
+    ],
+    "agentPrompt": "Build Slack's live-captured onboarding collage choreography on #4a154b (total 1150ms):\n1. Stagger 3 rounded square avatar tiles (border-radius 10px, backgrounds #e6f4f1, #f5a623, #f27c7c) at 120ms, 220ms, and 320ms using scale(0.6) translateY(12px) -> scale(1) with spring overshoot cubic-bezier(0.22, 1.28, 0.36, 1).\n2. At 460ms and 560ms, spring in two white rounded message bars plus a compact reaction pill ('✓ 3', #2bac76 badge) from scale(0.5).\n3. At 680ms, fade in the bold headline ('Picture this: a messaging app, but built for work.' with 'built for' in #ecb22e) and slide the full-width white rounded CTA pill up 16px over 340ms.",
+    "extractableCode": "<!-- Slack Onboarding Staggered Avatar Collage -->\n<div class=\"slack-ob\">...</div>",
+    "html": "<div class=\"m-app-slk\" role=\"button\" tabindex=\"0\"><div class=\"m-app-slk__hd\">Picture this: a messaging app, <em>but built for work.</em></div><div class=\"m-app-slk__stage\"><span class=\"m-app-slk__av a1\">👩🏽‍💻</span><span class=\"m-app-slk__msg m1\">Ship v2.4?</span><span class=\"m-app-slk__av a2\">🙋🏾‍♀️</span><span class=\"m-app-slk__av a3\">🧑🏻</span><span class=\"m-app-slk__msg m2\">All green!</span><span class=\"m-app-slk__rx\">✅ 3</span></div><div class=\"m-app-slk__cta\">Go on…</div></div>",
+    "css": ".m-app-slk{position:absolute;inset:0;padding:18px 20px 16px;background:#4a154b;color:#fff;display:flex;flex-direction:column;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-slk__hd{width:100%;max-width:240px;font:700 13.5px/1.25 inherit;letter-spacing:-.02em;opacity:0;transform:translateY(6px);transition:opacity .32s ease .58s,transform .36s cubic-bezier(.22,1,.36,1) .58s}.m-app-slk__hd em{font-style:normal;color:#ecb22e}.m-app-slk__stage{position:relative;width:210px;height:106px}.m-app-slk__av,.m-app-slk__msg,.m-app-slk__rx{position:absolute;opacity:0;transform:scale(.55) translateY(10px);transition:transform .42s cubic-bezier(.22,1.28,.36,1),opacity .26s ease}.m-app-slk__av{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-size:20px;box-shadow:0 8px 18px rgba(0,0,0,.22)}.m-app-slk__av.a1{left:14px;top:6px;background:#d6f0eb;transition-delay:.08s}.m-app-slk__av.a2{right:16px;top:24px;background:#f5a623;transition-delay:.18s}.m-app-slk__av.a3{left:46px;top:56px;background:#f07d7d;transition-delay:.28s}.m-app-slk__msg{padding:5px 10px;border-radius:9px;background:#fff;color:#1d1c1d;font:600 10.5px/1 inherit;box-shadow:0 6px 14px rgba(0,0,0,.2)}.m-app-slk__msg.m1{left:64px;top:12px;transition-delay:.38s}.m-app-slk__msg.m2{left:96px;top:62px;transition-delay:.46s}.m-app-slk__rx{left:96px;top:86px;padding:3px 7px;border-radius:99px;background:#fff;color:#1d1c1d;font:700 9.5px/1 'Geist Mono',monospace;transition-delay:.54s}.m-app-slk__cta{width:min(88%,224px);height:32px;border-radius:9px;background:#fff;color:#4a154b;font:700 11.5px/32px inherit;text-align:center;opacity:0;transform:translateY(14px);transition:opacity .3s ease .66s,transform .38s cubic-bezier(.22,1,.36,1) .66s}.m-app-slk.is-in .m-app-slk__hd,.m-app-slk.is-in .m-app-slk__av,.m-app-slk.is-in .m-app-slk__msg,.m-app-slk.is-in .m-app-slk__rx,.m-app-slk.is-in .m-app-slk__cta{opacity:1;transform:none}",
+    "js": "var el=root.querySelector('.m-app-slk');if(!el)return;var touched=false,dead=false,t1=0;function play(){el.classList.remove('is-in');void el.offsetWidth;t1=setTimeout(function(){if(!dead)el.classList.add('is-in');},60);}el.addEventListener('click',function(){touched=true;play();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)play();},3200);play();return function(){dead=true;clearTimeout(t1);clearInterval(iv);};"
+  },
+  {
+    "id": "app-notion-cube-handoff",
+    "title": "Notion: Splash Cube Lift & Editorial Welcome",
+    "use": "Transitions",
+    "stack": "CSS",
+    "trigger": "Click",
+    "feel": "Crisp",
+    "surface": "light",
+    "dur": 480,
+    "ease": {
+      "t": "bezier",
+      "p": [
+        0.22,
+        1,
+        0.36,
+        1
+      ]
+    },
+    "easeLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "props": [
+      "transform: translateY + scale (logo cube handoff)",
+      "opacity + transform: translateY (title & subtitle)",
+      "opacity + transform: translateY (Get started CTA)"
+    ],
+    "src": "Notion (Live Capture)",
+    "srcUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
+    "collection": "Apps",
+    "app": {
+      "name": "Notion",
+      "slug": "notion",
+      "category": "Productivity",
+      "platform": [
+        "iOS",
+        "Android",
+        "Web"
+      ],
+      "accent": "#191919",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ea/1b/48/ea1b4840-9ee3-ab66-a482-659ced115cbb/AppIconProd-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
+      "bundleId": "notion.id"
+    },
+    "summary": "Captured live from Notion Android launch: the centered monochrome cube scales down cleanly and glides upward while the welcome headline and black 'Get started' pill crossfade into place.",
+    "hint": "Click to replay splash-to-welcome handoff",
+    "choreography": [
+      "0-420ms: monochrome N cube scales from 1.28 to 1.0 and translates upward -26px on cubic-bezier(0.22, 1, 0.36, 1).",
+      "110-420ms: 'Welcome to Notion' and subtitle fade in with a subtle 8px upward drift.",
+      "180-480ms: bottom pill CTA ('Get started', #191919) rises 12px from opacity 0 to rest."
+    ],
+    "agentPrompt": "Build Notion's live-captured splash-to-welcome handoff on pure #ffffff:\n1. Start with the monochrome cube mark centered at scale(1.28) translateY(24px).\n2. Transition it to scale(1) translateY(0) over 420ms cubic-bezier(0.22, 1, 0.36, 1) with zero bounce.\n3. Stagger the editorial title ('Welcome to Notion', 17px semibold, #191919) at +100ms and subtitle (#787774) at +140ms with translateY(8px -> 0) and opacity 0 -> 1.\n4. Bring in the dark rounded CTA pill (#191919, border-radius 999px) at +180ms with translateY(12px -> 0) over 300ms.",
+    "extractableCode": "<!-- Notion Splash Cube Lift & Welcome Handoff -->\n<div class=\"nt-splash\">...</div>",
+    "html": "<div class=\"m-app-nth\" role=\"button\" tabindex=\"0\"><div class=\"m-app-nth__body\"><div class=\"m-app-nth__cube\">N</div><div class=\"m-app-nth__txt\"><b>Welcome to Notion</b><span>The AI workspace that works for you</span></div></div><div class=\"m-app-nth__cta\">Get started</div></div>",
+    "css": ".m-app-nth{position:absolute;inset:0;padding:24px 22px 18px;background:#ffffff;color:#191919;display:flex;flex-direction:column;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;font-family:-apple-system,BlinkMacSystemFont,'Host Grotesk',sans-serif}.m-app-nth__body{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}.m-app-nth__cube{width:46px;height:46px;border-radius:10px;border:2.6px solid #191919;background:#fff;box-shadow:3px -3px 0 #191919;display:grid;place-items:center;font:800 23px/1 Georgia,serif;transform:translateY(34px) scale(1.28);transition:transform .44s cubic-bezier(.22,1,.36,1)}.m-app-nth__txt{opacity:0;transform:translateY(10px);transition:opacity .32s ease .12s,transform .36s cubic-bezier(.22,1,.36,1) .12s}.m-app-nth__txt b{display:block;font:600 16px/1.2 inherit;letter-spacing:-.02em}.m-app-nth__txt span{display:block;margin-top:4px;font-size:11.5px;color:#787774}.m-app-nth__cta{width:min(88%,220px);height:36px;border-radius:999px;background:#191919;color:#fff;font:600 12.5px/36px inherit;text-align:center;opacity:0;transform:translateY(14px);transition:opacity .3s ease .2s,transform .36s cubic-bezier(.22,1,.36,1) .2s}.m-app-nth.is-on .m-app-nth__cube,.m-app-nth.is-on .m-app-nth__txt,.m-app-nth.is-on .m-app-nth__cta{opacity:1;transform:none}",
+    "js": "var el=root.querySelector('.m-app-nth');if(!el)return;var touched=false,dead=false,t1=0;function play(){el.classList.remove('is-on');void el.offsetWidth;t1=setTimeout(function(){if(!dead)el.classList.add('is-on');},520);}el.addEventListener('click',function(){touched=true;play();});var iv=setInterval(function(){if(!touched&&!dead&&!document.hidden)play();},3200);play();return function(){dead=true;clearTimeout(t1);clearInterval(iv);};"
   }
 ]
