@@ -1,6 +1,6 @@
 {
-  "count": 531,
-  "appsCount": 14,
+  "count": 536,
+  "appsCount": 19,
   "apps": [
     {
       "name": "Duolingo",
@@ -230,6 +230,86 @@
       "bundleId": "com.tinyspeck.chatlyio",
       "motionIds": [
         "app-slack-onboarding-collage"
+      ]
+    },
+    {
+      "name": "Telegram Messenger",
+      "slug": "telegram",
+      "category": "Social Networking",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#2AABEE",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2f/1b/e8/2f1be808-3e4c-9edc-7ab6-3508a48aac84/Telegram-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/telegram-messenger/id686449807?uo=4",
+      "bundleId": "ph.telegra.Telegraph",
+      "motionIds": [
+        "app-telegram-shimmer-cta"
+      ]
+    },
+    {
+      "name": "Discord",
+      "slug": "discord",
+      "category": "Social Networking",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#5865F2",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/51/1a/5c/511a5c6c-5bce-fa96-9bcd-5a7ebdda0b71/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/discord-talk-play-hang-out/id985746746?uo=4",
+      "bundleId": "com.hammerandchisel.discord",
+      "motionIds": [
+        "app-discord-cosmic-welcome"
+      ]
+    },
+    {
+      "name": "Pinterest",
+      "slug": "pinterest",
+      "category": "Lifestyle",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#E60023",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/a2/1f/00a21fdb-ad53-0307-47e9-d267233ea0d1/AppIcon-0-0-1x_U007epad-0-1-0-0-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/pinterest/id429047995?uo=4",
+      "bundleId": "pinterest",
+      "motionIds": [
+        "app-pinterest-masonry-loader"
+      ]
+    },
+    {
+      "name": "Shazam",
+      "slug": "shazam",
+      "category": "Music",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#0088FF",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/e7/58/c7e7585b-108a-21da-2678-eef4192b0ae6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/shazam-find-music-concerts/id284993459?uo=4",
+      "bundleId": "com.shazam.Shazam",
+      "motionIds": [
+        "app-shazam-listen-ripple"
+      ]
+    },
+    {
+      "name": "Calm",
+      "slug": "calm",
+      "category": "Health & Fitness",
+      "platform": [
+        "iOS",
+        "Android"
+      ],
+      "accent": "#3B7DDD",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/84/b6/cc84b646-19ce-b601-292a-19c98b32f2cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg",
+      "storeUrl": "https://apps.apple.com/us/app/calm/id571800810?uo=4",
+      "bundleId": "com.calm.calmapp",
+      "motionIds": [
+        "app-calm-breath-wash"
       ]
     }
   ],
@@ -1175,6 +1255,246 @@
         "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ea/1b/48/ea1b4840-9ee3-ab66-a482-659ced115cbb/AppIconProd-0-0-1x_U007epad-0-0-0-1-0-0-85-220.png/100x100bb.jpg",
         "storeUrl": "https://apps.apple.com/us/app/notion-notes-tasks-ai/id1232780281?uo=4",
         "bundleId": "notion.id"
+      }
+    },
+    {
+      "id": "app-telegram-shimmer-cta",
+      "title": "Telegram: Paper-Plane Lift & Specular Shimmer CTA",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Loop",
+      "feel": "Fluid",
+      "surface": "light",
+      "durationMs": 2200,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "properties": [
+        "transform: translateX (angled specular shimmer band)",
+        "transform: translateY + scale (paper-plane slide transition)",
+        "background-color (light / dark theme toggle)"
+      ],
+      "source": "Telegram (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/telegram-messenger/id686449807?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Telegram Android: a continuous diagonal light sheen sweeps across the cyan 'Start Messaging' pill while the paper-plane hero and 6-dot onboarding pager crossfade smoothly.",
+      "choreography": [
+        "0-2200ms loop: a 42% wide translucent white linear-gradient band sweeps across the #2AABEE CTA pill at 115deg with a 900ms pause between passes.",
+        "Paging dots morph smoothly between 6px muted circles and the active #2AABEE dot while the hero badge lifts with subtle spring scale.",
+        "Top-right crescent icon toggles light (#fff) and dark (#17212b) surfaces over 240ms."
+      ],
+      "agentPrompt": "Recreate Telegram's live-captured onboarding CTA shimmer & pager:\n1. Render a rounded cyan pill button (#2aabee, border-radius 10px, height 42px, overflow: hidden) with a ::after pseudo-element carrying a 110deg translucent white gradient (transparent 20%, rgba(255,255,255,0.34) 50%, transparent 80%) that sweeps translateX(-120% -> 140%) over 1.2s every 2.4s.\n2. Pair with a circular #2aabee paper-plane mark, 6-dot pagination bar, and top-right moon button that crossfades light (#ffffff) and Telegram night blue (#17212b).",
+      "code": "<!-- Telegram Specular Shimmer CTA -->\n<button class=\"tg-cta\">Start Messaging</button>",
+      "app": {
+        "name": "Telegram Messenger",
+        "slug": "telegram",
+        "category": "Social Networking",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#2AABEE",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2f/1b/e8/2f1be808-3e4c-9edc-7ab6-3508a48aac84/Telegram-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/telegram-messenger/id686449807?uo=4",
+        "bundleId": "ph.telegra.Telegraph"
+      }
+    },
+    {
+      "id": "app-discord-cosmic-welcome",
+      "title": "Discord: Cosmic Blurple Bokeh & Starfield Welcome",
+      "use": "Backgrounds",
+      "stack": "CSS",
+      "trigger": "Loop",
+      "feel": "Fluid",
+      "surface": "dark",
+      "durationMs": 4800,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.45,
+          0.05,
+          0.55,
+          0.95
+        ]
+      },
+      "easingLabel": "sine drift + spring(320, 22)",
+      "properties": [
+        "transform: translate + scale (parallax bokeh orbs)",
+        "opacity (twinkling starfield points)",
+        "transform: scale (CTA press spring)"
+      ],
+      "source": "Discord (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/discord-talk-play-hang-out/id985746746?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Discord Android: soft violet-indigo bokeh spheres drift slowly across a deep midnight-to-blurple nebula with twinkling stars behind crisp stacked Register / Log In pills.",
+      "choreography": [
+        "Continuous: 4 blurred radial bokeh planets (#7b61ff, #5865f2, #9b51e0) orbit gently over 4.8-6.4s cycles while responding subtly to pointer parallax.",
+        "Twinkling micro-stars pulse opacity 0.25 -> 1.0 at staggered phases.",
+        "Register pill (#ffffff) and dark translucent Log In pill depress crisply to scale(0.96) on press."
+      ],
+      "agentPrompt": "Recreate Discord's live-captured cosmic blurple welcome screen:\n1. Background: vertical gradient from #090d2e -> #121d63 -> #2338c4.\n2. Float 4 soft radial-gradient bokeh orbs (blur 2-8px, violet/blurple highlights) on slow sinusoidal vertical/horizontal orbits (4.8s-6.8s) plus 8 tiny 2px white star dots twinkling at staggered delays.\n3. Center a bold condensed uppercase title ('WELCOME TO DISCORD') with crisp stacked full-width pill buttons: primary white 'Register' and secondary translucent 'Log In' (rgba(255,255,255,0.12), border 1px rgba(255,255,255,0.18)).",
+      "code": "<!-- Discord Cosmic Blurple Welcome -->\n<div class=\"dc-welcome\">...</div>",
+      "app": {
+        "name": "Discord",
+        "slug": "discord",
+        "category": "Social Networking",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#5865F2",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/51/1a/5c/511a5c6c-5bce-fa96-9bcd-5a7ebdda0b71/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/discord-talk-play-hang-out/id985746746?uo=4",
+        "bundleId": "com.hammerandchisel.discord"
+      }
+    },
+    {
+      "id": "app-pinterest-masonry-loader",
+      "title": "Pinterest: 3-Dot Orbit Loader → Masonry Arch",
+      "use": "Transitions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Playful",
+      "surface": "light",
+      "durationMs": 900,
+      "easing": {
+        "t": "spring",
+        "k": 290,
+        "c": 22
+      },
+      "easingLabel": "spring(290, 22)",
+      "properties": [
+        "transform: rotate (3-dot crimson spinner)",
+        "transform: translateY + scale (staggered pin cards)",
+        "opacity (headline reveal)"
+      ],
+      "source": "Pinterest (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/pinterest/id429047995?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Pinterest Android: a tight 3-dot crimson triangle orbits briefly, dissolves, and springs 5 rounded masonry pin cards into a fanned editorial arch above 'Create a life you love'.",
+      "choreography": [
+        "0-420ms: 3 tiny dots arranged in an equilateral triangle spin cleanly in Pinterest red (#E60023) before fading out.",
+        "380-860ms: 5 rounded photo pin cards stagger in (60ms apart) from translateY(24px) scale(0.84) to their arched masonry offsets.",
+        "620-900ms: the red P emblem and 'Create a life you love' fade up smoothly below."
+      ],
+      "agentPrompt": "Build Pinterest's live-captured loader-to-masonry reveal:\n1. Start with a 22px 3-dot equilateral triangle spinner (#e60023) rotating 360deg over 720ms.\n2. Crossfade out the spinner and spring 5 rounded pin cards (border-radius 14px, varying aspect heights arranged in a symmetric arch) upward from translateY(26px) scale(0.84) opacity 0 with 60ms stagger using cubic-bezier(0.22, 1.18, 0.36, 1).\n3. Follow with the circular #e60023 brand badge and bold headline ('Create a life you love') rising 10px.",
+      "code": "<!-- Pinterest 3-Dot Orbit -> Masonry Arch -->\n<div class=\"pin-arch\">...</div>",
+      "app": {
+        "name": "Pinterest",
+        "slug": "pinterest",
+        "category": "Lifestyle",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#E60023",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/a2/1f/00a21fdb-ad53-0307-47e9-d267233ea0d1/AppIcon-0-0-1x_U007epad-0-1-0-0-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/pinterest/id429047995?uo=4",
+        "bundleId": "pinterest"
+      }
+    },
+    {
+      "id": "app-shazam-listen-ripple",
+      "title": "Shazam: Concentric Listening Sonar Pulse",
+      "use": "Micro-interactions",
+      "stack": "CSS",
+      "trigger": "Click",
+      "feel": "Playful",
+      "surface": "dark",
+      "durationMs": 1600,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "easingLabel": "ease-out sonar + spring(300, 18)",
+      "properties": [
+        "transform: scale + opacity (3 staggered sonar rings)",
+        "transform: scale (heartbeat core button)",
+        "background (idle azure -> active deep cobalt)"
+      ],
+      "source": "Shazam (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/shazam-find-music-concerts/id284993459?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Shazam Android: tapping the iconic azure S-button engages a heartbeat core throb and emits 3 concentric translucent sonar rings radiating continuously outward.",
+      "choreography": [
+        "Idle: gentle 2.4s breath pulse (scale 1.0 -> 1.05 -> 1.0) on the floating S-medallion.",
+        "Active listening: core accelerates into a rhythmic double-beat pulse while 3 concentric circular halos expand scale(1 -> 2.35) and fade opacity(0.45 -> 0) staggered by 480ms.",
+        "Top label crossfades 'Tap to Shazam' -> 'Listening for music…'."
+      ],
+      "agentPrompt": "Build Shazam's signature listening sonar button on a vertical gradient (#009dff -> #0055ff):\n1. Center a 92px circular glass-white S-medallion (box-shadow 0 14px 36px rgba(0,30,110,0.34)) with 3 absolute concentric ring siblings behind it.\n2. In idle state, breathe the medallion gently (scale 1 -> 1.05 over 2.4s).\n3. When toggled to listening, shift the background to deeper cobalt (#0062e6 -> #002880), animate the 3 rings outward from scale(1) opacity(0.45) to scale(2.4) opacity(0) over 1.5s cubic-bezier(0.16, 1, 0.3, 1) staggered by 0ms, 500ms, 1000ms, and give the medallion a rhythmic audio-reactive bounce.",
+      "code": "<!-- Shazam Listening Sonar Pulse -->\n<button class=\"shazam-btn is-listening\">S</button>",
+      "app": {
+        "name": "Shazam",
+        "slug": "shazam",
+        "category": "Music",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#0088FF",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c7/e7/58/c7e7585b-108a-21da-2678-eef4192b0ae6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/shazam-find-music-concerts/id284993459?uo=4",
+        "bundleId": "com.shazam.Shazam"
+      }
+    },
+    {
+      "id": "app-calm-breath-wash",
+      "title": "Calm: Launch Gradient Wash & Breath Cue",
+      "use": "Backgrounds",
+      "stack": "CSS",
+      "trigger": "Loop",
+      "feel": "Calm",
+      "surface": "dark",
+      "durationMs": 4600,
+      "easing": {
+        "t": "bezier",
+        "p": [
+          0.45,
+          0.05,
+          0.55,
+          0.95
+        ]
+      },
+      "easingLabel": "sine-in-out (4.6s wash)",
+      "properties": [
+        "background-position (slow vertical sky-to-indigo drift)",
+        "opacity + transform: scale (medallion dissolve)",
+        "opacity + letter-spacing ('take a deep breath' cadence)"
+      ],
+      "source": "Calm (Live Capture)",
+      "sourceUrl": "https://apps.apple.com/us/app/calm/id571800810?uo=4",
+      "collection": "Apps",
+      "summary": "Captured live from Calm Android launch: the circular Calm medallion dissolves into a drifting ocean-to-twilight gradient while 'take a deep breath' pulses softly in slow sinusoidal cadence.",
+      "choreography": [
+        "0-750ms: deep navy splash (#234284) crossfades smoothly into Calm's signature sky-blue to periwinkle gradient (#59B7EA -> #5A6BE0) as the circular Calm emblem scales gently out.",
+        "750-4600ms: lowercase 'take a deep breath' fades in and breathes subtly (opacity 0.55 <-> 1.0, letter-spacing 0.01em <-> 0.06em) as the gradient slowly undulates."
+      ],
+      "agentPrompt": "Build Calm's live-captured launch breath wash:\n1. Layer a 200%-tall smooth gradient (#4eb8ea -> #5872e3 -> #234284) whose background-position oscillates smoothly over 7s ease-in-out.\n2. Begin with a 64px circular Calm medallion centered on deep navy; after 650ms fade and scale it gently (1 -> 1.18, opacity 1 -> 0 over 600ms) while revealing lowercase 'take a deep breath' (14px medium, white).\n3. Gently pulse the phrase's opacity (0.52 -> 1.0) and letter-spacing (0.01em -> 0.06em) on a 4.6s sinusoidal breath cycle.",
+      "code": "<!-- Calm Launch Gradient Wash -->\n<div class=\"calm-wash\">take a deep breath</div>",
+      "app": {
+        "name": "Calm",
+        "slug": "calm",
+        "category": "Health & Fitness",
+        "platform": [
+          "iOS",
+          "Android"
+        ],
+        "accent": "#3B7DDD",
+        "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/cc/84/b6/cc84b646-19ce-b601-292a-19c98b32f2cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg",
+        "storeUrl": "https://apps.apple.com/us/app/calm/id571800810?uo=4",
+        "bundleId": "com.calm.calmapp"
       }
     },
     {

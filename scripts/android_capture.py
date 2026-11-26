@@ -41,6 +41,18 @@ APP_QUEUE = [
     {"slug": "strava", "name": "Strava", "package": "com.strava", "notes": "Route trace draw, kudos thumb burst, record hold"},
     {"slug": "slack", "name": "Slack", "package": "com.Slack", "notes": "Reaction pill spring, channel drawer drag, unread jump"},
     {"slug": "stripe", "name": "Stripe Dashboard", "package": "com.stripe.android.dashboard", "notes": "Live revenue tick, payout confirm morph"},
+    {"slug": "discord", "name": "Discord", "package": "com.discord", "notes": "Server pill notch morph, voice ring pulse, swipe drawer"},
+    {"slug": "pinterest", "name": "Pinterest", "package": "com.pinterest", "notes": "Masonry pin zoom, radial long-press menu, Save pop"},
+    {"slug": "telegram", "name": "Telegram", "package": "org.telegram.messenger", "notes": "Lottie onboarding carousel, message bubble send spring, spoiler shimmer"},
+    {"slug": "uber", "name": "Uber", "package": "com.ubercab", "notes": "Pickup radar pulse, ride tier sheet detent, ETA flip"},
+    {"slug": "calm", "name": "Calm", "package": "com.calm.android", "notes": "Ambient ocean mist gradient, breathing ring bloom"},
+    {"slug": "shazam", "name": "Shazam", "package": "com.shazam.android", "notes": "Concentric listening ripple, bass-reactive S pulse, match card flip"},
+    {"slug": "instagram", "name": "Instagram", "package": "com.instagram.android", "notes": "Double-tap heart burst, Stories ring gradient spin, Reels swipe"},
+    {"slug": "threads", "name": "Threads", "package": "com.instagram.barcelona", "notes": "Pull-to-refresh thread loop, repost counter flip, heart pop"},
+    {"slug": "todoist", "name": "Todoist", "package": "com.todoist", "notes": "Checkbox ring fill & confetti pop, quick-add sheet spring"},
+    {"slug": "wise", "name": "Wise", "package": "com.transferwise.android", "notes": "FX rate lock badge, transfer step progress slide"},
+    {"slug": "reddit", "name": "Reddit", "package": "com.reddit.frontpage", "notes": "Upvote rocket bounce, comment thread collapse"},
+    {"slug": "tiktok", "name": "TikTok", "package": "com.zhiliaoapp.musically", "notes": "Spinning vinyl disc, floating heart trail, comment sheet rise"},
 ]
 
 
